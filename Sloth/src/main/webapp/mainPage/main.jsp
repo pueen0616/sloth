@@ -14,7 +14,7 @@
 </head>
 
 <body>
-
+	<!-- 검색란 -->
     <header>
         <nav>
             <div class="logo">
@@ -27,10 +27,16 @@
             </div>
             <div class="menu">
                 <ul>
-                    <li><a href="#">호스트가 되어보세요</a></li>
-                    <li><a href="#">도움말</a></li>
-                    <li><a href="#">회원가입</a></li>
+                    <li><a href="#">호스트가 되기</a></li>
                     <li><a href="#">로그인</a></li>
+                    <li><a href="#">계정</a></li>
+                    <li><a href="#">게시판</a></li>
+                    <li><a href="#">예약관리</a></li>
+                    
+                    <li><a href="#">숙소관리</a></li>
+                    <li><a href="#">관심숙소</a></li>
+                    
+                    <li><a href="#">로그아웃</a></li>
                 </ul>
             </div>
         </nav>
@@ -42,8 +48,9 @@
                         <td colspan="2" class="search__sub__title">목적지</td>
                     </tr>
                     <tr>
-                        <td colspan="2"><input class="search__input" type="text" placeholder=" 모든 위치"></td>
+                        <td colspan="2"><input class="search__input" type="text" placeholder="위치"></td>
                     </tr>
+                    <!-- 체크인, 아웃 -->
                     <tr>
                         <td class="search__sub__title">체크인</td>
                         <td class="search__sub__title">체크아웃</td>
@@ -58,172 +65,31 @@
                     <tr>
                         <td colspan="2">
                             <select class="search__input" >
-                                <option>인원</option>
+                                <option>1</option>
+                                <option>2</option>
+                                <option>3</option>
+                                <option>4</option>
+                                <option>5</option>
+                                <option>6</option>
+                                <option>7</option>
+                                <option>8</option>
+                                <option>9</option>
+                                <option>10</option>
+                                
                             </select>
                         </td>
                     </tr>
                 </table>
+                <!-- 검색버튼 -->
                 <div class="search__button"><button>검색</button></div>
             </div>
         </section>
     </header>
+    <!-- 게시판 -->
+	<main>
+	
+	</main>
 
-    <main>
-        <section>
-            <div class="sec__title">
-                에어비앤비 둘러보기
-            </div>
-            <div class="card__box">
-                <div class="card">
-                    <div class="card__img1 card__img"></div>
-                    <div class="card__content">숙소 및 부티크 호텔</div>
-                </div>
-                <div class="card">
-                    <div class="card__img2 card__img"></div>
-                    <div class="card__content">트립</div>
-                </div>
-                <div class="card">
-                    <div class="card__img3 card__img"></div>
-                    <div class="card__content">어드벤처</div>
-                </div>
-                <div class="card">
-                    <div class="card__img4 card__img"></div>
-                    <div class="card__content">레스토랑</div>
-                </div>
-            </div>
-        </section>
-
-        <section>
-            <div class="ad1"></div>
-        </section>
-
-        <section>
-            <div class="sec__title">추천 여행지</div>
-            <div class="choo__box">
-                <div class="choo_img1"></div>
-                <div class="choo_img2"></div>
-                <div class="choo_img3"></div>
-                <div class="choo_img4"></div>
-                <div class="choo_img5"></div>
-            </div>
-        </section>
-
-        <section>
-            <div class="sec__title2">에어비앤비 플러스를 만나보세요!</div>
-            <div class="sec__content">퀄리티와 인테리어 디자인이 검증된 숙소 셀렉션</div>
-            <div class="ad2"></div>
-        </section>
-
-        <section>
-            <div class="sec__title">전 세계 숙소</div>
-
-            <div class="home__box">
-                <div class="home">
-                    <div class="home__img1"></div>
-                    <div class="home__info">
-                        <div class="info1">오두막 · BALIAN BEACH, BALI</div>
-                        <div class="info2">BALIAN TREEHOUSE w beautiful pool</div>
-                        <div class="info3">
-                            <span class="star">★★★★★</span>
-                            <span class="count">185</span>
-                            <span class="type">슈퍼호스트</span>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="home">
-                    <div class="home__img2"></div>
-                    <div class="home__info">
-                        <div class="info1">키클라데스 주택 · 이아(OIA)</div>
-                        <div class="info2">Unique Architecture Cave House</div>
-                        <div class="info3">
-                            <span class="star">★★★★★</span>
-                            <span class="count">188</span>
-                            <span class="type">슈퍼호스트</span>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="home">
-                    <div class="home__img3"></div>
-                    <div class="home__info">
-                        <div class="info1">성 · 트웬티나인 팜스(TWENTYNINE PALMS)</div>
-                        <div class="info2">Tile House</div>
-                        <div class="info3">
-                            <span class="star">★★★★★</span>
-                            <span class="count">367</span>
-                            <span class="type">슈퍼호스트</span>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="home">
-                    <div class="home__img4"></div>
-                    <div class="home__info">
-                        <div class="info1">검증됨 · 케이프타운</div>
-                        <div class="info2">Modern, Chic Penthouse with Mountain, City & Sea Views</div>
-                        <div class="info3">
-                            <span class="star">★★★★★</span>
-                            <span class="count">177</span>
-                            <span class="type">슈퍼호스트</span>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="home">
-                    <div class="home__img5"></div>
-                    <div class="home__info">
-                        <div class="info1">아파트 전체 · 마드리드(MADRID)</div>
-                        <div class="info2">솔광장에 위치한 개인 스튜디오</div>
-                        <div class="info3">
-                            <span class="star">★★★★★</span>
-                            <span class="count">459</span>
-                            <span class="type">슈퍼호스트</span>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="home">
-                    <div class="home__img6"></div>
-                    <div class="home__info">
-                        <div class="info1">집 전체 · HUMAC</div>
-                        <div class="info2">Vacation house in etno-eco village Humac</div>
-                        <div class="info3">
-                            <span class="star">★★★★★</span>
-                            <span class="count">119</span>
-                            <span class="type">슈퍼호스트</span>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="home">
-                    <div class="home__img7"></div>
-                    <div class="home__info">
-                        <div class="info1">개인실 · 마라케시</div>
-                        <div class="info2">The Cozy Palace</div>
-                        <div class="info3">
-                            <span class="star">★★★★★</span>
-                            <span class="count">559</span>
-                            <span class="type">슈퍼호스트</span>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="home">
-                    <div class="home__img8"></div>
-                    <div class="home__info">
-                        <div class="info1">게스트용 별채 전체 · 로스앤젤레스</div>
-                        <div class="info2">Private Pool House with Amazing Views!</div>
-                        <div class="info3">
-                            <span class="star">★★★★★</span>
-                            <span class="count">170</span>
-                            <span class="type">슈퍼호스트</span>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </section>
-    </main>
 </body>
 
 </html>
