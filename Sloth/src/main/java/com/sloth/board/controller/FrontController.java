@@ -12,8 +12,8 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import com.sloth.board.command.Main;
+import com.sloth.board.command.Register;
 import com.sloth.board.common.Action;
-import com.sloth.command.Register;
 
 @WebServlet("/FrontController")
 public class FrontController extends HttpServlet {
@@ -93,5 +93,4 @@ public class FrontController extends HttpServlet {
 	      RequestDispatcher dispatcher = request.getRequestDispatcher(viewPage); //선택한 페이지로 가기
 	      dispatcher.forward(request, response);   
 	}
-
 }

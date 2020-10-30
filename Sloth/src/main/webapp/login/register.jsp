@@ -10,7 +10,7 @@
 <div align="center">
 	<div><h1>회 원 가 입</h1></div>
 	<div>
-		<form id="frm" name="frm" action="register.do" method="post">
+		<form id="frm" name="frm" action="${pageContext.request.contextPath}/register.do" method="post">
 			<table border="1">
 				<tr>
 					<th width="150">아이디</th>
@@ -35,6 +35,10 @@
 				<tr>
 					<th width="150">이메일</th>
 					<td><input type="text" id="email" name="email"></td>
+				</tr>
+				<tr>
+					<th width="150">권한</th>
+					<td><input type="text" id="admin" name="admin"></td>
 				</tr>
 				<tr>
 					<td colspan="2" align="center">
