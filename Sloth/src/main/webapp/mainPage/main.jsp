@@ -27,10 +27,16 @@
             </div>
             <div class="menu">
                 <ul>
-                    <li><a href="#">호스트가 되어보세요</a></li>
-                    <li><a href="#">도움말</a></li>
-                    <li><a href="#">회원가입</a></li>
+                    <li><a href="#">호스트가 되기</a></li>
                     <li><a href="#">로그인</a></li>
+                    <li><a href="#">계정</a></li>
+                    <li><a href="#">게시판</a></li>
+                    <li><a href="#">예약관리</a></li>
+                    
+                    <li><a href="#">숙소관리</a></li>
+                    <li><a href="#">관심숙소</a></li>
+                    
+                    <li><a href="#">로그아웃</a></li>
                 </ul>
             </div>
         </nav>
@@ -59,6 +65,7 @@
                         <td colspan="2">
                             <select class="search__input" >
                                 <option>인원</option>
+                                
                             </select>
                         </td>
                     </tr>
