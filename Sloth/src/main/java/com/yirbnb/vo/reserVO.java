@@ -3,7 +3,7 @@ package com.yirbnb.vo;
 import java.util.Date;
 
 public class reserVO {
-private int reserNum;
+private int reserNum; 
 private Date reserCheckIn;
 private Date reserCheckOut;
 private String reserPrice;
