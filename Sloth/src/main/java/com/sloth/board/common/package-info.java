@@ -1,0 +1,1 @@
+package com.sloth.board.common;

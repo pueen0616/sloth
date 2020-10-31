@@ -1,4 +1,4 @@
-package com.yirbnb.vo;
+package com.sloth.board.vo;
 
 import java.sql.Date;
 

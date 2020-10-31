@@ -1,4 +1,4 @@
-package com.yirbnb.vo;
+package com.sloth.board.vo;
 
 public class PicVO {
 	private int PicNum;
