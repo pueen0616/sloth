@@ -7,6 +7,6 @@
 <title>Insert title here</title>
 </head>
 <body>
-<%response.sendRedirect("loginForm.do"); %>
+00 로그인 성공시 이전 페이지로 이동
 </body>
 </html>

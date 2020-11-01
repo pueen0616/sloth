@@ -3,6 +3,8 @@ package com.sloth.board.dao;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.ArrayList;
+import java.util.List;
 
 import com.sloth.board.vo.AccountVO;
 
@@ -12,9 +14,50 @@ public class AccountDao extends DAO {
 	private AccountVO vo;
 	
 	private final String SELECT_ALL = "SELECT * FROM ACCOUNT ORDER BY ID";
-	private final String SELECT = "SELECT * FROM ACCOUNT WHERE ID = ?";
-	private final String INSERT = "INSERT INTO ACCOUNT(ID,NAME,PASSWORD,BIRTH,EMAIL,TEL,USER_TYPE) VALUES(?,?,?,?,?,?,?)";
+	private final String SELECT = "SELECT * FROM ACCOUNT WHERE ID = ? AND PASSWORD=?";
+	private final String INSERT = "INSERT INTO ACCOUNT(ID,NAME,PASSWORD,BIRTH,EMAIL,TEL) VALUES(?,?,?,?,?,?)";
 	
+	public List<AccountVO> SELECT_All() {
+		List<AccountVO> list = new ArrayList<AccountVO>();
+		try {
+			psmt = conn.prepareStatement(SELECT_ALL);
+			rs=psmt.executeQuery();
+			
+			while(rs.next()) {
+				vo = new AccountVO();
+				vo.setId(rs.getString("id"));
+				vo.setName(rs.getString("name"));
+			}
+		} catch(SQLException e) {
+			e.printStackTrace();
+		} finally{
+			close();
+		}
+		return list;
+	}
+	
+	public AccountVO select(AccountVO vo) {
+		try {
+			psmt = conn.prepareStatement(SELECT);
+			psmt.setString(1, vo.getId());
+			psmt.setString(2, vo.getPassword());
+			rs = psmt.executeQuery();
+			
+			if(rs.next()) {
+				vo.setName(rs.getString("name"));
+				vo.setBirth(rs.getString("birth"));
+				vo.setEmail(rs.getString("email"));
+				vo.setTel(rs.getString("tel"));
+				vo.setUserType(rs.getString("user_type"));
+			}
+		}catch(SQLException e) {
+			e.printStackTrace();
+		}finally {
+			close();
+		}
+		return vo;
+	}
+
 	public int insert(AccountVO vo) {
 		int n = 0;
 		try {
@@ -25,7 +68,7 @@ public class AccountDao extends DAO {
 			psmt.setString(4, vo.getBirth());
 			psmt.setString(5, vo.getEmail());
 			psmt.setString(6, vo.getTel());
-			psmt.setString(7, vo.getUser_type());
+			
 			n=psmt.executeUpdate();
 		
 		} catch(SQLException e) {
@@ -33,4 +76,16 @@ public class AccountDao extends DAO {
 		}
 		return n;
 	}
+	
+
+	private void close() {
+		try {
+			if(rs != null) rs.close();
+			if(psmt != null) psmt.close();
+			if(conn != null) conn.close();
+		}catch(SQLException e) {
+			e.printStackTrace();
+		}
+	}
+
 }

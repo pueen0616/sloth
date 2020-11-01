@@ -2,35 +2,29 @@ package com.sloth.board.command;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import com.sloth.board.common.Action;
 import com.sloth.board.dao.AccountDao;
 import com.sloth.board.vo.AccountVO;
 
-
-public class Register implements Action {
+public class LoginAction implements Action {
 
 	@Override
 	public String exec(HttpServletRequest request, HttpServletResponse response) {
-		// TODO 회원가입
-		
+		// TODO 로그인 인증과정
 		AccountDao dao = new AccountDao();
 		AccountVO vo = new AccountVO();
-		
+		HttpSession session = request.getSession(false);
 		vo.setId(request.getParameter("id"));
-		vo.setName(request.getParameter("name"));
 		vo.setPassword(request.getParameter("password"));
-		vo.setBirth(request.getParameter("birth"));
-		vo.setEmail(request.getParameter("email"));
-		vo.setTel(request.getParameter("tel"));
 		
-		int n = dao.insert(vo);
-		String page;
-		if(n !=0) {
-			page = "login/insertSuccess.jsp";
-		}else {
-			page = "login/insertFail.jsp";
-		}
-		return page;
+		vo = dao.select(vo);
+		
+		session.setAttribute("id", vo.getId());
+		session.setAttribute("name", vo.getName());
+		request.setAttribute("vo", vo);
+		return "login/loginResult.jsp";
 	}
+
 }

@@ -37,10 +37,6 @@
 					<td><input type="text" id="email" name="email"></td>
 				</tr>
 				<tr>
-					<th width="150">권한</th>
-					<td><input type="text" id="admin" name="admin"></td>
-				</tr>
-				<tr>
 					<td colspan="2" align="center">
 						<input type="submit" value="가입하기"> &nbsp;&nbsp;
 						<input type="reset" value="취소">

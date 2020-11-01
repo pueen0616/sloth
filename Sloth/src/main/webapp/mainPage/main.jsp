@@ -8,15 +8,15 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Document</title>
-    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="mainPage/css/style.css">
     <link rel="shortcut icon" sizes="76x76" type="image/x-icon"
         href="https://a0.muscache.com/airbnb/static/logotype_favicon-21cc8e6c6a2cca43f061d2dcabdf6e58.ico">
 </head>
 
 <body>
-
     <header>
-        <nav>
+  	   <nav>
+             
             <div class="logo">
                 <svg viewBox="0 0 1000 1000" role="presentation" aria-hidden="true" focusable="false"
                     style="height: 1em; width: 1em; display: inline-block; fill: currentcolor;">
@@ -28,18 +28,16 @@
             <div class="menu">
                 <ul>
                     <li><a href="#">호스트가 되기</a></li>
-                    <li><a href="#">로그인</a></li>
+                    <li><a href="loginForm.do">로그인</a></li>
                     <li><a href="#">계정</a></li>
                     <li><a href="#">게시판</a></li>
                     <li><a href="#">예약관리</a></li>
-                    
                     <li><a href="#">숙소관리</a></li>
                     <li><a href="#">관심숙소</a></li>
-                    
                     <li><a href="#">로그아웃</a></li>
                 </ul>
             </div>
-        </nav>
+        </nav> 
         <section>
             <div class="search__box">
                 <div class="search__title">특색 있는 숙소와 즐길<br /> 거리를 예약하세요.</div>

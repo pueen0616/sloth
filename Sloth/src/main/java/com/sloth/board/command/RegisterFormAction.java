@@ -5,11 +5,12 @@ import javax.servlet.http.HttpServletResponse;
 
 import com.sloth.board.common.Action;
 
-public class Main implements Action {
+public class RegisterFormAction implements Action {
 
 	@Override
 	public String exec(HttpServletRequest request, HttpServletResponse response) {
-		// TODO Auto-generated method stub
-		return "mainPage/main.jsp";
+		// TODO 회원가입 폼 페이지 이동
+		return "login/register.jsp";
 	}
+
 }

@@ -1,0 +1,19 @@
+@charset "UTF-8";
+
+nav {
+    display: grid;
+    grid-template-columns: auto auto;
+    justify-content: space-between;
+    padding: 20px 20px;
+}
+.menu ul {
+    display: grid;
+    grid-template-columns: auto auto auto auto;
+    grid-gap: 30px;
+    list-style-type: none;
+}
+.menu ul a {
+    text-decoration: none;
+    color: white;
+    font-weight: 800;
+}

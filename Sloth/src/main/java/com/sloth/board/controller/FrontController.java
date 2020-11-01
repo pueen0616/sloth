@@ -11,8 +11,11 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import com.sloth.board.command.LoginAction;
+import com.sloth.board.command.LoginFormAction;
 import com.sloth.board.command.Main;
 import com.sloth.board.command.Register;
+import com.sloth.board.command.RegisterFormAction;
 import com.sloth.board.common.Action;
 
 @WebServlet("/FrontController")
@@ -28,55 +31,11 @@ public class FrontController extends HttpServlet {
     public void init(ServletConfig config) throws ServletException {
 		// 요청들을 정의함
     	// 김현동
-		map.put("/register.do",new Register());   // 처음 들어오는 페이지 처리 index.jsp
-		map.put("/main.do", new Main());
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		// 김도은
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		// 우청일
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		// 허성준
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		// 조영래
+    	map.put("/main.do", new Main());  // 처음 들어오는 페이지 처리 index.jsp
+    	map.put("/loginForm.do", new LoginFormAction());//로그인페이지 이동
+    	map.put("/loginResult.do",new LoginAction());
+    	map.put("/registerForm.do", new RegisterFormAction());//회원가입페이지 이동
+		map.put("/register.do",new Register());  // 회원가입등록처리
 	}
     
     protected void service(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
