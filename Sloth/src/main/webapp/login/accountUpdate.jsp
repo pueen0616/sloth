@@ -5,9 +5,8 @@
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
-
 </head>
 <body>
-<%response.sendRedirect("loginForm.do"); %>
+회원 정보 수정
 </body>
 </html>
