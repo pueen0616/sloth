@@ -11,6 +11,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import com.sloth.board.command.HostUp;
 import com.sloth.board.command.LoginAction;
 import com.sloth.board.command.LoginFormAction;
 import com.sloth.board.command.Main;
@@ -36,6 +37,43 @@ public class FrontController extends HttpServlet {
     	map.put("/loginResult.do",new LoginAction());
     	map.put("/registerForm.do", new RegisterFormAction());//회원가입페이지 이동
 		map.put("/register.do",new Register());  // 회원가입등록처리
+		map.put("/hostUp.do", new HostUp());
+		
+		
+		
+		
+		//도은
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		//성준
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		//청일
+		
+		
+		
+		
+		
+		
+		
+		
+		//영래
 	}
     
     protected void service(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {

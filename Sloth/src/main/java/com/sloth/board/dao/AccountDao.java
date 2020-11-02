@@ -7,6 +7,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import com.sloth.board.vo.AccountVO;
+import com.sloth.board.vo.hostVO;
 
 public class AccountDao extends DAO {
 	private PreparedStatement psmt; //sql 명령문 실행
@@ -16,6 +17,8 @@ public class AccountDao extends DAO {
 	private final String SELECT_ALL = "SELECT * FROM ACCOUNT ORDER BY ID";
 	private final String SELECT = "SELECT * FROM ACCOUNT WHERE ID = ? AND PASSWORD=?";
 	private final String INSERT = "INSERT INTO ACCOUNT(ID,NAME,PASSWORD,BIRTH,EMAIL,TEL) VALUES(?,?,?,?,?,?)";
+	private final String HOST_INSERT = "INSERT INTO HOST(ROOM_NUM_SEQ, ROOM_NAME, ROOM_ADDRESS, ROOM_MAX, ROOM_PRICE, ROOM_CHECKIN, ROOM_CHECKOUT, ROOM_INFO)"
+									 + "VALUES(?,?,?,?,?,?,?,?)";
 	
 	public List<AccountVO> SELECT_All() {
 		List<AccountVO> list = new ArrayList<AccountVO>();
@@ -57,7 +60,7 @@ public class AccountDao extends DAO {
 		}
 		return vo;
 	}
-
+	// 계정 insert
 	public int insert(AccountVO vo) {
 		int n = 0;
 		try {
@@ -76,7 +79,26 @@ public class AccountDao extends DAO {
 		}
 		return n;
 	}
-	
+	// 숙소 insert
+	public int host_insert(hostVO vo) {
+		int n = 0;
+		try {
+			psmt=conn.prepareStatement(HOST_INSERT);
+			psmt.setInt(1, vo.getRoomNum());
+			psmt.setString(2, vo.getRoomName());
+			psmt.setString(3, vo.getRoomAddress());
+			psmt.setInt(4, vo.getRoomMax());
+			psmt.setString(5, vo.getRoomPrice());
+			psmt.setDate(6, vo.getRoomCheckIn());
+			psmt.setDate(7, vo.getRoomCheckOut());
+			psmt.setString(8, vo.getRoomInfo());
+			n=psmt.executeUpdate();
+		
+		} catch(SQLException e) {
+			e.printStackTrace();
+		}
+		return n;
+	}
 
 	private void close() {
 		try {
