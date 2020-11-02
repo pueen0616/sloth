@@ -7,6 +7,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import com.sloth.board.vo.AccountVO;
+import com.sloth.board.vo.hostVO;
 
 public class AccountDao extends DAO {
 	private PreparedStatement psmt; //sql 명령문 실행
@@ -16,8 +17,9 @@ public class AccountDao extends DAO {
 	private final String SELECT_ALL = "SELECT * FROM ACCOUNT ORDER BY ID";
 	private final String SELECT = "SELECT * FROM ACCOUNT WHERE ID = ? AND PASSWORD=?";
 	private final String INSERT = "INSERT INTO ACCOUNT(ID,NAME,PASSWORD,BIRTH,EMAIL,TEL) VALUES(?,?,?,?,?,?)";
-	private final String UPDATE = "UPDATE ACCOUNT SET NAME =?, PASSWORD=?, BIRTH=?, EMAIL=?, TEL=? WHERE ID=?";
-	private final String USERTYPE = "UPDATE ACCOUNT SET USER_TYPE=? WHERE ID = ?";
+	private final String HOST_INSERT = "INSERT INTO HOST(ROOM_NUM_SEQ, ROOM_NAME, ROOM_ADDRESS, ROOM_MAX, ROOM_PRICE, ROOM_CHECKIN, ROOM_CHECKOUT, ROOM_INFO)"
+									 + "VALUES(?,?,?,?,?,?,?,?)";
+	
 	public List<AccountVO> SELECT_All() {
 		List<AccountVO> list = new ArrayList<AccountVO>();
 		try {
@@ -58,7 +60,7 @@ public class AccountDao extends DAO {
 		}
 		return vo;
 	}
-
+	// 계정 insert
 	public int insert(AccountVO vo) {
 		int n = 0;
 		try {
@@ -77,23 +79,23 @@ public class AccountDao extends DAO {
 		}
 		return n;
 	}
-	public int update(AccountVO vo) {
-		int n=0;
+	// 숙소 insert
+	public int host_insert(hostVO vo) {
+		int n = 0;
 		try {
-			psmt = conn.prepareStatement(UPDATE);
-			
-			psmt.setString(1, vo.getName());
-			psmt.setString(2, vo.getPassword());
-			psmt.setString(3, vo.getBirth());
-			psmt.setString(4, vo.getEmail());
-			psmt.setString(5, vo.getTel());
-			psmt.setString(6, vo.getId());
+			psmt=conn.prepareStatement(HOST_INSERT);
+			psmt.setInt(1, vo.getRoomNum());
+			psmt.setString(2, vo.getRoomName());
+			psmt.setString(3, vo.getRoomAddress());
+			psmt.setInt(4, vo.getRoomMax());
+			psmt.setString(5, vo.getRoomPrice());
+			psmt.setDate(6, vo.getRoomCheckIn());
+			psmt.setDate(7, vo.getRoomCheckOut());
+			psmt.setString(8, vo.getRoomInfo());
 			n=psmt.executeUpdate();
-			System.out.println(n+"건 입력됐습니다");
-		}catch(SQLException e) {
+		
+		} catch(SQLException e) {
 			e.printStackTrace();
-		}finally {
-			close();
 		}
 		return n;
 	}

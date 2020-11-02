@@ -9,13 +9,13 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Document</title>
     <link rel="stylesheet" href="mainPage/css/style.css">
-
+    <link rel="shortcut icon" sizes="76x76" type="image/x-icon"
+        href="https://a0.muscache.com/airbnb/static/logotype_favicon-21cc8e6c6a2cca43f061d2dcabdf6e58.ico">
 </head>
 
 <body>
     <header>
-    <jsp:include page="../mainPage/mainMenu.jsp"></jsp:include>
-  	
+  	   <jsp:include page="../mainPage/mainMenu.jsp"></jsp:include>
         <section>
             <div class="search__box">
                 <div class="search__title">특색 있는 숙소와 즐길<br /> 거리를 예약하세요.</div>
