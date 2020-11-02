@@ -13,7 +13,7 @@ public class HostUp implements Action {
 
 	@Override
 	public String exec(HttpServletRequest request, HttpServletResponse response) {
-		
+		// 숙소등록
 		AccountDao dao = new AccountDao();
 		hostVO vo = new hostVO();
 		
@@ -25,14 +25,17 @@ public class HostUp implements Action {
 		vo.setRoomCheckIn(Date.valueOf(request.getParameter("roomCheckIn")));
 		vo.setRoomCheckOut(Date.valueOf(request.getParameter("roomCheckOut")));
 		vo.setRoomInfo(request.getParameter("roomInfo"));
+		vo.setId(request.getParameter("id"));
 		
 		int n = dao.host_insert(vo);
 		String page;
+		
 		if(n !=0) {
 			page = "login/insertSuccess.jsp";
 		}else {
 			page = "login/insertFail.jsp";
 		}
+		
 		return page;
 	}
 

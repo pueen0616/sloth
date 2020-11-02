@@ -16,7 +16,7 @@
             </div>
             <div class="menu">
                 <ul>
-                    <li><a href="hostUp.do">호스트가 되기</a></li>
+                    <li><a href="hostUpForm.do">호스트가 되기</a></li>
                     <li><a href="loginForm.do">로그인</a></li>
                     <li><a href="#">계정</a></li>
                     <li><a href="#">게시판</a></li>

@@ -14,6 +14,24 @@ public class hostVO {
 	private String id;
 	private String location;
 	
+	
+
+	public Date getRoomCheckIn() {
+		return roomCheckIn;
+	}
+
+	public void setRoomCheckIn(Date roomCheckIn) {
+		this.roomCheckIn = roomCheckIn;
+	}
+
+	public Date getRoomCheckOut() {
+		return roomCheckOut;
+	}
+
+	public void setRoomCheckOut(Date roomCheckOut) {
+		this.roomCheckOut = roomCheckOut;
+	}
+
 	public hostVO() {
 		super();
 	}
@@ -58,22 +76,7 @@ public class hostVO {
 		this.roomPrice = roomPrice;
 	}
 
-	public Date getRoomCheckIn() {
-		return roomCheckIn;
-	}
-
-	public void setRoomCheckIn(Date roomCheckIn) {
-		this.roomCheckIn = roomCheckIn;
-	}
-
-	public Date getRoomCheckOut() {
-		return roomCheckOut;
-	}
-
-	public void setRoomCheckOut(Date roomCheckOut) {
-		this.roomCheckOut = roomCheckOut;
-	}
-
+	
 	public String getRoomInfo() {
 		return roomInfo;
 	}

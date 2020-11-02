@@ -12,31 +12,41 @@
 	<div>
 		<form id="frm" name="frm" action="${pageContext.request.contextPath}/main.do" method="post">
 			<table border="1">
+			<tr>
+					<th width="150">숙소 이름</th>
+					<td width = "500"><input type="text" id="roomNum" name="roomNum"></td>
+				</tr>
 				<tr>
 					<th width="150">숙소 이름</th>
-					<td width = "500"><input type="text" id="room_name" name="room_name"></td>
+					<td width = "500"><input type="text" id="roomName" name="roomName"></td>
 				</tr>
 				<tr>
 					<th width="150">숙소 주소</th>
-					<td><input type="text" id="room_address" name="room_address"></td>
+					<td><input type="text" id="roomAddress" name="roomAddress"></td>
 				</tr>
 				<tr>
 					<th width="150">최대 인원 수</th>
-					<td><input type="text" id="room_max" name="room_max"></td>
+					<td><input type="text" id="roomMax" name="roomMax"></td>
 				</tr>
 				<tr>
 					<th width="150">숙소 가격</th>
-					<td><input type="text" id="room_price" name="room_price" ></td>
+					<td><input type="text" id="roomPrice" name="roomPrice" ></td>
 				</tr>
 				<tr>
-					<th width="150">입실 : 퇴실</th>
-					<td><input type="text" id="room_checkin" name="room_checkin">
-						<input type="text" id="room_checkout" name="room_checkout"></td>
+					<th width="150">입실 가능 첫날</th>
+					<td><input type="date" id="checkIn" name="roomCheckIn"></td>
+					<th width="150">입실 가능 마지막날</th>
+					<td><input type="date" id="checkOut" name="roomCheckOut"></td>
 				</tr>
 				<tr>
 					<th width="150">숙소 정보</th>
-					<td><p><textarea cols="50" rows="10"></textarea></p></td>
+					<td><p><textarea cols="50" rows="10" id="roomInfo" name="roomInfo"></textarea></p></td>
 				</tr>
+				<tr>
+					<th width="150">숙소 가격</th>
+					<td><input type="text" id="id" name="id" ></td>
+				</tr>
+				
 				<tr>
 					<td colspan="2" align="center">
 						<input type="submit" value="등록하기"> &nbsp;&nbsp;

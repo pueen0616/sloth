@@ -17,8 +17,8 @@ public class AccountDao extends DAO {
 	private final String SELECT_ALL = "SELECT * FROM ACCOUNT ORDER BY ID";
 	private final String SELECT = "SELECT * FROM ACCOUNT WHERE ID = ? AND PASSWORD=?";
 	private final String INSERT = "INSERT INTO ACCOUNT(ID,NAME,PASSWORD,BIRTH,EMAIL,TEL) VALUES(?,?,?,?,?,?)";
-	private final String HOST_INSERT = "INSERT INTO HOST(ROOM_NUM_SEQ, ROOM_NAME, ROOM_ADDRESS, ROOM_MAX, ROOM_PRICE, ROOM_CHECKIN, ROOM_CHECKOUT, ROOM_INFO)"
-									 + "VALUES(?,?,?,?,?,?,?,?)";
+	private final String HOST_INSERT = "INSERT INTO HOST(ROOM_NUM, ROOM_NAME, ROOM_ADDRESS, ROOM_MAX, ROOM_PRICE, ROOM_CHECKIN, ROOM_CHECKOUT, ROOM_INFO, ID)"
+									 + "VALUES(?,?,?,?,?,?,?,?,?)";
 	
 	public List<AccountVO> SELECT_All() {
 		List<AccountVO> list = new ArrayList<AccountVO>();
@@ -79,6 +79,7 @@ public class AccountDao extends DAO {
 		}
 		return n;
 	}
+	
 	// 숙소 insert
 	public int host_insert(hostVO vo) {
 		int n = 0;
@@ -92,6 +93,7 @@ public class AccountDao extends DAO {
 			psmt.setDate(6, vo.getRoomCheckIn());
 			psmt.setDate(7, vo.getRoomCheckOut());
 			psmt.setString(8, vo.getRoomInfo());
+			psmt.setString(9, vo.getId());
 			n=psmt.executeUpdate();
 		
 		} catch(SQLException e) {
