@@ -16,7 +16,8 @@ public class AccountDao extends DAO {
 	private final String SELECT_ALL = "SELECT * FROM ACCOUNT ORDER BY ID";
 	private final String SELECT = "SELECT * FROM ACCOUNT WHERE ID = ? AND PASSWORD=?";
 	private final String INSERT = "INSERT INTO ACCOUNT(ID,NAME,PASSWORD,BIRTH,EMAIL,TEL) VALUES(?,?,?,?,?,?)";
-	
+	private final String UPDATE = "UPDATE ACCOUNT SET NAME =?, PASSWORD=?, BIRTH=?, EMAIL=?, TEL=? WHERE ID=?";
+	private final String USERTYPE = "UPDATE ACCOUNT SET USER_TYPE=? WHERE ID = ?";
 	public List<AccountVO> SELECT_All() {
 		List<AccountVO> list = new ArrayList<AccountVO>();
 		try {
@@ -76,7 +77,26 @@ public class AccountDao extends DAO {
 		}
 		return n;
 	}
-	
+	public int update(AccountVO vo) {
+		int n=0;
+		try {
+			psmt = conn.prepareStatement(UPDATE);
+			
+			psmt.setString(1, vo.getName());
+			psmt.setString(2, vo.getPassword());
+			psmt.setString(3, vo.getBirth());
+			psmt.setString(4, vo.getEmail());
+			psmt.setString(5, vo.getTel());
+			psmt.setString(6, vo.getId());
+			n=psmt.executeUpdate();
+			System.out.println(n+"건 입력됐습니다");
+		}catch(SQLException e) {
+			e.printStackTrace();
+		}finally {
+			close();
+		}
+		return n;
+	}
 
 	private void close() {
 		try {
