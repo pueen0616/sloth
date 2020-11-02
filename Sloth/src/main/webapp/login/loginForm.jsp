@@ -7,12 +7,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>로그인</title>
-<!-- <link href="../plugin/bootstrap/css/bootstrap.min.css" rel="stylesheet"> -->
-<!-- <link href="//netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.css" rel="stylesheet"> -->
-<!-- <link rel="stylesheet" href="../plugin/bootstrap/css/style.css"	media="screen" title="no title"> -->
-<!-- <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script> -->
-<!-- <script src="../plugin/bootstrap/js/bootstrap.min.js"></script> -->
-<!-- <script src="../config/js/login.js"></script> -->
+<link rel="stylesheet" href="mainPage/css/style.css">
 <script type="text/javascript">
 	function formCheck() {
 		var f = document.frm;
@@ -31,6 +26,7 @@
 </script>
 </head>
 <body>
+<header>
 <jsp:include page="../mainPage/mainMenu.jsp"></jsp:include>
 	<div align="center">
 		<form id="frm" name="frm" method="post" action="loginResult.do">
@@ -56,5 +52,6 @@
 				<a href="registerForm.do">회원가입</a>
 			</div>
 	</div>
+	</header>
 </body>
 </html>

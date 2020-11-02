@@ -26,7 +26,7 @@
 				</tr>
 				<tr>
 					<th width="150">생일</th>
-					<td><input type="text" id="tel" name="tel" ></td>
+					<td><input type="text" id="birth" name="birth" ></td>
 				</tr>
 				<tr>
 					<th width="150">전화번호</th>
