@@ -8,7 +8,7 @@
 <title>Insert title here</title>
 <link rel="stylesheet" href="${pageContext.request.contextPath}/mainPage/css/menu.css">
 <link rel="stylesheet" href="${pageContext.request.contextPath}/mainPage/css/all.css">
-
+<script src="https://kit.fontawesome.com/a076d05399.js"></script>
 
 
 </head>
