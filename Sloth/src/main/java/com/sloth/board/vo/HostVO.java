@@ -2,19 +2,26 @@ package com.sloth.board.vo;
 
 import java.sql.Date;
 
-public class hostVO {
+public class HostVO {
 	private int roomNum;
 	private String roomName;
 	private String roomAddress;
 	private int roomMax;
 	private String roomPrice;
+	@Override
+	public String toString() {
+		return "HostVO [roomNum=" + roomNum + ", roomName=" + roomName + ", roomAddress=" + roomAddress + ", roomMax="
+				+ roomMax + ", roomPrice=" + roomPrice + ", roomCheckIn=" + roomCheckIn + ", roomCheckOut="
+				+ roomCheckOut + ", roomInfo=" + roomInfo + ", id=" + id + ", location=" + location + "]";
+	}
+
 	private Date roomCheckIn;
 	private Date roomCheckOut;
 	private String roomInfo;
 	private String id;
 	private String location;
 	
-	public hostVO() {
+	public HostVO() {
 		super();
 	}
 

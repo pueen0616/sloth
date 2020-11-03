@@ -11,6 +11,10 @@
     <link rel="stylesheet" href="mainPage/css/style.css">
     <link rel="shortcut icon" sizes="76x76" type="image/x-icon"
         href="https://a0.muscache.com/airbnb/static/logotype_favicon-21cc8e6c6a2cca43f061d2dcabdf6e58.ico">
+    <script src="http://code.jquery.com/jquery-1.7.js" type="text/javascript"></script>
+    <script src="http://ajax.googleapis.com/ajax/libs/jqueryui/1.8/jquery-ui.min.js" type="text/javascript"></script>
+    <link href="http://ajax.googleapis.com/ajax/libs/jqueryui/1.8/themes/base/jquery-ui.css" rel="stylesheet" type="text/css"/>
+   
 </head>
 
 <body>

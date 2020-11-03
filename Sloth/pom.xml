@@ -16,9 +16,16 @@
 			<scope>test</scope>
 		</dependency>
 
+		<!-- https://mvnrepository.com/artifact/top.jfunc.json/Json-Jsonlib -->
+		<dependency>
+			<groupId>top.jfunc.json</groupId>
+			<artifactId>Json-Jsonlib</artifactId>
+			<version>1.0</version>
+		</dependency>
 
-		<!-- https://mvnrepository.com/artifact/com.oracle.ojdbc/ojdbc8/19.3.0.0
-		ojdbc 복사해서 넣음 -->
+
+		<!-- https://mvnrepository.com/artifact/com.oracle.ojdbc/ojdbc8/19.3.0.0 
+			ojdbc 복사해서 넣음 -->
 		<!-- https://mvnrepository.com/artifact/opensymphony/sitemesh -->
 		<dependency>
 			<groupId>opensymphony</groupId>
@@ -33,6 +40,12 @@
 			<groupId>com.oracle.ojdbc</groupId>
 			<artifactId>ojdbc8</artifactId>
 			<version>19.3.0.0</version>
+		</dependency>
+		<!-- https://mvnrepository.com/artifact/javax.servlet/jstl -->
+		<dependency>
+			<groupId>javax.servlet</groupId>
+			<artifactId>jstl</artifactId>
+			<version>1.2</version>
 		</dependency>
 
 	</dependencies>

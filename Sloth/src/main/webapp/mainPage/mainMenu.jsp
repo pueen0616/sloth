@@ -7,6 +7,13 @@
 <meta charset="UTF-8">
 <title>Insert title here</title>
 <link rel="stylesheet" href="mainPage/css/menu.css">
+<!-- 필요한 CSS, JS 로드 -->
+<link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+<script src="https://code.jquery.com/jquery-1.12.4.js"></script>
+<script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+
+<!-- 저 같은 경우는 webapp 안에 resouces 폴더 안에 js 안에 plugin 안에 hangul 안에 hangul.js 이 있습니다. -->
+<script type="text/javascript" src="hangul/hangul.js"></script>
 </head>
 <body>
   <nav>
@@ -19,6 +26,7 @@
                     </path>
                 </svg> -->
             </div>
+            
             <div class="menu">
                 <ul>
                     <li><a href="#">호스트가 되기</a></li>
