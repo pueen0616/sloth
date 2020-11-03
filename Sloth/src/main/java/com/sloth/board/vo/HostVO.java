@@ -8,18 +8,38 @@ public class HostVO {
 	private String roomAddress;
 	private int roomMax;
 	private String roomPrice;
-	
 	private Date roomCheckIn;
 	private Date roomCheckOut;
 	private String roomInfo;
 	private String id;
 	private String location;
+
+	private String pic;
+	private int picNum;
+	
 	
 	@Override
 	public String toString() {
 		return "HostVO [roomNum=" + roomNum + ", roomName=" + roomName + ", roomAddress=" + roomAddress + ", roomMax="
 				+ roomMax + ", roomPrice=" + roomPrice + ", roomCheckIn=" + roomCheckIn + ", roomCheckOut="
-				+ roomCheckOut + ", roomInfo=" + roomInfo + ", id=" + id + ", location=" + location + "]";
+				+ roomCheckOut + ", roomInfo=" + roomInfo + ", id=" + id + ", location=" + location + ", pic=" + pic
+				+ ", picNum=" + picNum + "]";
+	}
+
+	public String getPic() {
+		return pic;
+	}
+
+	public void setPic(String pic) {
+		this.pic = pic;
+	}
+
+	public int getPicNum() {
+		return picNum;
+	}
+
+	public void setPicNum(int picNum) {
+		this.picNum = picNum;
 	}
 
 	public HostVO() {
