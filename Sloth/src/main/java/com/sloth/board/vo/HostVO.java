@@ -8,6 +8,13 @@ public class HostVO {
 	private String roomAddress;
 	private int roomMax;
 	private String roomPrice;
+	
+	private Date roomCheckIn;
+	private Date roomCheckOut;
+	private String roomInfo;
+	private String id;
+	private String location;
+	
 	@Override
 	public String toString() {
 		return "HostVO [roomNum=" + roomNum + ", roomName=" + roomName + ", roomAddress=" + roomAddress + ", roomMax="
@@ -15,12 +22,6 @@ public class HostVO {
 				+ roomCheckOut + ", roomInfo=" + roomInfo + ", id=" + id + ", location=" + location + "]";
 	}
 
-	private Date roomCheckIn;
-	private Date roomCheckOut;
-	private String roomInfo;
-	private String id;
-	private String location;
-	
 	public HostVO() {
 		super();
 	}
