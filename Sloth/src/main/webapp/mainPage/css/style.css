@@ -37,23 +37,18 @@ nav {
 }
 
 .search__box {
-    width: 430px;
-    display: inline-block;
+   /* width: 430px;*/
+    display: flex;
     padding: 20px 30px;
     background-color: white;
     position: relative;
     top: 10px;
     left: 50px;
-    border-radius: 6px;
+    border-radius: 30px;
     box-shadow: 0 2px 2px 0 rgb(214, 214, 214);
 }
 
-.search__title {
-    padding: 10px 0;
-    font-size: 30px;
-    font-weight: 800;
-    color:rgb(75, 74, 74);
-}
+
 
 table {
     width: 100%;
@@ -74,9 +69,9 @@ table {
 }
 
 .search__button {
-    display: grid;
+    /*display: grid;*/
     justify-content: end;
-    padding: 20px 0;
+    /* padding: 20px 0; */
 }
 
 .search__button button{
