@@ -7,7 +7,7 @@ import javax.servlet.http.HttpServletResponse;
 
 import com.sloth.board.common.Action;
 import com.sloth.board.dao.AccountDao;
-import com.sloth.board.vo.hostVO;
+import com.sloth.board.vo.HostVO;
 
 public class HostUp implements Action {
 
@@ -15,7 +15,7 @@ public class HostUp implements Action {
 	public String exec(HttpServletRequest request, HttpServletResponse response) {
 		// 숙소등록
 		AccountDao dao = new AccountDao();
-		hostVO vo = new hostVO();
+		HostVO vo = new HostVO();
 		
 		vo.setRoomNum(Integer.parseInt(request.getParameter("roomNum")));
 		vo.setRoomName(request.getParameter("roomName"));
