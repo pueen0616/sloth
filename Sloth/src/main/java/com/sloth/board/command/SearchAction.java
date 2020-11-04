@@ -10,6 +10,7 @@ import javax.servlet.http.HttpServletResponse;
 import com.sloth.board.common.Action;
 import com.sloth.board.dao.HomeDao;
 import com.sloth.board.vo.HostVO;
+import com.sloth.board.vo.RoomPicVO;
 
 public class SearchAction implements Action {
 
@@ -17,23 +18,16 @@ public class SearchAction implements Action {
 	   public String exec(HttpServletRequest request, HttpServletResponse response) {
 	      // TODO 회원리스트 보기 구현
 	      
-	      
-	      
 	      //response.setCharacterEncoding(arg0);
 	      HomeDao dao = new HomeDao();      
-	      HostVO vo = new HostVO();
-	      List<HostVO> list = new ArrayList<HostVO>();
+	      RoomPicVO vo = new RoomPicVO();
+	      List<RoomPicVO> list = new ArrayList<RoomPicVO>();
 	      
-	      vo.setRoomAddress(request.getParameter("room_address"));
-	      vo.setRoomCheckIn(Date.valueOf(request.getParameter("room_checkin")));
-	      vo.setRoomCheckOut(Date.valueOf(request.getParameter("room_checkout")));
-	      //vo.setRoom_max(Integer.parseInt(request.getParameter("room_max")));
-	      vo.setRoomMax(request.getParameter("room_max"));
-	      
-	      System.out.println("주소"+(request.getParameter("room_address")));
-	      System.out.println("체크인"+Date.valueOf(request.getParameter("room_checkin")));
-	      System.out.println("체크아웃"+Date.valueOf(request.getParameter("room_checkout")));
-	      System.out.println("인원"+(request.getParameter("room_max")));
+	      vo.setLroom_address(request.getParameter("room_address"));
+	      vo.setLroom_checkin(Date.valueOf(request.getParameter("room_checkin")));
+	      vo.setLroom_checkout(Date.valueOf(request.getParameter("room_checkout")));
+	      vo.setLroom_max(request.getParameter("room_max"));
+//	      vo.setLroom_max(request.getParameter("room_max"));
 	      
 	      list = dao.wantselect(vo);
 	      
