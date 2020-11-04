@@ -25,17 +25,17 @@
 			<a href="main.do"><img src="${pageContext.request.contextPath}/logo/logo.png" width="150px"></a>
 		</div>
 
-		<div style="float: right;" class="dropdown">
+		<div style="float: right;" class="btn-group dropleft">
 			<a class="btn btn-secondary dropdown-toggle" href="#" role="button"
 				id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true"
 				aria-expanded="false"><i class="fas fa-user"></i></a>
 
 			<div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
-				<c:if test="${id eq null }">
-					<a class="loginForm" href="loginForm.do">로그인</a>
+				<c:if test="${name eq null }">
+					<a class="dropdown-item" href="loginForm.do">로그인</a>
 				</c:if>
-				<c:if test="${id ne null }">
-					<a href="hostUpForm.do">호스트가 되기</a>
+				<c:if test="${name ne null }">
+					<a class="dropdown-item" href="hostUpForm.do">호스트가 되기</a>
 					<a class="dropdown-item" href="#">계정</a>
 					<a class="dropdown-item" href="#">게시판</a>
 					<a class="dropdown-item" href="#">예약관리</a>

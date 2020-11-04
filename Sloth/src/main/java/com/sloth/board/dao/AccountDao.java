@@ -19,7 +19,7 @@ public class AccountDao extends DAO {
 	private final String SELECTDETAIL = "SELECT * FROM HOST WHERE ROOM_NUM = ?";
 	private final String INSERT = "INSERT INTO ACCOUNT(ID,NAME,PASSWORD,BIRTH,EMAIL,TEL) VALUES(?,?,?,?,?,?)";
 	private final String HOST_INSERT = "INSERT INTO HOST(ROOM_NUM, ROOM_NAME, ROOM_ADDRESS, ROOM_MAX, ROOM_PRICE, ROOM_INFO, ID, ROOM_CHECKIN, ROOM_CHECKOUT)"
-									 + "VALUES(?,?,?,?,?,?,?,?,?)";
+									 + "VALUES(SEQ_NUM.NEXTVAL,?,?,?,?,?,?,?,?)";
 	private final String UPDATE_ADMIN = "UPDATE ACCOUNT SET USER_TYPE = 'ADMIN' WHERE ID = ?";
 	
 	public List<AccountVO> SELECT_All() {
@@ -87,23 +87,34 @@ public class AccountDao extends DAO {
 		int n = 0;
 		try {
 			psmt=conn.prepareStatement(HOST_INSERT);
-			psmt.setInt(1, vo.getRoomNum());
-			psmt.setString(2, vo.getRoomName());
-			psmt.setString(3, vo.getRoomAddress());
-			psmt.setString(4, vo.getRoomMax());
-			psmt.setString(5, vo.getRoomPrice());
-			psmt.setString(6, vo.getRoomInfo());
-			psmt.setString(7, vo.getId());
-			psmt.setDate(8, vo.getRoomCheckIn());
-			psmt.setDate(9, vo.getRoomCheckOut());
+			psmt.setString(1, vo.getRoomName());
+			psmt.setString(2, vo.getRoomAddress());
+			psmt.setString(3, vo.getRoomMax());
+			psmt.setString(4, vo.getRoomPrice());
+			psmt.setString(5, vo.getRoomInfo());
+			psmt.setString(6, vo.getId());
+			psmt.setDate(7, vo.getRoomCheckIn());
+			psmt.setDate(8, vo.getRoomCheckOut());
 			n=psmt.executeUpdate();
-		
 		} catch(SQLException e) {
 			e.printStackTrace();
 		}
 		return n;
 	}
 
+	// 계정 권한 부여
+	public int admin_grant(AccountVO vo) {
+		int n = 0;
+		try {
+			psmt = conn.prepareStatement(UPDATE_ADMIN);
+			psmt.setString(1, vo.getId()); //id값으로
+			n = psmt.executeUpdate();
+		} catch(SQLException e){
+			e.printStackTrace();
+		}
+		return n;
+	}
+	
 	private void close() {
 		try {
 			if(rs != null) rs.close();

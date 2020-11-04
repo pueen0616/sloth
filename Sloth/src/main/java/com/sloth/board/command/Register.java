@@ -18,11 +18,11 @@ public class Register implements Action {
 		AccountVO vo = new AccountVO();
 		
 		vo.setId(request.getParameter("id"));
-		vo.setName(request.getParameter("name"));
 		vo.setPassword(request.getParameter("password"));
+		vo.setName(request.getParameter("name"));
 		vo.setBirth(request.getParameter("birth"));
-		vo.setEmail(request.getParameter("email"));
 		vo.setTel(request.getParameter("tel"));
+		vo.setEmail(request.getParameter("email"));
 		
 		int n = dao.insert(vo);
 		String page;

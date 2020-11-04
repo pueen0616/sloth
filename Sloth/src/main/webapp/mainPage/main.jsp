@@ -15,22 +15,21 @@
 </head>
 
 <body>
-	
       <header>
 		<jsp:include page="/mainPage/mainMenu.jsp"></jsp:include>
 	<section>
       <form name="searchForm" action ="search.do">
          <div class="search__box">
             <table>               
-                  <td colspan="2" class="search__sub__title">목적지</td>
+                  <td colspan="2" class="search__sub__title" align="center">목적지</td>
                   <td colspan="2"><select class="search__input" id="room_address" name="room_address">
                         <option>대구</option>
                         <option>사울</option>
                         <option>부샹</option>
                   </select></td>
-                  <td class="search__sub__title">체크인</td>
+                  <td class="search__sub__title" align="center">체크인</td>
                   <td><input class="search__input" type="date" id="room_checkin" name="room_checkin" /></td>
-                  <td class="search__sub__title">체크아웃</td>
+                  <td class="search__sub__title" align="center">체크아웃</td>
                   <td><input class="search__input" type="date" id="room_checkout" name="room_checkout"/></td>
                   <td colspan="2" class="search__sub__title"></td>
                   <td colspan="2"><select class="search__input" id="room_max" name="room_max">
