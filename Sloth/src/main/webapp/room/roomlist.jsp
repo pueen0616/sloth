@@ -30,6 +30,10 @@ test th, .test td {
 .picNum {
 display: none;
 }
+
+a{
+display : inline;
+}
 </style>
 </head>
 <body>
@@ -79,9 +83,9 @@ display: none;
 				<ul id="roomlist">
 					<li><a href="./host/hostDetail.html"> <span class="thumb">
 								<img alt="왜아무것도안나오지"
-								src="${pageContext.request.contextPath}/img/${item.pic}">
+									src="${pageContext.request.contextPath}/img/${item.pic}">
 								<em>-</em>
-						</span> <Strong>${item.roomName}</Strong>
+						</span> <span><b>${item.roomName}</b></span>
 					</a>
 						<p>${item.roomPrice}</p></li>
 				</ul>
