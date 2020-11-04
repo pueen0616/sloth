@@ -84,7 +84,7 @@ input[type=text]:hover {
 			<textarea cols="30" rows="10" id="roomInfo" name="roomInfo"></textarea>
 			
 			<div style="margin-bottom: 32px;"><input type="hidden" id="id" name="id" value="${id}" readonly></div>
-			
+			<div style="margin-bottom: 32px;">파일첨부<input type="file" name="fileName1"></div>
 			<div><input type="submit" value="등록">
  				 <input type="reset" value="취소"></div>
 		</form>

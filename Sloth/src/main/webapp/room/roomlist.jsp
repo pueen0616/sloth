@@ -146,19 +146,19 @@ input:checked + label {
 	
 
 		<div class="fixed_img_col">
-			<c:forEach items="${roomlist }" var="item" varStatus="i">
+			<c:forEach items="${hosts }" var="host" varStatus="i">
 				<ul id="roomlist">
-					<li><a href="./host/hostDetail-123.jsp"> <span class="thumb">
-								<img alt="왜아무것도안나오지"
-									src="${pageContext.request.contextPath}/img/${item.pic}">
-								<em>-</em>
-						</span> <span><b>${item.roomName}</b></span>
-					</a>
-						<p>${item.roomPrice}</p></li>
+					<li>
+					<a href="./host/hostDetail-123.jsp" > 
+						<span class="thumb">
+							<img id="img" name="img"  alt="왜아무것도안나오지" src="${pageContext.request.contextPath}/img/${host.lfirst_yn }">
+						</span> 
+					<div id="name" name="name"><span><b>${host.lroom_name }</b></span></div>
+					 </a>
+						<div id="pricde" name="price"><p>${host.lprice }</p></div>
+					</li>
 				</ul>
-				<div class="picNum">${item.picNum}</div>
 			</c:forEach>
 		</div>
-	</div>
 </body>
 </html>

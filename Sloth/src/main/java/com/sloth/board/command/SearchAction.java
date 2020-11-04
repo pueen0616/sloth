@@ -33,7 +33,7 @@ public class SearchAction implements Action {
 	      
 	      request.setAttribute("hosts", list);
 	      
-	      return "mainPage/search.jsp";
+	      return "room/roomlist.jsp";
 	   }
 
 	
