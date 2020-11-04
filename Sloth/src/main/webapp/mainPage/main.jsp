@@ -33,6 +33,7 @@
                   <td><input class="search__input" type="date" id="room_checkout" name="room_checkout"/></td>
                   <td colspan="2" class="search__sub__title"></td>
                   <td colspan="2"><select class="search__input" id="room_max" name="room_max">
+                        <option>1</option>
                         <option>2</option>
                         <option>3</option>
                         <option>4</option>
