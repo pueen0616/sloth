@@ -6,7 +6,6 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
-import com.sloth.board.vo.AccountVO;
 import com.sloth.board.vo.HostVO;
 
 public class HostDAO extends DAO{
