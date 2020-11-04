@@ -37,13 +37,13 @@ nav {
 }
 
 .search__box {
-   /* width: 430px;*/
+    width: 80%;
     display: flex;
     padding: 20px 30px;
     background-color: white;
     position: relative;
     top: 10px;
-    left: 50px;
+    left: 150px;
     border-radius: 30px;
     box-shadow: 0 2px 2px 0 rgb(214, 214, 214);
 }
@@ -55,7 +55,7 @@ table {
 }
 
 .search__sub__title {
-    padding: 10px 0;
+    padding: 2px;
     font-size: 12px;
     font-weight: 600;
 }

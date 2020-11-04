@@ -55,9 +55,6 @@ input[type=text]:hover {
 	<div>
 		<form id="frm" name="frm" action="/Sloth/hostUp.do" method="post">
 			
-			<div class="_s1t1w0" style="margin-bottom: 16px;">숙소넘버</div>	
-			<div style="margin-bottom: 32px;"><input type="text" id="roomNum" name="roomNum"></div>
-			
 			<div class="_s1t1w0" style="margin-bottom: 16px;">숙소 이름은 무엇인가요</div>	
 			<div style="margin-bottom: 32px;"><input type="text" id="roomName" name="roomName"></div>
 			
@@ -86,8 +83,7 @@ input[type=text]:hover {
 			<div class="_s1t1w0" style="margin-bottom: 16px;">당신의 숙소를 자랑 해주세요</div>
 			<textarea cols="30" rows="10" id="roomInfo" name="roomInfo"></textarea>
 			
-			<div class="_s1t1w0" style="margin-bottom: 16px;">아이디</div>
-			<div style="margin-bottom: 32px;"><input type="text" id="id" name="id"></div>
+			<div style="margin-bottom: 32px;"><input type="hidden" id="id" name="id" value="${id}" readonly></div>
 			
 			<div><input type="submit" value="등록">
  				 <input type="reset" value="취소"></div>
