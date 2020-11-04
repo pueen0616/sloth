@@ -27,7 +27,7 @@
 </head>
 <body>
 <header>
-<jsp:include page="${pageContext.request.contextPath}/mainPage/mainMenu.jsp"></jsp:include>
+<jsp:include page="/mainPage/mainMenu.jsp"></jsp:include>
 	<div align="center">
 		<form id="frm" name="frm" method="post" action="loginResult.do">
 			<h1>로그인</h1>

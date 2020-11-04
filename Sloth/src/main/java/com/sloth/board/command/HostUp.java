@@ -29,7 +29,6 @@ public class HostUp implements Action {
 		
 		dao = new AccountDao();
 		int n = dao.host_insert(vo);
-		System.out.println(n);
 		String page;
 		
 		if(n !=0) {
