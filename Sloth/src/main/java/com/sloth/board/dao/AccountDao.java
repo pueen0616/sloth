@@ -7,7 +7,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import com.sloth.board.vo.AccountVO;
-import com.sloth.board.vo.hostVO;
+import com.sloth.board.vo.HostVO;
 
 public class AccountDao extends DAO {
 	private PreparedStatement psmt; //sql 명령문 실행
@@ -81,7 +81,7 @@ public class AccountDao extends DAO {
 	}
 	
 	// 숙소 insert
-	public int host_insert(hostVO vo) {
+	public int host_insert(HostVO vo) {
 		int n = 0;
 		try {
 			psmt=conn.prepareStatement(HOST_INSERT);

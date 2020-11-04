@@ -2,7 +2,7 @@ package com.sloth.board.vo;
 
 import java.sql.Date;
 
-public class hostVO {
+public class HostVO {
 	private int roomNum;
 	private String roomName;
 	private String roomAddress;
@@ -13,8 +13,25 @@ public class hostVO {
 	private String roomInfo;
 	private String id;
 	private String location;
-	
-	
+
+	private String pic;
+	private int picNum;
+
+	public String getPic() {
+		return pic;
+	}
+
+	public void setPic(String pic) {
+		this.pic = pic;
+	}
+
+	public int getPicNum() {
+		return picNum;
+	}
+
+	public void setPicNum(int picNum) {
+		this.picNum = picNum;
+	}
 
 	public Date getRoomCheckIn() {
 		return roomCheckIn;
@@ -32,7 +49,7 @@ public class hostVO {
 		this.roomCheckOut = roomCheckOut;
 	}
 
-	public hostVO() {
+	public HostVO() {
 		super();
 	}
 
@@ -76,7 +93,6 @@ public class hostVO {
 		this.roomPrice = roomPrice;
 	}
 
-	
 	public String getRoomInfo() {
 		return roomInfo;
 	}

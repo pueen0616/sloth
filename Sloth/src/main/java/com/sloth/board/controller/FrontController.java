@@ -12,6 +12,8 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import com.sloth.board.command.HostDetail;
+import com.sloth.board.command.HostUp;
+import com.sloth.board.command.HostUpFormAction;
 import com.sloth.board.command.LoginAction;
 import com.sloth.board.command.LoginFormAction;
 import com.sloth.board.command.Main;
