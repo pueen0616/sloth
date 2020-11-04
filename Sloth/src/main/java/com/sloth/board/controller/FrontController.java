@@ -15,9 +15,11 @@ import com.sloth.board.command.HostUp;
 import com.sloth.board.command.HostUpFormAction;
 import com.sloth.board.command.LoginAction;
 import com.sloth.board.command.LoginFormAction;
+import com.sloth.board.command.LogoutAction;
 import com.sloth.board.command.Main;
 import com.sloth.board.command.Register;
 import com.sloth.board.command.RegisterFormAction;
+import com.sloth.board.command.SearchAction;
 import com.sloth.board.common.Action;
 
 @WebServlet("/FrontController")
@@ -36,11 +38,12 @@ public class FrontController extends HttpServlet {
     	map.put("/main.do", new Main());  // 처음 들어오는 페이지 처리 index.jsp
     	map.put("/loginForm.do", new LoginFormAction());//로그인페이지 이동
     	map.put("/loginResult.do",new LoginAction());
+    	map.put("/logout.do",new LogoutAction());
     	map.put("/registerForm.do", new RegisterFormAction());//회원가입페이지 이동
 		map.put("/register.do",new Register());  // 회원가입등록처리
 		map.put("/hostUpForm.do", new HostUpFormAction()); //숙소등록 폼
-		map.put("/hostUp", new HostUp()); //숙소등록 처리
-		
+//		map.put("/hostUp", new HostUp()); //숙소등록 처리
+		map.put("/search.do", new SearchAction());//숙소 검색
 		
 		
 		
