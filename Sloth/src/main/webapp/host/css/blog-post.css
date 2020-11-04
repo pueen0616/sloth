@@ -7,10 +7,6 @@ body {
 	padding-top: 56px;
 }
 
-.imgCOllage1 {
-	margin: auto;
-	text-align: center;
-}
 
 .imgCollage {
 	margin: auto;
@@ -44,7 +40,7 @@ body {
 @media screen and (max-width: 767px) {
 	.imgCollage>span {
 		padding: 0;
-		width: 100% !important;
+		width: 50% !important;
 	}
 	.imgCollage .imageblock {
 		padding: 16px 0;

@@ -1,11 +1,12 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>
-<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+	pageEncoding="UTF-8"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <!DOCTYPE html>
 <html>
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
+<<<<<<< HEAD
 <link rel="stylesheet" href="mainPage/css/menu.css">
 <!-- 필요한 CSS, JS 로드 -->
 <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
@@ -14,8 +15,16 @@
 
 <!-- 저 같은 경우는 webapp 안에 resouces 폴더 안에 js 안에 plugin 안에 hangul 안에 hangul.js 이 있습니다. -->
 <script type="text/javascript" src="hangul/hangul.js"></script>
+=======
+<link rel="stylesheet" href="${pageContext.request.contextPath}/mainPage/css/menu.css">
+<link rel="stylesheet" href="${pageContext.request.contextPath}/mainPage/css/all.css">
+<script src="https://kit.fontawesome.com/a076d05399.js"></script>
+
+
+>>>>>>> branch 'main' of https://github.com/pueen0616/sloth.git
 </head>
 <body>
+<<<<<<< HEAD
   <nav>
              
             <div class="logo">
@@ -40,5 +49,34 @@
                 </ul>
             </div>
         </nav>
+=======
+	<nav style="height: 120px;">
+
+		<div style="float:left;" class="logo">
+			<img src="../logo/logo.png" width="150px">
+		</div>
+		
+		<div style="float:right;" class="dropdown" >
+			<a class="btn btn-secondary dropdown-toggle" href="#" role="button"
+				id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true"
+				aria-expanded="false"><i class="fas fa-user"></i></a>
+
+			<div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
+			<a class="dropdown-item" href="../loginForm.do">로그인</a> 
+				<a class="dropdown-item" href="#">계정</a> 
+				<a class="dropdown-item" href="#">게시판</a> 
+				<a class="dropdown-item" href="#">예약관리</a>
+				<a class="dropdown-item" href="#">숙소관리</a> 
+				<a class="dropdown-item" href="#">관심숙소</a> 
+				<a class="dropdown-item" href="#">로그아웃</a> 
+			</div>
+		<div style="float:right;" class="menu">
+			<ul>
+				<li><a href="hostUpForm.do">호스트가 되기</a></li>
+			</ul>
+		</div>
+		</div>
+	</nav>
+>>>>>>> branch 'main' of https://github.com/pueen0616/sloth.git
 </body>
 </html>

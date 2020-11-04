@@ -16,7 +16,7 @@ public class LoginAction implements Action {
 		AccountDao dao = new AccountDao();
 		AccountVO vo = new AccountVO();
 		HttpSession session = request.getSession(false);
-		vo.setId(request.getParameter("id"));
+		vo.setId(request.getParameter("userid"));
 		vo.setPassword(request.getParameter("password"));
 		
 		vo = dao.select(vo);

@@ -40,6 +40,44 @@ public class FrontController extends HttpServlet {
 		map.put("/register.do",new Register());  // 회원가입등록처리
 		map.put("/hostDetail.do",new HostDetail());
 		map.put("/roomlist.do",new RoomListSelectAction());//검색결과화면 출력
+		map.put("/hostUpForm.do", new HostUpFormAction()); //숙소등록 폼
+		map.put("/hostUp", new HostUp()); //숙소등록 처리
+		
+		
+		
+		
+		//도은
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		//성준
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		//청일
+		
+		
+		
+		
+		
+		
+		
+		
+		//영래
 	}
     
     protected void service(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
