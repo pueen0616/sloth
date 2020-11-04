@@ -18,7 +18,7 @@
 <body>
 	
       <header>
-		<jsp:include page="../mainPage/mainMenu.jsp"></jsp:include>
+		<jsp:include page="${pageContext.request.contextPath}/mainPage/mainMenu.jsp"></jsp:include>
 	<section>
       <form name="searchForm" action ="search.do">
          <div class="search__box">

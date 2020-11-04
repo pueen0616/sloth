@@ -27,15 +27,7 @@
 
 </head>
 <body>
-<!-- <script type="text/javascript">
-   $(() => {
-      $(".loginForm").on({
-         "click": function() {
-            window.open("${pageContext.request.contextPath}/loginForm.do","aaa","width=350, height=400");
-         }
-      })
-   });
-</script> -->
+
 	<nav style="height: 120px;">
 
 		<div style="float: left;" class="logo">
