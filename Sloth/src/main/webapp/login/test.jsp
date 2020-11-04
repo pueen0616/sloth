@@ -10,6 +10,7 @@
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+
 <style>
     body {
 		font-family: 'Varela Round', sans-serif;
@@ -88,12 +89,15 @@
 </style>
 </head>
 <body>
-<div class="text-center">
-	<!-- Button HTML (to Trigger Modal) -->
-	<a href="#myModal" class="trigger-btn" data-toggle="modal">Click to Open Login Modal</a>
-</div>
-
-<!-- Modal HTML -->
+<script>
+$.ajax({
+	url: "#myModal",
+	type:{name:"login"},
+	type:"post",
+	dataType:"json"
+	
+})
+</script>
 <div id="myModal" class="modal fade">
 	<div class="modal-dialog modal-login">
 		<div class="modal-content">
@@ -102,7 +106,7 @@
 				<button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
 			</div>
 			<div class="modal-body">
-				<form action="/examples/actions/confirmation.php" method="post">
+				<form action="login.do" name=login method="post">
 					<div class="form-group">
 						<i class="fa fa-user"></i>
 						<input type="text" class="form-control" placeholder="Username" required="required">
@@ -122,6 +126,8 @@
 			</div>
 		</div>
 	</div>
-</div>     
+</div>  
+<button type="button" class="btn btn-primary">Primary</button>   
 </body>
+
 </html>

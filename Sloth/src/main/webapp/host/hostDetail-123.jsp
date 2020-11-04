@@ -14,10 +14,9 @@
 <title>Blog Post - Start Bootstrap Template</title>
 
 <!-- Bootstrap core CSS -->
-<link href="bootstrap/css/bootstrap.min.css" rel="stylesheet">
+<link href="vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
 <!-- Custom styles for this template -->
-<link href="../css/blog-post.css" rel="stylesheet">
-<link href="../css/detail.css" rel="stylesheet">
+<link href="css/blog-post.css" rel="stylesheet">
 <script src="https://kit.fontawesome.com/a076d05399.js"></script>
 <style>
 img{
@@ -29,14 +28,17 @@ img{
 box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
 }
 </style>
+<script>
+
+</script>
 </head>
 <body>
 	<main class="images">
-		<div class="container">
-			<div>
-				<h1>영래의 이쁜 집</h1>
+		<div class="container" >
+			<div id="name" name="name">
+				<h1 >영래의 이쁜 집</h1>
 			</div>
-			<div>
+			<div id="address" name="address">
 				<h6>슈퍼 호스트</h6>
 				<a href="#">위치입니다</a>
 				<button type="button" class="btn btn-outline-secondary" style="float: right;">♡저장</button>
@@ -46,13 +48,13 @@ box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
 			<div id="carouselExampleControls" class="carousel slide" data-ride="carousel">
   <div class="carousel-inner">
     <div class="carousel-item active">
-      <img src="../images/room1.jpeg" class="d-block w-100" alt="ro">
+      <img src="images/room1.jpeg" class="d-block w-100" alt="ro">
     </div>
     <div class="carousel-item">
-      <img src="../images/room1.jpeg" class="d-block w-100" alt="ro">
+      <img src="images/room1.jpeg" class="d-block w-100" alt="ro">
     </div>
     <div class="carousel-item">
-      <img src="../images/room1.jpeg" class="d-block w-100" alt="ro">
+      <img src="images/room1.jpeg" class="d-block w-100" alt="ro">
     </div>
   </div>
   <a class="carousel-control-prev" href="#carouselExampleControls" role="button" data-slide="prev">
@@ -81,7 +83,7 @@ box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
 						</div>
 					</div>
 					<hr>
-					<div>숙소 소개 적는 란입니다 2020년 8월에 신축 오픈한 레지던스 광안 지웰 더테라스입니다. 광안리
+					<div id="info" name="info">숙소 소개 적는 란입니다 2020년 8월에 신축 오픈한 레지던스 광안 지웰 더테라스입니다. 광안리
 						백사장 10초 거리로 코로나 및 대인 접촉 걱정을 덜고 테라스에서 광안대교 바다 및 해변 전망을 내려다보면서 음악과 차
 						한잔 할수 있는 최적의 휴양지 입니다 파도와 함께 힐링을 ~~~ 바다위에 자는듯 파도소리를 바로 들을수 있으면며 탁
 						트인 시원한 오션뷰를 즐기며 힐링 할 수 있는 최적의 숙소이며, 백사장과 광안대교의 정경이 눈앞에 그림처럼 펼쳐지는
@@ -118,8 +120,8 @@ box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
 
 
 	<!-- Bootstrap core JavaScript -->
-	<script src="jquery/jquery.min.js"></script>
-	<script src="bootstrap/js/bootstrap.bundle.min.js"></script>
+	<script src="vendor/jquery/jquery.min.js"></script>
+	<script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
 
 </body>
 
