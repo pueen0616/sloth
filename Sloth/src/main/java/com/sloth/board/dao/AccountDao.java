@@ -94,8 +94,8 @@ public class AccountDao extends DAO {
 			psmt.setString(5, vo.getRoomPrice());
 			psmt.setString(6, vo.getRoomInfo());
 			psmt.setString(7, vo.getId());
-			psmt.setDate(8, vo.getFirstCheckIn());
-			psmt.setDate(9, vo.getLastCheckIn());
+			psmt.setDate(8, vo.getRoomCheckIn());
+			psmt.setDate(9, vo.getRoomCheckOut());
 			n=psmt.executeUpdate();
 		
 		} catch(SQLException e) {

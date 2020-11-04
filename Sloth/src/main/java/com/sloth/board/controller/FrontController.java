@@ -20,11 +20,10 @@ import com.sloth.board.command.LogoutAction;
 import com.sloth.board.command.Main;
 import com.sloth.board.command.Register;
 import com.sloth.board.command.RegisterFormAction;
-<<<<<<< HEAD
+
 import com.sloth.board.command.SearchAction;
-=======
+
 import com.sloth.board.command.RoomListSelectAction;
->>>>>>> branch 'main' of https://github.com/pueen0616/sloth.git
 import com.sloth.board.common.Action;
 
 @WebServlet("/FrontController")
@@ -49,13 +48,12 @@ public class FrontController extends HttpServlet {
 		map.put("/hostDetail.do",new HostDetail());
 		map.put("/roomlist.do",new RoomListSelectAction());//검색결과화면 출력
 		map.put("/hostUpForm.do", new HostUpFormAction()); //숙소등록 폼
-<<<<<<< HEAD
+
 		map.put("/hostUp.do", new HostUp()); //숙소등록 처리
 		
-=======
+
 //		map.put("/hostUp", new HostUp()); //숙소등록 처리
 		map.put("/search.do", new SearchAction());//숙소 검색
->>>>>>> branch 'main' of https://github.com/pueen0616/sloth.git
 		
 		
 		

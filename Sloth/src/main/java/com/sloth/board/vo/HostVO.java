@@ -13,8 +13,26 @@ public class HostVO {
 	private String roomInfo;
 	private String id;
 	private String location;
+	private int picNum;
+	private String pic;
 	
 	
+
+	public int getPicNum() {
+		return picNum;
+	}
+
+	public void setPicNum(int picNum) {
+		this.picNum = picNum;
+	}
+
+	public String getPic() {
+		return pic;
+	}
+
+	public void setPic(String pic) {
+		this.pic = pic;
+	}
 
 	public Date getRoomCheckIn() {
 		return roomCheckIn;
