@@ -5,55 +5,92 @@
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
+<script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
+<link rel="stylesheet"
+	href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
+	integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm"
+	crossorigin="anonymous">
+<script>
+	$(()=>{
+		var s = document.getElementById("roomMax");
+	    var roomMax = s.options[s.selectedIndex].value;
+	});
+</script>
+<style>
+input[type=text] {
+    border : 2px solid skyblue;
+    border-radius : 5px;
+}
+input[type=text]:hover {
+    background : aliceblue;
+}
+._s1t1w0m{
+	margin: 0px !important;
+    word-wrap: break-word !important;
+    font-family: Circular,-apple-system,BlinkMacSystemFont,Roboto,Helvetica Neue,sans-serif !important;
+    font-size: 24px !important;
+    font-weight: 800 !important;
+    line-height: 1.25em !important;
+    color: #484848 !important;
+    padding-top: 2px !important;
+    padding-bottom: 2px !important;
+}
+._s1t1w0{
+	margin: 0px !important;
+    word-wrap: break-word !important;
+    font-family: Circular,-apple-system,BlinkMacSystemFont,Roboto,Helvetica Neue,sans-serif !important;
+    font-size: 17px !important;
+    font-weight: 800 !important;
+    line-height: 1.25em !important;
+    color: #484848 !important;
+    padding-top: 2px !important;
+    padding-bottom: 2px !important;
+}
+</style>
 </head>
 <body>
 <div align="center">
-	<div><h1>숙 소 등 록</h1></div>
+	<div class="_s1t1w0m">숙소를 등록 해보세요</div>
+	<hr style="margin-bottom: 32px;">
 	<div>
-		<form id="frm" name="frm" action="${pageContext.request.contextPath}/main.do" method="post">
-			<table border="1">
-			<tr>
-					<th width="150">숙소 이름</th>
-					<td width = "500"><input type="text" id="roomNum" name="roomNum"></td>
-				</tr>
-				<tr>
-					<th width="150">숙소 이름</th>
-					<td width = "500"><input type="text" id="roomName" name="roomName"></td>
-				</tr>
-				<tr>
-					<th width="150">숙소 주소</th>
-					<td><input type="text" id="roomAddress" name="roomAddress"></td>
-				</tr>
-				<tr>
-					<th width="150">최대 인원 수</th>
-					<td><input type="text" id="roomMax" name="roomMax"></td>
-				</tr>
-				<tr>
-					<th width="150">숙소 가격</th>
-					<td><input type="text" id="roomPrice" name="roomPrice" ></td>
-				</tr>
-				<tr>
-					<th width="150">입실 가능 첫날</th>
-					<td><input type="date" id="checkIn" name="roomCheckIn"></td>
-					<th width="150">입실 가능 마지막날</th>
-					<td><input type="date" id="checkOut" name="roomCheckOut"></td>
-				</tr>
-				<tr>
-					<th width="150">숙소 정보</th>
-					<td><p><textarea cols="50" rows="10" id="roomInfo" name="roomInfo"></textarea></p></td>
-				</tr>
-				<tr>
-					<th width="150">숙소 가격</th>
-					<td><input type="text" id="id" name="id" ></td>
-				</tr>
-				
-				<tr>
-					<td colspan="2" align="center">
-						<input type="submit" value="등록하기"> &nbsp;&nbsp;
-						<input type="reset" value="취소">
-					</td>
-				</tr>
-			</table>
+		<form id="frm" name="frm" action="/Sloth/hostUp.do" method="post">
+			
+			<div class="_s1t1w0" style="margin-bottom: 16px;">숙소넘버</div>	
+			<div style="margin-bottom: 32px;"><input type="text" id="roomNum" name="roomNum"></div>
+			
+			<div class="_s1t1w0" style="margin-bottom: 16px;">숙소 이름은 무엇인가요</div>	
+			<div style="margin-bottom: 32px;"><input type="text" id="roomName" name="roomName"></div>
+			
+			<div class="_s1t1w0" style="margin-bottom: 16px;">숙소 위치는 어디일까요</div>
+			<div style="margin-bottom: 32px;"><input type="text" id="roomAddress" name="roomAddress"></div>
+			
+			<div class="_s1t1w0" style="margin-bottom: 16px;">최대 인원을 정해 주세요</div>
+			<select style="margin-bottom: 32px;" id="roomMax" name="roomMax">
+			    <option value="1">1</option>
+			    <option value="2">2</option>
+			    <option value="3">3</option>
+			    <option value="4">4</option>
+			    <option value="5">5</option>
+			    <option value="6">6</option>
+			    <option value="7">7</option>
+			    <option value="8">8</option>
+			</select>
+			
+			<div class="_s1t1w0">운영 할 날을 지정하세요</div>
+			<input type="date" id="FirstCheckIn" name="FirstCheckIn">
+			<input type="date" id="LastCheckIn" name="LastCheckIn" style="margin-bottom: 32px;">
+			
+			<div class="_s1t1w0" style="margin-bottom: 16px;">1박 가격은 얼마인가요</div>
+			<div style="margin-bottom: 32px;"><input type="text" id="roomPrice" name="roomPrice" ></div>
+			
+			<div class="_s1t1w0" style="margin-bottom: 16px;">당신의 숙소를 자랑 해주세요</div>
+			<textarea cols="30" rows="10" id="roomInfo" name="roomInfo"></textarea>
+			
+			<div class="_s1t1w0" style="margin-bottom: 16px;">아이디</div>
+			<div style="margin-bottom: 32px;"><input type="text" id="id" name="id"></div>
+			
+			<div><input type="submit" value="등록">
+ 				 <input type="reset" value="취소"></div>
 		</form>
 	</div>
 </div>

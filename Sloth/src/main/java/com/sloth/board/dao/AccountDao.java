@@ -17,8 +17,9 @@ public class AccountDao extends DAO {
 	private final String SELECT_ALL = "SELECT * FROM ACCOUNT ORDER BY ID";
 	private final String SELECT = "SELECT * FROM ACCOUNT WHERE ID = ? AND PASSWORD=?";
 	private final String INSERT = "INSERT INTO ACCOUNT(ID,NAME,PASSWORD,BIRTH,EMAIL,TEL) VALUES(?,?,?,?,?,?)";
-	private final String HOST_INSERT = "INSERT INTO HOST(ROOM_NUM, ROOM_NAME, ROOM_ADDRESS, ROOM_MAX, ROOM_PRICE, ROOM_CHECKIN, ROOM_CHECKOUT, ROOM_INFO, ID)"
+	private final String HOST_INSERT = "INSERT INTO HOST(ROOM_NUM, ROOM_NAME, ROOM_ADDRESS, ROOM_MAX, ROOM_PRICE, ROOM_INFO, ID, ROOM_CHECKIN, ROOM_CHECKOUT)"
 									 + "VALUES(?,?,?,?,?,?,?,?,?)";
+	private final String UPDATE_ADMIN = "UPDATE ACCOUNT SET USER_TYPE = 'ADMIN' WHERE ID = ?";
 	
 	public List<AccountVO> SELECT_All() {
 		List<AccountVO> list = new ArrayList<AccountVO>();
@@ -88,12 +89,12 @@ public class AccountDao extends DAO {
 			psmt.setInt(1, vo.getRoomNum());
 			psmt.setString(2, vo.getRoomName());
 			psmt.setString(3, vo.getRoomAddress());
-			psmt.setInt(4, vo.getRoomMax());
+			psmt.setString(4, vo.getRoomMax());
 			psmt.setString(5, vo.getRoomPrice());
-			psmt.setDate(6, vo.getRoomCheckIn());
-			psmt.setDate(7, vo.getRoomCheckOut());
-			psmt.setString(8, vo.getRoomInfo());
-			psmt.setString(9, vo.getId());
+			psmt.setString(6, vo.getRoomInfo());
+			psmt.setString(7, vo.getId());
+			psmt.setDate(8, vo.getFirstCheckIn());
+			psmt.setDate(9, vo.getLastCheckIn());
 			n=psmt.executeUpdate();
 		
 		} catch(SQLException e) {

@@ -6,30 +6,37 @@ public class hostVO {
 	private int roomNum;
 	private String roomName;
 	private String roomAddress;
-	private int roomMax;
+	private String roomMax;
 	private String roomPrice;
-	private Date roomCheckIn;
-	private Date roomCheckOut;
+	private Date FirstCheckIn;
+	private Date LastCheckIn;
 	private String roomInfo;
 	private String id;
 	private String location;
 	
-	
 
-	public Date getRoomCheckIn() {
-		return roomCheckIn;
+	public Date getFirstCheckIn() {
+		return FirstCheckIn;
 	}
 
-	public void setRoomCheckIn(Date roomCheckIn) {
-		this.roomCheckIn = roomCheckIn;
+	public void setFirstCheckIn(Date firstCheckIn) {
+		FirstCheckIn = firstCheckIn;
 	}
 
-	public Date getRoomCheckOut() {
-		return roomCheckOut;
+	public Date getLastCheckIn() {
+		return LastCheckIn;
 	}
 
-	public void setRoomCheckOut(Date roomCheckOut) {
-		this.roomCheckOut = roomCheckOut;
+	public void setLastCheckIn(Date lastCheckIn) {
+		LastCheckIn = lastCheckIn;
+	}
+
+	public String getRoomMax() {
+		return roomMax;
+	}
+
+	public void setRoomMax(String roomMax) {
+		this.roomMax = roomMax;
 	}
 
 	public hostVO() {
@@ -58,14 +65,6 @@ public class hostVO {
 
 	public void setRoomAddress(String roomAddress) {
 		this.roomAddress = roomAddress;
-	}
-
-	public int getRoomMax() {
-		return roomMax;
-	}
-
-	public void setRoomMax(int roomMax) {
-		this.roomMax = roomMax;
 	}
 
 	public String getRoomPrice() {

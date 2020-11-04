@@ -7,7 +7,6 @@
 <meta charset="UTF-8">
 <title>Insert title here</title>
 <link rel="stylesheet" href="${pageContext.request.contextPath}/mainPage/css/menu.css">
-<link rel="stylesheet" href="${pageContext.request.contextPath}/mainPage/css/all.css">
 <script src="https://kit.fontawesome.com/a076d05399.js"></script>
 
 
@@ -16,7 +15,7 @@
 	<nav style="height: 120px;">
 
 		<div style="float:left;" class="logo">
-			<img src="../logo/logo.png" width="150px">
+			<img src="${pageContext.request.contextPath}/logo/logo.png" width="150px">
 		</div>
 		
 		<div style="float:right;" class="dropdown" >
@@ -25,7 +24,7 @@
 				aria-expanded="false"><i class="fas fa-user"></i></a>
 
 			<div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
-			<a class="dropdown-item" href="../loginForm.do">로그인</a> 
+			<a class="dropdown-item" href="loginForm.do">로그인</a> 
 				<a class="dropdown-item" href="#">계정</a> 
 				<a class="dropdown-item" href="#">게시판</a> 
 				<a class="dropdown-item" href="#">예약관리</a>

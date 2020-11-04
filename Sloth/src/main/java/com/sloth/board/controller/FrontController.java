@@ -39,7 +39,7 @@ public class FrontController extends HttpServlet {
     	map.put("/registerForm.do", new RegisterFormAction());//회원가입페이지 이동
 		map.put("/register.do",new Register());  // 회원가입등록처리
 		map.put("/hostUpForm.do", new HostUpFormAction()); //숙소등록 폼
-		map.put("/hostUp", new HostUp()); //숙소등록 처리
+		map.put("/hostUp.do", new HostUp()); //숙소등록 처리
 		
 		
 		

@@ -20,14 +20,16 @@ public class HostUp implements Action {
 		vo.setRoomNum(Integer.parseInt(request.getParameter("roomNum")));
 		vo.setRoomName(request.getParameter("roomName"));
 		vo.setRoomAddress(request.getParameter("roomAddress"));
-		vo.setRoomMax(Integer.parseInt(request.getParameter("roomMax")));
+		vo.setRoomMax(request.getParameter("roomMax"));
 		vo.setRoomPrice(request.getParameter("roomPrice"));
-		vo.setRoomCheckIn(Date.valueOf(request.getParameter("roomCheckIn")));
-		vo.setRoomCheckOut(Date.valueOf(request.getParameter("roomCheckOut")));
 		vo.setRoomInfo(request.getParameter("roomInfo"));
 		vo.setId(request.getParameter("id"));
+		vo.setFirstCheckIn(Date.valueOf(request.getParameter("FirstCheckIn")));
+		vo.setLastCheckIn(Date.valueOf(request.getParameter("LastCheckIn")));
 		
+		dao = new AccountDao();
 		int n = dao.host_insert(vo);
+		System.out.println(n);
 		String page;
 		
 		if(n !=0) {

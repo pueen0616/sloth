@@ -8,7 +8,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <meta http-equiv="X-UA-Compatible" content="ie=edge">
 <title>Document</title>
-<link rel="stylesheet" href="css/style.css">
+<link rel="stylesheet" href="${pageContext.request.contextPath}/mainPage/css/style.css">
 <link rel="shortcut icon" sizes="76x76" type="image/x-icon"
 	href="https://a0.muscache.com/airbnb/static/logotype_favicon-21cc8e6c6a2cca43f061d2dcabdf6e58.ico">
 <link rel="stylesheet"
@@ -24,9 +24,7 @@
 		<jsp:include page="../mainPage/mainMenu.jsp"></jsp:include>
 		<section>
 			<div class="search__box">
-				<table>
-					
-					
+				<table>	
 						<td colspan="2" class="search__sub__title">목적지</td>
 						<td colspan="2"><input class="search__input" type="text"
 							placeholder=" 모든 위치"></td>
