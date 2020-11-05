@@ -27,6 +27,11 @@
 </head>
 <body>
 <header>
+<nav style="height: 120px;">
+		<div style="float: left;" class="logo">
+			<a href="main.do"><img src="${pageContext.request.contextPath}/logo/logo.png" width="150px"></a>
+		</div>
+</nav>
 	<div align="center">
 		<form id="frm" name="frm" method="post" action="loginResult.do">
 			<h1>로그인</h1>
@@ -39,7 +44,6 @@
 			<br>
 			<div align="center">
 				<button type="submit" id="login-submit" onclick="return formCheck()">로그인</button>
-				<hr>
 			</div>
 		</form>
 			<span class='text-center'> 
