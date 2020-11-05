@@ -18,7 +18,7 @@ public class LogoutAction implements Action {
 		request.setAttribute("name", name); 		
 		
 		
-		return "mainPage/main.jsp";
+		return "redirect:main.do";
 	}
 
 }

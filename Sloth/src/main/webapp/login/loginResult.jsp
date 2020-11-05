@@ -9,7 +9,7 @@
 </head>
 <body>
 <jsp:include page="../mainPage/mainMenu.jsp"></jsp:include>
-00 로그인 성공시 이전 페이지로 이동
+
 
 <hr>
 	<div align="center">
@@ -22,8 +22,6 @@
 		<h1>${vo.name } 님 로그인</h1>
   <%response.sendRedirect("main.do"); %>
 	</c:if>
-	
 	</div>
-
 </body>
 </html>
