@@ -55,41 +55,6 @@ public class FrontController extends HttpServlet {
 
 //		map.put("/hostUp", new HostUp()); //숙소등록 처리
 		map.put("/search.do", new SearchAction());//숙소 검색
-		
-		
-		
-		//도은
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		//성준
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		//청일
-		
-		
-		
-		
-		
-		
-		
-		
-		//영래
 	}
     
     protected void service(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
@@ -103,7 +68,13 @@ public class FrontController extends HttpServlet {
 	      
 	      String viewPage = command.exec(request, response); //명령어가 수행되고 나서 보여줄 페이지 선택
 	      
-	      RequestDispatcher dispatcher = request.getRequestDispatcher(viewPage); //선택한 페이지로 가기
-	      dispatcher.forward(request, response);   
+	      if(viewPage !=null) {
+		    	 if(viewPage.startsWith("redirect")) {
+		    		 response.sendRedirect(viewPage.substring(9));
+		    	 }else {
+		      RequestDispatcher dispatcher = request.getRequestDispatcher(viewPage); //선택한 페이지로 가기
+		      dispatcher.forward(request, response);   
+		      }
+		  }
 	}
 }
