@@ -1,5 +1,6 @@
 package com.sloth.board.command;
 
+import java.sql.Date;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -8,20 +9,31 @@ import javax.servlet.http.HttpServletResponse;
 
 import com.sloth.board.common.Action;
 import com.sloth.board.dao.HostDAO;
-import com.sloth.board.vo.HostVO;
+import com.sloth.board.vo.HostPicVO;
 
 public class RoomListSelectAction implements Action {
 
-	@Override
-	public String exec(HttpServletRequest request, HttpServletResponse response) {
-		//숙소 리스트에서 클릭시 숙소 상세보기 페이지로 넘어가는 액션
-		HostDAO dao = new HostDAO();
-		HostVO vo = new HostVO();
-		List<HostVO> list = new ArrayList<HostVO>();//넘어온 select_all -> list 리턴값을 받아오기위해서 HostVo list형객체만듬
-		list = dao.SELECT_All(vo);
-		request.setAttribute("roomlist",list);
-		
-		return "/room/roomlist.jsp";
-	}
+	 @Override
+	   public String exec(HttpServletRequest request, HttpServletResponse response) {
+	      // TODO 회원리스트 보기 구현
+	      
+	      //response.setCharacterEncoding(arg0);
+	      HostDAO dao = new HostDAO();      
+	      HostPicVO vo = new HostPicVO();
+	      List<HostPicVO> list = new ArrayList<HostPicVO>();
+	      
+	      vo.setRoom_address(request.getParameter("room_address"));
+	      vo.setRoom_checkin(Date.valueOf(request.getParameter("room_checkin")));
+	      vo.setRoom_checkout(Date.valueOf(request.getParameter("room_checkout")));
+	      vo.setRoom_max(request.getParameter("room_max"));
+//	      vo.setLroom_max(request.getParameter("room_max"));
+	      
+	      list = dao.SELECT_All(vo);
+	      
+	      request.setAttribute("hosts", list);
+	      
+	      return "/host/hostDetail.jsp";
+	   }
+
 
 }

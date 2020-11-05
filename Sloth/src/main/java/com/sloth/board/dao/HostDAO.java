@@ -6,6 +6,7 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
+import com.sloth.board.vo.HostPicVO;
 import com.sloth.board.vo.HostVO;
 
 public class HostDAO extends DAO{
@@ -15,20 +16,75 @@ public class HostDAO extends DAO{
 	
 	//private final String SELECT_ALL = "SELECT A.ROOM_NAME,B.PIC_NUM,B.PIC FROM HOST A INNER JOIN PIC B ON A.ROOM_NUM = B.ROOM_NUM ";
 	//private final String SELECT_ALL= "SELECT ROOM_NAME,ROOM_PRICE FROM HOST ORDER BY ROOM_NUM DESC";
-	private final String SELECT_ALL="SELECT A.ROOM_NAME, A.ROOM_PRICE, B.PIC_NUM, B.PIC FROM HOST A INNER JOIN PIC B ON (A.ROOM_NUM = B.ROOM_NUM)";
+	//
+	private final String SELECT_ALL="SELECT A.ROOM_NUM, A.ROOM_NAME, A.ROOM_PRICE, B.PIC_NUM, B.PIC FROM HOST A"
+			+ "	 INNER JOIN PIC B ON (A.ROOM_NUM = B.ROOM_NUM) WHERE FIRST_YN = 'Y'";
 	
-	public List<HostVO> SELECT_All(HostVO vo) {
-		List<HostVO> list = new ArrayList<HostVO>();
+	private final String SELECT_DETAIL = "SELECT * FROM HOST WHERE ROOM_NUM = ?";
+	private final String SELECT_PIC = "SELECT * FROM PIC WHERE ROOM_NUM = ?";
+	
+	//상세 페이지
+	public HostPicVO SELECT_DETAIL(HostPicVO vo){
+		HostPicVO hvo = null;
+		try {
+			psmt = conn.prepareStatement(SELECT_DETAIL);
+			psmt.setInt(1, vo.getRoom_num());
+			rs=psmt.executeQuery();
+			
+			if(rs.next()) {
+				hvo = new HostPicVO();
+				hvo.setRoom_name(rs.getString("room_name"));
+				hvo.setRoom_price(rs.getString("ROOM_PRICE"));
+				hvo.setRoom_num(rs.getInt("room_num"));
+				hvo.setRoom_max(rs.getString("room_max"));
+				hvo.setRoom_info(rs.getString("room_info"));
+				hvo.setRoom_checkin(rs.getDate("room_checkIn"));
+				hvo.setRoom_checkout(rs.getDate("room_checkOut"));
+				
+			}
+		} catch(SQLException e) {
+			e.printStackTrace();
+		} finally{
+			
+		}
+		return hvo;
+	}	
+	
+	public List<HostPicVO> SELECT_PIC(HostPicVO vo) {
+		List<HostPicVO> list = new ArrayList<HostPicVO>();
+		try {
+			psmt = conn.prepareStatement(SELECT_PIC);
+			psmt.setInt(1, vo.getRoom_num());
+			rs=psmt.executeQuery();
+			
+			while(rs.next()) {
+				vo = new HostPicVO();
+				vo.setPic(rs.getString("pic"));
+				
+				list.add(vo);
+			}
+		} catch(SQLException e) {
+			e.printStackTrace();
+		} finally{
+			
+		}
+		
+		return list;
+	}
+	
+	// 리스트 화면
+	public List<HostPicVO> SELECT_All(HostPicVO vo) {
+		List<HostPicVO> list = new ArrayList<HostPicVO>();
 		try {
 			psmt = conn.prepareStatement(SELECT_ALL);
 			rs=psmt.executeQuery();
 			
 			while(rs.next()) {
-				vo = new HostVO();
-				vo.setRoomName(rs.getString("room_name"));
-				vo.setRoomPrice(rs.getString("room_price"));
-				vo.setPicNum(rs.getInt("pic_num"));
+				vo = new HostPicVO();
+				vo.setRoom_name(rs.getString("room_name"));
+				vo.setRoom_price(rs.getString("ROOM_PRICE"));
 				vo.setPic(rs.getString("pic"));
+				vo.setRoom_num(rs.getInt("room_num"));
 				
 				list.add(vo);
 				

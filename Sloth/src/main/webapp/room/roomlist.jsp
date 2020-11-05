@@ -1,10 +1,10 @@
-<%@ page language="java" contentType="text/html; charset=EUC-KR"
-	pageEncoding="EUC-KR"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+	pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <!DOCTYPE html>
 <html>
 <head>
-<meta charset="EUC-KR">
+<meta charset="UTF-8">
 <title>Insert title here</title>
 <link rel="stylesheet" href="./css/common.css">
 <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
@@ -78,7 +78,7 @@ section {
     padding: 20px 0 0;
     border-top: 1px solid #ddd;}
 
-/*¶óµğ¿À¹öÆ° ¼û±è*/
+/*ë¼ë””ì˜¤ë²„íŠ¼ ìˆ¨ê¹€*/
   input {
       display: none;}
 
@@ -95,7 +95,7 @@ label:hover {
     color: #2e9cdf;
     cursor: pointer;}
 
-/*input Å¬¸¯½Ã, label ½ºÅ¸ÀÏ*/
+/*input í´ë¦­ì‹œ, label ìŠ¤íƒ€ì¼*/
 input:checked + label {
       color: #555;
       border: 1px solid #ddd;
@@ -114,48 +114,47 @@ input:checked + label {
 </head>
 <body>
 	<div class="main">
-    <input id="tab1" type="radio" name="tabs" checked> <!--µğÆúÆ® ¸Ş´º-->
-    <label for="tab1">µî·Ï¼ø</label>
+    <input id="tab1" type="radio" name="tabs" checked> <!--ë””í´íŠ¸ ë©”ë‰´-->
+    <label for="tab1">ë“±ë¡ìˆœ</label>
 
     <input id="tab2" type="radio" name="tabs">
-    <label for="tab2">³ôÀº°¡°İ¼ø</label>
+    <label for="tab2">ë†’ì€ê°€ê²©ìˆœ</label>
 
     <input id="tab3" type="radio" name="tabs">
-    <label for="tab3">³·Àº°¡°İ¼ø</label>
+    <label for="tab3">ë‚®ì€ê°€ê²©ìˆœ</label>
 
     <input id="tab4" type="radio" name="tabs">
-    <label for="tab4">ÆòÁ¡¼ø</label>
+    <label for="tab4">í‰ì ìˆœ</label>
 
     <section id="content1">
-        <p>tab menu1ÀÇ ³»¿ë</p>
+        <p>tab menu1ì˜ ë‚´ìš©</p>
     </section>
 
     <section id="content2">
-        <p>tab menu2ÀÇ ³»¿ë</p>
+        <p>tab menu2ì˜ ë‚´ìš©</p>
     </section>
 
     <section id="content3">
-        <p>tab menu3ÀÇ ³»¿ë</p>
+        <p>tab menu3ì˜ ë‚´ìš©</p>
     </section>
 
     <section id="content4">
-        <p>tab menu4ÀÇ ³»¿ë</p>
+        <p>tab menu4ì˜ ë‚´ìš©</p>
     </section>
 
 </div>
-	
 
 		<div class="fixed_img_col">
 			<c:forEach items="${hosts }" var="host" varStatus="i">
 				<ul id="roomlist">
 					<li>
-					<a href="./host/hostDetail-123.jsp" > 
+					<a href="./hostDetail.do?room_num=${host.room_num }"  > 
 						<span class="thumb">
-							<img id="img" name="img"  alt="¿Ö¾Æ¹«°Íµµ¾È³ª¿ÀÁö" src="${pageContext.request.contextPath}/img/${host.lfirst_yn }">
+							<img id="img" name="img"  alt="ì™œì•„ë¬´ê²ƒë„ì•ˆë‚˜ì˜¤ì§€" src="${pageContext.request.contextPath}/img/${host.pic }">
 						</span> 
-					<div id="name" name="name"><span><b>${host.lroom_name }</b></span></div>
+						<span><b>${host.room_name }</b></span>
 					 </a>
-						<div id="pricde" name="price"><p>${host.lprice }</p></div>
+						<div><p>${host.room_price }</p></div>
 					</li>
 				</ul>
 			</c:forEach>

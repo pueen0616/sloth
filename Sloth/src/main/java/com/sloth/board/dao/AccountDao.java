@@ -22,6 +22,7 @@ public class AccountDao extends DAO {
 									 + "VALUES(SEQ_NUM.NEXTVAL,?,?,?,?,?,?,?,?)";
 	private final String UPDATE_ADMIN = "UPDATE ACCOUNT SET USER_TYPE = 'ADMIN' WHERE ID = ?";
 	
+
 	
 	public List<AccountVO> SELECT_All() {
 		List<AccountVO> list = new ArrayList<AccountVO>();

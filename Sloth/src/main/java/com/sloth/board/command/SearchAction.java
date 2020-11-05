@@ -9,8 +9,7 @@ import javax.servlet.http.HttpServletResponse;
 
 import com.sloth.board.common.Action;
 import com.sloth.board.dao.HomeDao;
-import com.sloth.board.vo.HostVO;
-import com.sloth.board.vo.RoomPicVO;
+import com.sloth.board.vo.HostPicVO;
 
 public class SearchAction implements Action {
 
@@ -20,13 +19,13 @@ public class SearchAction implements Action {
 	      
 	      //response.setCharacterEncoding(arg0);
 	      HomeDao dao = new HomeDao();      
-	      RoomPicVO vo = new RoomPicVO();
-	      List<RoomPicVO> list = new ArrayList<RoomPicVO>();
+	      HostPicVO vo = new HostPicVO();
+	      List<HostPicVO> list = new ArrayList<HostPicVO>();
 	      
-	      vo.setLroom_address(request.getParameter("room_address"));
-	      vo.setLroom_checkin(Date.valueOf(request.getParameter("room_checkin")));
-	      vo.setLroom_checkout(Date.valueOf(request.getParameter("room_checkout")));
-	      vo.setLroom_max(request.getParameter("room_max"));
+	      vo.setRoom_address(request.getParameter("room_address"));
+	      vo.setRoom_checkin(Date.valueOf(request.getParameter("room_checkin")));
+	      vo.setRoom_checkout(Date.valueOf(request.getParameter("room_checkout")));
+	      vo.setRoom_max(request.getParameter("room_max"));
 //	      vo.setLroom_max(request.getParameter("room_max"));
 	      
 	      list = dao.wantselect(vo);

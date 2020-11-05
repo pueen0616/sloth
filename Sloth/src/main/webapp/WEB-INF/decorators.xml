@@ -2,7 +2,7 @@
 <decorators defaultdir="/decorators">
 
 	<decorator name="basic-theme" page="basic-theme.jsp">
-        <pattern>/data/*</pattern>
+        <pattern>/*</pattern>
     </decorator>
     <decorator name="empty-theme" page="empty-theme.jsp">
         <pattern>/mainPage/main.jsp</pattern>
