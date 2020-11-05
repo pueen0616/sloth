@@ -22,7 +22,7 @@
 					<a class="dropdown-item" href="#">계정</a>
 					<a class="dropdown-item" href="#">게시판</a>
 					<a class="dropdown-item" href="#">예약관리</a>
-					<c:if test="${userType ne null }">
+					<c:if test="${user_type ne null }">
 						<a class="dropdown-item" href="#">숙소관리</a>
 					</c:if>
 					<a class="dropdown-item" href="#">관심숙소</a>

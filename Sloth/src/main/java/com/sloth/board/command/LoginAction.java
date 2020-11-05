@@ -23,7 +23,9 @@ public class LoginAction implements Action {
 		
 		session.setAttribute("id", vo.getId());
 		session.setAttribute("name", vo.getName());
+		session.setAttribute("user_type", vo.getUserType());
 		request.setAttribute("vo", vo);
+		
 		return "login/loginResult.jsp";
 	}
 
