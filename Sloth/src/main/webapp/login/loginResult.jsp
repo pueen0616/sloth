@@ -20,7 +20,7 @@
 	
 	<c:if test="${vo.name ne null }">
 		<h1>${vo.name } 님 로그인</h1>
-
+	<%response.sendRedirect("main.do"); %>
 	</c:if> 
 	
 	</div>
