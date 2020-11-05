@@ -11,6 +11,8 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import com.sloth.board.command.FindId;
+import com.sloth.board.command.FindPassword;
 import com.sloth.board.command.HostDetail;
 import com.sloth.board.command.HostUp;
 import com.sloth.board.command.HostUpFormAction;
@@ -38,23 +40,20 @@ public class FrontController extends HttpServlet {
 
     public void init(ServletConfig config) throws ServletException {
 		// 요청들을 정의함
-    	// 김현동
-    	map.put("/main.do", new Main());  // 처음 들어오는 페이지 처리 index.jsp
-    	map.put("/loginForm.do", new LoginFormAction());//로그인페이지 이동
-    	map.put("/loginResult.do",new LoginAction());
-    	map.put("/logout.do",new LogoutAction());
+    	map.put("/main.do", new Main()); 				 	  //처음 들어오는 페이지 처리 index.jsp
+    	map.put("/loginForm.do", new LoginFormAction());	  //로그인페이지 이동
+    	map.put("/loginResult.do",new LoginAction()); 
+    	map.put("/logout.do",new LogoutAction());			  //로그아웃 처리
     	map.put("/registerForm.do", new RegisterFormAction());//회원가입페이지 이동
-		map.put("/register.do",new Register());  // 회원가입등록처리
-		map.put("/hostDetail.do",new HostDetail());//상세보기
-		map.put("/roomlist.do",new RoomListSelectAction());//검색결과화면 출력
-		map.put("/hostUpForm.do", new HostUpFormAction()); //숙소등록 폼
-		map.put("/search.do", new SearchAction());
-		
-		map.put("/hostUp.do", new HostUp()); //숙소등록 처리
-		
-
-//		map.put("/hostUp", new HostUp()); //숙소등록 처리
-		map.put("/search.do", new SearchAction());//숙소 검색
+		map.put("/register.do",new Register());  			  //회원가입등록처리
+		map.put("/hostDetail.do",new HostDetail());			  //상세보기
+		map.put("/roomlist.do",new RoomListSelectAction());	  //검색결과화면 출력
+		map.put("/hostUpForm.do", new HostUpFormAction());    //숙소등록 폼
+		map.put("/search.do", new SearchAction());			  //검색처리 
+		map.put("/hostUp.do", new HostUp()); 				  //숙소등록 처리
+		map.put("/search.do", new SearchAction());			  //숙소 검색
+		map.put("/findId.do", new FindId());				  //아이디 찾기
+		map.put("/findPassword.do", new FindPassword());	  //비밀번호 찾기
 	}
     
     protected void service(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {

@@ -12,7 +12,7 @@
 <meta name="description" content="">
 <meta name="author" content="">
 
-<title>Blog Post - Start Bootstrap Template</title>
+<title></title>
 
 <script src="https://kit.fontawesome.com/a076d05399.js"></script>
 <style>
@@ -81,14 +81,14 @@ box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
 				<div class="col-md-4">
 					<div class="box" style="border: 1px solid; position: fixed; width: 30%; border-radius: 25px; bottom: 10px; ">
 						<div style="padding: 20px;">
-							<span style="font-size: 20px;">$90,000</span> <span>/박</span> <span
+							<span style="font-size: 20px;">${detail.room_price }</span> <span>/박</span> <span
 								style="float: right;">★4.84</span>
 						</div>
 						<div class='row' style="padding: 20px;">
-							<input class="search__input" type="date" />체크인 날짜 <input
+							<input class="search__input" type="date" value="${detail.room_checkin }"/>체크인 날짜 <input
 								class="search__input" type="date" />체크아웃 날짜
 							<div class="col-6" style="border: 1px solid;">
-								인원 <br>인원수
+								인원 <br>
 							</div>
 						</div>
 						<div align="center">
