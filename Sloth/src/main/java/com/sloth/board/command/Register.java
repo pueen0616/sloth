@@ -25,6 +25,7 @@ public class Register implements Action {
 		vo.setEmail(request.getParameter("email"));
 		
 		int n = dao.insert(vo);
+		
 		String page;
 		if(n !=0) {
 			page = "login/insertSuccess.jsp";

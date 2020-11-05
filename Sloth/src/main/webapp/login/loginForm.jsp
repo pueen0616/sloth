@@ -27,7 +27,6 @@
 </head>
 <body>
 <header>
-<jsp:include page="/mainPage/mainMenu.jsp"></jsp:include>
 	<div align="center">
 		<form id="frm" name="frm" method="post" action="loginResult.do">
 			<h1>로그인</h1>
@@ -44,7 +43,7 @@
 			</div>
 		</form>
 			<span class='text-center'> 
-				<a href="" class="find-id">아이디	찾기&nbsp;&nbsp;
+				<a href="" class="find-id">아이디	찾기</a>&nbsp;&nbsp;
 				<a href="" class="find-password">비밀번호 찾기</a></span>
 			<div class="form-group">
 				<a href="registerForm.do">회원가입</a>

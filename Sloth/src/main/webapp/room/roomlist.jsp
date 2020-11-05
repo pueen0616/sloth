@@ -143,10 +143,9 @@ input:checked + label {
     </section>
 
 </div>
-
 		<div class="fixed_img_col">
-			<c:forEach items="${hosts }" var="host" varStatus="i">
 				<ul id="roomlist">
+			<c:forEach items="${hosts }" var="host" varStatus="i">
 					<li>
 					<a href="./hostDetail.do?room_num=${host.room_num }"  > 
 						<span class="thumb">
@@ -156,8 +155,8 @@ input:checked + label {
 					 </a>
 						<div><p>${host.room_price }</p></div>
 					</li>
-				</ul>
 			</c:forEach>
+				</ul>
 		</div>
 </body>
 </html>
