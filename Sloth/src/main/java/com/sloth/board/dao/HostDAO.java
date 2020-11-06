@@ -34,7 +34,7 @@ public class HostDAO extends DAO{
 			if(rs.next()) {
 				hvo = new HostPicVO();
 				hvo.setRoom_name(rs.getString("room_name"));
-				hvo.setRoom_price(rs.getString("ROOM_PRICE"));
+				hvo.setRoom_price(Integer.parseInt(rs.getString("ROOM_PRICE")));
 				hvo.setRoom_num(rs.getInt("room_num"));
 				hvo.setRoom_max(rs.getString("room_max"));
 				hvo.setRoom_info(rs.getString("room_info"));
@@ -82,7 +82,7 @@ public class HostDAO extends DAO{
 			while(rs.next()) {
 				vo = new HostPicVO();
 				vo.setRoom_name(rs.getString("room_name"));
-				vo.setRoom_price(rs.getString("ROOM_PRICE"));
+				vo.setRoom_price(Integer.parseInt(rs.getString("ROOM_PRICE")));
 				vo.setPic(rs.getString("pic"));
 				vo.setRoom_num(rs.getInt("room_num"));
 				

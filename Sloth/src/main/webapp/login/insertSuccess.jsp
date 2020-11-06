@@ -8,6 +8,6 @@
 
 </head>
 <body>
-<%response.sendRedirect("loginForm.do"); %>
+<%response.sendRedirect("picUp.do"); %>
 </body>
 </html>

@@ -3,26 +3,58 @@ package com.sloth.board.dao;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.List;
 
 import com.sloth.board.vo.AccountVO;
+import com.sloth.board.vo.HostPicVO;
 import com.sloth.board.vo.HostVO;
 
 public class AccountDao extends DAO {
 	private PreparedStatement psmt; //sql 명령문 실행
 	private ResultSet rs;	//select 후 결과셋 받기
 	private AccountVO vo;
+	Statement stmt = null;
 	
 	private final String SELECT_ALL = "SELECT * FROM ACCOUNT ORDER BY ID";
 	private final String SELECT = "SELECT * FROM ACCOUNT WHERE ID = ? AND PASSWORD=?";
 	private final String SELECTDETAIL = "SELECT * FROM HOST WHERE ROOM_NUM = ?";
 	private final String INSERT = "INSERT INTO ACCOUNT(ID,NAME,PASSWORD,BIRTH,EMAIL,TEL) VALUES(?,?,?,?,?,?)";
 	private final String HOST_INSERT = "INSERT INTO HOST(ROOM_NUM, ROOM_NAME, ROOM_ADDRESS, ROOM_MAX, ROOM_PRICE, ROOM_INFO, ID, ROOM_CHECKIN, ROOM_CHECKOUT)"
-									 + "VALUES(SEQ_NUM.NEXTVAL,?,?,?,?,?,?,?,?)";
+									 + "VALUES(?,?,?,?,?,?,?,?,?)";
 	private final String UPDATE_ADMIN = "UPDATE ACCOUNT SET USER_TYPE = 'ADMIN' WHERE ID = ?";
+	private final String PIC_INSERT_YN = "INSERT INTO PIC VALUES( (select max (pic_num)+1 from pic), ?, 'Y', ?)";
+	private final String PIC_INSERT = "INSERT INTO PIC VALUES((select max (pic_num)+1 from pic), ?, NULL, ?)";
+	String sql_seq = "select seq_num.nextval from dual";
 	
+	//대표사진
+	public int PIC_INSERT_YN(HostPicVO vo) {
+		int n = 0;
+		try {
+			psmt=conn.prepareStatement(PIC_INSERT_YN);
+			psmt.setString(1, vo.getPic());
+			psmt.setInt(2, vo.getRoom_num());
+			n=psmt.executeUpdate();
+		} catch(SQLException e) {
+			e.printStackTrace();
+		}
+		return n;
+	}
 
+	//사진
+	public int PIC_INSERT(HostPicVO vo) {
+		int n = 0;
+		try {
+			psmt=conn.prepareStatement(PIC_INSERT);
+			psmt.setString(1, vo.getPic());
+			psmt.setInt(2, vo.getRoom_num());
+			n=psmt.executeUpdate();
+		} catch(SQLException e) {
+			e.printStackTrace();
+		}
+		return n;
+	}
 	
 	public List<AccountVO> SELECT_All() {
 		List<AccountVO> list = new ArrayList<AccountVO>();
@@ -88,15 +120,22 @@ public class AccountDao extends DAO {
 	public int host_insert(HostVO vo) {
 		int n = 0;
 		try {
+//			//시퀀스 조회
+			stmt = conn.createStatement();
+			ResultSet rs = stmt.executeQuery(sql_seq);
+			if(rs.next())
+				vo.setRoomNum((rs.getInt(1)));
+				
 			psmt=conn.prepareStatement(HOST_INSERT);
-			psmt.setString(1, vo.getRoomName());
-			psmt.setString(2, vo.getRoomAddress());
-			psmt.setString(3, vo.getRoomMax());
-			psmt.setInt(4, vo.getRoomPrice());
-			psmt.setString(5, vo.getRoomInfo());
-			psmt.setString(6, vo.getId());
-			psmt.setDate(7, vo.getRoomCheckIn());
-			psmt.setDate(8, vo.getRoomCheckOut());
+			psmt.setInt(1, vo.getRoomNum());
+			psmt.setString(2, vo.getRoomName());
+			psmt.setString(3, vo.getRoomAddress());
+			psmt.setString(4, vo.getRoomMax());
+			psmt.setInt(5, vo.getRoomPrice());
+			psmt.setString(6, vo.getRoomInfo());
+			psmt.setString(7, vo.getId());
+			psmt.setDate(8, vo.getRoomCheckIn());
+			psmt.setDate(9, vo.getRoomCheckOut());
 			n=psmt.executeUpdate();
 		} catch(SQLException e) {
 			e.printStackTrace();

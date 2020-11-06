@@ -7,6 +7,7 @@ import java.sql.Date;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 import javax.servlet.http.Part;
 
 import com.sloth.board.common.Action;
@@ -14,6 +15,7 @@ import com.sloth.board.common.FileRenamePolicy;
 import com.sloth.board.common.FileUtil;
 import com.sloth.board.dao.AccountDao;
 import com.sloth.board.vo.AccountVO;
+import com.sloth.board.vo.HostPicVO;
 import com.sloth.board.vo.HostVO;
 
 public class HostUp implements Action {
@@ -33,6 +35,19 @@ public class HostUp implements Action {
 		vo.setRoomCheckIn(Date.valueOf(request.getParameter("FirstCheckIn")));
 		vo.setRoomCheckOut(Date.valueOf(request.getParameter("LastCheckIn")));
 		
+		int n = dao.host_insert(vo); //insert 해주고
+		
+		dao = new AccountDao(); //다시 생성하고
+		AccountVO avo = new AccountVO();
+		avo.setId(request.getParameter("id")); //id값 받아와서
+		dao.admin_grant(avo); //update 해주기
+		
+		
+		String page;
+		
+		//-------------------------------------------------------------------------------//
+//		사진등록코드
+	
 		String appPath = request.getServletContext().getRealPath("/img");
 		System.out.println(appPath);
 		try {
@@ -43,7 +58,15 @@ public class HostUp implements Action {
 					String uploadFile = appPath + File.separator + fileName;
 					File renameFile = FileRenamePolicy.rename(new File(uploadFile));
 					part.write(renameFile.getAbsolutePath());
-					vo.setPic(renameFile.getName());
+					
+					HostPicVO pic = new HostPicVO();
+					pic.setRoom_num(vo.getRoomNum());
+					pic.setPic(renameFile.getName());
+					if(part.getName().equals("img1") )
+						dao.PIC_INSERT_YN(pic);
+					else {
+						dao.PIC_INSERT(pic);
+					}
 				}
 			}
 		} catch (IOException e) {
@@ -51,17 +74,7 @@ public class HostUp implements Action {
 		} catch (ServletException e) {
 			e.printStackTrace();
 		}
-		
-		
-		dao = new AccountDao();
-		int n = dao.host_insert(vo); //insert 해주고
-		
-		dao = new AccountDao(); //다시 생성하고
-		AccountVO avo = new AccountVO();
-		avo.setId(request.getParameter("id")); //id값 받아와서
-		dao.admin_grant(avo); //update 해주기
-		String page;
-		
+	      
 		if(n !=0) {
 			page = "login/insertSuccess.jsp";
 		}else {

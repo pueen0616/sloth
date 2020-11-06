@@ -44,7 +44,7 @@ public class HomeDao extends DAO {
 	            vo.setRoom_name(rs.getString("room_name"));
 	            vo.setRoom_address(rs.getString("room_address"));
 	            vo.setRoom_max(rs.getString("room_max"));
-	            vo.setRoom_price(rs.getString("room_price"));
+	            vo.setRoom_price(Integer.parseInt(rs.getString("room_price")));
 	            vo.setRoom_checkin(rs.getDate("room_checkin"));
 	            vo.setRoom_checkout(rs.getDate("room_checkout"));
 	            vo.setRoom_info(rs.getString("room_info"));
@@ -80,7 +80,7 @@ public class HomeDao extends DAO {
 		            vo.setRoom_name(rs.getString("room_name"));
 		            vo.setRoom_address(rs.getString("room_address"));
 		            vo.setRoom_max(rs.getString("room_max"));
-		            vo.setRoom_price(rs.getString("room_price"));
+		            vo.setRoom_price(Integer.parseInt(rs.getString("room_price")));
 		            vo.setRoom_checkin(rs.getDate("room_checkin"));
 		            vo.setRoom_checkout(rs.getDate("room_checkout"));
 		            vo.setRoom_info(rs.getString("room_info"));

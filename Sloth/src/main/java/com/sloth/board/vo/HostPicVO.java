@@ -7,7 +7,7 @@ public class HostPicVO {
    private String room_name;
    private String room_address;
    private String room_max;
-   private String room_price;
+   private int room_price;
    private Date room_checkin;
    private Date room_checkout;
    private String room_info;
@@ -16,13 +16,13 @@ public class HostPicVO {
    private int pic_num;   
    private String pic;
    private String first_yn;
+
    
-@Override
-public String toString() {
-	return "HostPicVO [room_num=" + room_num + ", room_name=" + room_name + ", room_address=" + room_address
-			+ ", room_max=" + room_max + ", room_price=" + room_price + ", room_checkin=" + room_checkin
-			+ ", room_checkout=" + room_checkout + ", room_info=" + room_info + ", id=" + id + ", location=" + location
-			+ ", pic_num=" + pic_num + ", pic=" + pic + ", first_yn=" + first_yn + "]";
+public int getRoom_price() {
+	return room_price;
+}
+public void setRoom_price(int room_price) {
+	this.room_price = room_price;
 }
 public int getRoom_num() {
 	return room_num;
@@ -47,12 +47,6 @@ public String getRoom_max() {
 }
 public void setRoom_max(String room_max) {
 	this.room_max = room_max;
-}
-public String getRoom_price() {
-	return room_price;
-}
-public void setRoom_price(String room_price) {
-	this.room_price = room_price;
 }
 public Date getRoom_checkin() {
 	return room_checkin;

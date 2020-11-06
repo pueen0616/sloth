@@ -5,6 +5,7 @@
    <servlet>
   	<servlet-name>FrontController</servlet-name>
   	<servlet-class>com.sloth.board.controller.FrontController</servlet-class>
+  	<multipart-config></multipart-config>
   </servlet>
   
   <servlet-mapping>
