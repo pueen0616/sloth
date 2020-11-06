@@ -1,11 +1,17 @@
 package com.sloth.board.command;
 
+import java.io.File;
+import java.io.IOException;
 import java.sql.Date;
 
+import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.Part;
 
 import com.sloth.board.common.Action;
+import com.sloth.board.common.FileRenamePolicy;
+import com.sloth.board.common.FileUtil;
 import com.sloth.board.dao.AccountDao;
 import com.sloth.board.vo.AccountVO;
 import com.sloth.board.vo.HostVO;
@@ -26,6 +32,26 @@ public class HostUp implements Action {
 		vo.setId(request.getParameter("id"));
 		vo.setRoomCheckIn(Date.valueOf(request.getParameter("FirstCheckIn")));
 		vo.setRoomCheckOut(Date.valueOf(request.getParameter("LastCheckIn")));
+		
+		String appPath = request.getServletContext().getRealPath("/img");
+		System.out.println(appPath);
+		try {
+			for (Part part : request.getParts()) {
+				String fileName = FileUtil.extractFileName(part);
+				if (!fileName.equals("")) {
+					// 파일명 중복체크
+					String uploadFile = appPath + File.separator + fileName;
+					File renameFile = FileRenamePolicy.rename(new File(uploadFile));
+					part.write(renameFile.getAbsolutePath());
+					vo.setPic(renameFile.getName());
+				}
+			}
+		} catch (IOException e) {
+			e.printStackTrace();
+		} catch (ServletException e) {
+			e.printStackTrace();
+		}
+		
 		
 		dao = new AccountDao();
 		int n = dao.host_insert(vo); //insert 해주고

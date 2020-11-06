@@ -53,7 +53,7 @@ input[type=text]:hover {
 	<div class="_s1t1w0m">숙소를 등록 해보세요</div>
 	<hr style="margin-bottom: 32px;">
 	<div>
-		<form id="frm" name="frm" action="/Sloth/hostUp.do" method="post">
+		<form id="frm" name="frm" action="/Sloth/hostUp.do" method="post" enctype="multipart/form-data">
 			
 			<div class="_s1t1w0" style="margin-bottom: 16px;">숙소 이름은 무엇인가요</div>	
 			<div style="margin-bottom: 32px;"><input type="text" id="roomName" name="roomName"></div>
@@ -84,7 +84,7 @@ input[type=text]:hover {
 			<textarea cols="30" rows="10" id="roomInfo" name="roomInfo"></textarea>
 			
 			<div style="margin-bottom: 32px;"><input type="hidden" id="id" name="id" value="${id}" readonly></div>
-			<div style="margin-bottom: 32px;">파일첨부<input type="file" name="fileName1"></div>
+			<div style="margin-bottom: 32px;">파일첨부<input type="file" id="img" name="img"></div>
 			<div><input type="submit" value="등록">
  				 <input type="reset" value="취소"></div>
 		</form>

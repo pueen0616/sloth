@@ -78,6 +78,8 @@ box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
 					<hr>
 					<div id="info" name="info">${detail.room_info }</div>
 				</div>
+				
+<!-- 				예약박스 -->
 				<div class="col-md-4">
 					<div class="box" style="border: 1px solid; position: fixed; width: 30%; border-radius: 25px; bottom: 10px; ">
 						<div style="padding: 20px;">
