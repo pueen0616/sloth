@@ -3,7 +3,7 @@ package com.sloth.board.vo;
 public class reviewVO {
 private int reserNum;
 private String reviewArea;
-private String reviewStar;
+private int reviewStar;
 private String id;
 public reviewVO() {
 	// TODO Auto-generated constructor stub
@@ -20,10 +20,11 @@ public String getReviewArea() {
 public void setReviewArea(String reviewArea) {
 	this.reviewArea = reviewArea;
 }
-public String getReviewStar() {
+
+public int getReviewStar() {
 	return reviewStar;
 }
-public void setReviewStar(String reviewStar) {
+public void setReviewStar(int reviewStar) {
 	this.reviewStar = reviewStar;
 }
 public String getId() {

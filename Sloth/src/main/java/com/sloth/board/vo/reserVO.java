@@ -6,14 +6,31 @@ public class reserVO {
 private int reserNum;
 private Date reserCheckIn;
 private Date reserCheckOut;
-private String reserPrice;
+private int reserPrice;
 private String reserMax;
 private String id;
 private int roomNum;
 private String reserToday;
+
+
 public reserVO() {
 	// TODO Auto-generated constructor stub
 }
+
+
+
+public int getReserPrice() {
+	return reserPrice;
+}
+
+
+
+public void setReserPrice(int reserPrice) {
+	this.reserPrice = reserPrice;
+}
+
+
+
 public int getReserNum() {
 	return reserNum;
 }
@@ -32,12 +49,7 @@ public Date getReserCheckOut() {
 public void setReserCheckOut(Date reserCheckOut) {
 	this.reserCheckOut = reserCheckOut;
 }
-public String getReserPrice() {
-	return reserPrice;
-}
-public void setReserPrice(String reserPrice) {
-	this.reserPrice = reserPrice;
-}
+
 public String getReserMax() {
 	return reserMax;
 }

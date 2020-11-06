@@ -6,6 +6,7 @@ import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import com.sloth.board.common.Action;
 import com.sloth.board.dao.HomeDao;
@@ -29,6 +30,9 @@ public class SearchAction implements Action {
 //	      vo.setLroom_max(request.getParameter("room_max"));
 	      
 	      list = dao.wantselect(vo);
+	      
+	      HttpSession session = request.getSession();
+	      session.setAttribute("selectVO", vo);
 	      
 	      request.setAttribute("hosts", list);
 	      

@@ -113,36 +113,15 @@ input:checked + label {
 </script>
 </head>
 <body>
-	<div class="main">
-    <input id="tab1" type="radio" name="tabs" checked> <!--디폴트 메뉴-->
-    <label for="tab1">등록순</label>
+    <input id="tab1" type="button" name="tab1" onclick="location.href='${pageContext.request.contextPath}/highPrice.do'">
+    <label for="tab1">높은가격순</label>
 
-    <input id="tab2" type="radio" name="tabs">
-    <label for="tab2">높은가격순</label>
+    <input id="tab2" type="button" name="tab2" onclick="location.href='${pageContext.request.contextPath}/main.do'">
+    <label for="tab2">낮은가격순</label>
 
-    <input id="tab3" type="radio" name="tabs">
-    <label for="tab3">낮은가격순</label>
+    <input id="tab3" type="button" name="tab3">
+    <label for="tab3">평점순</label>
 
-    <input id="tab4" type="radio" name="tabs">
-    <label for="tab4">평점순</label>
-
-    <section id="content1">
-        <p>tab menu1의 내용</p>
-    </section>
-
-    <section id="content2">
-        <p>tab menu2의 내용</p>
-    </section>
-
-    <section id="content3">
-        <p>tab menu3의 내용</p>
-    </section>
-
-    <section id="content4">
-        <p>tab menu4의 내용</p>
-    </section>
-
-</div>
 		<div class="fixed_img_col">
 				<ul id="roomlist">
 			<c:forEach items="${hosts }" var="host" varStatus="i">

@@ -27,7 +27,7 @@ public class HostUp implements Action {
 		vo.setRoomName(request.getParameter("roomName"));
 		vo.setRoomAddress(request.getParameter("roomAddress"));
 		vo.setRoomMax(request.getParameter("roomMax"));
-		vo.setRoomPrice(request.getParameter("roomPrice"));
+		vo.setRoomPrice(Integer.parseInt(request.getParameter("roomPrice")));
 		vo.setRoomInfo(request.getParameter("roomInfo"));
 		vo.setId(request.getParameter("id"));
 		vo.setRoomCheckIn(Date.valueOf(request.getParameter("FirstCheckIn")));

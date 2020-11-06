@@ -13,6 +13,7 @@ import javax.servlet.http.HttpServletResponse;
 
 import com.sloth.board.command.FindId;
 import com.sloth.board.command.FindPassword;
+import com.sloth.board.command.HighPrice;
 import com.sloth.board.command.HostDetail;
 import com.sloth.board.command.HostUp;
 import com.sloth.board.command.HostUpFormAction;
@@ -54,6 +55,7 @@ public class FrontController extends HttpServlet {
 		map.put("/search.do", new SearchAction());			  //숙소 검색
 		map.put("/findId.do", new FindId());				  //아이디 찾기
 		map.put("/findPassword.do", new FindPassword());	  //비밀번호 찾기
+		map.put("/highPrice.do", new HighPrice()); 			  //높은 가격 필터
 	}
     
     protected void service(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {

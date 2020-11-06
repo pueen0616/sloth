@@ -7,7 +7,7 @@ public class HostVO {
 	private String roomName;
 	private String roomAddress;
 	private String roomMax;
-	private String roomPrice;
+	private int roomPrice;
 	private Date roomCheckIn;
 	private Date roomCheckOut;
 	private String roomInfo;
@@ -16,7 +16,14 @@ public class HostVO {
 	private int picNum;
 	private String pic;
 	
-	
+
+	public int getRoomPrice() {
+		return roomPrice;
+	}
+
+	public void setRoomPrice(int roomPrice) {
+		this.roomPrice = roomPrice;
+	}
 
 	public int getPicNum() {
 		return picNum;
@@ -86,14 +93,6 @@ public class HostVO {
 
 	public void setRoomMax(String roomMax) {
 		this.roomMax = roomMax;
-	}
-
-	public String getRoomPrice() {
-		return roomPrice;
-	}
-
-	public void setRoomPrice(String roomPrice) {
-		this.roomPrice = roomPrice;
 	}
 
 	

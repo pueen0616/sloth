@@ -17,7 +17,7 @@ public class HostDAO extends DAO{
 	//private final String SELECT_ALL = "SELECT A.ROOM_NAME,B.PIC_NUM,B.PIC FROM HOST A INNER JOIN PIC B ON A.ROOM_NUM = B.ROOM_NUM ";
 	//private final String SELECT_ALL= "SELECT ROOM_NAME,ROOM_PRICE FROM HOST ORDER BY ROOM_NUM DESC";
 	//
-	private final String SELECT_ALL="SELECT A.ROOM_NUM, A.ROOM_NAME, A.ROOM_PRICE, B.PIC_NUM, B.PIC FROM HOST A"
+	private final String SELECT_HOST_PIC_JOIN="SELECT A.ROOM_NUM, A.ROOM_NAME, A.ROOM_PRICE, B.PIC_NUM, B.PIC FROM HOST A"
 			+ "	 INNER JOIN PIC B ON (A.ROOM_NUM = B.ROOM_NUM) WHERE FIRST_YN = 'Y'";
 	
 	private final String SELECT_DETAIL = "SELECT * FROM HOST WHERE ROOM_NUM = ?";
@@ -73,10 +73,10 @@ public class HostDAO extends DAO{
 	}
 	
 	// 리스트 화면
-	public List<HostPicVO> SELECT_All(HostPicVO vo) {
+	public List<HostPicVO> SELECT_HOST_PIC_JOIN(HostPicVO vo) {
 		List<HostPicVO> list = new ArrayList<HostPicVO>();
 		try {
-			psmt = conn.prepareStatement(SELECT_ALL);
+			psmt = conn.prepareStatement(SELECT_HOST_PIC_JOIN);
 			rs=psmt.executeQuery();
 			
 			while(rs.next()) {

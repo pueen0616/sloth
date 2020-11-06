@@ -6,6 +6,7 @@ import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import com.sloth.board.common.Action;
 import com.sloth.board.dao.HostDAO;
@@ -28,11 +29,14 @@ public class RoomListSelectAction implements Action {
 	      vo.setRoom_max(request.getParameter("room_max"));
 //	      vo.setLroom_max(request.getParameter("room_max"));
 	      
-	      list = dao.SELECT_All(vo);
-	      
+	      list = dao.SELECT_HOST_PIC_JOIN(vo);
+	       
+	      HttpSession session = request.getSession();
+	      session.setAttribute("selectVO", vo);
+	         
 	      request.setAttribute("hosts", list);
 	      
-	      return "/host/hostDetail.jsp";
+	      return "/room/roomlist.jsp";
 	   }
 
 

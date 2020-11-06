@@ -87,10 +87,10 @@ box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
 								style="float: right;">★4.84</span>
 						</div>
 						<div class='row' style="padding: 20px;">
-							<input class="search__input" type="date" value="${detail.room_checkin }"/>체크인 날짜 <input
-								class="search__input" type="date" />체크아웃 날짜
+							<input class="search__input" type="date" value="${selectVO.room_checkin }"/>체크인 날짜 <input
+								class="search__input" type="date" value="${selectVO.room_checkout }"/>체크아웃 날짜
 							<div class="col-6" style="border: 1px solid;">
-								인원 <br>
+								인원  ${selectVO.room_max }명<br>
 							</div>
 						</div>
 						<div align="center">
