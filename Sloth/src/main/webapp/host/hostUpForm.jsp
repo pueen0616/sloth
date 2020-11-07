@@ -53,7 +53,7 @@ input[type=text]:hover {
 	<div class="_s1t1w0m">숙소를 등록 해보세요</div>
 	<hr style="margin-bottom: 32px;">
 	<div>
-		<form id="frm" name="frm" action="/Sloth/hostUp.do" method="post" enctype="multipart/form-data">
+		<form id="frm" name="frm" action="hostUp.do" method="post" enctype="multipart/form-data">
 			
 			<div class="_s1t1w0" style="margin-bottom: 16px;">숙소 이름은 무엇인가요</div>	
 			<div style="margin-bottom: 32px;"><input type="text" id="roomName" name="roomName"></div>

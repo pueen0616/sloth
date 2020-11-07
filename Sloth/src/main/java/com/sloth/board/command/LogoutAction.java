@@ -20,5 +20,5 @@ public class LogoutAction implements Action {
 		
 		return "redirect:main.do";
 	}
-
+ 
 }

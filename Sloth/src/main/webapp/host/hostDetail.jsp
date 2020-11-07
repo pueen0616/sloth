@@ -80,6 +80,7 @@ box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
 				</div>
 				
 <!-- 				예약박스 -->
+				<form id="frm" name="frm" action="reserv.do" method="post">
 				<div class="col-md-4">
 					<div class="box" style="border: 1px solid; position: fixed; width: 30%; border-radius: 25px; bottom: 10px; ">
 						<div style="padding: 20px;">
@@ -87,18 +88,19 @@ box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
 								style="float: right;">★4.84</span>
 						</div>
 						<div class='row' style="padding: 20px;">
-							<input class="search__input" type="date" value="${selectVO.room_checkin }"/>체크인 날짜 <input
-								class="search__input" type="date" value="${selectVO.room_checkout }"/>체크아웃 날짜
+							<input class="search__input" type="date" value="${selectVO.room_checkin }"/>체크인 날짜
+							 <input class="search__input" type="date" value="${selectVO.room_checkout }"/>체크아웃 날짜
 							<div class="col-6" style="border: 1px solid;">
 								인원  ${selectVO.room_max }명<br>
 							</div>
 						</div>
 						<div align="center">
-							<a href="#" class="btn btn-danger btn-lg active" role="button"
+							<a href="reserv.do" class="btn btn-danger btn-lg active" role="button"
 								aria-pressed="true">예약하기</a>
 						</div>
 					</div>
 				</div>
+				</form>
 			</div>
 
 		</div>

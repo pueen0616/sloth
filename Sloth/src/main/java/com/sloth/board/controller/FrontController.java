@@ -15,16 +15,16 @@ import com.sloth.board.command.FindId;
 import com.sloth.board.command.FindPassword;
 import com.sloth.board.command.HighPrice;
 import com.sloth.board.command.HostDetail;
+import com.sloth.board.command.HostMAction;
 import com.sloth.board.command.HostUp;
 import com.sloth.board.command.HostUpFormAction;
 import com.sloth.board.command.LoginAction;
 import com.sloth.board.command.LoginFormAction;
 import com.sloth.board.command.LogoutAction;
 import com.sloth.board.command.Main;
-import com.sloth.board.command.PicUpAction;
 import com.sloth.board.command.Register;
 import com.sloth.board.command.RegisterFormAction;
-
+import com.sloth.board.command.ReservAction;
 import com.sloth.board.command.SearchAction;
 
 import com.sloth.board.command.RoomListSelectAction;
@@ -57,7 +57,8 @@ public class FrontController extends HttpServlet {
 		map.put("/findId.do", new FindId());				  //아이디 찾기
 		map.put("/findPassword.do", new FindPassword());	  //비밀번호 찾기
 		map.put("/highPrice.do", new HighPrice()); 			  //높은 가격 필터
-		map.put("/picUp.do", new PicUpAction());
+		map.put("/reserv.do", new ReservAction());
+		map.put("/hostM.do", new HostMAction());
 	}
     
     protected void service(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {

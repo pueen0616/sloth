@@ -43,8 +43,6 @@ public class HostUp implements Action {
 		dao.admin_grant(avo); //update 해주기
 		
 		
-		String page;
-		
 		//-------------------------------------------------------------------------------//
 //		사진등록코드
 	
@@ -74,8 +72,12 @@ public class HostUp implements Action {
 		} catch (ServletException e) {
 			e.printStackTrace();
 		}
-	      
+	    
+		
+		String page;
+		
 		if(n !=0) {
+						
 			page = "login/insertSuccess.jsp";
 		}else {
 			page = "login/insertFail.jsp";

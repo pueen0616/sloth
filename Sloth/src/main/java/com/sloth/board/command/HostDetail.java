@@ -8,6 +8,7 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import com.sloth.board.common.Action;
+import com.sloth.board.dao.AccountDao;
 import com.sloth.board.dao.HomeDao;
 import com.sloth.board.dao.HostDAO;
 import com.sloth.board.vo.HostPicVO;
@@ -21,9 +22,11 @@ public class HostDetail implements Action {
 		vo.setRoom_num(Integer.parseInt(request.getParameter("room_num")));	
 
 		HostDAO dao = new HostDAO();
-		
 		HostPicVO dvo = dao.SELECT_DETAIL(vo);		
-		request.setAttribute("detail", dvo);
+//		request.setAttribute("detail", dvo);
+		
+		HttpSession session1 = request.getSession();
+		session1.setAttribute("detail", dvo);
 //=-----------------------------------------------------------//		
 		//이미지 조회
 		//HostDAO pdao = new HostDAO();
