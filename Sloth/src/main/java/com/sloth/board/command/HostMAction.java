@@ -14,8 +14,8 @@ public class HostMAction implements Action {
 	@Override
 	public String exec(HttpServletRequest request, HttpServletResponse response) {
 		HostPicVO vo = new HostPicVO();
-		
 		vo.setId(request.getParameter("id"));			
+		
 		HostDAO dao = new HostDAO();
 		HostPicVO dvo = dao.Host_M(vo);	
 		

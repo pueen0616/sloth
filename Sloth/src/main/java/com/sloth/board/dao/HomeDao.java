@@ -7,12 +7,11 @@ import java.util.ArrayList;
 import java.util.List;
 
 import com.sloth.board.vo.HostPicVO;
-import com.sloth.board.vo.HostVO;
 
 public class HomeDao extends DAO {
 	   private PreparedStatement psmt;   //sql 명령문 실행
 	   private ResultSet rs;    //select 후 결과셋 받기
-	   private HostVO vo;
+	   private HostPicVO vo;
 	   
 	 
 	   //private final String WANTSELECT = "SELECT * FROM HOST WHERE ROOM_MAX=?";

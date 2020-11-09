@@ -9,7 +9,6 @@ import java.util.List;
 
 import com.sloth.board.vo.AccountVO;
 import com.sloth.board.vo.HostPicVO;
-import com.sloth.board.vo.HostVO;
 
 public class AccountDao extends DAO {
 	private PreparedStatement psmt; //sql 명령문 실행
@@ -116,25 +115,25 @@ public class AccountDao extends DAO {
 	}
 	
 	// 숙소 insert
-	public int host_insert(HostVO vo) {
+	public int host_insert(HostPicVO vo) {
 		int n = 0;
 		try {
 //			//시퀀스 조회
 			stmt = conn.createStatement();
 			ResultSet rs = stmt.executeQuery(sql_seq);
 			if(rs.next())
-				vo.setRoomNum((rs.getInt(1)));
+				vo.setRoom_num((rs.getInt(1)));
 				
 			psmt=conn.prepareStatement(HOST_INSERT);
-			psmt.setInt(1, vo.getRoomNum());
-			psmt.setString(2, vo.getRoomName());
-			psmt.setString(3, vo.getRoomAddress());
-			psmt.setString(4, vo.getRoomMax());
-			psmt.setInt(5, vo.getRoomPrice());
-			psmt.setString(6, vo.getRoomInfo());
+			psmt.setInt(1, vo.getRoom_num());
+			psmt.setString(2, vo.getRoom_name());
+			psmt.setString(3, vo.getRoom_address());
+			psmt.setString(4, vo.getRoom_max());
+			psmt.setInt(5, vo.getRoom_price());
+			psmt.setString(6, vo.getRoom_info());
 			psmt.setString(7, vo.getId());
-			psmt.setDate(8, vo.getRoomCheckIn());
-			psmt.setDate(9, vo.getRoomCheckOut());
+			psmt.setDate(8, vo.getRoom_checkin());
+			psmt.setDate(9, vo.getRoom_checkout());
 			n=psmt.executeUpdate();
 		} catch(SQLException e) {
 			e.printStackTrace();

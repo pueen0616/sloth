@@ -7,12 +7,11 @@ import java.util.ArrayList;
 import java.util.List;
 
 import com.sloth.board.vo.HostPicVO;
-import com.sloth.board.vo.HostVO;
 
 public class HostDAO extends DAO{
 	private PreparedStatement psmt; //sql 명령문 실행
 	private ResultSet rs;	//select 후 결과셋 받기
-	private HostVO vo;
+	private HostPicVO vo;
 	
 	//private final String SELECT_ALL = "SELECT A.ROOM_NAME,B.PIC_NUM,B.PIC FROM HOST A INNER JOIN PIC B ON A.ROOM_NUM = B.ROOM_NUM ";
 	//private final String SELECT_ALL= "SELECT ROOM_NAME,ROOM_PRICE FROM HOST ORDER BY ROOM_NUM DESC";
@@ -36,7 +35,7 @@ public class HostDAO extends DAO{
 					hvo.setId(rs.getString("id"));
 					hvo.setRoom_name(rs.getString("room_name"));
 					hvo.setLocation(rs.getString("location"));
-					hvo.setRoom_price(Integer.parseInt(rs.getString("ROOM_PRICE")));
+					hvo.setRoom_price(Integer.parseInt(rs.getString("room_price")));
 					hvo.setRoom_num(rs.getInt("room_num"));
 					hvo.setRoom_address(rs.getString("room_address"));
 					hvo.setRoom_max(rs.getString("room_max"));
