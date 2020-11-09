@@ -10,6 +10,7 @@ import javax.servlet.http.HttpSession;
 
 import com.sloth.board.common.Action;
 import com.sloth.board.dao.HomeDao;
+import com.sloth.board.dao.HostDAO;
 import com.sloth.board.vo.HostPicVO;
 
 public class SearchAction implements Action {
@@ -19,7 +20,7 @@ public class SearchAction implements Action {
 	      // TODO 회원리스트 보기 구현
 	      
 	      //response.setCharacterEncoding(arg0);
-	      HomeDao dao = new HomeDao();      
+	      HomeDao dao = new HomeDao();   
 	      HostPicVO vo = new HostPicVO();
 	      List<HostPicVO> list = new ArrayList<HostPicVO>();
 	      
@@ -29,6 +30,7 @@ public class SearchAction implements Action {
 	      vo.setRoom_max(request.getParameter("room_max"));
 	      
 	      list = dao.wantselect(vo);
+//	      list = dao1.SELECT_HOST_PIC_JOIN(vo);
 	      
 	      HttpSession session = request.getSession();
 	      session.setAttribute("selectVO", vo);

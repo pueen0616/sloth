@@ -25,7 +25,7 @@
 					<a class="dropdown-item" href="#">게시판</a>
 					<a class="dropdown-item" href="#">예약관리</a>
 					<c:if test="${user_type ne null }">
-						<a class="dropdown-item" href="./hostM.do?id=${hostM.id }">숙소관리</a>
+						<a class="dropdown-item" href="./hostM.do">숙소관리</a>
 					</c:if>
 					<a class="dropdown-item" href="#">관심숙소</a>
 					<a class="dropdown-item" href="logout.do">로그아웃</a>

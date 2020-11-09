@@ -38,7 +38,6 @@ public class HomeDao extends DAO {
 		   		+ "AND FIRST_YN = 'Y' "
 		   		+ "ORDER BY H.ROOM_PRICE DESC";
 	   
-	   
 	   public List<HostPicVO> wantselect(HostPicVO vo){  // 원하는거 검색창
 	      List<HostPicVO> list = new ArrayList<HostPicVO>();
 	      try {   
