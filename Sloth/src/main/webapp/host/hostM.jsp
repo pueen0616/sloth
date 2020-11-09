@@ -19,14 +19,14 @@
     </tr>
   </thead>
   <tbody>
-  <c:forEach items="${hostM}" var="hostM" varStatus="i">
+  <c:forEach items="${hostM}" var="host" varStatus="i">
     <tr>
       <th scope="row"></th>
-      <td>${hostM.pic}, ${hostM.name }</td>
-      <td>${hostM.room_name}</td>
-      <td>${hostM.room_address}</td>
-      <td>${hostM.room_price}</td>
-      <td>${hostM.room_max}</td>
+      <td></td>
+      <td>${host.room_name}</td>
+      <td>${host.room_address}</td>
+      <td>${host.room_price}</td>
+      <td>${host.room_max}</td>
       <td><button type="button" class="btn btn-light">수정</button></td>
     </tr>
     </c:forEach>

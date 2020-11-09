@@ -18,19 +18,22 @@ public class HostDAO extends DAO{
 	//
 	private final String SELECT_HOST_PIC_JOIN="SELECT A.ROOM_NUM, A.ROOM_NAME, A.ROOM_PRICE, B.PIC_NUM, B.PIC FROM HOST A"
 			+ "	 INNER JOIN PIC B ON (A.ROOM_NUM = B.ROOM_NUM) WHERE FIRST_YN = 'Y'";
-	private final String HOST_M = "SELECT * FROM HOST WHERE ID = ?";
+	private final String HOST_M = "SELECT A.*, B.PIC_NUM, B.PIC FROM HOST A"
+			                  + "  INNER JOIN PIC B ON (A.ROOM_NUM = B.ROOM_NUM) WHERE FIRST_YN = 'Y' AND A.ID = ?";
 	private final String SELECT_DETAIL = "SELECT * FROM HOST WHERE ROOM_NUM = ?";
 	private final String SELECT_PIC = "SELECT * FROM PIC WHERE ROOM_NUM = ?";
 	
+	
 	//숙소 관리
-		public HostPicVO Host_M(HostPicVO vo){
+		public List<HostPicVO> Host_M(HostPicVO vo){
 			HostPicVO hvo = null;
+			List<HostPicVO> list = new ArrayList<HostPicVO>();
 			try {
 				psmt = conn.prepareStatement(HOST_M);
 				psmt.setString(1, vo.getId());
 				rs=psmt.executeQuery();
 				
-				if(rs.next()) {
+				while(rs.next()) {
 					hvo = new HostPicVO();
 					hvo.setId(rs.getString("id"));
 					hvo.setRoom_name(rs.getString("room_name"));
@@ -42,14 +45,15 @@ public class HostDAO extends DAO{
 					hvo.setRoom_info(rs.getString("room_info"));
 					hvo.setRoom_checkin(rs.getDate("room_checkIn"));
 					hvo.setRoom_checkout(rs.getDate("room_checkOut"));
-					
+					hvo.setPic(rs.getString("pic"));
+					list.add(hvo);
 				}
 			} catch(SQLException e) {
 				e.printStackTrace();
 			} finally{
 				
 			}
-			return hvo;
+			return list;
 		}	
 	
 	//상세 페이지
