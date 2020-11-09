@@ -22,7 +22,33 @@ public class HostDAO extends DAO{
 			                     + "  INNER JOIN PIC B ON (A.ROOM_NUM = B.ROOM_NUM) WHERE FIRST_YN = 'Y' AND A.ID = ?";
 	private final String SELECT_DETAIL = "SELECT * FROM HOST WHERE ROOM_NUM = ?";
 	private final String SELECT_PIC = "SELECT * FROM PIC WHERE ROOM_NUM = ?";
+	private final String hostmupdate = "UPDATE HOST SET ROOM_NAME=? , ROOM_ADDRESS=?, ROOM_MAX=? ,ROOM_PRICE=? "
+			+ " ,ROOM_INFO=? ,ROOM_CHECKIN=?, ROOM_CHECKOUT=? WHERE ROOM_NUM=?";
 	
+	
+	//host 수정
+	public HostPicVO hostmupdate(HostPicVO vo){
+		int n = 0;
+		try {
+			psmt = conn.prepareStatement(hostmupdate);
+			psmt.setString(1, vo.getRoom_name());
+			psmt.setString(2, vo.getRoom_address());
+			psmt.setString(3, vo.getRoom_max());
+			psmt.setInt(4, vo.getRoom_price());
+			psmt.setString(5, vo.getRoom_info());
+			psmt.setDate(6, vo.getRoom_checkin());
+			psmt.setDate(7, vo.getRoom_checkout());
+			psmt.setInt(8, vo.getRoom_num());
+			
+			n = psmt.executeUpdate();
+
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		
+		return vo;
+		
+	}
 	
 	//숙소 관리
 		public List<HostPicVO> Host_M(HostPicVO vo){

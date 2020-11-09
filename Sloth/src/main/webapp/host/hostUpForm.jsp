@@ -10,12 +10,7 @@
 	href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
 	integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm"
 	crossorigin="anonymous">
-<script>
-	$(()=>{
-		var s = document.getElementById("roomMax");
-	    var roomMax = s.options[s.selectedIndex].value;
-	});
-</script>
+
 <style>
 input[type=text] {
     border : 2px solid skyblue;
@@ -56,13 +51,13 @@ input[type=text]:hover {
 		<form id="frm" name="frm" action="hostUp.do" method="post" enctype="multipart/form-data">
 			
 			<div class="_s1t1w0" style="margin-bottom: 16px;">숙소 이름은 무엇인가요</div>	
-			<div style="margin-bottom: 32px;"><input type="text" id="roomName" name="roomName"></div>
+			<div style="margin-bottom: 32px;"><input type="text" id="room_name" name="room_name"></div>
 			
 			<div class="_s1t1w0" style="margin-bottom: 16px;">숙소 위치는 어디일까요</div>
-			<div style="margin-bottom: 32px;"><input type="text" id="roomAddress" name="roomAddress"></div>
+			<div style="margin-bottom: 32px;"><input type="text" id="room_address" name="room_address"></div>
 			
 			<div class="_s1t1w0" style="margin-bottom: 16px;">최대 인원을 정해 주세요</div>
-			<select style="margin-bottom: 32px;" id="roomMax" name="roomMax">
+			<select style="margin-bottom: 32px;" id="room_max" name="room_max">
 			    <option value="1">1</option>
 			    <option value="2">2</option>
 			    <option value="3">3</option>
@@ -83,11 +78,11 @@ input[type=text]:hover {
 			<div class="_s1t1w0" style="margin-bottom: 16px;">당신의 숙소를 자랑 해주세요</div>
 			<textarea cols="30" rows="10" id="room_info" name="room_info"></textarea>
 			
-			<div style="margin-bottom: 32px;"><input type="hidden" id="id" name="id" value="${id}" readonly></div>
-				<div style="margin-bottom: 32px;">대표사진<input type="file" id="img" name="img1"></div>
+				<div style="margin-bottom: 32px;">대표사진<input type="file" id="img1" name="img1"></div>
 				<div style="margin-bottom: 32px;">사진<input type="file" id="img" name="img"></div>
 			<div><input type="submit" value="다음">
  				 <input type="reset" value="취소"></div>
+			
 		</form>
 	</div>
 </div>

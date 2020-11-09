@@ -18,6 +18,8 @@ import com.sloth.board.command.HostDetail;
 import com.sloth.board.command.HostMAction;
 import com.sloth.board.command.HostUp;
 import com.sloth.board.command.HostUpFormAction;
+import com.sloth.board.command.HostmUpdateAction;
+import com.sloth.board.command.HostmUpdateFormAction;
 import com.sloth.board.command.LoginAction;
 import com.sloth.board.command.LoginFormAction;
 import com.sloth.board.command.LogoutAction;
@@ -59,6 +61,9 @@ public class FrontController extends HttpServlet {
 		map.put("/highPrice.do", new HighPrice()); 			  //높은 가격 필터
 		map.put("/reserv.do", new ReservAction());
 		map.put("/hostM.do", new HostMAction());
+		map.put("/hostmUpdate.do", new HostmUpdateAction());
+		map.put("/hostmUpdateForm.do", new HostmUpdateFormAction());
+
 	}
     
     protected void service(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {

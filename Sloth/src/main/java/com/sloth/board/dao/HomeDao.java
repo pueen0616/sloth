@@ -19,14 +19,16 @@ public class HomeDao extends DAO {
 								   		+ "AND H.ROOM_CHECKIN <= ? "
 								   		+ "AND H.ROOM_CHECKOUT >= ? "
 								   		+ "AND H.ROOM_MAX>=? "
-								   		+ "AND H.ROOM_NUM=P.ROOM_NUM";
+								   		+ "AND H.ROOM_NUM=P.ROOM_NUM"
+								   		+ "AND FIRST_YN ='Y'";
 	   
 	   private final String HIGHPRICE = "SELECT * FROM HOST H JOIN PIC P ON (H.ROOM_NUM = P.ROOM_NUM)WHERE H.ROOM_ADDRESS = ? "
 								   		+ "AND H.ROOM_CHECKIN <= ? "
 								   		+ "AND H.ROOM_CHECKOUT >= ? "
 								   		+ "AND H.ROOM_MAX>=? "
 								   		+ "AND H.ROOM_NUM=P.ROOM_NUM "
-								   		+ "ORDER BY PIC_NUM DESC";
+								   		+ "AND FIRST_YN ='Y'"
+	   									+ "ORDER BY  DESC";
 	   public List<HostPicVO> wantselect(HostPicVO vo){  // 원하는거 검색창
 	      List<HostPicVO> list = new ArrayList<HostPicVO>();
 	      try {   

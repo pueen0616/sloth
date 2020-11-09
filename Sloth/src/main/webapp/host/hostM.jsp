@@ -22,12 +22,15 @@
   <c:forEach items="${hostM}" var="host" varStatus="i">
     <tr>
       <th scope="row"></th>
-      <td><img alt="null" src="${pageContext.request.contextPath}/img/${host.pic }"></td>
+      <td><img style="width:200px; height:200px;" alt="null" src="${pageContext.request.contextPath}/img/${host.pic }"></td>
       <td>${host.room_name}</td>
       <td>${host.room_address}</td>
       <td>${host.room_price}</td>
       <td>${host.room_max}</td>
-      <td><button type="button" class="btn btn-light">수정</button></td>
+      <td>
+      <button type="button" class="btn btn-light" onclick="location.href='hostmUpdateForm.do?room_num=${host.room_num }'">수정</button>
+      <button type="button" class="btn btn-light" >삭제</button>
+      </td>
     </tr>
     </c:forEach>
   </tbody>
