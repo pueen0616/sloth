@@ -20,7 +20,7 @@ public class AccountDao extends DAO {
 	private final String SELECT = "SELECT * FROM ACCOUNT WHERE ID = ? AND PASSWORD=?";
 	private final String INSERT = "INSERT INTO ACCOUNT(ID,NAME,PASSWORD,BIRTH,EMAIL,TEL) VALUES(?,?,?,?,?,?)";
 	private final String HOST_INSERT = "INSERT INTO HOST(ROOM_NUM, ROOM_NAME, ROOM_ADDRESS, ROOM_MAX, ROOM_PRICE, ROOM_INFO, ID, ROOM_CHECKIN, ROOM_CHECKOUT)"
-									 + "VALUES(?,?,?,?,?,?,?,?,?)";
+								x	 + "VALUES(?,?,?,?,?,?,?,?,?)";
 	private final String UPDATE_ADMIN = "UPDATE ACCOUNT SET USER_TYPE = 'ADMIN' WHERE ID = ?";
 	private final String PIC_INSERT_YN = "INSERT INTO PIC VALUES( (select max (pic_num)+1 from pic), ?, 'Y', ?)";
 	private final String PIC_INSERT = "INSERT INTO PIC VALUES((select max (pic_num)+1 from pic), ?, NULL, ?)";

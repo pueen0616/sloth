@@ -29,6 +29,7 @@ public class SearchAction implements Action {
 	      vo.setRoom_max(request.getParameter("room_max"));
 //	      vo.setLroom_max(request.getParameter("room_max"));
 	      
+	      
 	      list = dao.wantselect(vo);
 	      
 	      HttpSession session = request.getSession();

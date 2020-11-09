@@ -22,7 +22,7 @@
   <c:forEach items="${hostM}" var="host" varStatus="i">
     <tr>
       <th scope="row"></th>
-      <td></td>
+      <td><img alt="null" src="${pageContext.request.contextPath}/img/${host.pic }"></td>
       <td>${host.room_name}</td>
       <td>${host.room_address}</td>
       <td>${host.room_price}</td>

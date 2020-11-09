@@ -16,10 +16,10 @@ public class HostDAO extends DAO{
 	//private final String SELECT_ALL = "SELECT A.ROOM_NAME,B.PIC_NUM,B.PIC FROM HOST A INNER JOIN PIC B ON A.ROOM_NUM = B.ROOM_NUM ";
 	//private final String SELECT_ALL= "SELECT ROOM_NAME,ROOM_PRICE FROM HOST ORDER BY ROOM_NUM DESC";
 	//
-	private final String SELECT_HOST_PIC_JOIN="SELECT A.ROOM_NUM, A.ROOM_NAME, A.ROOM_PRICE, B.PIC_NUM, B.PIC FROM HOST A"
-			+ "	 INNER JOIN PIC B ON (A.ROOM_NUM = B.ROOM_NUM) WHERE FIRST_YN = 'Y'";
-	private final String HOST_M = "SELECT A.*, B.PIC_NUM, B.PIC FROM HOST A"
-			                  + "  INNER JOIN PIC B ON (A.ROOM_NUM = B.ROOM_NUM) WHERE FIRST_YN = 'Y' AND A.ID = ?";
+	private final String SELECT_HOST_PIC_JOIN= "SELECT A.*, B.* FROM HOST A	"
+								+ " INNER JOIN PIC B ON (A.ROOM_NUM = B.ROOM_NUM) WHERE FIRST_YN = 'Y'";
+	private final String HOST_M = "SELECT A.*, B.* FROM HOST A"
+			                     + "  INNER JOIN PIC B ON (A.ROOM_NUM = B.ROOM_NUM) WHERE FIRST_YN = 'Y' AND A.ID = ?";
 	private final String SELECT_DETAIL = "SELECT * FROM HOST WHERE ROOM_NUM = ?";
 	private final String SELECT_PIC = "SELECT * FROM PIC WHERE ROOM_NUM = ?";
 	
@@ -117,7 +117,7 @@ public class HostDAO extends DAO{
 			while(rs.next()) {
 				vo = new HostPicVO();
 				vo.setRoom_name(rs.getString("room_name"));
-				vo.setRoom_price(Integer.parseInt(rs.getString("ROOM_PRICE")));
+				vo.setRoom_price(Integer.parseInt(rs.getString("room_price")));
 				vo.setPic(rs.getString("pic"));
 				vo.setRoom_num(rs.getInt("room_num"));
 				

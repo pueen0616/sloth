@@ -36,7 +36,7 @@ public class HostMAction implements Action {
 //		List<HostPicVO> list2 = new ArrayList<HostPicVO>();
 //
 //		list1 = dao.SELECT_HOST_PIC_JOIN(vo);
-
+//
 //		request.setAttribute("hostss", list1);
 		return "/host/hostM.jsp";
 	}
