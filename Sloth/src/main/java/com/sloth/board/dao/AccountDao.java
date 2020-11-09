@@ -9,6 +9,7 @@ import java.util.List;
 
 import com.sloth.board.vo.AccountVO;
 import com.sloth.board.vo.HostPicVO;
+import com.sloth.board.vo.reserVO;
 
 public class AccountDao extends DAO {
 	private PreparedStatement psmt; //sql 명령문 실행
@@ -34,11 +35,11 @@ public class AccountDao extends DAO {
 	private final String RESER_INSERT = "INSERT INTO (RESER_NUM, RESER_CHECKIN, RESER_CHECKOUT, RESER_PRICE, RESER_MAX, ID, ROOM_NUM, RESER_TODAY)  VALUES(seq_reser_num.nextval,?,?,?,?,?,?,?)";
 		
 	//숙소예약
-	public int reser_insert(HostPicVO vo) {
+	public int reser_insert(reserVO vo) {
 		int n = 0;
 		try {
 			psmt=conn.prepareStatement(RESER_INSERT);
-			psmt.setString(1, vo.getId());
+			psmt.setInt(1, vo.getReserNum());
 			
 			n=psmt.executeUpdate();
 		
