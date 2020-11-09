@@ -7,7 +7,6 @@
 <title></title>
 </head>
 <body>
-
 	<div class="container">
 		<div class="row">
 			<div class="col-6">
@@ -16,16 +15,16 @@
 				</div>
 				<hr>
 				<div>
-					<h4>예약 정보</h4>
+					<h4>예약 정보</h4><br>
 				</div>
 				<div>
 					<h6>날짜</h6>
 				</div>
-				<div style="font-weight: lighter;">${selectVO.room_checkin } - ${selectVO.room_checkout }</div>
+				<div style="font-weight: lighter;">체크인 ${selectVO.room_checkin }  체크아웃 ${selectVO.room_checkout }</div><br>
 				<div>
 					<h6>인원수</h6>
-				</div>
 				<div style="font-weight: lighter;">${selectVO.room_max } 명</div>
+				</div>
 			</div>
 			<div class="col-6">
 				<div class="box" style="border: 1px solid; position: fixed; width: 30%; border-radius: 25px;">
@@ -35,7 +34,7 @@
 					<a>★4.4</a>					
 					<div style="padding: 20px;">
 						<div><h4 style="font-weight: 700">요금 세부 정보 </h4></div>
-						<span style="font-size: 20px;">${detail.room_price }</span> 
+						<span style="font-size: 20px;">${detail.room_price } </span> 
 					</div>
 					<a href="main.do" class="btn btn-danger btn-lg active" role="button"
 								aria-pressed="true">예약완료</a>

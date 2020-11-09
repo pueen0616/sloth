@@ -32,7 +32,7 @@ public class AccountDao extends DAO {
 	String SQL_RESER_SEQ = "SELECT SEQ_RESER_NUM.NEXTVAL FROM DUAL";
 	String SQL_SEQ = "SELECT SEQ_NUM.NEXTVAL FROM DUAL";
 	//숙소예약등록
-	private final String RESER_INSERT = "INSERT INTO (RESER_NUM, RESER_CHECKIN, RESER_CHECKOUT, RESER_PRICE, RESER_MAX, ID, ROOM_NUM, RESER_TODAY)  VALUES(seq_reser_num.nextval,?,?,?,?,?,?,?)";
+	private final String RESER_INSERT = "INSERT INTO (RESER_NUM, RESER_CHECKIN, RESER_CHECKOUT, RESER_PRICE, RESER_MAX, ID, ROOM_NUM, RESER_TODAY)  VALUES(seq_reser_num.nextval,?,?,?,?,?,?,SYSDATE)";
 		
 	//숙소예약
 	public int reser_insert(reserVO vo) {
@@ -40,6 +40,13 @@ public class AccountDao extends DAO {
 		try {
 			psmt=conn.prepareStatement(RESER_INSERT);
 			psmt.setInt(1, vo.getReserNum());
+			psmt.setDate(2, vo.getReserCheckIn());
+			psmt.setDate(3, vo.getReserCheckOut());
+			psmt.setInt(4, vo.getReserPrice());
+			psmt.setString(5, vo.getReserMax());
+			psmt.setString(6, vo.getId());
+			psmt.setInt(7, vo.getRoomNum());
+			psmt.setString(8, vo.getReserToday());
 			
 			n=psmt.executeUpdate();
 		

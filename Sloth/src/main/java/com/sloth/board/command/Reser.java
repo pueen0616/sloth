@@ -4,12 +4,16 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import com.sloth.board.common.Action;
+import com.sloth.board.dao.AccountDao;
+import com.sloth.board.vo.reserVO;
 
-public class ReservAction implements Action {
+public class Reser implements Action {
 
 	@Override
 	public String exec(HttpServletRequest request, HttpServletResponse response) {
-		// TODO Auto-generated method stub
+		//reser 폼
+		
+		
 		return "/reserv/reserv.jsp";
 	}
 

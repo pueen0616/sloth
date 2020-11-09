@@ -26,7 +26,7 @@ import com.sloth.board.command.Main;
 import com.sloth.board.command.Register;
 import com.sloth.board.command.RegisterFormAction;
 import com.sloth.board.command.ReserInsertAction;
-import com.sloth.board.command.ReservAction;
+import com.sloth.board.command.Reser;
 import com.sloth.board.command.SearchAction;
 
 import com.sloth.board.command.RoomListSelectAction;
@@ -60,7 +60,7 @@ public class FrontController extends HttpServlet {
 		map.put("/findPassword.do", new FindPassword());	  //비밀번호 찾기
 		map.put("/highPrice.do", new HighPrice()); 			  //가격 내림차순
 		map.put("/lowPrice.do", new LowPrice()); 			  //가격 내림차순
-		map.put("/reserv.do", new ReservAction());		      //숙소예약화면
+		map.put("/reserv.do", new Reser());		      //숙소예약화면
 		map.put("/reser.do", new ReserInsertAction());		  //숙소예약처리
 		map.put("/hostM.do", new HostMAction());			  //숙소관리화면
 	}

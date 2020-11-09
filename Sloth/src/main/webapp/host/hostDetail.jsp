@@ -67,7 +67,7 @@ box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
 								<h5></h5>
 							</div>
 							<div>
-								<h6>${detail.room_max }</h6>
+								<h6>최대 ${detail.room_max }명</h6>
 							</div>
 						</div>
 						<div class="float-left">
@@ -78,8 +78,7 @@ box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
 					<hr>
 					<div id="info" name="info">${detail.room_info }</div>
 				</div>
-				
-<!-- 				예약박스 -->
+<!--예약박스 -->
 				<form id="frm" name="frm" action="reserv.do" method="post">
 				<div class="col-md-4">
 					<div class="box" style="border: 1px solid; position: fixed; width: 30%; border-radius: 25px; bottom: 10px; ">
@@ -93,16 +92,16 @@ box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
 							<div class="col-6" style="border: 1px solid;">
 								인원 
 								<select class="search__input" id="room_max" name="room_max">
-								<option>${selectVO.room_max }</option>
-                        <option>1</option>
-                        <option>2</option>
-                        <option>3</option>
-                        <option>4</option>
-                        <option>5</option>
-                        <option>6</option>
-                        <option>7</option>
-                        <option>8</option>
-                  </select>
+									<option>${selectVO.room_max }</option>
+			                        <option>1</option>
+			                        <option>2</option>
+			                        <option>3</option>
+			                        <option>4</option>
+			                        <option>5</option>
+			                        <option>6</option>
+			                        <option>7</option>
+			                        <option>8</option>
+				                  </select>
 							</div>
 						</div>
 						<div align="center">

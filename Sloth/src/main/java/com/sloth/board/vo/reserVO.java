@@ -1,6 +1,6 @@
 package com.sloth.board.vo;
 
-import java.util.Date;
+import java.sql.Date;
 
 public class reserVO {
 private int reserNum;
