@@ -21,10 +21,10 @@
 <body>
    
     <jsp:include page="/mainPage/mainMenu.jsp"></jsp:include>
-    <p><b></b><decorator:title/></p>
-    <hr />
+    <p><decorator:title/></p><br>
+    
     <decorator:body />
-    <hr />
-    <h1>Footer</b></h1>
+    <br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
+    <h1>Footer</h1>
 </body>
 </html>

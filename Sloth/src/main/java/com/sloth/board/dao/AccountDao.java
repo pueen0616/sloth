@@ -18,13 +18,35 @@ public class AccountDao extends DAO {
 	
 	private final String SELECT_ALL = "SELECT * FROM ACCOUNT ORDER BY ID";
 	private final String SELECT = "SELECT * FROM ACCOUNT WHERE ID = ? AND PASSWORD=?";
+	//계정등록
 	private final String INSERT = "INSERT INTO ACCOUNT(ID,NAME,PASSWORD,BIRTH,EMAIL,TEL) VALUES(?,?,?,?,?,?)";
+	//숙소등록
 	private final String HOST_INSERT = "INSERT INTO HOST(ROOM_NUM, ROOM_NAME, ROOM_ADDRESS, ROOM_MAX, ROOM_PRICE, ROOM_INFO, ID, ROOM_CHECKIN, ROOM_CHECKOUT)"
 									 + "VALUES(?,?,?,?,?,?,?,?,?)";
+	//계정권한부여
 	private final String UPDATE_ADMIN = "UPDATE ACCOUNT SET USER_TYPE = 'ADMIN' WHERE ID = ?";
-	private final String PIC_INSERT_YN = "INSERT INTO PIC VALUES( (select max (pic_num)+1 from pic), ?, 'Y', ?)";
+	//대표사진
+	private final String PIC_INSERT_YN = "INSERT INTO PIC VALUES((select max (pic_num)+1 from pic), ?, 'Y', ?)";
 	private final String PIC_INSERT = "INSERT INTO PIC VALUES((select max (pic_num)+1 from pic), ?, NULL, ?)";
-	String sql_seq = "select seq_num.nextval from dual";
+	String SQL_RESER_SEQ = "SELECT SEQ_RESER_NUM.NEXTVAL FROM DUAL";
+	String SQL_SEQ = "SELECT SEQ_NUM.NEXTVAL FROM DUAL";
+	//숙소예약등록
+	private final String RESER_INSERT = "INSERT INTO (RESER_NUM, RESER_CHECKIN, RESER_CHECKOUT, RESER_PRICE, RESER_MAX, ID, ROOM_NUM, RESER_TODAY)  VALUES(seq_reser_num.nextval,?,?,?,?,?,?,?)";
+		
+	//숙소예약
+	public int reser_insert(HostPicVO vo) {
+		int n = 0;
+		try {
+			psmt=conn.prepareStatement(RESER_INSERT);
+			psmt.setString(1, vo.getId());
+			
+			n=psmt.executeUpdate();
+		
+		} catch(SQLException e) {
+			e.printStackTrace();
+		}
+		return n;
+	}
 	
 	//대표사진
 	public int PIC_INSERT_YN(HostPicVO vo) {
@@ -118,9 +140,9 @@ public class AccountDao extends DAO {
 	public int host_insert(HostPicVO vo) {
 		int n = 0;
 		try {
-//			//시퀀스 조회
+			//시퀀스 조회
 			stmt = conn.createStatement();
-			ResultSet rs = stmt.executeQuery(sql_seq);
+			ResultSet rs = stmt.executeQuery(SQL_SEQ);
 			if(rs.next())
 				vo.setRoom_num((rs.getInt(1)));
 				

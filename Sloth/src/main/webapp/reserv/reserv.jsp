@@ -37,6 +37,8 @@
 						<div><h4 style="font-weight: 700">요금 세부 정보 </h4></div>
 						<span style="font-size: 20px;">${detail.room_price }</span> 
 					</div>
+					<a href="main.do" class="btn btn-danger btn-lg active" role="button"
+								aria-pressed="true">예약완료</a>
 				</div>
 			</div>
 		</div>

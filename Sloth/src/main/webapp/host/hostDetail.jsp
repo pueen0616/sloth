@@ -91,7 +91,18 @@ box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
 							<input class="search__input" type="date" value="${selectVO.room_checkin }"/>체크인 날짜
 							 <input class="search__input" type="date" value="${selectVO.room_checkout }"/>체크아웃 날짜
 							<div class="col-6" style="border: 1px solid;">
-								인원  ${selectVO.room_max }명<br>
+								인원 
+								<select class="search__input" id="room_max" name="room_max">
+								<option>${selectVO.room_max }</option>
+                        <option>1</option>
+                        <option>2</option>
+                        <option>3</option>
+                        <option>4</option>
+                        <option>5</option>
+                        <option>6</option>
+                        <option>7</option>
+                        <option>8</option>
+                  </select>
 							</div>
 						</div>
 						<div align="center">

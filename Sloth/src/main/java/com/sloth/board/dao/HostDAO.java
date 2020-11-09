@@ -23,34 +23,34 @@ public class HostDAO extends DAO{
 	private final String SELECT_PIC = "SELECT * FROM PIC WHERE ROOM_NUM = ?";
 	
 	//숙소 관리
-		public HostPicVO Host_M(HostPicVO vo){
-			HostPicVO hvo = null;
-			try {
-				psmt = conn.prepareStatement(HOST_M);
-				psmt.setString(1, vo.getId());
-				rs=psmt.executeQuery();
-				
-				if(rs.next()) {
-					hvo = new HostPicVO();
-					hvo.setId(rs.getString("id"));
-					hvo.setRoom_name(rs.getString("room_name"));
-					hvo.setLocation(rs.getString("location"));
-					hvo.setRoom_price(Integer.parseInt(rs.getString("room_price")));
-					hvo.setRoom_num(rs.getInt("room_num"));
-					hvo.setRoom_address(rs.getString("room_address"));
-					hvo.setRoom_max(rs.getString("room_max"));
-					hvo.setRoom_info(rs.getString("room_info"));
-					hvo.setRoom_checkin(rs.getDate("room_checkIn"));
-					hvo.setRoom_checkout(rs.getDate("room_checkOut"));
-					
-				}
-			} catch(SQLException e) {
-				e.printStackTrace();
-			} finally{
+	public HostPicVO Host_M(HostPicVO vo){
+		HostPicVO hvo = null;
+		try {
+			psmt = conn.prepareStatement(HOST_M);
+			psmt.setString(1, vo.getId());
+			rs=psmt.executeQuery();
+			
+			if(rs.next()) {
+				hvo = new HostPicVO();
+				hvo.setId(rs.getString("id"));
+				hvo.setRoom_name(rs.getString("room_name"));
+				hvo.setLocation(rs.getString("location"));
+				hvo.setRoom_price(Integer.parseInt(rs.getString("room_price")));
+				hvo.setRoom_num(rs.getInt("room_num"));
+				hvo.setRoom_address(rs.getString("room_address"));
+				hvo.setRoom_max(rs.getString("room_max"));
+				hvo.setRoom_info(rs.getString("room_info"));
+				hvo.setRoom_checkin(rs.getDate("room_checkIn"));
+				hvo.setRoom_checkout(rs.getDate("room_checkOut"));
 				
 			}
-			return hvo;
-		}	
+		} catch(SQLException e) {
+			e.printStackTrace();
+		} finally{
+			
+		}
+		return hvo;
+	}	
 	
 	//상세 페이지
 	public HostPicVO SELECT_DETAIL(HostPicVO vo){
@@ -64,7 +64,7 @@ public class HostDAO extends DAO{
 				hvo = new HostPicVO();
 				hvo.setRoom_name(rs.getString("room_name"));
 				hvo.setLocation(rs.getString("location"));
-				hvo.setRoom_price(Integer.parseInt(rs.getString("ROOM_PRICE")));
+				hvo.setRoom_price(Integer.parseInt(rs.getString("room_price")));
 				hvo.setRoom_num(rs.getInt("room_num"));
 				hvo.setRoom_address(rs.getString("room_address"));
 				hvo.setRoom_max(rs.getString("room_max"));

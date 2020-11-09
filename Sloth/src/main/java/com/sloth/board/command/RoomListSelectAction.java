@@ -27,7 +27,6 @@ public class RoomListSelectAction implements Action {
 	      vo.setRoom_checkin(Date.valueOf(request.getParameter("room_checkin")));
 	      vo.setRoom_checkout(Date.valueOf(request.getParameter("room_checkout")));
 	      vo.setRoom_max(request.getParameter("room_max"));
-//	      vo.setLroom_max(request.getParameter("room_max"));
 	      
 	      list = dao.SELECT_HOST_PIC_JOIN(vo);
 	       

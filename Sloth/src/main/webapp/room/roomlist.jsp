@@ -116,19 +116,18 @@ input:checked + label {
     <input id="tab1" type="button" name="tab1" onclick="location.href='${pageContext.request.contextPath}/highPrice.do'">
     <label for="tab1">높은가격순</label>
 
-    <input id="tab2" type="button" name="tab2" onclick="location.href='${pageContext.request.contextPath}/main.do'">
+    <input id="tab2" type="button" name="tab2" onclick="location.href='${pageContext.request.contextPath}/lowPrice.do'">
     <label for="tab2">낮은가격순</label>
 
     <input id="tab3" type="button" name="tab3">
     <label for="tab3">평점순</label>
-
 		<div class="fixed_img_col">
 				<ul id="roomlist">
 			<c:forEach items="${hosts }" var="host" varStatus="i">
 					<li>
 					<a href="./hostDetail.do?room_num=${host.room_num }"  > 
-						<span class="thumb">
-							<img id="img" name="img"  alt="왜아무것도안나오지" src="${pageContext.request.contextPath}/img/${host.pic }">
+							<span class="thumb">
+								<img id="img" name="img"  alt="왜아무것도안나오지" src="${pageContext.request.contextPath}/img/${host.pic }">
 						</span> 
 						<span><b>${host.room_name }</b></span>
 					 </a>

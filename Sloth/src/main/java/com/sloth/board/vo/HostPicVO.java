@@ -18,6 +18,13 @@ public class HostPicVO {
    private String first_yn;
 
    
+@Override
+public String toString() {
+	return "HostPicVO [room_num=" + room_num + ", room_name=" + room_name + ", room_address=" + room_address
+			+ ", room_max=" + room_max + ", room_price=" + room_price + ", room_checkin=" + room_checkin
+			+ ", room_checkout=" + room_checkout + ", room_info=" + room_info + ", id=" + id + ", location=" + location
+			+ ", pic_num=" + pic_num + ", pic=" + pic + ", first_yn=" + first_yn + "]";
+}
 public int getRoom_price() {
 	return room_price;
 }
