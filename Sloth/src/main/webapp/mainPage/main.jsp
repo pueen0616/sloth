@@ -41,12 +41,17 @@
                   <td class="search__sub__title" align="center">체크아웃</td>
                   <td><input class="search__input" type="date" id="room_checkout" name="room_checkout"/></td>
                   <td colspan="2" class="search__sub__title"></td>
+                  <td class="search__sub__title" align="center">인원수</td>
                   <td colspan="2">
                   <select class="search__input" id="room_max" name="room_max">
                         <option>1</option>
                         <option>2</option>
                         <option>3</option>
                         <option>4</option>
+                        <option>5</option>
+                        <option>6</option>
+                        <option>7</option>
+                        <option>8</option>
                   </select></td>
                </tr>
             </table>

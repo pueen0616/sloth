@@ -7,12 +7,11 @@ import java.util.ArrayList;
 import java.util.List;
 
 import com.sloth.board.vo.HostPicVO;
-import com.sloth.board.vo.HostVO;
 
 public class HomeDao extends DAO {
 	   private PreparedStatement psmt;   //sql 명령문 실행
 	   private ResultSet rs;    //select 후 결과셋 받기
-	   private HostVO vo;
+	   private HostPicVO vo;
 	   
 	 
 	   //private final String WANTSELECT = "SELECT * FROM HOST WHERE ROOM_MAX=?";
@@ -20,14 +19,25 @@ public class HomeDao extends DAO {
 								   		+ "AND H.ROOM_CHECKIN <= ? "
 								   		+ "AND H.ROOM_CHECKOUT >= ? "
 								   		+ "AND H.ROOM_MAX>=? "
-								   		+ "AND H.ROOM_NUM=P.ROOM_NUM";
+								   		+ "AND H.ROOM_NUM=P.ROOM_NUM "
+								   		+ "AND FIRST_YN = 'Y'";
 	   
-	   private final String HIGHPRICE = "SELECT * FROM HOST H JOIN PIC P ON (H.ROOM_NUM = P.ROOM_NUM)WHERE H.ROOM_ADDRESS = ? "
+	   private final String LOWPRICE = "SELECT * FROM HOST H JOIN PIC P ON (H.ROOM_NUM = P.ROOM_NUM)WHERE H.ROOM_ADDRESS = ? "
 								   		+ "AND H.ROOM_CHECKIN <= ? "
 								   		+ "AND H.ROOM_CHECKOUT >= ? "
 								   		+ "AND H.ROOM_MAX>=? "
 								   		+ "AND H.ROOM_NUM=P.ROOM_NUM "
-								   		+ "ORDER BY PIC_NUM DESC";
+								   		+ "AND FIRST_YN = 'Y' "
+								   		+ "ORDER BY H.ROOM_PRICE ASC";
+	   
+	   private final String HIGHPRICE = "SELECT * FROM HOST H JOIN PIC P ON (H.ROOM_NUM = P.ROOM_NUM)WHERE H.ROOM_ADDRESS = ? "
+		   		+ "AND H.ROOM_CHECKIN <= ? "
+		   		+ "AND H.ROOM_CHECKOUT >= ? "
+		   		+ "AND H.ROOM_MAX>=? "
+		   		+ "AND H.ROOM_NUM=P.ROOM_NUM "
+		   		+ "AND FIRST_YN = 'Y' "
+		   		+ "ORDER BY H.ROOM_PRICE DESC";
+	   
 	   public List<HostPicVO> wantselect(HostPicVO vo){  // 원하는거 검색창
 	      List<HostPicVO> list = new ArrayList<HostPicVO>();
 	      try {   
@@ -64,7 +74,43 @@ public class HomeDao extends DAO {
 	      }
 	      return list;
 	   }
+	   //가격 내림차순
+	   public List<HostPicVO> lowPrice(HostPicVO vo){  // 원하는거 검색창
+		      List<HostPicVO> list = new ArrayList<HostPicVO>();
+		      try {   
+		         psmt = conn.prepareStatement(LOWPRICE);         
+		         psmt.setString(1, vo.getRoom_address());
+		         psmt.setDate(2, vo.getRoom_checkin());
+		         psmt.setDate(3, vo.getRoom_checkout());
+		         psmt.setString(4, vo.getRoom_max());
+		         rs = psmt.executeQuery();
+		         while(rs.next()) {
+		            vo = new HostPicVO();
+		            vo.setRoom_num(rs.getInt("room_num"));
+		            vo.setRoom_name(rs.getString("room_name"));
+		            vo.setRoom_address(rs.getString("room_address"));
+		            vo.setRoom_max(rs.getString("room_max"));
+		            vo.setRoom_price(Integer.parseInt(rs.getString("room_price")));
+		            vo.setRoom_checkin(rs.getDate("room_checkin"));
+		            vo.setRoom_checkout(rs.getDate("room_checkout"));
+		            vo.setRoom_info(rs.getString("room_info"));
+		            vo.setId(rs.getString("id"));
+		            vo.setLocation(rs.getString("location"));
+		            vo.setPic_num(rs.getInt("pic_num"));
+		            vo.setPic(rs.getString("pic"));
+		            vo.setFirst_yn(rs.getString("first_yn"));
+		            list.add(vo);            
+		         }
+		            
+		      }catch(SQLException e) {
+		         e.printStackTrace();
+		      }finally {
+		         close();// db 연결을 끊어준다.
+		      }
+		      return list;
+		   }
 	   
+	   //가격 오름차순
 	   public List<HostPicVO> highPrice(HostPicVO vo){  // 원하는거 검색창
 		      List<HostPicVO> list = new ArrayList<HostPicVO>();
 		      try {   

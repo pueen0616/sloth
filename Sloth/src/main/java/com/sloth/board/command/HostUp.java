@@ -16,7 +16,6 @@ import com.sloth.board.common.FileUtil;
 import com.sloth.board.dao.AccountDao;
 import com.sloth.board.vo.AccountVO;
 import com.sloth.board.vo.HostPicVO;
-import com.sloth.board.vo.HostVO;
 
 public class HostUp implements Action {
 
@@ -24,16 +23,16 @@ public class HostUp implements Action {
 	public String exec(HttpServletRequest request, HttpServletResponse response) {
 		// 숙소등록
 		AccountDao dao = new AccountDao();
-		HostVO vo = new HostVO();
+		HostPicVO vo = new HostPicVO();
 		
-		vo.setRoomName(request.getParameter("roomName"));
-		vo.setRoomAddress(request.getParameter("roomAddress"));
-		vo.setRoomMax(request.getParameter("roomMax"));
-		vo.setRoomPrice(Integer.parseInt(request.getParameter("roomPrice")));
-		vo.setRoomInfo(request.getParameter("roomInfo"));
+		vo.setRoom_name(request.getParameter("room_name"));
+		vo.setRoom_address(request.getParameter("room_address"));
+		vo.setRoom_max(request.getParameter("room_max"));
+		vo.setRoom_price(Integer.parseInt(request.getParameter("room_price")));
+		vo.setRoom_info(request.getParameter("room_info"));
 		vo.setId(request.getParameter("id"));
-		vo.setRoomCheckIn(Date.valueOf(request.getParameter("FirstCheckIn")));
-		vo.setRoomCheckOut(Date.valueOf(request.getParameter("LastCheckIn")));
+		vo.setRoom_checkin(Date.valueOf(request.getParameter("room_checkIn")));
+		vo.setRoom_checkout(Date.valueOf(request.getParameter("room_checkOut")));
 		
 		int n = dao.host_insert(vo); //insert 해주고
 		
@@ -58,7 +57,7 @@ public class HostUp implements Action {
 					part.write(renameFile.getAbsolutePath());
 					
 					HostPicVO pic = new HostPicVO();
-					pic.setRoom_num(vo.getRoomNum());
+					pic.setRoom_num(vo.getRoom_num());
 					pic.setPic(renameFile.getName());
 					if(part.getName().equals("img1") )
 						dao.PIC_INSERT_YN(pic);

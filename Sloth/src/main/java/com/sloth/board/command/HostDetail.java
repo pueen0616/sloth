@@ -18,7 +18,6 @@ public class HostDetail implements Action {
 	@Override
 	public String exec(HttpServletRequest request, HttpServletResponse response) {
 		HostPicVO vo = new HostPicVO();
-		
 		vo.setRoom_num(Integer.parseInt(request.getParameter("room_num")));	
 
 		HostDAO dao = new HostDAO();

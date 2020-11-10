@@ -56,13 +56,13 @@ input[type=text]:hover {
 		<form id="frm" name="frm" action="hostUp.do" method="post" enctype="multipart/form-data">
 			
 			<div class="_s1t1w0" style="margin-bottom: 16px;">숙소 이름은 무엇인가요</div>	
-			<div style="margin-bottom: 32px;"><input type="text" id="roomName" name="roomName"></div>
+			<div style="margin-bottom: 32px;"><input type="text" id="room_name" name="room_name"></div>
 			
 			<div class="_s1t1w0" style="margin-bottom: 16px;">숙소 위치는 어디일까요</div>
-			<div style="margin-bottom: 32px;"><input type="text" id="roomAddress" name="roomAddress"></div>
+			<div style="margin-bottom: 32px;"><input type="text" id="room_address" name="room_address"></div>
 			
 			<div class="_s1t1w0" style="margin-bottom: 16px;">최대 인원을 정해 주세요</div>
-			<select style="margin-bottom: 32px;" id="roomMax" name="roomMax">
+			<select style="margin-bottom: 32px;" id="room_max" name="room_max">
 			    <option value="1">1</option>
 			    <option value="2">2</option>
 			    <option value="3">3</option>
@@ -74,18 +74,18 @@ input[type=text]:hover {
 			</select>
 			
 			<div class="_s1t1w0">운영 할 날을 지정하세요</div>
-			<input type="date" id="FirstCheckIn" name="FirstCheckIn">
-			<input type="date" id="LastCheckIn" name="LastCheckIn" style="margin-bottom: 32px;">
+			<input type="date" id="room_checkIn" name="room_checkIn">
+			<input type="date" id="room_checkOut" name="room_checkOut" style="margin-bottom: 32px;">
 			
 			<div class="_s1t1w0" style="margin-bottom: 16px;">1박 가격은 얼마인가요</div>
-			<div style="margin-bottom: 32px;"><input type="text" id="roomPrice" name="roomPrice" ></div>
+			<div style="margin-bottom: 32px;"><input type="text" id="room_price" name="room_price" ></div>
 			
 			<div class="_s1t1w0" style="margin-bottom: 16px;">당신의 숙소를 자랑 해주세요</div>
-			<textarea cols="30" rows="10" id="roomInfo" name="roomInfo"></textarea>
+			<textarea cols="30" rows="10" id="room_info" name="room_info"></textarea>
 			
 			<div style="margin-bottom: 32px;"><input type="hidden" id="id" name="id" value="${id}" readonly></div>
-				<div style="margin-bottom: 32px;">대표사진<input type="file" id="img" name="img1"></div>
-				<div style="margin-bottom: 32px;">사진<input type="file" id="img" name="img"></div>
+			<div style="margin-bottom: 32px;">대표사진<input type="file" id="img" name="img1"></div>
+			<div style="margin-bottom: 32px;">사진<input type="file" id="img" name="img"></div>
 			<div><input type="submit" value="다음">
  				 <input type="reset" value="취소"></div>
 		</form>
