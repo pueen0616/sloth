@@ -18,9 +18,9 @@ public class LoginAction implements Action {
 		HttpSession session = request.getSession(false);
 		vo.setId(request.getParameter("userid"));
 		vo.setPassword(request.getParameter("password"));
-		
 		vo = dao.select(vo);
 		
+		System.out.println(vo);
 		session.setAttribute("id", vo.getId());
 		session.setAttribute("name", vo.getName());
 		session.setAttribute("user_type", vo.getUserType());

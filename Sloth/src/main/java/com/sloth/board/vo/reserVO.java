@@ -10,26 +10,38 @@ private int reserPrice;
 private String reserMax;
 private String id;
 private int roomNum;
+private String reserRoomName;
 private String reserToday;
-
 
 public reserVO() {
 	// TODO Auto-generated constructor stub
 }
 
+@Override
+public String toString() {
+	return "reserVO [reserNum=" + reserNum + ", reserCheckIn=" + reserCheckIn + ", reserCheckOut=" + reserCheckOut
+			+ ", reserPrice=" + reserPrice + ", reserMax=" + reserMax + ", id=" + id + ", roomNum=" + roomNum
+			+ ", reserToday=" + reserToday + ", reserRoomName=" + getReserRoomName() + "]";
+}
 
+
+
+
+public String getReserRoomName() {
+	return reserRoomName;
+}
+
+public void setReserRoomName(String reserRoomName) {
+	 this.reserRoomName = reserRoomName;
+}
 
 public int getReserPrice() {
 	return reserPrice;
 }
 
-
-
 public void setReserPrice(int reserPrice) {
 	this.reserPrice = reserPrice;
 }
-
-
 
 public int getReserNum() {
 	return reserNum;

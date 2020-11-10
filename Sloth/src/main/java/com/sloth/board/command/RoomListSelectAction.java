@@ -16,7 +16,6 @@ public class RoomListSelectAction implements Action {
 
 	 @Override
 	   public String exec(HttpServletRequest request, HttpServletResponse response) {
-	      // TODO 회원리스트 보기 구현
 	      
 	      //response.setCharacterEncoding(arg0);
 	      HostDAO dao = new HostDAO();      
