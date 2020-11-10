@@ -10,16 +10,16 @@
 <body>
 <script type="text/javascript">
 $("#delete_btn").click(function(){
-	if(confirm("정말 삭제하시겠습니까?")==true){
-		String id= ${reserInfo2.id};
-		int reserNum=${reserInfo2.reserNum};
-		location.href="deleteReser.do?id=${reserInfo2.id}&reserNum=${reserInfo2.reserNum }";
+	//if(confirm("정말 삭제하시겠습니까?")==true){
+	//	String id= ${reserInfo2.id};
+	//	int reserNum=${reserInfo2.reserNum};
+	//	location.href="deleteReser.do?id=${reserInfo2.id}&reserNum=${reserInfo2.reserNum }";
 		
-		 alert("삭제되었습니다.");
+	//	 alert("삭제되었습니다.")
 			
-	else{
-		return;
-	}
+//	else{
+	//	return;
+	//}
 
 });
 
