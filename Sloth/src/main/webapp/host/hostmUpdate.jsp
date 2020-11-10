@@ -4,7 +4,6 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Insert title here</title>
 <script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
 <link rel="stylesheet"
 	href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
@@ -45,7 +44,7 @@ input[type=text]:hover {
 </head>
 <body>
 <div align="center">
-	<div class="_s1t1w0m">UPdate</div>
+	<div class="_s1t1w0m">숙소 정보 변경</div>
 	<hr style="margin-bottom: 32px;">
 	<div>
 		<form id="frm" name="frm" action="hostmUpdate.do" method="post" enctype="multipart/form-data">
@@ -83,8 +82,8 @@ input[type=text]:hover {
 			
 				<div style="margin-bottom: 32px;">대표사진<input type="file" id="img1" name="img1"></div>
 				<div style="margin-bottom: 32px;">사진<input type="file" id="img" name="img"></div>
-			<div><input type="submit" value="수정">
- 				 <input type="reset" value="취소"></div>
+			<div><input type="submit" value="수정" class="btn btn-primary">
+ 				 <input type="reset" value="취소" class="btn btn-primary"></div>
  				 <input type="hidden" id="id" name="id" value="${id}" readonly>
 			<input type="hidden" id="room_num" name="room_num" value="${updateform.room_num }" readonly>
 		</form>

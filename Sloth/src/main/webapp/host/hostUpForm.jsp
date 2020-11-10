@@ -4,18 +4,12 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Insert title here</title>
 <script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
 <link rel="stylesheet"
 	href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
 	integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm"
 	crossorigin="anonymous">
-<script>
-	$(()=>{
-		var s = document.getElementById("roomMax");
-	    var roomMax = s.options[s.selectedIndex].value;
-	});
-</script>
+	
 <style>
 input[type=text] {
     border : 2px solid skyblue;
@@ -81,13 +75,13 @@ input[type=text]:hover {
 			<div style="margin-bottom: 32px;"><input type="text" id="room_price" name="room_price" ></div>
 			
 			<div class="_s1t1w0" style="margin-bottom: 16px;">당신의 숙소를 자랑 해주세요</div>
-			<textarea cols="30" rows="10" id="room_info" name="room_info"></textarea>
+			<textarea cols="70" rows="10" id="room_info" name="room_info"></textarea>
 			
 			<div style="margin-bottom: 32px;"><input type="hidden" id="id" name="id" value="${id}" readonly></div>
 			<div style="margin-bottom: 32px;">대표사진<input type="file" id="img" name="img1"></div>
 			<div style="margin-bottom: 32px;">사진<input type="file" id="img" name="img"></div>
-			<div><input type="submit" value="다음">
- 				 <input type="reset" value="취소"></div>
+			<div><input type="submit" value="다음" class="btn btn-primary">
+ 				 <input type="reset" value="취소" class="btn btn-primary"></div>
 		</form>
 	</div>
 </div>

@@ -5,7 +5,7 @@
 
 	<nav style="height: 120px;">
 		<div style="float: left;" class="logo">
-			<a href="main.do"><img src="${pageContext.request.contextPath}/logo/logo.png" width="150px"></a>
+			<a href="main.do"><img src="${pageContext.request.contextPath}/logo/logo1.png" width="180px"></a>
 		</div>
 
 		<div style="float: right;" class="btn-group dropleft">

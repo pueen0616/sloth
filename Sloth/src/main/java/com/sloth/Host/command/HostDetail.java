@@ -1,4 +1,4 @@
-package com.sloth.board.command;
+package com.sloth.Host.command;
 
 import java.util.ArrayList;
 import java.util.List;

@@ -1,4 +1,4 @@
-package com.sloth.board.command;
+package com.sloth.Login.command;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;

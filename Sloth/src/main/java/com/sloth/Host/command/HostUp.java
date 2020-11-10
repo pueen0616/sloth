@@ -1,4 +1,4 @@
-package com.sloth.board.command;
+package com.sloth.Host.command;
 
 import java.io.File;
 import java.io.IOException;

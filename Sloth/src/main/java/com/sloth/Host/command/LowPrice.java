@@ -1,4 +1,4 @@
-package com.sloth.board.command;
+package com.sloth.Host.command;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -11,7 +11,7 @@ import com.sloth.board.common.Action;
 import com.sloth.board.dao.HomeDao;
 import com.sloth.board.vo.HostPicVO;
 
-public class HighPrice implements Action {
+public class LowPrice implements Action {
 
 	@Override
 	public String exec(HttpServletRequest request, HttpServletResponse response) {
@@ -23,7 +23,7 @@ public class HighPrice implements Action {
 		vo1 = (HostPicVO)session.getAttribute("selectVO");
 		
 		HomeDao dao = new HomeDao();
-		list1 = dao.highPrice(vo1);
+		list1 = dao.lowPrice(vo1);
 				
 		request.setAttribute("hosts", list1);
 		
