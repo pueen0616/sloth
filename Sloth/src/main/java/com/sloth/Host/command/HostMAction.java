@@ -18,12 +18,18 @@ public class HostMAction implements Action {
 	public String exec(HttpServletRequest request, HttpServletResponse response) {
 		HostPicVO vo = new HostPicVO();
 		vo.setId((String)request.getSession().getAttribute("id"));  //
-		
+//		vo.setRoom_num(Integer.parseInt(request.getParameter("room_num")));
 		List<HostPicVO> list =null;
 		HostDAO dao = new HostDAO();
 		List<HostPicVO> dvo = dao.Host_M(vo);
-
 		request.setAttribute("hostM", dvo);
+		
+//		HostPicVO dvo1 = new HostPicVO();
+//		List<HostPicVO> list1 = null;
+//		HostDAO dao1 = new HostDAO();
+//		List<HostPicVO> piclist =  dao1.SELECT_PIC(dvo1);
+//		request.setAttribute("piclist", piclist );
+		
 //-------------------------------------------이미지
 //		List<HostPicVO> piclist = dao.SELECT_PIC(vo);
 //		request.setAttribute("piclist", piclist);

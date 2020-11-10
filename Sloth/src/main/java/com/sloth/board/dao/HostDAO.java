@@ -21,16 +21,45 @@ public class HostDAO extends DAO{
 	private final String HOST_M = "SELECT A.*, B.* FROM HOST A"
 			                     + "  INNER JOIN PIC B ON (A.ROOM_NUM = B.ROOM_NUM) WHERE FIRST_YN = 'Y' AND A.ID = ?";
 	private final String SELECT_DETAIL = "SELECT * FROM HOST WHERE ROOM_NUM = ?";
-	private final String SELECT_PIC = "SELECT * FROM PIC WHERE ROOM_NUM = ?";
-	private final String hostmupdate = "UPDATE HOST SET ROOM_NAME=? , ROOM_ADDRESS=?, ROOM_MAX=? ,ROOM_PRICE=? "
+	private final String SELECT_PIC = "SELECT * FROM PIC WHERE ROOM_NUM=?";
+	private final String HOSTMUPDATE = "UPDATE HOST SET ROOM_NAME=? , ROOM_ADDRESS=?, ROOM_MAX=? ,ROOM_PRICE=? "
 			+ " ,ROOM_INFO=? ,ROOM_CHECKIN=?, ROOM_CHECKOUT=? WHERE ROOM_NUM=?";
+	private final String PICUPDATE = "INSERT INTO PIC VALUES(SEQ_NUM.NEXTVAL, ?,NULL,?)";
+	private final String PICDEL = "DELETE FROM PIC WHERE PIC_NUM=?";
 	
+	//사진 삭제
+	public int picdel(HostPicVO vo) {
+		int n = 0;
+		try {
+			psmt = conn.prepareStatement(PICDEL);
+			psmt.setInt(1, vo.getPic_num());
+			n = psmt.executeUpdate();
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			close();
+		}
+		return n;
+	}
+	//사진 추가
+	public int picupdate(HostPicVO vo) {
+		int n = 0;
+		try {
+			psmt=conn.prepareStatement(PICUPDATE);
+			psmt.setString(1, vo.getPic());
+			psmt.setInt(2, vo.getRoom_num());
+			n=psmt.executeUpdate();
+		} catch(SQLException e) {
+			e.printStackTrace();
+		}
+		return n;
+	}
 	
 	//host 수정
 	public HostPicVO hostmupdate(HostPicVO vo){
 		int n = 0;
 		try {
-			psmt = conn.prepareStatement(hostmupdate);
+			psmt = conn.prepareStatement(HOSTMUPDATE);
 			psmt.setString(1, vo.getRoom_name());
 			psmt.setString(2, vo.getRoom_address());
 			psmt.setString(3, vo.getRoom_max());
@@ -72,6 +101,8 @@ public class HostDAO extends DAO{
 					hvo.setRoom_checkin(rs.getDate("room_checkIn"));
 					hvo.setRoom_checkout(rs.getDate("room_checkOut"));
 					hvo.setPic(rs.getString("pic"));
+					hvo.setPic_num(Integer.parseInt(rs.getString("pic_num")));
+					hvo.setFirst_yn(rs.getString("first_yn"));
 					list.add(hvo);
 				}
 			} catch(SQLException e) {
@@ -158,5 +189,17 @@ public class HostDAO extends DAO{
 		
 		return list;
 	}
-	
+	private void close() {
+		try {
+			if (rs != null)
+				rs.close();
+			if (psmt != null)
+				psmt.close();
+			if (conn != null)
+				conn.close();
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+
+	}
 }

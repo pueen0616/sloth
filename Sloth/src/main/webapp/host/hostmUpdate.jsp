@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+    <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -81,8 +82,10 @@ input[type=text]:hover {
 			<textarea cols="30" rows="10" id="room_info" name="room_info">${updateform.room_info }</textarea>
 			
 				<div style="margin-bottom: 32px;">대표사진<input type="file" id="img1" name="img1"></div>
+				
 				<div style="margin-bottom: 32px;">사진<input type="file" id="img" name="img"></div>
-			<div><input type="submit" value="수정" class="btn btn-primary">
+				
+			<div style="padding: 20px;" ><input type="submit" value="수정" class="btn btn-primary">
  				 <input type="reset" value="취소" class="btn btn-primary"></div>
  				 <input type="hidden" id="id" name="id" value="${id}" readonly>
 			<input type="hidden" id="room_num" name="room_num" value="${updateform.room_num }" readonly>
