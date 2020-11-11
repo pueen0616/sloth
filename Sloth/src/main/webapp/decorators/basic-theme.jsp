@@ -19,10 +19,8 @@
 <decorator:head/>
 </head>
 <body>
-   
-    <jsp:include page="/mainPage/mainMenu.jsp"></jsp:include>
-    <p><decorator:title/></p><br>
-    
+    <jsp:include page="/mainPage/mainMenu.jsp"></jsp:include><br>
+    <p></p>
     <decorator:body />
     <h1>Footer</h1>
 </body>
