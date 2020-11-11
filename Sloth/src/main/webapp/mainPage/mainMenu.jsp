@@ -5,7 +5,7 @@
 
 	<nav style="height: 120px;">
 		<div style="float: left;" class="logo">
-			<a href="main.do"><img src="${pageContext.request.contextPath}/logo/logo.png" width="150px"></a>
+			<a href="main.do"><img src="${pageContext.request.contextPath}/logo/logo1.png" width="180px"></a>
 		</div>
 
 		<div style="float: right;" class="btn-group dropleft">
@@ -15,7 +15,7 @@
 
 			<div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
 				<c:if test="${name eq null }">
-					<a class="dropdown-item" href="#" data-toggle="modal"
+					<a class="dropdown-item"  data-toggle="modal"
                data-target="#exampleModal">로그인</a>
 
 				</c:if>
@@ -43,8 +43,8 @@
                <nav style="height: 120px;">
                   <div style="float: left;" class="logo">
                      <a href="main.do"><img
-                        src="${pageContext.request.contextPath}/logo/logo.png"
-                        width="50px"></a>
+                        src="${pageContext.request.contextPath}/logo/logo1.png"
+                        width="150px"></a>
                   </div>
                </nav>
                <div align="center">

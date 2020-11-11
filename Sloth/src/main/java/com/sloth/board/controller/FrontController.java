@@ -12,27 +12,30 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import com.sloth.board.command.DeleteReser;
-import com.sloth.board.command.FindId;
-import com.sloth.board.command.FindPassword;
-import com.sloth.board.command.HighPrice;
-import com.sloth.board.command.HostDetail;
-import com.sloth.board.command.HostMAction;
-import com.sloth.board.command.HostUp;
-import com.sloth.board.command.HostUpFormAction;
 import com.sloth.board.command.HostmUpdateAction;
 import com.sloth.board.command.HostmUpdateFormAction;
-import com.sloth.board.command.LoginAction;
-import com.sloth.board.command.LoginFormAction;
-import com.sloth.board.command.LogoutAction;
-import com.sloth.board.command.LowPrice;
+import com.sloth.Host.command.HighPrice;
+import com.sloth.Host.command.HostDetail;
+import com.sloth.Host.command.HostMAction;
+import com.sloth.Host.command.HostUp;
+import com.sloth.Host.command.HostUpFormAction;
+import com.sloth.Host.command.LowPrice;
+import com.sloth.Host.command.Reser;
+import com.sloth.Host.command.ReserInsertAction;
+import com.sloth.Host.command.picdeleteAction;
+import com.sloth.Login.command.FindId;
+import com.sloth.Login.command.FindPassword;
+import com.sloth.Login.command.LoginAction;
+import com.sloth.Login.command.LoginFormAction;
+import com.sloth.Login.command.LogoutAction;
+import com.sloth.Login.command.Register;
+import com.sloth.Login.command.RegisterFormAction;
 import com.sloth.board.command.Main;
-import com.sloth.board.command.Register;
-import com.sloth.board.command.RegisterFormAction;
 import com.sloth.board.command.ReserMAction;
-import com.sloth.board.command.RoomListSelectAction;
 import com.sloth.board.command.SearchAction;
-import com.sloth.board.common.Action;
 
+import com.sloth.board.command.RoomListSelectAction;
+import com.sloth.board.common.Action;
 @WebServlet("/FrontController")
 public class FrontController extends HttpServlet {
 	private static final long serialVersionUID = 1L;

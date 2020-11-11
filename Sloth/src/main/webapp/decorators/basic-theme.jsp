@@ -24,7 +24,6 @@
     <p><decorator:title/></p><br>
     
     <decorator:body />
-    <br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
     <h1>Footer</h1>
 </body>
 </html>
