@@ -27,6 +27,7 @@ public class Register implements Action {
 		int n = dao.insert(vo);
 		
 		String page;
+		
 		if(n !=0) {
 			page = "login/insertSuccess.jsp";
 		}else {

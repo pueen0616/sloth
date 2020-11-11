@@ -21,8 +21,8 @@
 <script	src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/js/bootstrap.bundle.min.js"></script>
 </head>
 
-<body>
-      <header>
+<body style="background-color: #F7F7F7">
+      <header >
 		<jsp:include page="/mainPage/mainMenu.jsp"></jsp:include>
 	<section>
       <form name="searchForm" action ="search.do" style="align:'center'">
@@ -67,8 +67,13 @@
          </div>
          </form>
       </section>
+<hr/>
 	</header>
-
+<br><br><br>
+© 2020 Yirbnb, Inc. All rights reserved<br>
+개인정보 처리방침 · 이용약관 · 사이트맵 · 한국의 변경된 환불 정책
+<img src="${pageContext.request.contextPath}/img/aaa.png" style="float: right;    margin-right: 0px; margin-bottom: 10px;" height="30">
+<br>
 </body>
 
 </html>

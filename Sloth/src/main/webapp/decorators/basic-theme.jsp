@@ -19,9 +19,16 @@
 <decorator:head/>
 </head>
 <body>
-    <jsp:include page="/mainPage/mainMenu.jsp"></jsp:include><br>
-    <p></p>
-    <decorator:body />
-    <h1>Footer</h1>
+<jsp:include page="/mainPage/mainMenu.jsp"></jsp:include><br>
+<p></p>
+<decorator:body />
+<div style="background-color: #F7F7F7">
+<hr/>
+© 2020 Yirbnb, Inc. All rights reserved<br>
+개인정보 처리방침 · 이용약관 · 사이트맵 · 한국의 변경된 환불 정책
+<br><br><br><br><br><br><br><br><br><br>
+<img src="${pageContext.request.contextPath}/img/aaa.png" style="float: right;    margin-right: 0px; margin-bottom: 0px;" >
+<br><br>
+</div>
 </body>
 </html>
