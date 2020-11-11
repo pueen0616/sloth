@@ -11,8 +11,6 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import com.sloth.board.command.HostmUpdateAction;
-import com.sloth.board.command.HostmUpdateFormAction;
 import com.sloth.Host.command.HighPrice;
 import com.sloth.Host.command.HostDetail;
 import com.sloth.Host.command.HostMAction;
@@ -21,12 +19,9 @@ import com.sloth.Host.command.HostUpFormAction;
 import com.sloth.Host.command.LowPrice;
 import com.sloth.Host.command.Reser;
 import com.sloth.Host.command.ReserInsertAction;
-<<<<<<< HEAD
 import com.sloth.Host.command.picdeleteAction;
 import com.sloth.Host.command.picupdateAction;
-=======
 import com.sloth.Login.command.AccountUpdateAction;
->>>>>>> branch 'main' of https://github.com/pueen0616/sloth.git
 import com.sloth.Login.command.FindId;
 import com.sloth.Login.command.FindPassword;
 import com.sloth.Login.command.Findidresult;
@@ -38,6 +33,8 @@ import com.sloth.Login.command.Register;
 import com.sloth.Login.command.RegisterFormAction;
 import com.sloth.Login.command.UpdateAccount;
 import com.sloth.MyPage.command.ReserMAction;
+import com.sloth.board.command.HostmUpdateAction;
+import com.sloth.board.command.HostmUpdateFormAction;
 import com.sloth.board.command.Main;
 import com.sloth.board.command.SearchAction;
 import com.sloth.board.common.Action;
@@ -83,7 +80,7 @@ public class FrontController extends HttpServlet {
 //		map.put("/picdeleteForm.do", new picdeleteFormAction()); // 호스트 수정에서 사진 리스트
 		map.put("/picupdate.do",new picupdateAction()); //호스트 사진수정에서 사진 리스트
 		map.put("/picupload.do", new picuploadAction()); //호스트사진수정애서 사진등록
-	}
+	
 		map.put("/reserM.do",new ReserMAction()); 			  //예약관리처리
 		map.put("/highPrice.do", new HighPrice()); 			  //높은 가격 필터
 		map.put("/hostM.do", new HostMAction());
