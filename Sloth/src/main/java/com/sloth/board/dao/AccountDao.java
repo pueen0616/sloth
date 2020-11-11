@@ -16,14 +16,10 @@ public class AccountDao extends DAO {
 	private ResultSet rs; // select 후 결과셋 받기
 	private AccountVO vo;
 	Statement stmt = null;
-<<<<<<< HEAD
 	
 	String SQL_RESER_SEQ = "SELECT SEQ_RESER_NUM.NEXTVAL FROM DUAL";
 	String SQL_SEQ = "SELECT SEQ_NUM.NEXTVAL FROM DUAL";
 	
-=======
-
->>>>>>> branch 'main' of https://github.com/pueen0616/sloth.git
 	private final String SELECT_ALL = "SELECT * FROM ACCOUNT ORDER BY ID";
 	private final String SELECT = "SELECT * FROM ACCOUNT WHERE ID = ? AND PASSWORD=?";
 	//계정등록
@@ -37,18 +33,12 @@ public class AccountDao extends DAO {
 	//대표사진
 	private final String PIC_INSERT_YN = "INSERT INTO PIC VALUES((select max (pic_num)+1 from pic), ?, 'Y', ?)";
 	private final String PIC_INSERT = "INSERT INTO PIC VALUES((select max (pic_num)+1 from pic), ?, NULL, ?)";
-<<<<<<< HEAD
-=======
 
 	String sql_seq = "select seq_num.nextval from dual";
 	//private final String RESER_M = "select reser_num, (select room_name from host where room_num = ?) as room_name, reser_checkin, reser_checkout, reser_price, reser_max,id,room_num, reser_today from reser where id =?"; 
 	private final String RESER_M = "SELECT A.RESER_NUM,B.ROOM_NAME,A.RESER_CHECKIN,A.RESER_CHECKOUT,A.RESER_PRICE,A.RESER_MAX,A.ID,A.ROOM_NUM,a.room_num as 호스트room_num,A.RESER_TODAY FROM RESER A,HOST B WHERE b.room_num=a.room_num and a.id=?";
 	private final String delete_reser="DELETE FROM RESER WHERE RESER_NUM=?";
 
-
-	String SQL_RESER_SEQ = "SELECT SEQ_RESER_NUM.NEXTVAL FROM DUAL";
-	String SQL_SEQ = "SELECT SEQ_NUM.NEXTVAL FROM DUAL";
->>>>>>> branch 'main' of https://github.com/pueen0616/sloth.git
 	//숙소예약등록
 	private final String RESER_INSERT = "INSERT INTO RESER (RESER_NUM,"
 			+ " RESER_CHECKIN, RESER_CHECKOUT, RESER_PRICE, RESER_MAX, ID, ROOM_NUM, RESER_TODAY, RESER_ADDRESS)"
@@ -58,8 +48,6 @@ public class AccountDao extends DAO {
 	private final String SELECT_PW = "SELECT PASSWORD FROM ACCOUNT WHERE NAME=? AND ID=?";
 	private final String UPDATE_ACCOUNT = "UPDATE ACCOUNT SET NAME=?, PASSWORD=?,EMAIL=?, TEL=?  WHERE ID = ?";
 	private final String SELECT_user = "SELECT * FROM ACCOUNT WHERE ID = ?";
-	
-	private final String RESER_M = "SELECT A.RESER_NUM,B.ROOM_NAME,A.RESER_CHECKIN,A.RESER_CHECKOUT,A.RESER_PRICE,A.RESER_MAX,A.ID,A.ROOM_NUM,a.room_num as 호스트room_num,A.RESER_TODAY FROM RESER A,HOST B WHERE b.room_num=a.room_num and a.id=?";
 	
 	//계정 업데이트
 	public int updateAccount(AccountVO vo) {
@@ -156,8 +144,6 @@ public class AccountDao extends DAO {
 		return n;
 	}
 
-	
-<<<<<<< HEAD
 	   //아이디 찾기
 	   public AccountVO select_id(AccountVO vo) {
 	      try {
@@ -197,7 +183,6 @@ public class AccountDao extends DAO {
 	   }
 	
 	//대표사진
-=======
 	public reserVO reserDelete(int reserNum) {//예약 삭제
 		try {
 			psmt=conn.prepareStatement(delete_reser);
@@ -210,34 +195,9 @@ public class AccountDao extends DAO {
 		}	
 		return null;
 	}
-	public List<reserVO> select_reser(reserVO vo) {
-		List<reserVO> list = new ArrayList<reserVO>();
-		try {
-			psmt = conn.prepareStatement(RESER_M);
-			psmt.setString(1,vo.getId());
-			rs = psmt.executeQuery();
 
-			while (rs.next()) {
-				vo = new reserVO();
-				vo.setReserNum(Integer.parseInt(rs.getString("RESER_NUM")));
-				vo.setReserRoomName(rs.getString("ROOM_NAME"));
-				vo.setReserCheckIn(rs.getDate("RESER_CHECKIN"));
-				vo.setReserCheckOut(rs.getDate("RESER_CHECKOUT"));
-				vo.setReserPrice(rs.getInt("RESER_PRICE"));
-				vo.setReserMax(rs.getString("RESER_MAX"));
-				vo.setId(rs.getString("ID"));
-				vo.setRoomNum(rs.getInt("ROOM_NUM"));
-				vo.setReserToday(rs.getString("RESER_TODAY"));
-				list.add(vo);
-			}
-		} catch (Exception e) {
-			e.printStackTrace();
-		}
-		return list;
-	}
 
 	// 대표사진
->>>>>>> branch 'main' of https://github.com/pueen0616/sloth.git
 	public int PIC_INSERT_YN(HostPicVO vo) {
 		int n = 0;
 		try {

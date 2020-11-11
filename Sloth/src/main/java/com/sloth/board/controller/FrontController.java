@@ -11,7 +11,6 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import com.sloth.board.command.DeleteReser;
 import com.sloth.board.command.HostmUpdateAction;
 import com.sloth.board.command.HostmUpdateFormAction;
 import com.sloth.Host.command.HighPrice;
@@ -22,11 +21,7 @@ import com.sloth.Host.command.HostUpFormAction;
 import com.sloth.Host.command.LowPrice;
 import com.sloth.Host.command.Reser;
 import com.sloth.Host.command.ReserInsertAction;
-<<<<<<< HEAD
 import com.sloth.Login.command.AccountUpdateAction;
-=======
-import com.sloth.Host.command.picdeleteAction;
->>>>>>> branch 'main' of https://github.com/pueen0616/sloth.git
 import com.sloth.Login.command.FindId;
 import com.sloth.Login.command.FindPassword;
 import com.sloth.Login.command.Findidresult;
@@ -37,11 +32,8 @@ import com.sloth.Login.command.LogoutAction;
 import com.sloth.Login.command.Register;
 import com.sloth.Login.command.RegisterFormAction;
 import com.sloth.Login.command.UpdateAccount;
-import com.sloth.MyPage.command.HostmUpdateAction;
-import com.sloth.MyPage.command.HostmUpdateFormAction;
 import com.sloth.MyPage.command.ReserMAction;
 import com.sloth.board.command.Main;
-import com.sloth.board.command.ReserMAction;
 import com.sloth.board.command.SearchAction;
 import com.sloth.board.common.Action;
 @WebServlet("/FrontController")
@@ -71,10 +63,9 @@ public class FrontController extends HttpServlet {
 		map.put("/findId.do", new FindId());				  //아이디 찾기
 		map.put("/findidresult.do", new Findidresult());   
 		map.put("/findPassword.do", new FindPassword());	  //비밀번호 찾기
-<<<<<<< HEAD
-		map.put("/findpwform.do", new FindpwAction());     //비밀번호 찾기 이동
-		map.put("/Account.do", new AccountUpdateAction());// 회원정보 수정이동
-		map.put("/AccountUpdate.do", new UpdateAccount()); // 회원정보수정 처리
+		map.put("/findpwform.do", new FindpwAction());        //비밀번호 찾기 이동
+		map.put("/Account.do", new AccountUpdateAction());	  //회원정보 수정이동
+		map.put("/AccountUpdate.do", new UpdateAccount());    //회원정보수정 처리
 		
 		map.put("/highPrice.do", new HighPrice()); 			  //가격 내림차순
 		map.put("/lowPrice.do", new LowPrice()); 			  //가격 내림차순
@@ -83,12 +74,9 @@ public class FrontController extends HttpServlet {
 		map.put("/hostM.do", new HostMAction());			  //숙소관리화면
 
 		map.put("/reserM.do",new ReserMAction()); 			  //예약관리처리
-=======
 		map.put("/highPrice.do", new HighPrice()); 			  //높은 가격 필터
 		map.put("/hostM.do", new HostMAction());
 		map.put("/reserM.do",new ReserMAction());
-		map.put("/deleteReser.do",new DeleteReser());
->>>>>>> branch 'main' of https://github.com/pueen0616/sloth.git
 		
 		map.put("/hostmUpdate.do", new HostmUpdateAction());
 		map.put("/hostmUpdateForm.do", new HostmUpdateFormAction());

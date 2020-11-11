@@ -22,14 +22,7 @@ public class LoginAction implements Action {
 		String msg;
 	      String page = null;
 	      AccountVO vo1 = dao.select(vo);
-		
-		vo = dao.select(vo);
-		
-		session.setAttribute("id", vo.getId());
-		session.setAttribute("name", vo.getName());
-		session.setAttribute("user_type", vo.getUserType());
-		request.setAttribute("vo", vo);
-		
+
 		if(vo1 != null) {
 	         session.setAttribute("id", vo1.getId());
 	         session.setAttribute("name", vo1.getName());

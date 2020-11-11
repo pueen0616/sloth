@@ -20,15 +20,10 @@ public class HostDAO extends DAO{
 			                     + "  INNER JOIN PIC B ON (A.ROOM_NUM = B.ROOM_NUM) WHERE FIRST_YN = 'Y' AND A.ID = ?";
 	
 	private final String SELECT_DETAIL = "SELECT * FROM HOST WHERE ROOM_NUM = ?";
-<<<<<<< HEAD
 	
 	private final String SELECT_PIC = "SELECT * FROM PIC WHERE ROOM_NUM = ?";
 	
-	private final String hostmupdate = "UPDATE HOST SET ROOM_NAME=? , ROOM_ADDRESS=?, ROOM_MAX=? ,ROOM_PRICE=? "
-=======
-	private final String SELECT_PIC = "SELECT * FROM PIC WHERE ROOM_NUM=?";
 	private final String HOSTMUPDATE = "UPDATE HOST SET ROOM_NAME=? , ROOM_ADDRESS=?, ROOM_MAX=? ,ROOM_PRICE=? "
->>>>>>> branch 'main' of https://github.com/pueen0616/sloth.git
 			+ " ,ROOM_INFO=? ,ROOM_CHECKIN=?, ROOM_CHECKOUT=? WHERE ROOM_NUM=?";
 	private final String PICUPDATE = "INSERT INTO PIC VALUES(SEQ_NUM.NEXTVAL, ?,NULL,?)";
 	private final String PICDEL = "DELETE FROM PIC WHERE PIC_NUM=?";

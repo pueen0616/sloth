@@ -9,10 +9,8 @@
     <excludes>
     	<pattern>/main.do</pattern>
     	<pattern>/loginForm.do</pattern>
-<<<<<<< HEAD
     	<pattern>/reser.do</pattern>
-=======
     	<pattern>/picupdate.do*</pattern>
->>>>>>> branch 'main' of https://github.com/pueen0616/sloth.git
+
     </excludes>
 </decorators>
