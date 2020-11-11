@@ -22,6 +22,7 @@ import com.sloth.Host.command.LowPrice;
 import com.sloth.Host.command.Reser;
 import com.sloth.Host.command.ReserInsertAction;
 import com.sloth.Host.command.picdeleteAction;
+import com.sloth.Host.command.picupdateAction;
 import com.sloth.Login.command.FindId;
 import com.sloth.Login.command.FindPassword;
 import com.sloth.Login.command.LoginAction;
@@ -73,6 +74,7 @@ public class FrontController extends HttpServlet {
 		map.put("/picdelete.do", new picdeleteAction()); //호스트사진수정에서 사진 삭제
 //		map.put("/picdeleteForm.do", new picdeleteFormAction()); // 호스트 수정에서 사진 리스트
 		map.put("/picupdate.do",new picupdateAction()); //호스트 사진수정에서 사진 리스트
+		map.put("/picupload.do", new picuploadAction()); //호스트사진수정애서 사진등록
 	}
     
     protected void service(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
