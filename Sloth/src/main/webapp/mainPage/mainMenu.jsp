@@ -2,7 +2,6 @@
 	pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 
-
 	<nav style="height: 120px;">
 		<div style="float: left;" class="logo">
 			<a href="main.do"><img src="${pageContext.request.contextPath}/logo/logo1.png" width="180px"></a>
@@ -21,9 +20,9 @@
 				</c:if>
 				<c:if test="${name ne null }">
 					<a class="dropdown-item" href="hostUpForm.do">호스트가 되기</a>
-					<a class="dropdown-item" href="#">계정</a>
+					<a class="dropdown-item" href="Account.do">계정</a>
 					<a class="dropdown-item" href="#">게시판</a>
-					<a class="dropdown-item" href="#">예약관리</a>
+					<a class="dropdown-item" href="reserM.do?id=${id }">예약관리</a>
 					<c:if test="${user_type ne null }">
 						<a class="dropdown-item" href="./hostM.do">숙소관리</a>
 					</c:if>

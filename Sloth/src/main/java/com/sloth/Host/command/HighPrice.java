@@ -17,17 +17,25 @@ public class HighPrice implements Action {
 	public String exec(HttpServletRequest request, HttpServletResponse response) {
 		HostPicVO vo1 = new HostPicVO();
 		List<HostPicVO> list1 = new ArrayList<HostPicVO>();
+		HomeDao dao = new HomeDao();
 		
 		HttpSession session = request.getSession();
 	
 		vo1 = (HostPicVO)session.getAttribute("selectVO");
 		
-		HomeDao dao = new HomeDao();
-		list1 = dao.highPrice(vo1);
-				
+		 int a = dao.TEST(vo1);
+	     
+	      if(a==0) {
+	    	  list1 = dao.r_highPrice(vo1);
+	      } else {
+	    	  list1 = dao.highPrice(vo1);
+	      }
+	    
+	      HttpSession session2 = request.getSession();
+	      session2.setAttribute("a", a);
+	      
 		request.setAttribute("hosts", list1);
 		
 		return "/room/roomlist.jsp";
 	}
-
 }

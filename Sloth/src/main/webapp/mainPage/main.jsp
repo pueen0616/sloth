@@ -32,8 +32,13 @@
                   <td colspan="2">
                   <select class="search__input" id="room_address" name="room_address">
                         <option>대구</option>
-                        <option>사울</option>
-                        <option>부샹</option>
+                        <option>서울</option>
+                        <option>부산</option>
+                        <option>인천</option>
+                        <option>광주</option>
+                        <option>대전</option>
+                        <option>울산</option>
+                        <option>제주</option>
                   </select></td>
                
                   <td class="search__sub__title" align="center">체크인</td>             

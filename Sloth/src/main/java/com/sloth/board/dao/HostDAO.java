@@ -13,15 +13,16 @@ public class HostDAO extends DAO{
 	private ResultSet rs;	//select 후 결과셋 받기
 	private HostPicVO vo;
 	
-	//private final String SELECT_ALL = "SELECT A.ROOM_NAME,B.PIC_NUM,B.PIC FROM HOST A INNER JOIN PIC B ON A.ROOM_NUM = B.ROOM_NUM ";
-	//private final String SELECT_ALL= "SELECT ROOM_NAME,ROOM_PRICE FROM HOST ORDER BY ROOM_NUM DESC";
-	//
 	private final String SELECT_HOST_PIC_JOIN= "SELECT A.*, B.* FROM HOST A	"
 								+ " INNER JOIN PIC B ON (A.ROOM_NUM = B.ROOM_NUM) WHERE FIRST_YN = 'Y'";
+	
 	private final String HOST_M = "SELECT A.*, B.* FROM HOST A"
 			                     + "  INNER JOIN PIC B ON (A.ROOM_NUM = B.ROOM_NUM) WHERE FIRST_YN = 'Y' AND A.ID = ?";
+	
 	private final String SELECT_DETAIL = "SELECT * FROM HOST WHERE ROOM_NUM = ?";
-	private final String SELECT_PIC = "SELECT * FROM PIC WHERE ROOM_NUM=?";
+	
+	private final String SELECT_PIC = "SELECT * FROM PIC WHERE ROOM_NUM = ?";
+	
 	private final String HOSTMUPDATE = "UPDATE HOST SET ROOM_NAME=? , ROOM_ADDRESS=?, ROOM_MAX=? ,ROOM_PRICE=? "
 			+ " ,ROOM_INFO=? ,ROOM_CHECKIN=?, ROOM_CHECKOUT=? WHERE ROOM_NUM=?";
 	private final String PICUPDATE = "INSERT INTO PIC VALUES(SEQ_NUM.NEXTVAL, ?,NULL,?)";

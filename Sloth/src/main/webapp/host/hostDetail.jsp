@@ -33,13 +33,13 @@ box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
 	<main class="images">
 		<div class="container" >
 			<div id="name" name="name">
-				<h1 >${detail.room_name }</h1>
+				<h1>${detail.room_name }</h1>
+				<h5>${detail.room_address }</h5>
 			</div>
 			<div id="address" name="address">
-				<h6>슈퍼 호스트</h6>
-				<a href="#">위치입니다</a>
+				<h4>슈퍼 호스트</h4>
+				<hr>
 				<button type="button" class="btn btn-outline-secondary" style="float: right;">♡저장</button>
-				<button type="button" class="btn btn-outline-secondary" style="float: right;">공유하기</button>
 			</div>
 
 			<div id="carouselExampleControls" class="carousel slide" data-ride="carousel">
@@ -67,15 +67,12 @@ box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
 								<h5></h5>
 							</div>
 							<div>
-								<h6>최대 ${detail.room_max }명</h6>
+								<h6>최대 ${detail.room_max }명 인원이 숙박 가능합니다</h6>
 							</div>
-						</div>
-						<div class="float-left">
-							<a href="#"><i class="far fa-address-book"
-								style="font-size: 36px; float: right;"></i></a>
 						</div>
 					</div>
 					<hr>
+					<h3>Info</h3>
 					<div id="info" name="info">${detail.room_info }</div>
 				</div>
 <!--예약박스 -->
