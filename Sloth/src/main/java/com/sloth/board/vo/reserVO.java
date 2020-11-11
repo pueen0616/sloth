@@ -11,6 +11,44 @@ private String reserMax;
 private String id;
 private int roomNum;
 private String reserToday;
+private String reserName;
+private String reserRoomName;
+private String reserAddress;
+
+public String getReserAddress() {
+	return reserAddress;
+}
+
+
+
+public void setReserAddress(String reserAddress) {
+	this.reserAddress = reserAddress;
+}
+
+
+
+public String getReserRoomName() {
+	return reserRoomName;
+}
+
+
+
+public void setReserRoomName(String reserRoomName) {
+	this.reserRoomName = reserRoomName;
+}
+
+
+
+public String getReserName() {
+	return reserName;
+}
+
+
+
+public void setReserName(String reserName) {
+	this.reserName = reserName;
+}
+
 
 
 public reserVO() {

@@ -22,6 +22,7 @@ public class HomeDao extends DAO {
 								   		+ "AND H.ROOM_NUM=P.ROOM_NUM "
 								   		+ "AND FIRST_YN = 'Y'";
 	   
+	   //오름차순 필터
 	   private final String LOWPRICE = "SELECT * FROM HOST H JOIN PIC P ON (H.ROOM_NUM = P.ROOM_NUM)WHERE H.ROOM_ADDRESS = ? "
 								   		+ "AND H.ROOM_CHECKIN <= ? "
 								   		+ "AND H.ROOM_CHECKOUT >= ? "
@@ -29,14 +30,71 @@ public class HomeDao extends DAO {
 								   		+ "AND H.ROOM_NUM=P.ROOM_NUM "
 								   		+ "AND FIRST_YN = 'Y' "
 								   		+ "ORDER BY H.ROOM_PRICE ASC";
-	   
+	   //내림차순 필터
 	   private final String HIGHPRICE = "SELECT * FROM HOST H JOIN PIC P ON (H.ROOM_NUM = P.ROOM_NUM)WHERE H.ROOM_ADDRESS = ? "
-		   		+ "AND H.ROOM_CHECKIN <= ? "
-		   		+ "AND H.ROOM_CHECKOUT >= ? "
-		   		+ "AND H.ROOM_MAX>=? "
-		   		+ "AND H.ROOM_NUM=P.ROOM_NUM "
-		   		+ "AND FIRST_YN = 'Y' "
-		   		+ "ORDER BY H.ROOM_PRICE DESC";
+								   		+ "AND H.ROOM_CHECKIN <= ? "
+								   		+ "AND H.ROOM_CHECKOUT >= ? "
+								   		+ "AND H.ROOM_MAX>=? "
+								   		+ "AND H.ROOM_NUM=P.ROOM_NUM "
+								   		+ "AND FIRST_YN = 'Y' "
+								   		+ "ORDER BY H.ROOM_PRICE DESC";
+	   
+	   private final String TEST = "SELECT * FROM RESER WHERE RESER_CHECKIN<=? AND RESER_CHECKOUT>=?";
+	   
+	   private final String WANTSELECT2 ="SELECT * FROM HOST WHERE NOT(ROOM_CHECKIN<=? AND ROOM_CHECKOUT>=?) AND ROOM_CHECKIN<=? AND ROOM_CHECKOUT>=?";
+
+	   //wantselect2
+	   public List<HostPicVO> wantselect2(HostPicVO vo){  // 원하는거 검색창
+           List<HostPicVO> list = new ArrayList<HostPicVO>();
+           try {   
+              psmt = conn.prepareStatement(WANTSELECT2);         
+              psmt.setDate(1, vo.getRoom_checkin());
+              psmt.setDate(2, vo.getRoom_checkout());
+              
+              rs = psmt.executeQuery();
+              while(rs.next()) {
+                 vo = new HostPicVO();
+                 vo.setRoom_num(rs.getInt("room_num"));
+                 vo.setRoom_name(rs.getString("room_name"));
+                 vo.setRoom_address(rs.getString("room_address"));
+                 vo.setRoom_max(rs.getString("room_max"));
+                 vo.setRoom_price(Integer.parseInt(rs.getString("room_price")));
+                 vo.setRoom_checkin(rs.getDate("room_checkin"));
+                 vo.setRoom_checkout(rs.getDate("room_checkout"));
+                 vo.setRoom_info(rs.getString("room_info"));
+                 vo.setId(rs.getString("id"));
+                 vo.setLocation(rs.getString("location"));
+                 list.add(vo);            
+              }
+           }catch(SQLException e) {
+              e.printStackTrace();
+           }finally {
+              close();// db 연결을 끊어준다.
+           }
+           return list;
+        }
+	   
+	   //test 함수
+	   public int TEST(HostPicVO vo) {
+	         int n = 0;
+	         try {
+//	            //시퀀스 조회
+	            psmt = conn.prepareStatement(TEST);
+	            psmt.setDate(1, vo.getRoom_checkin());
+	            psmt.setDate(2, vo.getRoom_checkout());
+	            rs=psmt.executeQuery();
+	            
+	            if(rs.getInt("room_num")==0) {
+	            	n=1;
+	            } else {
+	            	n=0;
+	            }
+	            System.out.println(n);
+	         } catch(SQLException e) {
+	            e.printStackTrace();
+	         }
+	         return n;
+	      }
 	   
 	   public List<HostPicVO> wantselect(HostPicVO vo){  // 원하는거 검색창
 	      List<HostPicVO> list = new ArrayList<HostPicVO>();

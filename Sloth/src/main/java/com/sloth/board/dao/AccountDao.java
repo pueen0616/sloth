@@ -17,6 +17,9 @@ public class AccountDao extends DAO {
 	private AccountVO vo;
 	Statement stmt = null;
 	
+	String SQL_RESER_SEQ = "SELECT SEQ_RESER_NUM.NEXTVAL FROM DUAL";
+	String SQL_SEQ = "SELECT SEQ_NUM.NEXTVAL FROM DUAL";
+	
 	private final String SELECT_ALL = "SELECT * FROM ACCOUNT ORDER BY ID";
 	private final String SELECT = "SELECT * FROM ACCOUNT WHERE ID = ? AND PASSWORD=?";
 	//계정등록
@@ -29,25 +32,105 @@ public class AccountDao extends DAO {
 	//대표사진
 	private final String PIC_INSERT_YN = "INSERT INTO PIC VALUES((select max (pic_num)+1 from pic), ?, 'Y', ?)";
 	private final String PIC_INSERT = "INSERT INTO PIC VALUES((select max (pic_num)+1 from pic), ?, NULL, ?)";
-	String SQL_RESER_SEQ = "SELECT SEQ_RESER_NUM.NEXTVAL FROM DUAL";
-	String SQL_SEQ = "SELECT SEQ_NUM.NEXTVAL FROM DUAL";
 	//숙소예약등록
-	private final String RESER_INSERT = "INSERT INTO (RESER_NUM, RESER_CHECKIN, RESER_CHECKOUT, RESER_PRICE, RESER_MAX, ID, ROOM_NUM, RESER_TODAY)  VALUES(seq_reser_num.nextval,?,?,?,?,?,?,SYSDATE)";
+	private final String RESER_INSERT = "INSERT INTO RESER (RESER_NUM,"
+			+ " RESER_CHECKIN, RESER_CHECKOUT, RESER_PRICE, RESER_MAX, ID, ROOM_NUM, RESER_TODAY, RESER_ADDRESS)"
+			+ "  VALUES(seq_reser_num.nextval,?,?,?,?,?,?,SYSDATE,?)";
 		
+	private final String SELECT_ID = "SELECT ID FROM ACCOUNT WHERE NAME=? AND EMAIL=?";
+	private final String SELECT_PW = "SELECT PASSWORD FROM ACCOUNT WHERE NAME=? AND ID=?";
+	private final String UPDATE_ACCOUNT = "UPDATE ACCOUNT SET NAME=?, PASSWORD=?,EMAIL=?, TEL=?  WHERE ID = ?";
+	private final String SELECT_user = "SELECT * FROM ACCOUNT WHERE ID = ?";
+	
+	private final String RESER_M = "SELECT A.RESER_NUM,B.ROOM_NAME,A.RESER_CHECKIN,A.RESER_CHECKOUT,A.RESER_PRICE,A.RESER_MAX,A.ID,A.ROOM_NUM,a.room_num as 호스트room_num,A.RESER_TODAY FROM RESER A,HOST B WHERE b.room_num=a.room_num and a.id=?";
+	
+	//계정 업데이트
+	public int updateAccount(AccountVO vo) {
+	      int n = 0;
+	      try {
+	         psmt=conn.prepareStatement(UPDATE_ACCOUNT);
+	      
+	         psmt.setString(1, vo.getName());
+	         psmt.setString(2, vo.getPassword());
+	         psmt.setString(3, vo.getEmail());
+	         psmt.setString(4, vo.getTel());      
+	         psmt.setString(5, vo.getId());
+	         
+	         n = psmt.executeUpdate();
+	         
+	      }catch(SQLException e) {
+	         e.printStackTrace();
+	      }finally {
+	         close();
+	      }
+	      return n ;
+	   }
+	
+	//계정 한건 조회
+	public AccountVO userInfo(AccountVO vo) {
+	      AccountVO vo1 = null;
+	      try {
+	         psmt = conn.prepareStatement(SELECT_user);
+	         psmt.setString(1, vo.getId());
+	         rs = psmt.executeQuery();
+	         if(rs.next()) {
+	            vo1 = new AccountVO();
+	            vo1.setId(rs.getString("id"));
+	            vo1.setPassword(rs.getString("password"));
+	            vo1.setName(rs.getString("name"));
+	            vo1.setBirth(rs.getString("birth"));
+	            vo1.setEmail(rs.getString("email"));
+	            vo1.setTel(rs.getString("tel"));
+	            vo1.setUserType(rs.getString("user_type"));
+	         }
+	      }catch(SQLException e) {
+	         e.printStackTrace();
+	      }finally {
+	         close();
+	      }
+	      return vo1;
+	}
+	
+	//예약건 조회
+	public List<reserVO> select_reser(reserVO vo) {
+	      List<reserVO> list = new ArrayList<reserVO>();
+	      try {
+	         psmt = conn.prepareStatement(RESER_M);
+	         psmt.setString(1,vo.getId());
+	         rs = psmt.executeQuery();
+
+	         while (rs.next()) {
+	            vo = new reserVO();
+	            vo.setReserNum(Integer.parseInt(rs.getString("RESER_NUM")));
+	            vo.setReserRoomName(rs.getString("ROOM_NAME"));
+	            vo.setReserCheckIn(rs.getDate("RESER_CHECKIN"));
+	            vo.setReserCheckOut(rs.getDate("RESER_CHECKOUT"));
+	            vo.setReserPrice(rs.getInt("RESER_PRICE"));
+	            vo.setReserMax(rs.getString("RESER_MAX"));
+	            vo.setId(rs.getString("ID"));
+	            vo.setRoomNum(rs.getInt("ROOM_NUM"));
+	            vo.setReserToday(rs.getString("RESER_TODAY"));
+	            
+	            list.add(vo);
+	         }
+	      } catch (Exception e) {
+	         e.printStackTrace();
+	      }
+	      return list;
+	   }
+	
 	//숙소예약
 	public int reser_insert(reserVO vo) {
 		int n = 0;
 		try {
 			psmt=conn.prepareStatement(RESER_INSERT);
-			psmt.setInt(1, vo.getReserNum());
-			psmt.setDate(2, vo.getReserCheckIn());
-			psmt.setDate(3, vo.getReserCheckOut());
-			psmt.setInt(4, vo.getReserPrice());
-			psmt.setString(5, vo.getReserMax());
-			psmt.setString(6, vo.getId());
-			psmt.setInt(7, vo.getRoomNum());
-			psmt.setString(8, vo.getReserToday());
-			
+			psmt.setDate(1, vo.getReserCheckIn());
+			psmt.setDate(2, vo.getReserCheckOut());
+			psmt.setInt(3, vo.getReserPrice());
+			psmt.setString(4, vo.getReserMax());
+			psmt.setString(5, vo.getId());
+			psmt.setInt(6, vo.getRoomNum());
+			psmt.setString(7, vo.getReserAddress());
 			n=psmt.executeUpdate();
 		
 		} catch(SQLException e) {
@@ -55,6 +138,44 @@ public class AccountDao extends DAO {
 		}
 		return n;
 	}
+	
+	   //아이디 찾기
+	   public AccountVO select_id(AccountVO vo) {
+	      try {
+	         psmt = conn.prepareStatement(SELECT_ID);
+	         psmt.setString(1, vo.getName());
+	         psmt.setString(2, vo.getEmail());
+	         rs = psmt.executeQuery();
+	         
+	         if(rs.next()) {
+	            vo.setId(rs.getString("id"));
+	         }
+	      }catch(SQLException e) {
+	         e.printStackTrace();
+	      }finally {
+	         close();
+	      }
+	      return vo;
+	   }
+	   
+	   //비밀번호 찾기
+	   public AccountVO select_pw(AccountVO vo) {
+	   try {
+	      psmt = conn.prepareStatement(SELECT_PW);
+	      psmt.setString(1, vo.getName());
+	      psmt.setString(2,  vo.getId());
+	      rs = psmt.executeQuery();
+	      
+	      if(rs.next()) {
+	         vo.setPassword(rs.getString("password"));
+	      }
+	   }catch(SQLException e) {
+	      e.printStackTrace();
+	   }finally {
+	      close();
+	   }
+	   return vo;
+	   }
 	
 	//대표사진
 	public int PIC_INSERT_YN(HostPicVO vo) {

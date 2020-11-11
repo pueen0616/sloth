@@ -9,5 +9,6 @@
     <excludes>
     	<pattern>/main.do</pattern>
     	<pattern>/loginForm.do</pattern>
+    	<pattern>/reser.do</pattern>
     </excludes>
 </decorators>

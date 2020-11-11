@@ -107,6 +107,8 @@ input:checked + label {
 #tab3:checked ~ #content3,
 #tab4:checked ~ #content4 {
     display: block;}
+    
+    
 </style>
 <script type="text/javascript">
 
@@ -129,8 +131,8 @@ input:checked + label {
 							<span class="thumb">
 								<img id="img" name="img"  alt="왜아무것도안나오지" src="${pageContext.request.contextPath}/img/${host.pic }">
 						</span> 
-						<span><b>${host.room_name }</b></span>
 					 </a>
+						<span><b>${host.room_name }</b></span>
 						<div><p>${host.room_price }</p></div>
 					</li>
 			</c:forEach>

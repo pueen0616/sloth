@@ -20,7 +20,7 @@ a:hover,a:active,a:focus{text-decoration:underline;}
 }
 .fixed_img_col ul {
 	border-bottom: 1px solid #aaa;
-	*zoom: 1;
+	
 }
 .fixed_img_col li {
 	float: left;

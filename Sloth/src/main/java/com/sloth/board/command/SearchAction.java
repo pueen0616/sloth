@@ -19,7 +19,6 @@ public class SearchAction implements Action {
 	   public String exec(HttpServletRequest request, HttpServletResponse response) {
 	      // TODO 회원리스트 보기 구현
 	      
-	      //response.setCharacterEncoding(arg0);
 	      HomeDao dao = new HomeDao();   
 	      HostPicVO vo = new HostPicVO();
 	      List<HostPicVO> list = new ArrayList<HostPicVO>();
@@ -29,16 +28,19 @@ public class SearchAction implements Action {
 	      vo.setRoom_checkout(Date.valueOf(request.getParameter("room_checkout")));
 	      vo.setRoom_max(request.getParameter("room_max"));
 	      
-	      list = dao.wantselect(vo);
-//	      list = dao1.SELECT_HOST_PIC_JOIN(vo);
+	      int a = dao.TEST(vo);
 	      
+	      if(a==0) {
+	    	  list = dao.wantselect(vo);
+	      } else {
+	    	  list = dao.wantselect2(vo);
+	      }
+	      
+	      System.out.println(a);
 	      HttpSession session = request.getSession();
 	      session.setAttribute("selectVO", vo);
-	      
 	      request.setAttribute("hosts", list);
 	      
 	      return "room/roomlist.jsp";
 	   }
-
-	
 }
