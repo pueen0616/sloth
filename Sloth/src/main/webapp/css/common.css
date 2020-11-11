@@ -18,10 +18,15 @@ a:hover,a:active,a:focus{text-decoration:underline;}
 	padding: 15px 0 10px;
 	border-bottom: 1px solid #aaa;
 }
+<<<<<<< HEAD
 .fixed_img_col ul {
 	border-bottom: 1px solid #aaa;
 	
 }
+=======
+
+
+>>>>>>> branch 'main' of https://github.com/pueen0616/sloth.git
 .fixed_img_col li {
 	float: left;
 	width: 120px;

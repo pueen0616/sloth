@@ -78,7 +78,7 @@ input[type=text]:hover {
 			<textarea cols="70" rows="10" id="room_info" name="room_info"></textarea>
 			
 			<div style="margin-bottom: 32px;"><input type="hidden" id="id" name="id" value="${id}" readonly></div>
-			<div style="margin-bottom: 32px;">대표사진<input type="file" id="img" name="img1"></div>
+			<div style="margin-bottom: 32px;">대표사진<input type="file" id="img1" name="img1"></div>
 			<div style="margin-bottom: 32px;">사진<input type="file" id="img" name="img"></div>
 			<div><input type="submit" value="다음" class="btn btn-primary">
  				 <input type="reset" value="취소" class="btn btn-primary"></div>

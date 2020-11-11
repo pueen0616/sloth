@@ -115,6 +115,7 @@ input:checked + label {
 </script>
 </head>
 <body>
+${hosts }
     <input id="tab1" type="button" name="tab1" onclick="location.href='${pageContext.request.contextPath}/highPrice.do'">
     <label for="tab1">높은가격순</label>
 

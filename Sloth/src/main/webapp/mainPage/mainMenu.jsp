@@ -15,13 +15,17 @@
 
 			<div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
 				<c:if test="${name eq null }">
-					<a class="dropdown-item" href="#" data-toggle="modal"
+					<a class="dropdown-item"  data-toggle="modal"
                data-target="#exampleModal">로그인</a>
 
 				</c:if>
 				<c:if test="${name ne null }">
 					<a class="dropdown-item" href="hostUpForm.do">호스트가 되기</a>
+<<<<<<< HEAD
 					<a class="dropdown-item" href="Account.do">계정</a>
+=======
+					<a class="dropdown-item" href="accountUpdate.do">계정</a>
+>>>>>>> branch 'main' of https://github.com/pueen0616/sloth.git
 					<a class="dropdown-item" href="#">게시판</a>
 					<a class="dropdown-item" href="reserM.do?id=${id }">예약관리</a>
 					<c:if test="${user_type ne null }">
@@ -43,8 +47,8 @@
                <nav style="height: 120px;">
                   <div style="float: left;" class="logo">
                      <a href="main.do"><img
-                        src="${pageContext.request.contextPath}/logo/logo.png"
-                        width="50px"></a>
+                        src="${pageContext.request.contextPath}/logo/logo1.png"
+                        width="150px"></a>
                   </div>
                </nav>
                <div align="center">
