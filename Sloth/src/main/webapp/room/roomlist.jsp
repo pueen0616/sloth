@@ -133,7 +133,7 @@ input:checked + label {
 						</span> 
 					 </a>
 						<span><b>${host.room_name }</b></span>
-						<div><p>${host.room_price }</p></div>
+						<p>${host.room_price }</p>
 					</li>
 			</c:forEach>
 				</ul>
