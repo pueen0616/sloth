@@ -60,7 +60,6 @@ public class FrontController extends HttpServlet {
 		map.put("/hostUpForm.do", new HostUpFormAction());    //숙소등록 폼
 		map.put("/search.do", new SearchAction());			  //검색결과화면 출력
 		map.put("/hostUp.do", new HostUp()); 				  //숙소등록 처리
-		map.put("/search.do", new SearchAction());			  //숙소 검색
 		map.put("/findId.do", new FindId());				  //아이디 찾기
 		map.put("/findidresult.do", new Findidresult());   
 		map.put("/findPassword.do", new FindPassword());	  //비밀번호 찾기
@@ -83,13 +82,9 @@ public class FrontController extends HttpServlet {
 	
 		map.put("/reserM.do",new ReserMAction()); 			  //예약관리처리
 		map.put("/highPrice.do", new HighPrice()); 			  //높은 가격 필터
-		map.put("/hostM.do", new HostMAction());
-		map.put("/reserM.do",new ReserMAction());
 		
-		map.put("/hostmUpdate.do", new HostmUpdateAction());
-		map.put("/hostmUpdateForm.do", new HostmUpdateFormAction());
-    	}
-    
+    	
+    }
     protected void service(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// 수행할 명령을 정리
 		  request.setCharacterEncoding("utf-8"); //한글깨짐 방지!
