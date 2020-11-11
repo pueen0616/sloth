@@ -17,13 +17,18 @@ public class LowPrice implements Action {
 	public String exec(HttpServletRequest request, HttpServletResponse response) {
 		HostPicVO vo1 = new HostPicVO();
 		List<HostPicVO> list1 = new ArrayList<HostPicVO>();
+		HomeDao dao = new HomeDao();
 		
 		HttpSession session = request.getSession();
 	
 		vo1 = (HostPicVO)session.getAttribute("selectVO");
-		
-		HomeDao dao = new HomeDao();
-		list1 = dao.lowPrice(vo1);
+		 int b = (int)session.getAttribute("a");
+	      System.out.println(b);
+	      if(b==0) {
+	    	  list1 = dao.r_lowPrice(vo1);
+	      } else {
+	    	  list1 = dao.lowPrice(vo1);
+	      }
 				
 		request.setAttribute("hosts", list1);
 		

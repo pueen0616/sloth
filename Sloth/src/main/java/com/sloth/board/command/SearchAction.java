@@ -12,6 +12,7 @@ import com.sloth.board.common.Action;
 import com.sloth.board.dao.HomeDao;
 import com.sloth.board.dao.HostDAO;
 import com.sloth.board.vo.HostPicVO;
+import com.sloth.board.vo.reserVO;
 
 public class SearchAction implements Action {
 
@@ -31,11 +32,10 @@ public class SearchAction implements Action {
 	      int a = dao.TEST(vo);
 	      
 	      if(a==0) {
-	    	  list = dao.wantselect(vo);
-	      } else {
 	    	  list = dao.wantselect2(vo);
+	      } else {
+	    	  list = dao.wantselect(vo);
 	      }
-	      
 	      System.out.println(a);
 	      HttpSession session = request.getSession();
 	      session.setAttribute("selectVO", vo);
