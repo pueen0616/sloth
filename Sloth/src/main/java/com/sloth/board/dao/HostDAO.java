@@ -25,7 +25,6 @@ public class HostDAO extends DAO{
 	private final String hostmupdate = "UPDATE HOST SET ROOM_NAME=? , ROOM_ADDRESS=?, ROOM_MAX=? ,ROOM_PRICE=? "
 			+ " ,ROOM_INFO=? ,ROOM_CHECKIN=?, ROOM_CHECKOUT=? WHERE ROOM_NUM=?";
 	
-	
 	//host 수정
 	public HostPicVO hostmupdate(HostPicVO vo){
 		int n = 0;

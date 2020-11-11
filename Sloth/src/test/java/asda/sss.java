@@ -14,10 +14,13 @@ import com.sloth.board.vo.reserVO;
 public class sss {
 	@Test
 	public void aaa() {
-	AccountDao dao=new AccountDao();
-	reserVO vo= new reserVO();
-	List<reserVO> list =new ArrayList<reserVO>();
-	list= dao.select_reser(vo);
-	System.out.println(list+" "+"bbbbbbb");
+		AccountDao dao=new AccountDao();
+		reserVO vo= new reserVO();
+		
+		
+		List<reserVO> list =new ArrayList<reserVO>();
+		
+		list= dao.select_reser(vo);
+		System.out.println(vo);
 	}
 }
