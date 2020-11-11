@@ -21,12 +21,9 @@ import com.sloth.Host.command.HostUpFormAction;
 import com.sloth.Host.command.LowPrice;
 import com.sloth.Host.command.Reser;
 import com.sloth.Host.command.ReserInsertAction;
-<<<<<<< HEAD
 import com.sloth.Host.command.picdeleteAction;
 import com.sloth.Host.command.picupdateAction;
-=======
 import com.sloth.Login.command.AccountUpdateAction;
->>>>>>> branch 'main' of https://github.com/pueen0616/sloth.git
 import com.sloth.Login.command.FindId;
 import com.sloth.Login.command.FindPassword;
 import com.sloth.Login.command.Findidresult;
@@ -63,7 +60,6 @@ public class FrontController extends HttpServlet {
 		map.put("/hostUpForm.do", new HostUpFormAction());    //숙소등록 폼
 		map.put("/search.do", new SearchAction());			  //검색결과화면 출력
 		map.put("/hostUp.do", new HostUp()); 				  //숙소등록 처리
-		map.put("/search.do", new SearchAction());			  //숙소 검색
 		map.put("/findId.do", new FindId());				  //아이디 찾기
 		map.put("/findidresult.do", new Findidresult());   
 		map.put("/findPassword.do", new FindPassword());	  //비밀번호 찾기
@@ -83,16 +79,12 @@ public class FrontController extends HttpServlet {
 //		map.put("/picdeleteForm.do", new picdeleteFormAction()); // 호스트 수정에서 사진 리스트
 		map.put("/picupdate.do",new picupdateAction()); //호스트 사진수정에서 사진 리스트
 		map.put("/picupload.do", new picuploadAction()); //호스트사진수정애서 사진등록
-	}
+	
 		map.put("/reserM.do",new ReserMAction()); 			  //예약관리처리
 		map.put("/highPrice.do", new HighPrice()); 			  //높은 가격 필터
-		map.put("/hostM.do", new HostMAction());
-		map.put("/reserM.do",new ReserMAction());
 		
-		map.put("/hostmUpdate.do", new HostmUpdateAction());
-		map.put("/hostmUpdateForm.do", new HostmUpdateFormAction());
-    	}
-    
+    	
+    }
     protected void service(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// 수행할 명령을 정리
 		  request.setCharacterEncoding("utf-8"); //한글깨짐 방지!
