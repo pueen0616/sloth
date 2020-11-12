@@ -77,8 +77,32 @@
 				}
 			});
 		});
-
+	
+	//end of function
+		//삭제
+		$(".delete_room").on("click",function(){
+			$.ajax({
+				url : "roomDelete.do",
+				data : {
+					"roomNum" : $("[name='roomNum']").val()
+				},
+				async : false,
+				success : function(result){
+					if(result=="OK"){
+						alert("삭제 완료");
+						$("td[class='bbb']").remove();
+					}else{
+						alert("이미 예약된 방이 있습니다.");
+						alert("삭제할 수 없습니다.")
+					}
+				},
+				error : function(jqXHR) {
+					alert(jqXHR.responseText);
+				}
+			})
+		});
 	});
+	//end of function
 	function fn_submit() {
 		var form = new FormData(frmload);
 		//for (var i = 0; i < $("#picupload")[0].files.length; i++)
@@ -102,6 +126,7 @@
 </script>
 </head>
 <body>
+	<form id="frm44" name="frm44" method="post">
 	<table class="table table-bordered table-dark">
 		<thead>
 			<tr>
@@ -113,27 +138,30 @@
 				<th scope="col">®</th>
 			</tr>
 		</thead>
+		
 		<tbody>
 			<c:forEach items="${hostM}" var="host" varStatus="i">
 				<tr>
-					<td><img style="width: 200px; height: 200px;" alt="null"
+					<td class="bbb"><img style="width: 200px; height: 200px;" alt="null"
 						src="${pageContext.request.contextPath}/img/${host.pic }">
 						<button type="button" class="btn btn-primary btn-pic"
 							data-toggle="modal" data-num="${host.room_num }"
 							data-target="#picupdate">사진 수정</button></td>
-					<td>${host.room_name}</td>
-					<td>${host.room_address}</td>
-					<td>${host.room_price}</td>
-					<td>${host.room_max}</td>
-					<td>
+					<td class="bbb">${host.room_name}</td>
+					<td class="bbb">${host.room_address}</td>
+					<td class="bbb">${host.room_price}</td>
+					<td class="bbb">${host.room_max}</td>
+					<td class="bbb">
 						<button type="button" class="btn btn-light"
 							onclick="location.href='hostmUpdateForm.do?room_num=${host.room_num }'">수정</button>
-						<button type="button" class="btn btn-light">삭제</button>
+						<input type="hidden" id="roomNum" name="roomNum" value="${host.room_num }">
+						<button type="button" class="btn btn-light delete_room" id="delete_Room" name="roomNum">삭제</button>
 					</td>
 				</tr>
 			</c:forEach>
 		</tbody>
 	</table>
+	</form>
 	<div class="modal fade" id="picupdate" tabindex="-1"
 		aria-labelledby="exampleModalLabel" aria-hidden="true">
 		<div class="modal-dialog modal-lg">
@@ -148,8 +176,6 @@
 				<div class="modal-body" id="modal-body2"></div>
 
 				<div class="modal-footer">
-					<button type="button" class="btn btn-secondary"
-						data-dismiss="modal">Close</button>
 
 
 					<form id="frmload" name="frmload" action="picupload.do"

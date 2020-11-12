@@ -18,32 +18,27 @@ public class ReserInsertAction implements Action {
 	public String exec(HttpServletRequest request, HttpServletResponse response) {
 		reserVO vo = new reserVO();
 		AccountDao dao = new AccountDao();
-		
+
 		HttpSession session = request.getSession(false);
-		
+
 		// 검색화면 (날짜, 인원 수)
-		HostPicVO svo = (HostPicVO)session.getAttribute("selectVO"); //getAttribute(담은 객체명)
+		HostPicVO svo = (HostPicVO) session.getAttribute("selectVO"); // getAttribute(담은 객체명)
 		vo.setReserAddress(svo.getRoom_address());
 		vo.setReserCheckIn(svo.getRoom_checkin());
 		vo.setReserCheckOut(svo.getRoom_checkout());
 		vo.setReserMax(svo.getRoom_max());
-		
+
 		// 숙소 (이름, 가격)
-		HostPicVO dvo = (HostPicVO)session.getAttribute("detail");
+		HostPicVO dvo = (HostPicVO) session.getAttribute("detail");
 		vo.setRoomNum(dvo.getRoom_num());
 		vo.setReserPrice(Integer.parseInt(request.getParameter("room_price1")));
-		
+
 		// 아이디
-		String id = (String)session.getAttribute("id");
-		
+		String id = (String) session.getAttribute("id");
+
 		vo.setId(id);
-		
-		try {
-			dao.reser_insert(vo);
-		} catch (SQLException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
+
+		dao.reser_insert(vo);
 		return "/mainPage/main.jsp";
 	}
 }

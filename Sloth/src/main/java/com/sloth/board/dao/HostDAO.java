@@ -27,7 +27,20 @@ public class HostDAO extends DAO{
 			+ " ,ROOM_INFO=? ,ROOM_CHECKIN=?, ROOM_CHECKOUT=? WHERE ROOM_NUM=?";
 	private final String PICUPDATE = "INSERT INTO PIC VALUES(SEQ_NUM.NEXTVAL, ?,NULL,?)";
 	private final String PICDEL = "DELETE FROM PIC WHERE PIC_NUM=?";
-	
+	private final String DELETE_ROOM="DELETE FROM HOST WHERE ROOM_NUM=?";
+	  
+	//숙소삭제
+	public HostPicVO room_Delete(int roomNum) {
+		try {
+			psmt=conn.prepareStatement(DELETE_ROOM);
+			psmt.setInt(1,roomNum);
+			psmt.executeUpdate();
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		return null;
+	}
 	//사진 삭제
 	public int picdel(HostPicVO vo) {
 		int n = 0;

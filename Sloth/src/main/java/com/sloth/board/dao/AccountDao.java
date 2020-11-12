@@ -39,7 +39,7 @@ public class AccountDao extends DAO {
 	// where room_num = ?) as room_name, reser_checkin, reser_checkout, reser_price,
 	// reser_max,id,room_num, reser_today from reser where id =?";
 	private final String RESER_M = "SELECT A.RESER_NUM,B.ROOM_NAME,A.RESER_CHECKIN,A.RESER_CHECKOUT,A.RESER_PRICE,A.RESER_MAX,A.ID,A.ROOM_NUM,a.room_num as 호스트room_num,A.RESER_TODAY FROM RESER A,HOST B WHERE b.room_num=a.room_num and a.id=?";
-	private final String delete_reser = "DELETE FROM RESER WHERE RESER_NUM=?";
+	private final String DELETE_RESER = "DELETE FROM RESER WHERE RESER_NUM=?";
 
 	// 숙소예약등록
 	private final String RESER_INSERT = "INSERT INTO RESER (RESER_NUM,"
@@ -49,7 +49,7 @@ public class AccountDao extends DAO {
 	private final String SELECT_ID = "SELECT ID FROM ACCOUNT WHERE NAME=? AND EMAIL=?";
 	// 비밀번호 찾기
 	private final String SELECT_PW = "SELECT PASSWORD FROM ACCOUNT WHERE NAME=? AND ID=?";
-	//계정 업데이트
+	// 계정 업데이트
 	private final String UPDATE_ACCOUNT = "UPDATE ACCOUNT SET NAME=?, PASSWORD=?,EMAIL=?, TEL=?  WHERE ID = ?";
 
 	// 예약 수정
@@ -74,20 +74,19 @@ public class AccountDao extends DAO {
 	}
 
 	// 숙소예약
-	public int reser_insert(reserVO vo) throws SQLException {
+	public int reser_insert(reserVO vo) {
 		int n = 0;
 		try {
 			psmt = conn.prepareStatement(RESER_INSERT);
-			psmt.setInt(1, vo.getReserNum());
-			psmt.setDate(2, vo.getReserCheckIn());
-			psmt.setDate(3, vo.getReserCheckOut());
-			psmt.setInt(4, vo.getReserPrice());
-			psmt.setString(5, vo.getReserMax());
-			psmt.setString(6, vo.getId());
-			psmt.setInt(7, vo.getRoomNum());
-			psmt.setString(8, vo.getReserToday());
-
+			psmt.setDate(1, vo.getReserCheckIn());
+			psmt.setDate(2, vo.getReserCheckOut());
+			psmt.setInt(3, vo.getReserPrice());
+			psmt.setString(4, vo.getReserMax());
+			psmt.setString(5, vo.getId());
+			psmt.setInt(6, vo.getRoomNum());
+			psmt.setString(7, vo.getReserAddress());
 			n = psmt.executeUpdate();
+
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}
@@ -97,7 +96,7 @@ public class AccountDao extends DAO {
 	// 예약 삭제
 	public reserVO reserDelete(int reserNum) {
 		try {
-			psmt = conn.prepareStatement(delete_reser);
+			psmt = conn.prepareStatement(DELETE_RESER);
 			psmt.setInt(1, reserNum);
 			psmt.executeUpdate();
 		} catch (Exception e) {
