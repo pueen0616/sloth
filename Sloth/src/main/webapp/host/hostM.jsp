@@ -90,7 +90,10 @@
 				success : function(result) {
 					if (result == "OK") {
 						alert("성공");
-						
+						var chk = $("[name='pic_num']:checked");
+						for (var i = 0; i < chk.length; i++) {
+								
+						}
 					} else {
 						alert("실패");
 					}
