@@ -13,8 +13,6 @@ public class Reser implements Action {
 	public String exec(HttpServletRequest request, HttpServletResponse response) {
 		//reser 폼
 		
-		
 		return "/reserv/reserv.jsp";
 	}
-
 }

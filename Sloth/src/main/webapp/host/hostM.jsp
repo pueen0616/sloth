@@ -18,6 +18,7 @@
 	border: 1px solid #ebebeb;
 	border-bottom-color: #e2e2e2;
 	border-radius: .25em;
+	margin-top: 30px;
 }
 
 .filebox input[type="file"] { /* 파일 필드 숨기기 */
@@ -31,6 +32,11 @@
 	border: 0;
 }
 
+.filebox {
+	float: left;
+	padding-right: 600px;
+}
+
 .img1 {
 	padding: 3px;
 	width: 200px;
@@ -38,6 +44,16 @@
 }
 </style>
 <script>
+function delHost(){
+	if (confirm("정말 삭제하시겠습니까??") == true){    //확인
+	
+	    document.removefrm.submit();
+	
+	}else{   //취소
+	
+	    return false;
+	}
+}
 	function setThumbnail(event) {
 		var reader = new FileReader();
 		reader.onload = function(event) {
@@ -62,14 +78,14 @@
 
 		$("#picdelete").on("click", function() {
 			$.ajax("picdelete.do", {
-				data : $("#frm1").serialize(),
+				data : $("#frm3").serialize(),
 				success : function(result) {
 					if (result == "OK") {
-						alert("삭제되었습니다.");
-						var chk = $("[name='picchk']:checked");
+						var chk = $("[name='pic_num']:checked");
 						for (var i = 0; i < chk.length; i++) {
 							$(chk[i]).next().remove(); //이미지
 							$(chk[i]).remove(); //체크박스
+
 						}
 					} else {
 						alert("실패");
@@ -77,37 +93,23 @@
 				}
 			});
 		});
-	
-	//end of function
-		//삭제
-		$(".delete_room").on("click",function(){
-			$.ajax({
-				url : "roomDelete.do",
-				data : {
-					"roomNum" : $("[name='roomNum']").val()
-				},
-				async : false,
-				success : function(result){
-					if(result=="OK"){
-						alert("삭제 완료");
-						$("td[class='bbb']").remove();
-					}else{
-						alert("이미 예약된 방이 있습니다.");
-						alert("삭제할 수 없습니다.")
-					}
-				},
-				error : function(jqXHR) {
+		$("#mainpic").on("click", function() {
+			$.ajax("mainpic.do", {
+				data : $("#frm3").serialize(),
+				success : function(result) {
+					if (result == "OK") {
+						alert("성공");
+						location.reload();
+					} 
+				}, error : function(jqXHR) {
 					alert(jqXHR.responseText);
 				}
-			})
+		});
 		});
 	});
-	//end of function
 	function fn_submit() {
 		var form = new FormData(frmload);
-		//for (var i = 0; i < $("#picupload")[0].files.length; i++)
-		//	form.append("img3", $("#picupload")[0].files[i]);
-
+		
 		$.ajax({
 			url : "picupload.do",
 			type : "POST",
@@ -115,8 +117,7 @@
 			contentType : false,
 			data : form,
 			success : function(response) {
-				alert("성공하였습니다.");
-				console.log(response);
+				$(".modal-body").load("picupdate.do?room_num=" +frmload.room_num.value);
 			},
 			error : function(jqXHR) {
 				alert(jqXHR.responseText);
@@ -126,42 +127,39 @@
 </script>
 </head>
 <body>
-	<form id="frm44" name="frm44" method="post">
-	<table class="table table-bordered table-dark">
+	<table class="table table-hovers">
 		<thead>
 			<tr>
-				<th scope="col">숙소</th>
-				<th scope="col">장소</th>
-				<th scope="col">이름</th>
-				<th scope="col">가격</th>
-				<th scope="col">인원</th>
-				<th scope="col">®</th>
+				<th scope="col" style="padding: 10px; text-align: center;">숙소</th>
+				<th scope="col" style="padding: 10px; text-align: center;">이름</th>
+				<th scope="col" style="padding: 10px; text-align: center;">장소</th>
+				<th scope="col" style="padding: 10px; text-align: center;">가격</th>
+				<th scope="col" style="padding: 10px; text-align: center;">인원</th>
+				<th scope="col" style="padding: 10px; text-align: center;">®</th>
 			</tr>
 		</thead>
-		
 		<tbody>
 			<c:forEach items="${hostM}" var="host" varStatus="i">
 				<tr>
-					<td class="bbb"><img style="width: 200px; height: 200px;" alt="null"
+					<td style="padding: 10px; text-align: center;"><img
+						style="width: 200px; height: 200px;" alt="null"
 						src="${pageContext.request.contextPath}/img/${host.pic }">
 						<button type="button" class="btn btn-primary btn-pic"
 							data-toggle="modal" data-num="${host.room_num }"
 							data-target="#picupdate">사진 수정</button></td>
-					<td class="bbb">${host.room_name}</td>
-					<td class="bbb">${host.room_address}</td>
-					<td class="bbb">${host.room_price}</td>
-					<td class="bbb">${host.room_max}</td>
-					<td class="bbb">
+					<td style="padding: 10px; text-align: center;">${host.room_name}</td>
+					<td style="padding: 10px; text-align: center;">${host.room_address}</td>
+					<td style="padding: 10px; text-align: center;">${host.room_price}</td>
+					<td style="padding: 10px; text-align: center;">${host.room_max}</td>
+					<td style="padding: 10px; text-align: center;">
 						<button type="button" class="btn btn-light"
 							onclick="location.href='hostmUpdateForm.do?room_num=${host.room_num }'">수정</button>
-						<input type="hidden" id="roomNum" name="roomNum" value="${host.room_num }">
-						<button type="button" class="btn btn-light delete_room" id="delete_Room" name="roomNum">삭제</button>
-					</td>
+						<button type="button" class="btn btn-light">삭제</button>
+					</td style="padding:10px; text-align:center; ">
 				</tr>
 			</c:forEach>
 		</tbody>
 	</table>
-	</form>
 	<div class="modal fade" id="picupdate" tabindex="-1"
 		aria-labelledby="exampleModalLabel" aria-hidden="true">
 		<div class="modal-dialog modal-lg">
@@ -176,23 +174,29 @@
 				<div class="modal-body" id="modal-body2"></div>
 
 				<div class="modal-footer">
-
+					<!-- 					<button type="button" class="btn btn-secondary"
+						data-dismiss="modal">Close</button>
+ -->
 
 					<form id="frmload" name="frmload" action="picupload.do"
 						method="post" enctype="multipart/form-data">
 						<input type="hidden" name="room_num" value="">
 						<div class="filebox">
-							<label for="picupload">업로드</label> <input type="file"
-								id="picupload" name="picupload" multiple
+							<label for="picupload" style="float: left;">업로드</label> <input
+								type="file" id="picupload" name="picupload" multiple
 								onchange="setThumbnail(event);">
 						</div>
 						<button type="button" class="btn btn-primary"
 							onclick="fn_submit()">저장</button>
 					</form>
-					<button type="button" class="btn btn-primary" id="picdelete">삭제</button>
+					<span><button type="button" class="btn btn-primary"
+							id="picdelete">삭제</button></span> <span><button type="button"
+							class="btn btn-primary" id="mainpic">대표사진</button></span>
 				</div>
 			</div>
 		</div>
 	</div>
+	<hr>
 </body>
 </html>
+</span>

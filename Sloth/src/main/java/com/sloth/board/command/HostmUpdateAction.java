@@ -37,7 +37,7 @@ public class HostmUpdateAction implements Action {
 			
 		
 			
-		return "mainPage/main.jsp";
+		return "redirect:hostM.do";
 	}
 
 }
