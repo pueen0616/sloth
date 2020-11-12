@@ -14,8 +14,8 @@ public class HostDAO extends DAO{
 	private HostPicVO vo;
 	
 	private final String SELECT_HOST_PIC_JOIN= "SELECT A.*, B.* FROM HOST A	"
-								+ " INNER JOIN PIC B ON (A.ROOM_NUM = B.ROOM_NUM) WHERE FIRST_YN = 'Y'";
-	
+								+ " INNER JOIN (select * from (select row_number() over (partition by room_num order by room_num , first_yn) as num,pic.* from pic)where num=1) B ON (A.ROOM_NUM = B.ROOM_NUM) ";
+						
 	private final String HOST_M = "SELECT A.*, B.* FROM HOST A"
 			                     + "  INNER JOIN PIC B ON (A.ROOM_NUM = B.ROOM_NUM) WHERE FIRST_YN = 'Y' AND A.ID = ?";
 	
@@ -27,7 +27,36 @@ public class HostDAO extends DAO{
 			+ " ,ROOM_INFO=? ,ROOM_CHECKIN=?, ROOM_CHECKOUT=? WHERE ROOM_NUM=?";
 	private final String PICUPDATE = "INSERT INTO PIC VALUES(SEQ_NUM.NEXTVAL, ?,NULL,?)";
 	private final String PICDEL = "DELETE FROM PIC WHERE PIC_NUM=?";
-	
+	private final String MAINPIC = "UPDATE PIC SET FIRST_YN= NULL WHERE FIRST_YN='Y' AND ROOM_NUM=?";
+	private final String CHANGEPIC = "UPDATE PIC SET FIRST_YN= 'Y' WHERE  PIC_NUM=?";
+	//대표사진1
+	public int MAINPIC(HostPicVO vo) {
+		int n = 0;
+		try {
+			psmt=conn.prepareStatement(MAINPIC);
+			psmt.setInt(1, vo.getRoom_num());
+			n=psmt.executeUpdate();
+		} catch(SQLException e) {
+			e.printStackTrace();
+		}finally {
+			close();
+		}
+		return n;
+	}
+	//대표사진 
+	public int CHANGEPIC(HostPicVO vo) {
+		int n = 0;
+		try {
+			psmt=conn.prepareStatement(CHANGEPIC);
+			psmt.setInt(1, vo.getPic_num());
+			n=psmt.executeUpdate();
+		} catch(SQLException e) {
+			e.printStackTrace();
+		}finally {
+			close();
+		}
+		return n;
+	}
 	//사진 삭제
 	public int picdel(HostPicVO vo) {
 		int n = 0;
@@ -52,6 +81,8 @@ public class HostDAO extends DAO{
 			n=psmt.executeUpdate();
 		} catch(SQLException e) {
 			e.printStackTrace();
+		}finally {
+			close();
 		}
 		return n;
 	}
@@ -74,6 +105,8 @@ public class HostDAO extends DAO{
 
 		} catch (SQLException e) {
 			e.printStackTrace();
+		}finally {
+			close();
 		}
 		
 		return vo;
@@ -109,7 +142,7 @@ public class HostDAO extends DAO{
 			} catch(SQLException e) {
 				e.printStackTrace();
 			} finally{
-				
+				close();
 			}
 			return list;
 		}	
@@ -138,7 +171,7 @@ public class HostDAO extends DAO{
 		} catch(SQLException e) {
 			e.printStackTrace();
 		} finally{
-			
+			close();
 		}
 		return hvo;
 	}	
@@ -153,13 +186,16 @@ public class HostDAO extends DAO{
 			while(rs.next()) {
 				vo = new HostPicVO();
 				vo.setPic(rs.getString("pic"));
-				
+				vo.setPic_num(rs.getInt("pic_num"));
+				vo.setFirst_yn(rs.getString("first_yn"));
+				vo.setRoom_num(rs.getInt("room_num"));
+
 				list.add(vo);
 			}
 		} catch(SQLException e) {
 			e.printStackTrace();
 		} finally{
-			
+			close();
 		}
 		
 		return list;
@@ -185,7 +221,7 @@ public class HostDAO extends DAO{
 		} catch(SQLException e) {
 			e.printStackTrace();
 		} finally{
-			
+			close();
 		}
 		
 		return list;

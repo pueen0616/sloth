@@ -79,12 +79,10 @@ public class FrontController extends HttpServlet {
 //		map.put("/picdeleteForm.do", new picdeleteFormAction()); // 호스트 수정에서 사진 리스트
 		map.put("/picupdate.do",new picupdateAction()); //호스트 사진수정에서 사진 리스트
 		map.put("/picupload.do", new picuploadAction()); //호스트사진수정애서 사진등록
-	
 		map.put("/reserM.do",new ReserMAction()); 			  //예약관리처리
-		map.put("/highPrice.do", new HighPrice()); 			  //높은 가격 필터
-		
-    	
-    }
+		map.put("/mainpic.do", new mainpicAction());
+    	}
+    
     protected void service(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// 수행할 명령을 정리
 		  request.setCharacterEncoding("utf-8"); //한글깨짐 방지!
