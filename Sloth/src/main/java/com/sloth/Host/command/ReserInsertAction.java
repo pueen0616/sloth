@@ -16,9 +16,9 @@ public class ReserInsertAction implements Action {
 	public String exec(HttpServletRequest request, HttpServletResponse response) {
 		reserVO vo = new reserVO();
 		AccountDao dao = new AccountDao();
-		
+
 		HttpSession session = request.getSession(false);
-		
+
 		// 검색화면 (주소)
 		HostPicVO svo = (HostPicVO)session.getAttribute("selectVO"); //getAttribute(담은 객체명)
 		vo.setReserAddress(svo.getRoom_address());

@@ -44,10 +44,6 @@
 }
 </style>
 <script>
-function refreshMemList(){
-    location.reload();
- }
- 
 function delHost(){
 	if (confirm("정말 삭제하시겠습니까??") == true){    //확인
 	
@@ -85,7 +81,6 @@ function delHost(){
 				data : $("#frm3").serialize(),
 				success : function(result) {
 					if (result == "OK") {
-						alert("삭제되었습니다.");
 						var chk = $("[name='pic_num']:checked");
 						for (var i = 0; i < chk.length; i++) {
 							$(chk[i]).next().remove(); //이미지
@@ -104,17 +99,17 @@ function delHost(){
 				success : function(result) {
 					if (result == "OK") {
 						alert("성공");
-					} else {
-						alert("실패");
-					}
+						location.reload();
+					} 
+				}, error : function(jqXHR) {
+					alert(jqXHR.responseText);
 				}
 		});
 		});
 	});
 	function fn_submit() {
 		var form = new FormData(frmload);
-		//for (var i = 0; i < $("#picupload")[0].files.length; i++)
-		//	form.append("img3", $("#picupload")[0].files[i]);
+		
 		$.ajax({
 			url : "picupload.do",
 			type : "POST",
@@ -122,8 +117,7 @@ function delHost(){
 			contentType : false,
 			data : form,
 			success : function(response) {
-				/* $("#.frm3").appendchild(form); */
-				alert("성공하였습니다.");
+				$(".modal-body").load("picupdate.do?room_num=" +frmload.room_num.value);
 			},
 			error : function(jqXHR) {
 				alert(jqXHR.responseText);
@@ -197,7 +191,7 @@ function delHost(){
 					</form>
 					<span><button type="button" class="btn btn-primary"
 							id="picdelete">삭제</button></span> <span><button type="button"
-							class="btn btn-primary" id="mainpic" >대표사진</button></span>
+							class="btn btn-primary" id="mainpic">대표사진</button></span>
 				</div>
 			</div>
 		</div>
