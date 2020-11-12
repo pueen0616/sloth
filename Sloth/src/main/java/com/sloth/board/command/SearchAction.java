@@ -1,5 +1,6 @@
 package com.sloth.board.command;
 
+import java.io.PrintWriter;
 import java.sql.Date;
 import java.util.ArrayList;
 import java.util.List;
@@ -10,9 +11,7 @@ import javax.servlet.http.HttpSession;
 
 import com.sloth.board.common.Action;
 import com.sloth.board.dao.HomeDao;
-import com.sloth.board.dao.HostDAO;
 import com.sloth.board.vo.HostPicVO;
-import com.sloth.board.vo.reserVO;
 
 public class SearchAction implements Action {
 

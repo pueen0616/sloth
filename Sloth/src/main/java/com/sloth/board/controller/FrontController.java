@@ -11,6 +11,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import com.sloth.Host.command.DeleteReser;
 import com.sloth.Host.command.HighPrice;
 import com.sloth.Host.command.HostDetail;
 import com.sloth.Host.command.HostMAction;
@@ -19,6 +20,7 @@ import com.sloth.Host.command.HostUpFormAction;
 import com.sloth.Host.command.LowPrice;
 import com.sloth.Host.command.Reser;
 import com.sloth.Host.command.ReserInsertAction;
+import com.sloth.Host.command.UpdateReser;
 import com.sloth.Host.command.picdeleteAction;
 import com.sloth.Host.command.picupdateAction;
 import com.sloth.Login.command.AccountUpdateAction;
@@ -83,7 +85,8 @@ public class FrontController extends HttpServlet {
 		map.put("/reserM.do",new ReserMAction()); 			  //예약관리처리
 		map.put("/highPrice.do", new HighPrice()); 			  //높은 가격 필터
 		
-    	
+		map.put("/deleteReser.do",new DeleteReser());         //예약삭제
+	    map.put("/updateReser.do",new UpdateReser());		  //예약수정
     }
     protected void service(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// 수행할 명령을 정리
