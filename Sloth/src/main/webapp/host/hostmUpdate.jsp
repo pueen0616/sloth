@@ -10,6 +10,16 @@
 <link rel="stylesheet" href="${pageContext.request.contextPath}/host/css/inputStyle.css">
 </head>
 <body>
+<script>
+function updHostM(){
+	if (confirm("숙소의 정보를 변경 하시겠어요??") == true){    //확인
+		alert("숙소 정보가 변경 되었습니다");
+		     document.removefrm.submit();
+		 }else{   //취소
+		     return false;
+		 }
+}
+</script>
 <div align="center">
 	<div class="_s1t1w0m">숙소 정보 변경</div>
 	<hr style="margin-bottom: 32px;">
@@ -51,7 +61,8 @@
 				
 				<div style="margin-bottom: 32px;">사진<input type="file" id="img" name="img"></div>
 				
-			<div style="padding: 20px;" ><input type="submit" value="수정" class="btn btn-primary">
+			<div style="padding: 20px;" >
+				 <input type="submit" value="수정" class="btn btn-primary" onclick="updHostM()">
  				 <input type="reset" value="취소" class="btn btn-primary"></div>
  				 <input type="hidden" id="id" name="id" value="${id}" readonly>
 			<input type="hidden" id="room_num" name="room_num" value="${updateform.room_num }" readonly>

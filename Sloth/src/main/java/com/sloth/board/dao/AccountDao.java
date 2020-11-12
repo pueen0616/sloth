@@ -31,8 +31,8 @@ public class AccountDao extends DAO {
 
 	private final String UPDATE_ADMIN = "UPDATE ACCOUNT SET USER_TYPE = 'ADMIN' WHERE ID = ?";
 	//대표사진
-	private final String PIC_INSERT_YN = "INSERT INTO PIC VALUES((select max (pic_num)+1 from pic), ?, 'Y', ?)";
-	private final String PIC_INSERT = "INSERT INTO PIC VALUES((select max (pic_num)+1 from pic), ?, NULL, ?)";
+	private final String PIC_INSERT_YN = "INSERT INTO PIC VALUES(SQL_RESER_SEQ.nextval, ?, 'Y', ?)";
+	private final String PIC_INSERT = "INSERT INTO PIC VALUES(SQL_RESER_SEQ.nextval, ?, NULL, ?)";
 
 	String sql_seq = "select seq_num.nextval from dual";
 	//private final String RESER_M = "select reser_num, (select room_name from host where room_num = ?) as room_name, reser_checkin, reser_checkout, reser_price, reser_max,id,room_num, reser_today from reser where id =?"; 
@@ -48,6 +48,41 @@ public class AccountDao extends DAO {
 	private final String SELECT_PW = "SELECT PASSWORD FROM ACCOUNT WHERE NAME=? AND ID=?";
 	private final String UPDATE_ACCOUNT = "UPDATE ACCOUNT SET NAME=?, PASSWORD=?,EMAIL=?, TEL=?  WHERE ID = ?";
 	private final String SELECT_user = "SELECT * FROM ACCOUNT WHERE ID = ?";
+	//예약 삭제
+	private final String DELETE_RESER = "DELETE FROM RESER WHERE RESER_NUM=?";
+	//예약 수정
+	private final String RESER_UPDATE = "UPDATE RESER SET RESER_CHECKIN=?,RESER_CHECKOUT=?,RESER_MAX=? WHERE RESER_NUM=?";
+	
+	// ------------ 메소드 ---------- //
+	// 예약 삭제
+	   public reserVO reserDelete(int reserNum) {
+	      try {
+	         psmt = conn.prepareStatement(DELETE_RESER);
+	         psmt.setInt(1, reserNum);
+	         psmt.executeUpdate();
+	      } catch (Exception e) {
+	         e.printStackTrace();
+	      } finally {
+	         close();
+	      }
+	      return null;
+	   }
+	
+	// 예약 수정
+	   public int reserUpdate(reserVO vo) {
+	      int n = 0;
+	      try {
+	         psmt = conn.prepareStatement(RESER_UPDATE);
+	         psmt.setDate(1, vo.getReserCheckIn());
+	         psmt.setDate(2, vo.getReserCheckOut());
+	         psmt.setString(3,vo.getReserMax());
+	         psmt.setInt(4,vo.getReserNum());
+	         n = psmt.executeUpdate();
+	      } catch (Exception e) {
+	         e.printStackTrace();
+	      }
+	      return n;
+	   }
 	
 	//계정 업데이트
 	public int updateAccount(AccountVO vo) {
@@ -181,21 +216,6 @@ public class AccountDao extends DAO {
 	   }
 	   return vo;
 	   }
-	
-	//대표사진
-	public reserVO reserDelete(int reserNum) {//예약 삭제
-		try {
-			psmt=conn.prepareStatement(delete_reser);
-			psmt.setInt(1, reserNum);
-			psmt.executeUpdate();
-		} catch (Exception e) {
-			e.printStackTrace();
-		}finally {
-			close();
-		}	
-		return null;
-	}
-
 
 	// 대표사진
 	public int PIC_INSERT_YN(HostPicVO vo) {
