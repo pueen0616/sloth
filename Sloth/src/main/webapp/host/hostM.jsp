@@ -44,6 +44,10 @@
 }
 </style>
 <script>
+function refreshMemList(){
+    location.reload();
+ }
+ 
 function delHost(){
 	if (confirm("정말 삭제하시겠습니까??") == true){    //확인
 	
@@ -100,10 +104,6 @@ function delHost(){
 				success : function(result) {
 					if (result == "OK") {
 						alert("성공");
-						var chk = $("[name='pic_num']:checked");
-						for (var i = 0; i < chk.length; i++) {
-								
-						}
 					} else {
 						alert("실패");
 					}
@@ -197,7 +197,7 @@ function delHost(){
 					</form>
 					<span><button type="button" class="btn btn-primary"
 							id="picdelete">삭제</button></span> <span><button type="button"
-							class="btn btn-primary" id="mainpic">대표사진</button></span>
+							class="btn btn-primary" id="mainpic" >대표사진</button></span>
 				</div>
 			</div>
 		</div>

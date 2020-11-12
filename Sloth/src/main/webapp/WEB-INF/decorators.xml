@@ -11,6 +11,5 @@
     	<pattern>/loginForm.do</pattern>
     	<pattern>/reser.do</pattern>
     	<pattern>/picupdate.do*</pattern>
-		
     </excludes>
 </decorators>

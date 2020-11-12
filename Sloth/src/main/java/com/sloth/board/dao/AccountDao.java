@@ -35,7 +35,6 @@ public class AccountDao extends DAO {
 	private final String PIC_INSERT = "INSERT INTO PIC VALUES(SQL_RESER_SEQ.nextval, ?, NULL, ?)";
 
 	String sql_seq = "select seq_num.nextval from dual";
-	//private final String RESER_M = "select reser_num, (select room_name from host where room_num = ?) as room_name, reser_checkin, reser_checkout, reser_price, reser_max,id,room_num, reser_today from reser where id =?"; 
 	private final String RESER_M = "SELECT A.RESER_NUM,B.ROOM_NAME,A.RESER_CHECKIN,A.RESER_CHECKOUT,A.RESER_PRICE,A.RESER_MAX,A.ID,A.ROOM_NUM,a.room_num as 호스트room_num,A.RESER_TODAY FROM RESER A,HOST B WHERE b.room_num=a.room_num and a.id=?";
 	private final String delete_reser="DELETE FROM RESER WHERE RESER_NUM=?";
 

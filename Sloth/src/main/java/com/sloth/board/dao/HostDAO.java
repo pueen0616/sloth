@@ -171,7 +171,6 @@ public class HostDAO extends DAO{
 		} catch(SQLException e) {
 			e.printStackTrace();
 		} finally{
-			close();
 		}
 		return hvo;
 	}	
