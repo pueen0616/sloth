@@ -16,7 +16,7 @@
 <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
 <script src="https://kit.fontawesome.com/a076d05399.js"></script>
 <script	src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/js/bootstrap.bundle.min.js"></script>
-
+<decorator:head/>
 <body>
 <jsp:include page="/mainPage/mainMenu.jsp"></jsp:include><br>
 <p></p>

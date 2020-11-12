@@ -1,4 +1,4 @@
-package com.sloth.board.controller;
+package com.sloth.Host.command;
 
 import java.io.File;
 import java.io.IOException;
@@ -48,7 +48,6 @@ public class picuploadAction implements Action {
 	    try {
 			response.getWriter().print("ok");
 		} catch (IOException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 		

@@ -18,6 +18,7 @@ public class LoginAction implements Action {
 		HttpSession session = request.getSession(false);
 		vo.setId(request.getParameter("userid"));
 		vo.setPassword(request.getParameter("password"));
+		
 		String msg;
 	      String page = null;
 	      AccountVO vo1 = dao.select(vo);
@@ -25,7 +26,7 @@ public class LoginAction implements Action {
 		if(vo1 != null) {
 	         session.setAttribute("id", vo1.getId());
 	         session.setAttribute("name", vo1.getName());
-	         session.setAttribute("user_type",vo1.getUserType());
+	         session.setAttribute("user_type", vo1.getUserType());
 	         request.setAttribute("vo", vo1);
 	   
 	         page = "redirect:main.do";

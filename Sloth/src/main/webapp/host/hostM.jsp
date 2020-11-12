@@ -86,6 +86,7 @@ function delHost(){
 						for (var i = 0; i < chk.length; i++) {
 							$(chk[i]).next().remove(); //이미지
 							$(chk[i]).remove(); //체크박스
+
 						}
 					} else {
 						alert("실패");
@@ -114,7 +115,6 @@ function delHost(){
 		var form = new FormData(frmload);
 		//for (var i = 0; i < $("#picupload")[0].files.length; i++)
 		//	form.append("img3", $("#picupload")[0].files[i]);
-
 		$.ajax({
 			url : "picupload.do",
 			type : "POST",
@@ -122,8 +122,8 @@ function delHost(){
 			contentType : false,
 			data : form,
 			success : function(response) {
+				/* $("#.frm3").appendchild(form); */
 				alert("성공하였습니다.");
-				console.log(response);
 			},
 			error : function(jqXHR) {
 				alert(jqXHR.responseText);
@@ -205,3 +205,4 @@ function delHost(){
 	<hr>
 </body>
 </html>
+</span>

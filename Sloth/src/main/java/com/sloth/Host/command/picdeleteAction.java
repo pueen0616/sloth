@@ -15,7 +15,9 @@ public class picdeleteAction implements Action {
 	@Override
 	public String exec(HttpServletRequest request, HttpServletResponse response) {
 		//파라미터를 DTO에 담기
+		
 			String[] pic_num = request.getParameterValues("pic_num");
+			
 				HostPicVO vo= new HostPicVO();
 				for(int i=0; i<pic_num.length; i++) {					
 					vo.setPic_num(Integer.parseInt(pic_num[i]));
