@@ -11,8 +11,6 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import com.sloth.board.command.HostmUpdateAction;
-import com.sloth.board.command.HostmUpdateFormAction;
 import com.sloth.Host.command.HighPrice;
 import com.sloth.Host.command.HostDetail;
 import com.sloth.Host.command.HostMAction;
@@ -35,6 +33,8 @@ import com.sloth.Login.command.Register;
 import com.sloth.Login.command.RegisterFormAction;
 import com.sloth.Login.command.UpdateAccount;
 import com.sloth.MyPage.command.ReserMAction;
+import com.sloth.board.command.HostmUpdateAction;
+import com.sloth.board.command.HostmUpdateFormAction;
 import com.sloth.board.command.Main;
 import com.sloth.board.command.SearchAction;
 import com.sloth.board.common.Action;

@@ -5,50 +5,42 @@
 <head>
 <meta charset="UTF-8">
 <title></title>
+<link rel="stylesheet" href="${pageContext.request.contextPath}/host/css/inputStyle.css">
 </head>
 <body>
 
-	<div class="container">
+	<div class="container" align="center">
 		<h1>회원 정보 수정</h1>
+		<hr/>
 		<form id="frm" name="frm" action="AccountUpdate.do" method="post">
-			<table border="1">
-				<tr>
-					<th width="150">아이디</th>
-					<td width="500"><input type="text" id="id" name="id"
-						value="${id}" readonly></td>
-				</tr>
-				<tr>
-					<th width="150">패스워드</th>
-					<td><input type="password" id="password" name="password"
-						value="${user.password}"></td>
-				</tr>
-				<tr>
-					<th width="150">이름</th>
-					<td><input type="text" id="name" name="name"
-						value="${user.name}"></td>
-				</tr>
-				<tr>
-					<th width="150">생일</th>
-					<td><input type="text" id="birth" name="birth"
-						value="${user.birth}" readonly></td>
-				</tr>
-				<tr>
-					<th width="150">전화번호</th>
-					<td><input type="text" id="tel" name="tel"
-						value="${user.tel }"></td>
-				</tr>
-				<tr>
-					<th width="150">이메일</th>
-					<td><input type="text" id="email" name="email"
-						value="${user.email}"></td>
-				</tr>
-				<tr>
-					<td colspan="2" align="center"><input type="submit"
-						value="수정하기"> &nbsp;&nbsp; <input type="submit"
-						value="탈퇴하기" onclick="location.href='deleteAccountAction.do'">
-						<input type="reset" value="취소"></td>
-				</tr>
-			</table>
+			<div class="_s1t1w0" style="margin-bottom: 16px;">아이디</div>	
+			<div style="margin-bottom: 32px;"><input type="text" id="id" name="id" value="${id}" readonly></div>
+			
+			<div class="_s1t1w0" style="margin-bottom: 16px;">비밀번호를 입력하세요</div>
+			<div style="margin-bottom: 32px;">
+				<input type="password" id="password" name="password" value="${user.password}">
+			</div>
+			
+			<div class="_s1t1w0" style="margin-bottom: 16px;">이름을 입력하세요</div>
+			<div style="margin-bottom: 32px;"><input type="text" id="name" name="name" value="${user.name}"></div>
+						
+			<div class="_s1t1w0" style="margin-bottom: 16px;">생일</div>
+			<div style="margin-bottom: 32px;"><input type="text" id="birth" name="birth" value="${user.birth}" readonly>
+			</div>
+			
+			<div class="_s1t1w0" style="margin-bottom: 16px;">전화번호를 입력하세요</div>
+			<div style="margin-bottom: 32px;"><input type="text" id="tel" name="tel" value="${user.tel}"></div>
+
+			<div class="_s1t1w0" style="margin-bottom: 16px;">이메일을 입력하세요</div>
+			<div style="margin-bottom: 32px;"><input type="text" id="email" name="email" value="${user.email}"></div>
+
+
+
+			<div>
+				<input class="btn btn-primary" type="submit" value="수정하기"> &nbsp;&nbsp; 
+				<input class="btn btn-primary" type="submit" value="탈퇴하기" onclick="location.href='deleteAccountAction.do'">&nbsp;&nbsp; 
+				<input class="btn btn-primary" type="reset" value="취소">
+			</div>
 		</form>
 	</div>
 	<script>
