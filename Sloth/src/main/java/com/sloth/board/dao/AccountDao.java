@@ -1,5 +1,4 @@
 package com.sloth.board.dao;
-
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -11,38 +10,41 @@ import com.sloth.board.vo.AccountVO;
 import com.sloth.board.vo.HostPicVO;
 import com.sloth.board.vo.reserVO;
 
+
 public class AccountDao extends DAO {
 	private PreparedStatement psmt; // sql 명령문 실행
 	private ResultSet rs; // select 후 결과셋 받기
 	private AccountVO vo;
 	Statement stmt = null;
-
+	
+	String SQL_RESER_SEQ = "SELECT SEQ_RESER_NUM.NEXTVAL FROM DUAL";
+	String SQL_SEQ = "SELECT SEQ_NUM.NEXTVAL FROM DUAL";
+	
 	private final String SELECT_ALL = "SELECT * FROM ACCOUNT ORDER BY ID";
 	private final String SELECT = "SELECT * FROM ACCOUNT WHERE ID = ? AND PASSWORD=?";
-	// 계정등록
+	//계정등록
 	private final String INSERT = "INSERT INTO ACCOUNT(ID,NAME,PASSWORD,BIRTH,EMAIL,TEL) VALUES(?,?,?,?,?,?)";
-	// 숙소등록
-	private final String HOST_INSERT = "INSERT INTO HOST(ROOM_NUM, ROOM_NAME, ROOM_ADDRESS, ROOM_MAX, ROOM_PRICE, ROOM_INFO, ID, ROOM_CHECKIN, ROOM_CHECKOUT)"
-			+ "VALUES(?,?,?,?,?,?,?,?,?)";
-	// 계정권한부여
+	//숙소등록
+	   private final String HOST_INSERT = "INSERT INTO HOST(ROOM_NUM, ROOM_NAME, ROOM_ADDRESS, ROOM_MAX, ROOM_PRICE, ROOM_INFO, ID, ROOM_CHECKIN, ROOM_CHECKOUT)"
+	                            + "VALUES(?,?,?,?,?,?,?,?,?)";
+	//계정권한부여
 
 	private final String UPDATE_ADMIN = "UPDATE ACCOUNT SET USER_TYPE = 'ADMIN' WHERE ID = ?";
-	// 대표사진
+	//대표사진
 	private final String PIC_INSERT_YN = "INSERT INTO PIC VALUES((select max (pic_num)+1 from pic), ?, 'Y', ?)";
 	private final String PIC_INSERT = "INSERT INTO PIC VALUES((select max (pic_num)+1 from pic), ?, NULL, ?)";
 
 	String sql_seq = "select seq_num.nextval from dual";
-	// private final String RESER_M = "select reser_num, (select room_name from host
-	// where room_num = ?) as room_name, reser_checkin, reser_checkout, reser_price,
-	// reser_max,id,room_num, reser_today from reser where id =?";
-	private final String RESER_M = "SELECT A.RESER_NUM,B.ROOM_NAME,A.RESER_CHECKIN,A.RESER_CHECKOUT,A.RESER_PRICE,A.RESER_MAX,A.ID,A.ROOM_NUM,A.RESER_TODAY,RESER_ADDRESS FROM RESER A,HOST B WHERE b.room_num=a.room_num and a.id=?";
-	private final String DELETE_RESER = "DELETE FROM RESER WHERE RESER_NUM=?";
-	private final String RESER_UPDATE = "UPDATE RESER SET RESER_CHECKIN=?,RESER_CHECKOUT=?,RESER_MAX=? WHERE RESER_NUM=?";
+	//private final String RESER_M = "select reser_num, (select room_name from host where room_num = ?) as room_name, reser_checkin, reser_checkout, reser_price, reser_max,id,room_num, reser_today from reser where id =?"; 
+	private final String RESER_M = "SELECT A.RESER_NUM,B.ROOM_NAME,A.RESER_CHECKIN,A.RESER_CHECKOUT,A.RESER_PRICE,A.RESER_MAX,A.ID,A.ROOM_NUM,a.room_num as 호스트room_num,A.RESER_TODAY FROM RESER A,HOST B WHERE b.room_num=a.room_num and a.id=?";
+	private final String delete_reser="DELETE FROM RESER WHERE RESER_NUM=?";
 
 	String SQL_RESER_SEQ = "SELECT SEQ_RESER_NUM.NEXTVAL FROM DUAL";
 	String SQL_SEQ = "SELECT SEQ_NUM.NEXTVAL FROM DUAL";
-	// 숙소예약등록
-	private final String RESER_INSERT = "INSERT INTO (RESER_NUM, RESER_CHECKIN, RESER_CHECKOUT, RESER_PRICE, RESER_MAX, ID, ROOM_NUM, RESER_TODAY)  VALUES(seq_reser_num.nextval,?,?,?,?,?,?,SYSDATE)";
+	//숙소예약등록
+	private final String RESER_INSERT = "INSERT INTO RESER (RESER_NUM,"
+			+ " RESER_CHECKIN, RESER_CHECKOUT, RESER_PRICE, RESER_MAX, ID, ROOM_NUM, RESER_TODAY, RESER_ADDRESS)"
+			+ "  VALUES(seq_reser_num.nextval,?,?,?,?,?,?,SYSDATE,?)";
 
 	// 예약 수정
 	public int reserUpdate(reserVO vo) {
@@ -61,7 +63,7 @@ public class AccountDao extends DAO {
 	}
 
 	// 숙소예약
-	public int reser_insert(reserVO vo) {
+	public int reser_insert(reserVO vo) throws SQLException {
 		int n = 0;
 		try {
 			psmt = conn.prepareStatement(RESER_INSERT);
@@ -75,8 +77,7 @@ public class AccountDao extends DAO {
 			psmt.setString(8, vo.getReserToday());
 
 			n = psmt.executeUpdate();
-
-		} catch (SQLException e) {
+		} catch(SQLException e) {
 			e.printStackTrace();
 		}
 		return n;
@@ -85,7 +86,7 @@ public class AccountDao extends DAO {
 	// 예약 삭제
 	public reserVO reserDelete(int reserNum) {
 		try {
-			psmt = conn.prepareStatement(DELETE_RESER);
+			psmt=conn.prepareStatement(delete_reser);
 			psmt.setInt(1, reserNum);
 			psmt.executeUpdate();
 		} catch (Exception e) {

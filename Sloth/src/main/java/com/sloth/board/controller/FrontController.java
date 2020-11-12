@@ -61,7 +61,41 @@ public class FrontController extends HttpServlet {
 		map.put("/hostUp.do", new HostUp()); 				  //숙소등록 처리
 		map.put("/search.do", new SearchAction());			  //숙소 검색
 		map.put("/findId.do", new FindId());				  //아이디 찾기
+		map.put("/findidresult.do", new Findidresult());   
 		map.put("/findPassword.do", new FindPassword());	  //비밀번호 찾기
+		
+		map.put("/highPrice.do", new HighPrice()); 			  //높은 가격 필터
+		map.put("/hostM.do", new HostMAction());		      //숙소조회
+		map.put("/reserM.do",new ReserMAction());			  //예약조회
+		map.put("/deleteReser.do",new DeleteReser()); 		  //예약삭제
+		map.put("/updateReser.do",new UpdateReser());
+=======
+		map.put("/findpwform.do", new FindpwAction());        //비밀번호 찾기 이동
+		map.put("/Account.do", new AccountUpdateAction());	  //회원정보 수정이동
+		map.put("/AccountUpdate.do", new UpdateAccount());    //회원정보수정 처리
+>>>>>>> branch 'main' of https://github.com/pueen0616/sloth.git
+		
+<<<<<<< HEAD
+		map.put("/hostmUpdate.do", new HostmUpdateAction());
+		map.put("/hostmUpdateForm.do", new HostmUpdateFormAction());
+		map.put("/picdelete.do", new picdeleteAction());
+    	}
+    
+=======
+		map.put("/highPrice.do", new HighPrice()); 			  //가격 내림차순
+		map.put("/lowPrice.do", new LowPrice()); 			  //가격 내림차순
+		map.put("/reserv.do", new Reser());		      		  //숙소예약화면
+		map.put("/reser.do", new ReserInsertAction());		  //숙소예약처리
+		map.put("/hostM.do", new HostMAction());			  //숙소관리화면
+
+		map.put("/hostmUpdate.do", new HostmUpdateAction()); //숙소관리 수정
+		map.put("/hostmUpdateForm.do", new HostmUpdateFormAction()); //숙소관리 리스트
+		map.put("/picdelete.do", new picdeleteAction()); //호스트사진수정에서 사진 삭제
+//		map.put("/picdeleteForm.do", new picdeleteFormAction()); // 호스트 수정에서 사진 리스트
+		map.put("/picupdate.do",new picupdateAction()); //호스트 사진수정에서 사진 리스트
+		map.put("/picupload.do", new picuploadAction()); //호스트사진수정애서 사진등록
+	
+		map.put("/reserM.do",new ReserMAction()); 			  //예약관리처리
 		map.put("/highPrice.do", new HighPrice()); 			  //높은 가격 필터
 		map.put("/hostM.do", new HostMAction());		      //숙소조회
 		map.put("/reserM.do",new ReserMAction());			  //예약조회
@@ -73,6 +107,9 @@ public class FrontController extends HttpServlet {
 		map.put("/picdelete.do", new picdeleteAction());
     	}
     
+    	
+    }
+>>>>>>> branch 'main' of https://github.com/pueen0616/sloth.git
     protected void service(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// 수행할 명령을 정리
 		  request.setCharacterEncoding("utf-8"); //한글깨짐 방지!

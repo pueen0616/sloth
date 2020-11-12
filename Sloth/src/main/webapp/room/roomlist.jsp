@@ -107,13 +107,14 @@ input:checked + label {
 #tab3:checked ~ #content3,
 #tab4:checked ~ #content4 {
     display: block;}
+    
+    
 </style>
 <script type="text/javascript">
 
 </script>
 </head>
 <body>
-${hosts }
     <input id="tab1" type="button" name="tab1" onclick="location.href='${pageContext.request.contextPath}/highPrice.do'">
     <label for="tab1">높은가격순</label>
 
@@ -130,9 +131,9 @@ ${hosts }
 							<span class="thumb">
 								<img id="img" name="img"  alt="왜아무것도안나오지" src="${pageContext.request.contextPath}/img/${host.pic }">
 						</span> 
-						<span><b>${host.room_name }</b></span>
 					 </a>
-						<div><p>${host.room_price }</p></div>
+						<span><b>${host.room_name }</b></span>
+						<p>${host.room_price }</p>
 					</li>
 			</c:forEach>
 				</ul>

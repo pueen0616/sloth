@@ -18,12 +18,11 @@ public class LoginAction implements Action {
 		HttpSession session = request.getSession(false);
 		vo.setId(request.getParameter("userid"));
 		vo.setPassword(request.getParameter("password"));
-		
+		String msg;
 	      String page = null;
 	      AccountVO vo1 = dao.select(vo);
-		
 	
-		if(vo1 != null) {
+	      if(vo1 != null) {
 	         session.setAttribute("id", vo1.getId());
 	         session.setAttribute("name", vo1.getName());
 	         request.setAttribute("vo", vo1);

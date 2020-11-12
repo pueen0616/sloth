@@ -1,8 +1,26 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
+<link rel="stylesheet"
+	href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
+	
 
-
+<script type="text/javascript">
+   function formCheck() {
+      var f = document.login;
+      if (f.userid.value == "") {
+         alert("사용자 아이디를 입력하세요");
+         f.userid.focus();
+         return false;
+      }
+      if (f.password.value == "") {
+         alert("사용자 비밀번호 입력하세요");
+         f.password.focus();
+         return false;
+      }
+      return true;
+   }
+</script>
 	<nav style="height: 120px;">
 		<div style="float: left;" class="logo">
 			<a href="main.do"><img src="${pageContext.request.contextPath}/logo/logo1.png" width="180px"></a>
@@ -21,7 +39,7 @@
 				</c:if>
 				<c:if test="${name ne null }">
 					<a class="dropdown-item" href="hostUpForm.do">호스트가 되기</a>
-					<a class="dropdown-item" href="accountUpdate.do">계정</a>
+					<a class="dropdown-item" href="Account.do">계정</a>
 					<a class="dropdown-item" href="#">게시판</a>
 					<a class="dropdown-item" href="reserM.do?id=${id }">예약관리</a>
 					<c:if test="${user_type ne null }">
@@ -37,14 +55,14 @@
 <div class="modal fade" id="exampleModal" tabindex="-1"
    aria-labelledby="exampleModalLabel" aria-hidden="true">
    <div class="modal-dialog">
-      <form id="frm" name="frm" method="post" action="loginResult.do">
+      <form id="login" name="login" method="post" action="loginResult.do">
          <div class="modal-content">
             <div class="modal-body">
                <nav style="height: 120px;">
                   <div style="float: left;" class="logo">
                      <a href="main.do"><img
                         src="${pageContext.request.contextPath}/logo/logo1.png"
-                        width="150px"></a>
+                        width="100px"></a>
                   </div>
                </nav>
                <div align="center">
@@ -68,27 +86,9 @@
             </div>
             <button type="submit" id="login-submit" onclick="return formCheck()"
                class="btn btn-primary">로그인</button>
-            <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
             <button type="button" class="btn btn-primary"
                onclick="location.href='registerForm.do'">회원가입</button>
          </div>
       </form>
    </div>
 </div>
-
-<script type="text/javascript">
-   function formCheck() {
-      var f = document.frm;
-      if (f.userid.value == "") {
-         alert("사용자 아이디를 입력하세요");
-         f.userid.focus();
-         return false;
-      }
-      if (f.password.value == "") {
-         alert("사용자 비밀번호 입력하세요");
-         f.password.focus();
-         return false;
-      }
-      return true;
-   }
-</script>

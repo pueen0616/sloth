@@ -10,8 +10,26 @@ private int reserPrice;
 private String reserMax;
 private String id;
 private int roomNum;
-private String reserRoomName;
 private String reserToday;
+private String reserName;
+private String reserRoomName;
+private String reserAddress;
+
+public String getReserAddress() {
+	return reserAddress;
+}
+
+public void setReserAddress(String reserAddress) {
+	this.reserAddress = reserAddress;
+}
+
+public String getReserName() {
+	return reserName;
+}
+
+public void setReserName(String reserName) {
+	this.reserName = reserName;
+}
 
 public reserVO() {
 	// TODO Auto-generated constructor stub
@@ -23,9 +41,6 @@ public String toString() {
 			+ ", reserPrice=" + reserPrice + ", reserMax=" + reserMax + ", id=" + id + ", roomNum=" + roomNum
 			+ ", reserToday=" + reserToday + ", reserRoomName=" + getReserRoomName() + "]";
 }
-
-
-
 
 public String getReserRoomName() {
 	return reserRoomName;

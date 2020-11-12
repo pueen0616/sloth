@@ -18,6 +18,10 @@ a:hover,a:active,a:focus{text-decoration:underline;}
 	padding: 15px 0 10px;
 	border-bottom: 1px solid #aaa;
 }
+.fixed_img_col ul {
+	border-bottom: 1px solid #aaa;
+	
+}
 
 
 .fixed_img_col li {

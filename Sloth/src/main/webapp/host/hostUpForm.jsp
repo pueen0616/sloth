@@ -6,41 +6,8 @@
 <meta charset="UTF-8">
 <script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
 <link rel="stylesheet"
-	href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
-	integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm"
-	crossorigin="anonymous">
-	
-<style>
-input[type=text] {
-    border : 2px solid skyblue;
-    border-radius : 5px;
-}
-input[type=text]:hover {
-    background : aliceblue;
-}
-._s1t1w0m{
-	margin: 0px !important;
-    word-wrap: break-word !important;
-    font-family: Circular,-apple-system,BlinkMacSystemFont,Roboto,Helvetica Neue,sans-serif !important;
-    font-size: 24px !important;
-    font-weight: 800 !important;
-    line-height: 1.25em !important;
-    color: #484848 !important;
-    padding-top: 2px !important;
-    padding-bottom: 2px !important;
-}
-._s1t1w0{
-	margin: 0px !important;
-    word-wrap: break-word !important;
-    font-family: Circular,-apple-system,BlinkMacSystemFont,Roboto,Helvetica Neue,sans-serif !important;
-    font-size: 17px !important;
-    font-weight: 800 !important;
-    line-height: 1.25em !important;
-    color: #484848 !important;
-    padding-top: 2px !important;
-    padding-bottom: 2px !important;
-}
-</style>
+	href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
+<link rel="stylesheet" href="${pageContext.request.contextPath}/host/css/inputStyle.css">
 </head>
 <body>
 <div align="center">
