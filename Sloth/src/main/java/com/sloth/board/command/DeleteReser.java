@@ -14,13 +14,11 @@ public class DeleteReser implements Action {
 	public String exec(HttpServletRequest request, HttpServletResponse response) {
 		AccountDao dao = new AccountDao();
 		reserVO vo = new reserVO();
-		int reserNum = Integer.parseInt(request.getParameter("aa"));
+		int reserNum = Integer.parseInt(request.getParameter("reserNum"));
 		String msg;
 		try {
-			if(reserNum==null) {
-				
-			}
 			vo = dao.reserDelete(reserNum);
+			response.getWriter().print("OK");
 		} catch (Exception e) {
 			e.printStackTrace();
 		}

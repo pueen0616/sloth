@@ -188,5 +188,4 @@ input[type=text]:hover {
 	</div>
 </div>
 </body>
->>>>>>> branch 'main' of https://github.com/pueen0616/sloth.git
 </html>

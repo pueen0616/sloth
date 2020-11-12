@@ -19,17 +19,10 @@ public class LoginAction implements Action {
 		vo.setId(request.getParameter("userid"));
 		vo.setPassword(request.getParameter("password"));
 		
-		String msg;
 	      String page = null;
 	      AccountVO vo1 = dao.select(vo);
 		
-		vo = dao.select(vo);
-		
-		session.setAttribute("id", vo.getId());
-		session.setAttribute("name", vo.getName());
-		session.setAttribute("user_type", vo.getUserType());
-		request.setAttribute("vo", vo);
-		
+	
 		if(vo1 != null) {
 	         session.setAttribute("id", vo1.getId());
 	         session.setAttribute("name", vo1.getName());
@@ -37,11 +30,8 @@ public class LoginAction implements Action {
 	   
 	         page = "redirect:main.do";
 	      }else {
-	         
-	         msg="아이디 / 비밀번호를 확인하세요";
-	         request.setAttribute("msg", msg);
+	        page = "login/loginResult.jsp";
 	      }
-	      System.out.println(vo1);
 
 	      return page;
 	   }

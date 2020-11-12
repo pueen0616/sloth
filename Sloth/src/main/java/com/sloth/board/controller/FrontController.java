@@ -10,7 +10,7 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-
+import com.sloth.Host.command.picdeleteAction;
 import com.sloth.board.command.DeleteReser;
 import com.sloth.board.command.HostmUpdateAction;
 import com.sloth.board.command.HostmUpdateFormAction;
@@ -33,7 +33,7 @@ import com.sloth.Login.command.RegisterFormAction;
 import com.sloth.board.command.Main;
 import com.sloth.board.command.ReserMAction;
 import com.sloth.board.command.SearchAction;
-
+import com.sloth.board.command.UpdateReser;
 import com.sloth.board.command.RoomListSelectAction;
 import com.sloth.board.common.Action;
 @WebServlet("/FrontController")
@@ -63,13 +63,14 @@ public class FrontController extends HttpServlet {
 		map.put("/findId.do", new FindId());				  //아이디 찾기
 		map.put("/findPassword.do", new FindPassword());	  //비밀번호 찾기
 		map.put("/highPrice.do", new HighPrice()); 			  //높은 가격 필터
-		map.put("/hostM.do", new HostMAction());
-		map.put("/reserM.do",new ReserMAction());
-		map.put("/deleteReser.do",new DeleteReser());
+		map.put("/hostM.do", new HostMAction());		      //숙소조회
+		map.put("/reserM.do",new ReserMAction());			  //예약조회
+		map.put("/deleteReser.do",new DeleteReser()); 		  //예약삭제
+		map.put("/updateReser.do",new UpdateReser());
 		
 		map.put("/hostmUpdate.do", new HostmUpdateAction());
 		map.put("/hostmUpdateForm.do", new HostmUpdateFormAction());
-
+		map.put("/picdelete.do", new picdeleteAction());
     	}
     
     protected void service(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
