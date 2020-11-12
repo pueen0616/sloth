@@ -18,6 +18,7 @@
 	border: 1px solid #ebebeb;
 	border-bottom-color: #e2e2e2;
 	border-radius: .25em;
+	margin-top: 30px;
 }
 
 .filebox input[type="file"] { /* 파일 필드 숨기기 */
@@ -29,6 +30,11 @@
 	overflow: hidden;
 	clip: rect(0, 0, 0, 0);
 	border: 0;
+}
+
+.filebox {
+	float: left;
+	padding-right: 600px;
 }
 
 .img1 {
@@ -72,11 +78,11 @@ function delHost(){
 
 		$("#picdelete").on("click", function() {
 			$.ajax("picdelete.do", {
-				data : $("#frm1").serialize(),
+				data : $("#frm3").serialize(),
 				success : function(result) {
 					if (result == "OK") {
 						alert("삭제되었습니다.");
-						var chk = $("[name='picchk']:checked");
+						var chk = $("[name='pic_num']:checked");
 						for (var i = 0; i < chk.length; i++) {
 							$(chk[i]).next().remove(); //이미지
 							$(chk[i]).remove(); //체크박스
@@ -87,7 +93,22 @@ function delHost(){
 				}
 			});
 		});
-
+		$("#mainpic").on("click", function() {
+			$.ajax("mainpic.do", {
+				data : $("#frm3").serialize(),
+				success : function(result) {
+					if (result == "OK") {
+						alert("성공");
+						var chk = $("[name='pic_num']:checked");
+						for (var i = 0; i < chk.length; i++) {
+								
+						}
+					} else {
+						alert("실패");
+					}
+				}
+		});
+		});
 	});
 	function fn_submit() {
 		var form = new FormData(frmload);
@@ -112,34 +133,35 @@ function delHost(){
 </script>
 </head>
 <body>
-	<table class="table table-bordered table-dark">
+	<table class="table table-hovers">
 		<thead>
 			<tr>
-				<th scope="col">숙소</th>
-				<th scope="col">장소</th>
-				<th scope="col">이름</th>
-				<th scope="col">가격</th>
-				<th scope="col">인원</th>
-				<th scope="col">®</th>
+				<th scope="col" style="padding: 10px; text-align: center;">숙소</th>
+				<th scope="col" style="padding: 10px; text-align: center;">이름</th>
+				<th scope="col" style="padding: 10px; text-align: center;">장소</th>
+				<th scope="col" style="padding: 10px; text-align: center;">가격</th>
+				<th scope="col" style="padding: 10px; text-align: center;">인원</th>
+				<th scope="col" style="padding: 10px; text-align: center;">®</th>
 			</tr>
 		</thead>
 		<tbody>
 			<c:forEach items="${hostM}" var="host" varStatus="i">
 				<tr>
-					<td><img style="width: 200px; height: 200px;" alt="null"
+					<td style="padding: 10px; text-align: center;"><img
+						style="width: 200px; height: 200px;" alt="null"
 						src="${pageContext.request.contextPath}/img/${host.pic }">
 						<button type="button" class="btn btn-primary btn-pic"
 							data-toggle="modal" data-num="${host.room_num }"
 							data-target="#picupdate">사진 수정</button></td>
-					<td>${host.room_name}</td>
-					<td>${host.room_address}</td>
-					<td>${host.room_price}</td>
-					<td>${host.room_max}</td>
-					<td>
+					<td style="padding: 10px; text-align: center;">${host.room_name}</td>
+					<td style="padding: 10px; text-align: center;">${host.room_address}</td>
+					<td style="padding: 10px; text-align: center;">${host.room_price}</td>
+					<td style="padding: 10px; text-align: center;">${host.room_max}</td>
+					<td style="padding: 10px; text-align: center;">
 						<button type="button" class="btn btn-light"
 							onclick="location.href='hostmUpdateForm.do?room_num=${host.room_num }'">수정</button>
 						<button type="button" class="btn btn-light">삭제</button>
-					</td>
+					</td style="padding:10px; text-align:center; ">
 				</tr>
 			</c:forEach>
 		</tbody>
@@ -158,25 +180,28 @@ function delHost(){
 				<div class="modal-body" id="modal-body2"></div>
 
 				<div class="modal-footer">
-					<button type="button" class="btn btn-secondary"
+					<!-- 					<button type="button" class="btn btn-secondary"
 						data-dismiss="modal">Close</button>
-
+ -->
 
 					<form id="frmload" name="frmload" action="picupload.do"
 						method="post" enctype="multipart/form-data">
 						<input type="hidden" name="room_num" value="">
 						<div class="filebox">
-							<label for="picupload">업로드</label> <input type="file"
-								id="picupload" name="picupload" multiple
+							<label for="picupload" style="float: left;">업로드</label> <input
+								type="file" id="picupload" name="picupload" multiple
 								onchange="setThumbnail(event);">
 						</div>
 						<button type="button" class="btn btn-primary"
 							onclick="fn_submit()">저장</button>
 					</form>
-					<button type="button" class="btn btn-primary" id="picdelete">삭제</button>
+					<span><button type="button" class="btn btn-primary"
+							id="picdelete">삭제</button></span> <span><button type="button"
+							class="btn btn-primary" id="mainpic">대표사진</button></span>
 				</div>
 			</div>
 		</div>
 	</div>
+	<hr>
 </body>
 </html>
