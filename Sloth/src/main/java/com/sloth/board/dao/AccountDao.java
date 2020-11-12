@@ -1,4 +1,5 @@
 package com.sloth.board.dao;
+
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -10,41 +11,51 @@ import com.sloth.board.vo.AccountVO;
 import com.sloth.board.vo.HostPicVO;
 import com.sloth.board.vo.reserVO;
 
-
 public class AccountDao extends DAO {
 	private PreparedStatement psmt; // sql 명령문 실행
 	private ResultSet rs; // select 후 결과셋 받기
 	private AccountVO vo;
 	Statement stmt = null;
-	
+
 	String SQL_RESER_SEQ = "SELECT SEQ_RESER_NUM.NEXTVAL FROM DUAL";
 	String SQL_SEQ = "SELECT SEQ_NUM.NEXTVAL FROM DUAL";
-	
+
 	private final String SELECT_ALL = "SELECT * FROM ACCOUNT ORDER BY ID";
 	private final String SELECT = "SELECT * FROM ACCOUNT WHERE ID = ? AND PASSWORD=?";
-	//계정등록
+	// 계정등록
 	private final String INSERT = "INSERT INTO ACCOUNT(ID,NAME,PASSWORD,BIRTH,EMAIL,TEL) VALUES(?,?,?,?,?,?)";
-	//숙소등록
-	   private final String HOST_INSERT = "INSERT INTO HOST(ROOM_NUM, ROOM_NAME, ROOM_ADDRESS, ROOM_MAX, ROOM_PRICE, ROOM_INFO, ID, ROOM_CHECKIN, ROOM_CHECKOUT)"
-	                            + "VALUES(?,?,?,?,?,?,?,?,?)";
-	//계정권한부여
+	// 숙소등록
+	private final String HOST_INSERT = "INSERT INTO HOST(ROOM_NUM, ROOM_NAME, ROOM_ADDRESS, ROOM_MAX, ROOM_PRICE, ROOM_INFO, ID, ROOM_CHECKIN, ROOM_CHECKOUT)"
+			+ "VALUES(?,?,?,?,?,?,?,?,?)";
+	// 계정권한부여
 
 	private final String UPDATE_ADMIN = "UPDATE ACCOUNT SET USER_TYPE = 'ADMIN' WHERE ID = ?";
-	//대표사진
+	// 대표사진
 	private final String PIC_INSERT_YN = "INSERT INTO PIC VALUES((select max (pic_num)+1 from pic), ?, 'Y', ?)";
 	private final String PIC_INSERT = "INSERT INTO PIC VALUES((select max (pic_num)+1 from pic), ?, NULL, ?)";
 
 	String sql_seq = "select seq_num.nextval from dual";
-	//private final String RESER_M = "select reser_num, (select room_name from host where room_num = ?) as room_name, reser_checkin, reser_checkout, reser_price, reser_max,id,room_num, reser_today from reser where id =?"; 
+	// private final String RESER_M = "select reser_num, (select room_name from host
+	// where room_num = ?) as room_name, reser_checkin, reser_checkout, reser_price,
+	// reser_max,id,room_num, reser_today from reser where id =?";
 	private final String RESER_M = "SELECT A.RESER_NUM,B.ROOM_NAME,A.RESER_CHECKIN,A.RESER_CHECKOUT,A.RESER_PRICE,A.RESER_MAX,A.ID,A.ROOM_NUM,a.room_num as 호스트room_num,A.RESER_TODAY FROM RESER A,HOST B WHERE b.room_num=a.room_num and a.id=?";
-	private final String delete_reser="DELETE FROM RESER WHERE RESER_NUM=?";
+	private final String delete_reser = "DELETE FROM RESER WHERE RESER_NUM=?";
 
-	String SQL_RESER_SEQ = "SELECT SEQ_RESER_NUM.NEXTVAL FROM DUAL";
-	String SQL_SEQ = "SELECT SEQ_NUM.NEXTVAL FROM DUAL";
-	//숙소예약등록
+	// 숙소예약등록
 	private final String RESER_INSERT = "INSERT INTO RESER (RESER_NUM,"
 			+ " RESER_CHECKIN, RESER_CHECKOUT, RESER_PRICE, RESER_MAX, ID, ROOM_NUM, RESER_TODAY, RESER_ADDRESS)"
 			+ "  VALUES(seq_reser_num.nextval,?,?,?,?,?,?,SYSDATE,?)";
+	// 아이디찾기
+	private final String SELECT_ID = "SELECT ID FROM ACCOUNT WHERE NAME=? AND EMAIL=?";
+	// 비밀번호 찾기
+	private final String SELECT_PW = "SELECT PASSWORD FROM ACCOUNT WHERE NAME=? AND ID=?";
+	//계정 업데이트
+	private final String UPDATE_ACCOUNT = "UPDATE ACCOUNT SET NAME=?, PASSWORD=?,EMAIL=?, TEL=?  WHERE ID = ?";
+
+	// 예약 수정
+	private final String RESER_UPDATE = "UPDATE RESER SET RESER_CHECKIN=?,RESER_CHECKOUT=?,RESER_MAX=? WHERE RESER_NUM=?";
+	// 계정 한건조회
+	private final String SELECT_user = "SELECT * FROM ACCOUNT WHERE ID = ?";
 
 	// 예약 수정
 	public int reserUpdate(reserVO vo) {
@@ -53,8 +64,8 @@ public class AccountDao extends DAO {
 			psmt = conn.prepareStatement(RESER_UPDATE);
 			psmt.setDate(1, vo.getReserCheckIn());
 			psmt.setDate(2, vo.getReserCheckOut());
-			psmt.setString(3,vo.getReserMax());
-			psmt.setInt(4,vo.getReserNum());
+			psmt.setString(3, vo.getReserMax());
+			psmt.setInt(4, vo.getReserNum());
 			n = psmt.executeUpdate();
 		} catch (Exception e) {
 			e.printStackTrace();
@@ -77,7 +88,7 @@ public class AccountDao extends DAO {
 			psmt.setString(8, vo.getReserToday());
 
 			n = psmt.executeUpdate();
-		} catch(SQLException e) {
+		} catch (SQLException e) {
 			e.printStackTrace();
 		}
 		return n;
@@ -86,7 +97,7 @@ public class AccountDao extends DAO {
 	// 예약 삭제
 	public reserVO reserDelete(int reserNum) {
 		try {
-			psmt=conn.prepareStatement(delete_reser);
+			psmt = conn.prepareStatement(delete_reser);
 			psmt.setInt(1, reserNum);
 			psmt.executeUpdate();
 		} catch (Exception e) {
@@ -193,6 +204,31 @@ public class AccountDao extends DAO {
 		return vo;
 	}
 
+	// 계정 한건 조회
+	public AccountVO userInfo(AccountVO vo) {
+		AccountVO vo1 = null;
+		try {
+			psmt = conn.prepareStatement(SELECT_user);
+			psmt.setString(1, vo.getId());
+			rs = psmt.executeQuery();
+			if (rs.next()) {
+				vo1 = new AccountVO();
+				vo1.setId(rs.getString("id"));
+				vo1.setPassword(rs.getString("password"));
+				vo1.setName(rs.getString("name"));
+				vo1.setBirth(rs.getString("birth"));
+				vo1.setEmail(rs.getString("email"));
+				vo1.setTel(rs.getString("tel"));
+				vo1.setUserType(rs.getString("user_type"));
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			close();
+		}
+		return vo1;
+	}
+
 	// 계정 insert
 	public int insert(AccountVO vo) {
 		int n = 0;
@@ -211,6 +247,66 @@ public class AccountDao extends DAO {
 			e.printStackTrace();
 		}
 		return n;
+	}
+
+	// 계정 업데이트
+	public int updateAccount(AccountVO vo) {
+		int n = 0;
+		try {
+			psmt = conn.prepareStatement(UPDATE_ACCOUNT);
+
+			psmt.setString(1, vo.getName());
+			psmt.setString(2, vo.getPassword());
+			psmt.setString(3, vo.getEmail());
+			psmt.setString(4, vo.getTel());
+			psmt.setString(5, vo.getId());
+
+			n = psmt.executeUpdate();
+
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			close();
+		}
+		return n;
+	}
+
+	// 아이디 찾기
+	public AccountVO select_id(AccountVO vo) {
+		try {
+			psmt = conn.prepareStatement(SELECT_ID);
+			psmt.setString(1, vo.getName());
+			psmt.setString(2, vo.getEmail());
+			rs = psmt.executeQuery();
+
+			if (rs.next()) {
+				vo.setId(rs.getString("id"));
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			close();
+		}
+		return vo;
+	}
+
+	// 비밀번호 찾기
+	public AccountVO select_pw(AccountVO vo) {
+		try {
+			psmt = conn.prepareStatement(SELECT_PW);
+			psmt.setString(1, vo.getName());
+			psmt.setString(2, vo.getId());
+			rs = psmt.executeQuery();
+
+			if (rs.next()) {
+				vo.setPassword(rs.getString("password"));
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			close();
+		}
+		return vo;
 	}
 
 	// 숙소 insert

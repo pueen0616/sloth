@@ -6,13 +6,8 @@ import java.sql.SQLException;
 
 public class DAO {
 	private String driver = "oracle.jdbc.driver.OracleDriver";
-<<<<<<< HEAD
 	private String url = "jdbc:oracle:thin:@192.168.0.69:1521:xe";
 	private String user = "sloth";
-=======
-	private String url = "jdbc:oracle:thin:@localhost:1521:xe";
-	private String user = "doeun";
->>>>>>> branch 'main' of https://github.com/pueen0616/sloth.git
 	private String password = "1234";
 	
 	public Connection conn; //db연결객체

@@ -1,5 +1,7 @@
 package com.sloth.Host.command;
 
+import java.sql.SQLException;
+
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
@@ -36,7 +38,12 @@ public class ReserInsertAction implements Action {
 		
 		vo.setId(id);
 		
-		dao.reser_insert(vo);
+		try {
+			dao.reser_insert(vo);
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 		return "/mainPage/main.jsp";
 	}
 }
