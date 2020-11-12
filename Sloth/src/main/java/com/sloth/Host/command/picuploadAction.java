@@ -8,11 +8,14 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.Part;
 
+
 import com.sloth.board.common.Action;
 import com.sloth.board.common.FileRenamePolicy;
 import com.sloth.board.common.FileUtil;
 import com.sloth.board.dao.HostDAO;
 import com.sloth.board.vo.HostPicVO;
+
+import top.jfunc.json.impl.JSONObject;
 
 public class picuploadAction implements Action {
 
@@ -20,6 +23,7 @@ public class picuploadAction implements Action {
 	public String exec(HttpServletRequest request, HttpServletResponse response) {
 		HostPicVO vo = new HostPicVO();
 		HostDAO dao = new HostDAO();
+		HostPicVO pic = new HostPicVO();
 		
 		 String room_num =  request.getParameter("room_num");
 		String appPath = request.getServletContext().getRealPath("/img");
@@ -33,7 +37,6 @@ public class picuploadAction implements Action {
 					File renameFile = FileRenamePolicy.rename(new File(uploadFile));
 					part.write(renameFile.getAbsolutePath());
 					
-					HostPicVO pic = new HostPicVO();
 					pic.setRoom_num(Integer.parseInt(room_num));
 					pic.setPic(renameFile.getName());
 						dao.picupdate(pic);
@@ -46,7 +49,7 @@ public class picuploadAction implements Action {
 			e.printStackTrace();
 		}
 	    try {
-			response.getWriter().print("ok");
+			response.getWriter().print(pic.getPic());
 		} catch (IOException e) {
 			e.printStackTrace();
 		}

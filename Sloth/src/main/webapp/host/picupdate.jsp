@@ -12,7 +12,7 @@
 		<img class="img1" id="img3" name="img3"
 			src="${pageContext.request.contextPath}/img/${list.pic }">
 	</c:forEach>
-	<input type="hidden" name ="room_num" value="${hostM.room_num }">
+	<input type="hidden" name ="room_num" value="${piclist[0].room_num }">
 </form>
 
 
