@@ -10,16 +10,17 @@
 <body>
 <script>
 function delClick(){
-	if (confirm("정말 예약을 취소 하시겠어요??") == true){    //확인
-	alert("예약이 취소 되었습니다 다음번에 꼭 이용해 주세요 ㅠ ㅠ");
-	     document.removefrm.submit();
-	 }else{   //취소
-	     return false;
-	 }
+   if (confirm("정말 예약을 취소 하시겠어요??") == true){    //확인
+   alert("예약이 취소 되었습니다 다음번에 꼭 이용해 주세요 ㅠ ㅠ");
+        document.removefrm.submit();
+    }else{   //취소
+        return false;
+    }
 }
 </script>
+<div style="position: relative; top: 450;">
    <form id="frm3" name="frm" method="post">
-      <table class="table table-bordered table-dark"
+      <table class="table table-bordered table-hovers"
          style="text-align: center">
          <thead>
             <tr>
@@ -32,7 +33,8 @@ function delClick(){
                <th scope="col">예약자 ID</th>
                <th scope="col">숙소 번호</th>
                <th scope="col">결제한 날짜</th>
-               <th scope="col">수정</th>
+               <th scope="col">주소</th>
+               <th scope="col">*</th>
             </tr>
          </thead>
          <tbody>
@@ -41,11 +43,11 @@ function delClick(){
                   <td class="bb">${reserInfo2.reserNum}</td>
                   <td class="bb">${reserInfo2.reserRoomName}</td>
                   <td class="bb">입실 : ${reserInfo2.reserCheckIn}<br>
-	                     수정할 날짜 <input type="date" id="room_checkin" name="room_checkin" />
-	              </td>
+                        수정할 날짜 <input type="date" id="room_checkin" name="room_checkin" />
+                 </td>
                   <td class="bb">퇴실 : ${reserInfo2.reserCheckOut}<br>수정할
-	                             날짜 <input type="date" id="room_checkout" name="room_checkout" />
-	              </td>
+                                날짜 <input type="date" id="room_checkout" name="room_checkout" />
+                 </td>
                   <td class="bb">${reserInfo2.reserPrice}</td>
                   <td class="bb">예약 인원 :&nbsp;&nbsp;&nbsp;${reserInfo2.reserMax}<br>수정할 인원 :&nbsp;&nbsp;
                    <select style="margin-bottom: 32px;" id="room_max" name="room_max">
@@ -61,21 +63,28 @@ function delClick(){
                   <td class="bb">${reserInfo2.id}</td>
                   <td class="bb">${reserInfo2.roomNum}</td>
                   <td class="bb">${reserInfo2.reserToday}</td>
+                  <td class="bb">${reserInfo2.reserAddress}</td>
                   <td class="bb">
                   <button type="button" id="update_btn" class="btn btn-light">수정</button> 
                   <input type="hidden"id="reserNum" name="reserNum" value="${reserInfo2.reserNum}">
-                  <button type="button" id="delete_btn" class="btn btn-light" onclick="delClick()">삭제</button></td>
+                  <button type="button" id="delete_btn" class="btn btn-light"><!-- onclick="delClick()" -->삭제</button></td>
                </tr>
             </c:forEach>
          </tbody>
       </table>
-
    </form>
+   </div>
    <script type="text/javascript">
       //var reserNum= $("#reserNum").val();
       function refreshMemList(){
       location.reload();
    }
+  /*    if (confirm("정말 예약을 취소 하시겠어요??") == true){    //확인
+        alert("예약이 취소 되었습니다 다음번에 꼭 이용해 주세요 ㅠ ㅠ");
+             document.removefrm.submit();
+         }else{   //취소
+             return false;
+         } */
       $(function() {//id-># 
          $("#delete_btn").on("click", function() {
             $.ajax({
@@ -85,7 +94,14 @@ function delClick(){
                },
                async : false,
                success : function(result) {
-                  $("td[class='bb']").remove();
+                  if(result=="OK"){
+                     if(confirm("정말 예약을 취소 하시겠어요??") == true){
+                     $("td[class='bb']").remove();
+                     location.reload();
+                      }else{
+                         return false;
+                      }
+                  }
                }
             });
          });

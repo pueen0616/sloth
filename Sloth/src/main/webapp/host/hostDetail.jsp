@@ -39,6 +39,7 @@ box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
 			<div id="address" name="address">
 				<h4>슈퍼 호스트</h4>
 				<hr>
+				<h6>이 펜션은 ${detail.room_checkin } ${detail.room_checkout }에 예약이 가능합니다</h6>
 				<button type="button" class="btn btn-outline-secondary" style="float: right;">♡저장</button>
 			</div>
 
@@ -48,8 +49,6 @@ box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
 					    <div class="carousel-item active">
 					      <img src="img/${pic.pic }" class="d-block w-100" alt="ro">
 					    </div>
-  					</c:forEach>
-				</div>
 			  <a class="carousel-control-prev" href="#carouselExampleControls" role="button" data-slide="prev">
 			    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
 			    <span class="sr-only">Previous</span>
@@ -58,6 +57,8 @@ box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
 			    <span class="carousel-control-next-icon" aria-hidden="true"></span>
 			    <span class="sr-only">Next</span>
 			  </a>
+  					</c:forEach> 
+				</div>
 		  </div>
 			<div style="display: flex; height: 1200px;">
 				<div class="col-md-8">
@@ -84,11 +85,11 @@ box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
 								style="float: right;">★4.84</span>
 						</div>
 						<div class='row' style="padding: 20px;">
-							<input class="search__input" type="date" value="${selectVO.room_checkin }"/>체크인 날짜
-							 <input class="search__input" type="date" value="${selectVO.room_checkout }"/>체크아웃 날짜
+							<input class="search__input" type="date" value="${selectVO.room_checkin }" id="realCheckIn" name="realCheckIn"/>체크인 날짜
+							 <input class="search__input" type="date" value="${selectVO.room_checkout }" id="realCheckOut" name="realCheckOut"/>체크아웃 날짜
 							<div class="col-6" style="border: 1px solid;">
 								인원 
-								<select class="search__input" id="room_max" name="room_max">
+								<select class="search__input" id="realRoomMax" name="realRoomMax">
 									<option>${selectVO.room_max }</option>
 			                        <option>1</option>
 			                        <option>2</option>
@@ -102,8 +103,9 @@ box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
 							</div>
 						</div>
 						<div align="center">
-							<a href="reserv.do" class="btn btn-danger btn-lg active" role="button"
-								aria-pressed="true">예약하기</a>
+						<Button type="submit" class="btn btn-danger btn-lg active" >예약하기</Button>
+<!-- 							<a href="reserv.do" class="btn btn-danger btn-lg active" role="button" -->
+<!-- 								aria-pressed="true">예약하기</a> -->
 						</div>
 					</div>
 				</div>

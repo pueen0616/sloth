@@ -10,9 +10,9 @@
 </head>
 <body>
 <form id="frm" name="frm" action="reser.do" method="post">
-<fmt:parseDate value="${selectVO.room_checkin }" var="strPlanDate" pattern="yyyy-MM-dd"/>
+<fmt:parseDate value="${realReser.room_checkin }" var="strPlanDate" pattern="yyyy-MM-dd"/>
 <fmt:parseNumber value="${strPlanDate.time / (1000*60*60*24)}" integerOnly="true" var="strDate"></fmt:parseNumber>
-<fmt:parseDate value="${selectVO.room_checkout }" var="endPlanDate" pattern="yyyy-MM-dd"/>
+<fmt:parseDate value="${realReser.room_checkout }" var="endPlanDate" pattern="yyyy-MM-dd"/>
 <fmt:parseNumber value="${endPlanDate.time / (1000*60*60*24)}" integerOnly="true" var="endDate"></fmt:parseNumber>
 	<div class="container">
 		<div class="row">
@@ -28,10 +28,10 @@
 					<h6>날짜</h6>
 				</div>
 				
-				<div style="font-weight: lighter;">체크인 ${selectVO.room_checkin } 체크아웃 ${selectVO.room_checkout }</div><br>
+				<div style="font-weight: lighter;">체크인 ${realReser.room_checkin } 체크아웃 ${realReser.room_checkout }</div><br>
 				<div>
 					<h6>인원수</h6>
-				<div style="font-weight: lighter;">${selectVO.room_max } 명</div>
+				<div style="font-weight: lighter;">${realReser.room_max } 명</div>
 				</div>
 			</div>
 			<div class="col-6">

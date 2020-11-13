@@ -18,7 +18,7 @@
 <div class="_s1t1w0" style="margin-bottom: 16px;">이메일</div>
 <div style="margin-bottom: 32px;"><input type="text" id="id" name="id" placeholder="아이디를 입력하세요"></div>
 
-<button type="submit">비밀번호 찾기</button>
+<button class="btn btn-primary" type="submit">비밀번호 찾기</button>
 
 </form>
 </div>

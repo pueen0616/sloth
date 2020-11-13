@@ -28,15 +28,19 @@ public class HostDetail implements Action {
 		session1.setAttribute("detail", dvo);
 //=-----------------------------------------------------------//		
 		//이미지 조회
-		List<HostPicVO> piclist=dao.SELECT_PIC(vo);
+		List<HostPicVO> piclist = new ArrayList<HostPicVO>();
+		piclist = dao.SELECT_PIC(vo);
 		request.setAttribute("piclist", piclist);
 //=-----------------------------------------------------------//			
 		List<HostPicVO> list1 = new ArrayList<HostPicVO>();
 		
 		HttpSession session = request.getSession();
 		vo = (HostPicVO)session.getAttribute("selectVO");
+//=-----------------------------------------------------------//
 		
-		list1 = dao.SELECT_HOST_PIC_JOIN(vo);
+	    
+		HostDAO dao1 = new HostDAO();
+		list1 = dao1.SELECT_HOST_PIC_JOIN(vo);
 		
 		request.setAttribute("hostss", list1);
 	
