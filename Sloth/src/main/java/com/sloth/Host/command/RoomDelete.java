@@ -11,13 +11,16 @@ public class RoomDelete implements Action {
 
 	@Override
 	public String exec(HttpServletRequest request, HttpServletResponse response) {
-		HostDAO dao = new HostDAO();
 		HostPicVO vo = new HostPicVO();
-		int roomNum= Integer.parseInt(request.getParameter("roomNum"));
-		vo = dao.room_Delete(roomNum);
+		//vo.setRoom_num(Integer.parseInt(request.getParameter("room_num")));
+		HostDAO dao = new HostDAO();
+		int roomNum = Integer.parseInt(request.getParameter("room_num"));
 		
+		//dao.room_Delete(vo);
+		System.out.println(roomNum);
 		try {
-			response.getWriter().print("result");
+			int n= dao.room_Delete(roomNum);
+			response.getWriter().print(n);
 		} catch (Exception e) {
 			e.printStackTrace();
 		}

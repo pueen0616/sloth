@@ -15,7 +15,7 @@ public class DeleteReser implements Action {
       AccountDao dao = new AccountDao();
       reserVO vo = new reserVO();
       int reserNum = Integer.parseInt(request.getParameter("reserNum"));
-      String msg;
+     
       try {
          vo = dao.reserDelete(reserNum);
          response.getWriter().print("OK");

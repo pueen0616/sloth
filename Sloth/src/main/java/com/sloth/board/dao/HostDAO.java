@@ -29,6 +29,24 @@ public class HostDAO extends DAO{
 	private final String PICDEL = "DELETE FROM PIC WHERE PIC_NUM=?";
 	private final String MAINPIC = "UPDATE PIC SET FIRST_YN= NULL WHERE FIRST_YN='Y' AND ROOM_NUM=?";
 	private final String CHANGEPIC = "UPDATE PIC SET FIRST_YN= 'Y' WHERE  PIC_NUM=?";
+	private final String DELETE_ROOM="DELETE FROM HOST WHERE ROOM_NUM=?";
+	
+	//숙소삭제
+		public int room_Delete(int roomNum) {
+			int n = 0;
+			try {
+				psmt=conn.prepareStatement(DELETE_ROOM);
+				psmt.setInt(1,roomNum);
+				n = psmt.executeUpdate();
+				
+			} catch (SQLException e) {
+				e.printStackTrace();
+			}finally {
+				close();
+			}
+			return n;
+		}
+	
 	//대표사진1
 	public int MAINPIC(HostPicVO vo) {
 		int n = 0;
