@@ -167,7 +167,7 @@ function setThumbnail(event) {
 				<th scope="col" style="padding: 10px; text-align: center;">장소</th>
 				<th scope="col" style="padding: 10px; text-align: center;">가격</th>
 				<th scope="col" style="padding: 10px; text-align: center;">인원</th>
-				<th scope="col" style="padding: 10px; text-align: center;">®</th>
+				<th scope="col" style="padding: 10px; text-align: center;">수정/삭제</th>
 			</tr>
 		</thead>
 		<tbody>
@@ -198,7 +198,7 @@ function setThumbnail(event) {
 		<div class="modal-dialog modal-lg">
 			<div class="modal-content">
 				<div class="modal-header">
-					<h5 class="modal-title" id="exampleModalLabel"><i class="fas fa-align-justify"></i></h5>
+					<h5 class="modal-title" id="exampleModalLabel">사진 목록</h5>
 					<button type="button" class="close" data-dismiss="modal"
 						aria-label="Close">
 						<span aria-hidden="true">&times;</span>
