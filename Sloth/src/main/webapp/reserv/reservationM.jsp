@@ -18,9 +18,9 @@ function delClick(){
     }
 }
 </script>
-<div style="position: relative;left: 200px;top: 450;">
+<div style="position: relative; top: 450;">
    <form id="frm3" name="frm" method="post">
-      <table class="table table-bordered table-dark"
+      <table class="table table-bordered table-hovers"
          style="text-align: center">
          <thead>
             <tr>

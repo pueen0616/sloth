@@ -21,7 +21,8 @@ public class HostmUpdateFormAction implements Action {
 		
 		request.setAttribute("updateform", dvo);
 	//-----이미지
-		List<HostPicVO> piclist=dao.SELECT_PIC(vo);
+		HostDAO dao1 = new HostDAO();
+		List<HostPicVO> piclist=dao1.SELECT_PIC(vo);
 		request.setAttribute("piclist", piclist);
 		
 		

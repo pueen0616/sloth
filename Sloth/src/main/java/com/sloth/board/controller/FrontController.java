@@ -22,6 +22,7 @@ import com.sloth.Host.command.HostUpFormAction;
 import com.sloth.Host.command.LowPrice;
 import com.sloth.Host.command.Reser;
 import com.sloth.Host.command.ReserInsertAction;
+import com.sloth.Host.command.RoomDelete;
 import com.sloth.Host.command.UpdateReser;
 import com.sloth.Host.command.mainpicAction;
 import com.sloth.Host.command.picdeleteAction;
@@ -88,7 +89,7 @@ public class FrontController extends HttpServlet {
 	
 		map.put("/reserM.do",new ReserMAction()); 			  //예약관리처리
 		map.put("/highPrice.do", new HighPrice()); 			  //높은 가격 필터
-		
+		map.put("/roomdel.do", new RoomDelete());
 		map.put("/deleteReser.do",new DeleteReser());         //예약삭제
 	    map.put("/updateReser.do",new UpdateReser());		  //예약수정
 	    map.put("/mainpic.do", new mainpicAction());

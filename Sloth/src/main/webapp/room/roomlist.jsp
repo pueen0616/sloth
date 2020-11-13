@@ -13,9 +13,7 @@
 <style>
 .test img, .test table, {
 	 border: 1px
- 
 	 solid
- 
 	 black;
 }
 .test img {
@@ -35,8 +33,6 @@ a{
 display : inline;
 }
 
-
-<!-- -->
 button {
 background:none;
 border:0;
@@ -108,13 +104,16 @@ input:checked + label {
 #tab4:checked ~ #content4 {
     display: block;}
     
-    
 </style>
 <script type="text/javascript">
-
 </script>
 </head>
 <body>
+<script>
+if(${a } == 0){
+	alert("            😥 죄송합니다만 이 날짜는 빈방이 없어요    😥\n            😍그 대신 다른 날짜의 방들을 보여드릴께요 😍")
+}
+</script>
     <input id="tab1" type="button" name="tab1" onclick="location.href='${pageContext.request.contextPath}/highPrice.do'">
     <label for="tab1">높은가격순</label>
 
@@ -123,17 +122,19 @@ input:checked + label {
 
     <input id="tab3" type="button" name="tab3">
     <label for="tab3">평점순</label>
+    
 		<div class="fixed_img_col">
 				<ul id="roomlist">
 			<c:forEach items="${hosts }" var="host" varStatus="i">
 					<li>
-					<a href="./hostDetail.do?room_num=${host.room_num }"  > 
-							<span class="thumb">
-								<img id="img" name="img"  alt="왜아무것도안나오지" src="${pageContext.request.contextPath}/img/${host.pic }">
+					<a href="./hostDetail.do?room_num=${host.room_num }"> 
+						<span class="thumb">
+							<img id="img" name="img"  alt="왜아무것도안나오지" src="${pageContext.request.contextPath}/img/${host.pic }" style="padding:20px;" >
 						</span> 
 					 </a>
 						<span><b>${host.room_name }</b></span>
-						<p>${host.room_price }</p>
+						<p>₩ ${host.room_price } /박</p>
+						<p>${host.room_checkin } ${host.room_checkout }</p>
 					</li>
 			</c:forEach>
 				</ul>

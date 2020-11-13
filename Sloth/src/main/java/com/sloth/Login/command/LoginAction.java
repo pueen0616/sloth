@@ -35,6 +35,7 @@ public class LoginAction implements Action {
             request.setAttribute("msg", msg);
          }
          System.out.println(vo1);
+
          return page;
       }
    }

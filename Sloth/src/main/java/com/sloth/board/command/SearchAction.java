@@ -39,7 +39,7 @@ public class SearchAction implements Action {
 	      HttpSession session = request.getSession();
 	      session.setAttribute("selectVO", vo);
 	      request.setAttribute("hosts", list);
-	      
+	      request.setAttribute("a", a);
 	      return "room/roomlist.jsp";
 	   }
 }
