@@ -18,7 +18,7 @@
 <script	src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/js/bootstrap.bundle.min.js"></script>
 <decorator:head/>
 <body>
-<jsp:include page="/mainPage/mainMenu.jsp"></jsp:include><br>
+<jsp:include page="/mainPage/mainMenu.jsp" ></jsp:include><br>
 <p></p>
 <decorator:body />
 <div style="background-color: #F7F7F7">
