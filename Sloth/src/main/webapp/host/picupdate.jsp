@@ -2,6 +2,9 @@
 	pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 
+
+
+
 <form id="frm3" name="frm3" action="picdelete.do" method="post">
 	<c:forEach items="${piclist}" var="list">
 		<input type="checkbox" name="pic_num" value="${list.pic_num}"
@@ -11,3 +14,5 @@
 	</c:forEach>
 	<input type="hidden" name ="room_num" value="${piclist[0].room_num }">
 </form>
+
+

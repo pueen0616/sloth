@@ -73,7 +73,7 @@ function delHost(){
 			frmload.room_num.value = room_num;
 		});
 		$("#picupdate").on("show.bs.modal", function() {
-			$(".modal-body").load("picupdate.do?room_num=" + room_num);
+			$("#modal-body2").load("picupdate.do?room_num=" + room_num);
 		});
 
 		$("#picdelete").on("click", function() {
@@ -117,7 +117,7 @@ function delHost(){
 			contentType : false,
 			data : form,
 			success : function(response) {
-				$(".modal-body").load("picupdate.do?room_num=" +frmload.room_num.value);
+				$("#modal-body2").load("picupdate.do?room_num=" +frmload.room_num.value);
 			},
 			error : function(jqXHR) {
 				alert(jqXHR.responseText);
