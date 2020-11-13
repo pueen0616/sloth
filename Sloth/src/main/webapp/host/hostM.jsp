@@ -44,6 +44,8 @@
 }
 </style>
 <script>
+
+
 function delHost(){
 	if (confirm("정말 삭제하시겠습니까??") == true){    //확인
 	
@@ -104,9 +106,27 @@ function delHost(){
 				}, error : function(jqXHR) {
 					alert(jqXHR.responseText);
 				}
+			});
 		});
-		});
-	});
+		$(document).on("click",".roomdel",function(){
+	         var roomNum = $(this).closest('td').find('#roomnum1').val();
+	      if(confirm("정말 삭제 하시겠습니까?")){
+	         $.ajax("roomdel.do", {
+	            data:{
+	               "room_num" : roomNum
+	            }, 
+	            success : function(result){
+	                if(result==1){
+	                       $("td[class='bbb']").remove();
+	                         location.reload();
+	                }else{
+	                   alert("예약자가 이미 있습니다.")   
+	                }
+	                }
+	                })//여기까지맞음 ajax end
+	      }else{return false;}
+	            });//click function end 
+	      });//end of function
 	function fn_submit() {
 		var form = new FormData(frmload);
 		
@@ -141,21 +161,22 @@ function delHost(){
 		<tbody>
 			<c:forEach items="${hostM}" var="host" varStatus="i">
 				<tr>
-					<td style="padding: 10px; text-align: center;"><img
+					<td class='bbb' style="padding: 10px; text-align: center;"><img
 						style="width: 200px; height: 200px;" alt="null"
 						src="${pageContext.request.contextPath}/img/${host.pic }">
 						<button type="button" class="btn btn-light btn-pic"
 							data-toggle="modal" data-num="${host.room_num }"
 							data-target="#picupdate"><i class="fab fa-sistrix"></i></button></td>
-					<td style="padding: 10px; text-align: center;">${host.room_name}</td>
-					<td style="padding: 10px; text-align: center;">${host.room_address}</td>
-					<td style="padding: 10px; text-align: center;">${host.room_price}</td>
-					<td style="padding: 10px; text-align: center;">${host.room_max}</td>
-					<td style="padding: 10px; text-align: center;">
+					<td class='bbb' style="padding: 10px; text-align: center;">${host.room_name}</td>
+					<td class='bbb' style="padding: 10px; text-align: center;">${host.room_address}</td>
+					<td class='bbb' style="padding: 10px; text-align: center;">${host.room_price}</td>
+					<td class='bbb' style="padding: 10px; text-align: center;">${host.room_max}</td>
+					<td class='bbb' style="padding: 10px; text-align: center;">
 						<button type="button" class="btn btn-light"
 							onclick="location.href='hostmUpdateForm.do?room_num=${host.room_num }'">수정</button>
-						<button type="button" class="btn btn-light">삭제</button>
-					</td style="padding:10px; text-align:center; ">
+						<button type="button" class="btn btn-light roomdel">삭제</button>
+						<input type="hidden" name="roomnum1" id="roomnum1" value="${host.room_num }">
+						</td>
 				</tr>
 			</c:forEach>
 		</tbody>

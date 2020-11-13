@@ -39,7 +39,7 @@ box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
 			<div id="address" name="address">
 				<h4>슈퍼 호스트</h4>
 				<hr>
-				<h6>이 펜션은 ${detail.room_checkin } ${detail.room_checkout }에 예약이 가능합니다</h6>
+				<h6>이 펜션은  체크인:${detail.room_checkin },  체크아웃:${detail.room_checkout } 사이에 예약이 가능합니다</h6>
 				<button type="button" class="btn btn-outline-secondary" style="float: right;">♡저장</button>
 			</div>
 
@@ -104,8 +104,6 @@ box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
 						</div>
 						<div align="center">
 						<Button type="submit" class="btn btn-danger btn-lg active" >예약하기</Button>
-<!-- 							<a href="reserv.do" class="btn btn-danger btn-lg active" role="button" -->
-<!-- 								aria-pressed="true">예약하기</a> -->
 						</div>
 					</div>
 				</div>

@@ -37,6 +37,7 @@
       $("#loginDiv").hide();
       $("#idDiv").hide();
    }
+   
 </script>
 
 <nav style="height: 120px;">
@@ -75,7 +76,7 @@
    aria-labelledby="exampleModalLabel" aria-hidden="true">
    <div class="modal-dialog">
       <div class="modal-content">
-         <nav style="height: 120px;">
+         <nav style="height: 30px;">
             <div style="float: left;" class="logo">
                <a href="main.do"><img
                   src="${pageContext.request.contextPath}/logo/logo1.png"
@@ -86,17 +87,16 @@
             <div id="loginDiv">
                <form id="login" name="login" method="post" action="loginResult.do">
                   <div align="center">
-                     <h1>로그인</h1>
+                     <h1>로그인</h1><br>
                      <div>
-                        <input type="text" id="userid" name="userid" placeholder="아이디" />
-                     </div>
-                     <div>
+                        <input type="text" id="userid" name="userid" placeholder="아이디" style="display: inline-block;"/><br><br>
+                     
                         <input type="password" id="password" name="password"
-                           placeholder="비밀번호" />
+                           placeholder="비밀번호" style="display: inline-block;"/>
                      </div>
                      <br> <span class='text-center'> <a href="#"
-                        class="find-id" onclick="idFind()">아이디 찾기</a>&nbsp;&nbsp; <a href="#"
-                        onclick="pwFind()" class="find-password">비밀번호 찾기</a></span>
+                        class="find-id" onclick="idFind()">아이디 찾기</a>&nbsp;&nbsp; <a
+                        href="#" onclick="pwFind()" class="find-password">비밀번호 찾기</a></span>
                      <div class="form-group"></div>
                      <button type="submit" id="login-submit"
                         onclick="return formCheck()" class="btn btn-primary">로그인</button>
@@ -125,11 +125,11 @@
                         placeholder="email을 입력하세요">
                   </div>
                   <button class="btn btn-primary" type="submit" id="findidresult"
-                     name="findidresult">아이디 찾기</button>
+                     name="findidresult" onclick="location.href='findidresult.do'">아이디 찾기</button>
                </form>
 
             </div>
-<div id="pwDiv" style="display: none" align="center">
+            <div id="pwDiv" style="display: none" align="center">
                <form id="pwFrm" name="pwFrm" method="post"
                   action="findpwresult.do">
                   <div>
@@ -138,21 +138,19 @@
 
                   <div class="_s1t1w0" style="margin-bottom: 16px;">이름</div>
                   <div style="margin-bottom: 32px;">
-                     <input type="text" id="uname" name="uname"
+                     <input type="text" id="uNa" name="uNa"
                         placeholder="이름을 입력하세요">
                   </div>
 
-                  <div class="_s1t1w0" style="margin-bottom: 16px;">이메일</div>
+                  <div class="_s1t1w0" style="margin-bottom: 16px;">아이디</div>
                   <div style="margin-bottom: 32px;">
-                     <input type="text" id="useremail" name="useremail"
-                        placeholder="email을 입력하세요">
+                     <input type="text" id="userID" name="userID"
+                        placeholder="아이디을 입력하세요">
                   </div>
-                  <button class="btn btn-primary" type="submit" id="findidresult"
-                     name="findidresult">아이디 찾기</button>
+                  <button class="btn btn-primary" type="submit" id="findPWresult"
+                     name="findPWresult" >비밀번호 찾기</button>
                </form>
-
             </div>
-            <div class="modal-footer"></div>
          </div>
       </div>
    </div>
