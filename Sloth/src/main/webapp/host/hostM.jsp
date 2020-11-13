@@ -127,7 +127,7 @@ function delHost(){
 </script>
 </head>
 <body>
-	<table class="table table-hovers">
+	<table class="table table-bordered table-hovers">
 		<thead>
 			<tr>
 				<th scope="col" style="padding: 10px; text-align: center;">숙소</th>
@@ -174,10 +174,6 @@ function delHost(){
 				<div class="modal-body" id="modal-body2"></div>
 
 				<div class="modal-footer">
-					<!-- 					<button type="button" class="btn btn-secondary"
-						data-dismiss="modal">Close</button>
- -->
-
 					<form id="frmload" name="frmload" action="picupload.do"
 						method="post" enctype="multipart/form-data">
 						<input type="hidden" name="room_num" value="">

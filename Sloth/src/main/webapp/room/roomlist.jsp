@@ -129,7 +129,7 @@ if(${a } == 0){
 					<li>
 					<a href="./hostDetail.do?room_num=${host.room_num }"> 
 						<span class="thumb">
-							<img id="img" name="img"  alt="왜아무것도안나오지" src="${pageContext.request.contextPath}/img/${host.pic }">
+							<img id="img" name="img"  alt="왜아무것도안나오지" src="${pageContext.request.contextPath}/img/${host.pic }" style="padding:20px;" >
 						</span> 
 					 </a>
 						<span><b>${host.room_name }</b></span>

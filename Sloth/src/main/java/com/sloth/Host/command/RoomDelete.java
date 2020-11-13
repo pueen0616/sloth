@@ -14,7 +14,7 @@ public class RoomDelete implements Action {
 		HostDAO dao = new HostDAO();
 		HostPicVO vo = new HostPicVO();
 		int roomNum= Integer.parseInt(request.getParameter("roomNum"));
-		vo = dao.room_Delete(roomNum);
+//		vo = dao.room_Delete(roomNum);
 		
 		try {
 			response.getWriter().print("result");
