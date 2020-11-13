@@ -7,6 +7,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import com.sloth.board.vo.HostPicVO;
+import com.sloth.board.vo.reviewVO;
 
 public class HostDAO extends DAO{
 	private PreparedStatement psmt; //sql 명령문 실행
@@ -31,6 +32,82 @@ public class HostDAO extends DAO{
 	private final String CHANGEPIC = "UPDATE PIC SET FIRST_YN= 'Y' WHERE  PIC_NUM=?";
 	//숙소삭제
 	private final String DELETE_ROOM="DELETE FROM HOST WHERE ROOM_NUM=?";
+	//리뷰조회
+	private final String REVIEWSELECT = "select * from review where room_num in (\r\n" + 
+			"select room_num from host where (room_name, id) in (select room_name, id from host where room_num=? )) ";
+	//리뷰추가
+	private final String REVIEWACTION = "INSERT INTO REVIEW VALUES(SQL_REVIEW.NEXTVAL,?,?,?,?,SYSDATE,?)";
+	//평점
+	private final String REVIEWSTAR = "select avg(review_star) from review where room_num in (\r\n" + 
+			"select room_num from host where (room_name, id) in (select room_name, id from host where room_num=? ))";
+	
+	//평점
+	public int reviewStar(reviewVO vo) {
+		 try {
+	           psmt = conn.prepareStatement(REVIEWSTAR);
+	           psmt.setDouble(1, vo.getRoom_num());
+	           rs = psmt.executeQuery();
+	           while(rs.next()) {
+	        	   vo = new reviewVO();
+	        	   vo.setReview_num(rs.getInt("avg(review_star)"));
+	           }
+	        }catch(SQLException e) {
+	           e.printStackTrace();
+	        }finally {
+	           close();// db 연결을 끊어준다.
+	        }
+		 int a=vo.getReview_num();
+	        return a;
+	     }
+
+	
+	//리뷰추가
+	public int reviewAction(reviewVO vo6){  //추가
+           int n=0;
+           try {   
+              psmt = conn.prepareStatement(REVIEWACTION);         
+              psmt.setString(1, vo6.getReview_area());
+              psmt.setString(2, vo6.getRoom_name());
+              psmt.setDouble(3, vo6.getReview_star());
+              psmt.setString(4, vo6.getId());
+              psmt.setInt(5, vo6.getRoom_num());
+              
+              n = psmt.executeUpdate();
+           
+           }catch(SQLException e) {
+              e.printStackTrace();
+           }finally {
+              close();// db 연결을 끊어준다.
+           }
+           return n;
+        }
+	
+	//리뷰조회
+	public List<reviewVO> reviewselect(reviewVO re){   //전체검색
+        List<reviewVO> list = new ArrayList<reviewVO>();
+        try {
+           psmt = conn.prepareStatement(REVIEWSELECT);
+           psmt.setInt(1, re.getRoom_num());
+           rs = psmt.executeQuery();
+           while(rs.next()) {
+              re = new reviewVO();
+              re.setReview_num(rs.getInt("review_num"));
+              re.setReview_area(rs.getString("review_area"));
+              re.setRoom_name(rs.getString("room_name"));
+              re.setReview_star(rs.getInt("review_star"));
+              re.setId(rs.getString("id"));
+              re.setToday(rs.getDate("today"));
+              re.setRoom_num(rs.getInt("room_num"));
+              
+              list.add(re);            
+           }
+        }catch(SQLException e) {
+           e.printStackTrace();
+        }finally {
+           close();// db 연결을 끊어준다.
+        }
+        return list;
+     }
 	
 	//숙소삭제
     public int room_Delete(int roomNum) {

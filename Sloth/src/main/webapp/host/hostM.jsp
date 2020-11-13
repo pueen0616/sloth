@@ -56,16 +56,28 @@ function delHost(){
 	    return false;
 	}
 }
-	function setThumbnail(event) {
-		var reader = new FileReader();
-		reader.onload = function(event) {
-			var img = document.createElement("img");
-			img.setAttribute("src", event.target.result);
-			img.className = "img1"
-			document.querySelector("#modal-body2").appendChild(img);
-		};
-		reader.readAsDataURL(event.target.files[0]);
-	}
+function setThumbnail(event) {
+    var sel_files = [];
+    var files = event.target.files;
+    var filesArr = Array.prototype.slice.call(files);
+    filesArr.forEach(function(f){
+       console.log(f.type);
+       if(f.type.match('image/JPEG') || f.type.match('image/PNG')|| f.type.match('image/jpg')){
+          alert("파일확장자를 바꿔주세요.");
+          return;
+       }
+       sel_files.push(f);
+       
+    var reader = new FileReader();
+    reader.onload = function(event) {
+       var img = document.createElement("img");
+       img.setAttribute("src", event.target.result);
+       img.className = "img1"
+       document.querySelector("#modal-body2").appendChild(img);
+    };
+    reader.readAsDataURL(f);
+    });      
+ }
 
 	var room_num;
 	$(function() {
@@ -192,7 +204,7 @@ function delHost(){
 						<span aria-hidden="true">&times;</span>
 					</button>
 				</div>
-				<div class="modal-body" id="modal-body2"></div>
+				<div class="modal-body" id="modal-body2" multiple></div>
 
 				<div class="modal-footer" >
 					<form id="frmload" name="frmload" action="picupload.do"

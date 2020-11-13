@@ -127,7 +127,7 @@ if(${a } == 0){
 				<ul id="roomlist">
 			<c:forEach items="${hosts }" var="host" varStatus="i">
 					<li>
-					<a href="./hostDetail.do?room_num=${host.room_num }"> 
+					<a href="./hostDetail.do?room_num=${host.room_num }&room_name=${host.room_name}"> 
 						<span class="thumb">
 							<img id="img" name="img"  alt="왜아무것도안나오지" src="${pageContext.request.contextPath}/img/${host.pic }" style="padding:20px;" >
 						</span> 

@@ -6,7 +6,7 @@ public class reviewVO {
 private int review_num;
 private String review_area;
 private String room_name;
-private int review_star;
+private double review_star;
 private String id;
 private Date today;
 private int room_num;
@@ -29,10 +29,10 @@ private int room_num;
 	public void setRoom_name(String room_name) {
 		this.room_name = room_name;
 	}
-	public int getReview_star() {
+	public double getReview_star() {
 		return review_star;
 	}
-	public void setReview_star(int review_star) {
+	public void setReview_star(double review_star) {
 		this.review_star = review_star;
 	}
 	public String getId() {

@@ -31,7 +31,6 @@ function delClick(){
                <th scope="col">가격</th>
                <th scope="col">인원</th>
                <th scope="col">예약자 ID</th>
-               <th scope="col">숙소 번호</th>
                <th scope="col">결제한 날짜</th>
                <th scope="col">주소</th>
                <th scope="col">*</th>
@@ -43,10 +42,10 @@ function delClick(){
                   <td class="bb">${reserInfo2.reserNum}</td>
                   <td class="bb">${reserInfo2.reserRoomName}</td>
                   <td class="bb">입실 : ${reserInfo2.reserCheckIn}<br>
-                        수정할 날짜 <input type="date" id="room_checkin" name="room_checkin" />
+                        수정할 날짜 <br/><input type="date" id="room_checkin" name="room_checkin" />
                  </td>
                   <td class="bb">퇴실 : ${reserInfo2.reserCheckOut}<br>수정할
-                                날짜 <input type="date" id="room_checkout" name="room_checkout" />
+                                날짜 <br/><input type="date" id="room_checkout" name="room_checkout" />
                  </td>
                   <td class="bb">${reserInfo2.reserPrice}</td>
                   <td class="bb">예약 인원 :&nbsp;&nbsp;&nbsp;${reserInfo2.reserMax}<br>수정할 인원 :&nbsp;&nbsp;
@@ -61,7 +60,6 @@ function delClick(){
                         <option value="8">8</option>
                    </select></td>
                   <td class="bb">${reserInfo2.id}</td>
-                  <td class="bb">${reserInfo2.roomNum}</td>
                   <td class="bb">${reserInfo2.reserToday}</td>
                   <td class="bb">${reserInfo2.reserAddress}</td>
                   <td class="bb">

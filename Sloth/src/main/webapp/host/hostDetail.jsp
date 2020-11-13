@@ -33,7 +33,7 @@ box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
 	<main class="images">
 		<div class="container" >
 			<div id="name" name="name">
-				<h1>${detail.room_name }</h1>
+				<h1>${detail.room_name }</h1>평점 ${star}<input type="hidden" id="star" name="star" readonly>
 				<h5>${detail.room_address }</h5>
 			</div>
 			<div id="address" name="address">
@@ -75,10 +75,43 @@ box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
 					<hr>
 					<h3>Info</h3>
 					<div id="info" name="info">${detail.room_info }</div>
+					<br><br>
+<!-- 리뷰창 -->
+					<div>
+					   <div>
+					      <table border="1">
+					         <tr>
+					            <th width="200">작 성 날 짜</th>
+					            <th width="200">아 이 디</th>
+					            <th width="1200">내 용</th>
+					            <th width="100">평 점</th>
+					         </tr>
+					         <c:forEach var="review" items="${reviews }">
+					            <tr>
+					               <td>${review.today}</td>
+					               <td>${review.id}</td>
+					               <td>${review.review_area}</td>
+					               <td>${review.review_star}</td>               
+					            </tr>
+					         </c:forEach>
+					      </table>
+					   </div>   
+					    <form id="frm4" name="frm4" action="reviewAction.do">
+					              내용<input  id="board_area" name="board_area" placeholder="내용을 작성하세요">
+					              별점 <select id="review_star" name="review_star">
+					                     <option>1</option>
+					                     <option>2</option>
+					                     <option>3</option>
+					                     <option>4</option>
+					                     <option>5</option>
+					            </select> 
+					    <button id="btn7">등록 </button>
+					   </form>
+					   </div>   
 				</div>
 <!--예약박스 -->
 				<form id="frm" name="frm" action="reserv.do" method="post">
-				<div class="col-md-4">
+				<div class="col-md-4" >
 					<div class="box" style="border: 1px solid; position: fixed; width: 30%; border-radius: 25px; bottom: 10px; ">
 						<div style="padding: 20px;">
 							<span style="font-size: 20px;">${detail.room_price }</span> <span>/박</span> <span

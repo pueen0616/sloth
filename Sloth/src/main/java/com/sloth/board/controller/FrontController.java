@@ -28,6 +28,7 @@ import com.sloth.Host.command.mainpicAction;
 import com.sloth.Host.command.picdeleteAction;
 import com.sloth.Host.command.picupdateAction;
 import com.sloth.Host.command.picuploadAction;
+import com.sloth.Host.command.reviewAction;
 import com.sloth.Login.command.AccountUpdateAction;
 import com.sloth.Login.command.FindId;
 import com.sloth.Login.command.FindPassword;
@@ -93,6 +94,8 @@ public class FrontController extends HttpServlet {
 		map.put("/deleteReser.do",new DeleteReser());         //예약삭제
 	    map.put("/updateReser.do",new UpdateReser());		  //예약수정
 	    map.put("/mainpic.do", new mainpicAction());
+	    
+	    map.put("/reviewAction.do", new reviewAction());
  
     	}
     
