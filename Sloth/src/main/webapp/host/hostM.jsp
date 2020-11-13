@@ -144,9 +144,9 @@ function delHost(){
 					<td style="padding: 10px; text-align: center;"><img
 						style="width: 200px; height: 200px;" alt="null"
 						src="${pageContext.request.contextPath}/img/${host.pic }">
-						<button type="button" class="btn btn-primary btn-pic"
+						<button type="button" class="btn btn-light btn-pic"
 							data-toggle="modal" data-num="${host.room_num }"
-							data-target="#picupdate">사진 수정</button></td>
+							data-target="#picupdate"><i class="fab fa-sistrix"></i></button></td>
 					<td style="padding: 10px; text-align: center;">${host.room_name}</td>
 					<td style="padding: 10px; text-align: center;">${host.room_address}</td>
 					<td style="padding: 10px; text-align: center;">${host.room_price}</td>
@@ -165,7 +165,7 @@ function delHost(){
 		<div class="modal-dialog modal-lg">
 			<div class="modal-content">
 				<div class="modal-header">
-					<h5 class="modal-title" id="exampleModalLabel">사진수정</h5>
+					<h5 class="modal-title" id="exampleModalLabel"><i class="fas fa-align-justify"></i></h5>
 					<button type="button" class="close" data-dismiss="modal"
 						aria-label="Close">
 						<span aria-hidden="true">&times;</span>
@@ -173,10 +173,7 @@ function delHost(){
 				</div>
 				<div class="modal-body" id="modal-body2"></div>
 
-				<div class="modal-footer">
-					<!-- 					<button type="button" class="btn btn-secondary"
-						data-dismiss="modal">Close</button>
- -->
+				<div class="modal-footer" >
 
 					<form id="frmload" name="frmload" action="picupload.do"
 						method="post" enctype="multipart/form-data">
@@ -186,12 +183,12 @@ function delHost(){
 								type="file" id="picupload" name="picupload" multiple
 								onchange="setThumbnail(event);">
 						</div>
-						<button type="button" class="btn btn-primary"
+						<button type="button" class="btn btn-light"
 							onclick="fn_submit()">저장</button>
 					</form>
-					<span><button type="button" class="btn btn-primary"
+					<span><button type="button" class="btn btn-light"
 							id="picdelete">삭제</button></span> <span><button type="button"
-							class="btn btn-primary" id="mainpic">대표사진</button></span>
+							class="btn btn-light" id="mainpic">대표사진</button></span>
 				</div>
 			</div>
 		</div>
