@@ -150,6 +150,7 @@ function setThumbnail(event) {
 			data : form,
 			success : function(response) {
 				$("#modal-body2").load("picupdate.do?room_num=" +frmload.room_num.value);
+				frmload.reset();
 			},
 			error : function(jqXHR) {
 				alert(jqXHR.responseText);

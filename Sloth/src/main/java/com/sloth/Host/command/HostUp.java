@@ -41,6 +41,8 @@ public class HostUp implements Action {
 		avo.setId(request.getParameter("id")); //id값 받아와서
 		dao.admin_grant(avo); //update 해주기
 		
+		HttpSession session = request.getSession();
+		session.setAttribute("user_type", dao);		
 		
 		//-------------------------------------------------------------------------------//
 //		사진등록코드
