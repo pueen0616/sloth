@@ -12,5 +12,6 @@
     	<pattern>/reser.do</pattern>
     	<pattern>/picupdate.do*</pattern>
 		<pattern>/findId.do</pattern>
+		<pattern>/hostMreserList.do*</pattern>
     </excludes>
 </decorators>
