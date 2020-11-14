@@ -9,6 +9,13 @@ public class AccountVO {
 	private String tel;
 	private String userType;
 	
+	
+	
+	@Override
+	public String toString() {
+		return "AccountVO [id=" + id + ", name=" + name + ", password=" + password + ", birth=" + birth + ", email="
+				+ email + ", tel=" + tel + ", userType=" + userType + "]";
+	}
 	public String getId() {
 		return id;
 	}

@@ -55,19 +55,28 @@
          <c:if test="${name eq null }">
             <a class="dropdown-item" data-toggle="modal"
                data-target="#exampleModal" onclick="loginDiv()">로그인</a>
-
          </c:if>
+         
          <c:if test="${name ne null }">
-            <a class="dropdown-item" href="hostUpForm.do">호스트가 되기</a>
+         	<c:choose>
+         		<c:when test="${empty user_type }">  
+    		        <a class="dropdown-item" href="hostUpForm.do">호스트가 되기</a>
+         		</c:when>
+				<c:otherwise>
+					<a class="dropdown-item" href="hostUpForm.do">숙소추가하기</a>
+				</c:otherwise>         		
+         	</c:choose>
+         	
             <a class="dropdown-item" href="Account.do">계정</a>
             <a class="dropdown-item" href="#">게시판</a>
             <a class="dropdown-item" href="reserM.do?id=${id }">예약관리</a>
-            <c:if test="${user_type ne null }">
+            <c:if test="${!empty user_type}">
                <a class="dropdown-item" href="./hostM.do">숙소관리</a>
             </c:if>
             <a class="dropdown-item" href="#">관심숙소</a>
             <a class="dropdown-item" href="logout.do">로그아웃</a>
          </c:if>
+         
       </div>
    </div>
 </nav>

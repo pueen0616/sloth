@@ -44,9 +44,6 @@ public class HostUp implements Action {
 		
 		HttpSession session = request.getSession();
 		session.setAttribute("user_type", dao);		
-		
-		
-		
 		//-------------------------------------------------------------------------------//
 //		사진등록코드
 	
@@ -77,15 +74,16 @@ public class HostUp implements Action {
 			e.printStackTrace();
 		}
 	    
+//		AccountVO vo1 = new AccountVO();
+//		vo1.setUserType(request.get);
 		
 		String page;
-		
 		if(n !=0) {
 			  PrintWriter writer ;
 			  response.setContentType("text/html; charset=UTF-8");
 			try {
 				writer = response.getWriter();
-				writer.println("<script>alert('호스트가 되었습니다'); location.href='"+request.getContextPath() +"/main.do'; </script>");
+					writer.println("<script>alert('숙소가 등록되었습니다'); location.href='"+request.getContextPath() +"/main.do'; </script>");
 				writer.close();
 			} catch (IOException e) {
 				e.printStackTrace();
