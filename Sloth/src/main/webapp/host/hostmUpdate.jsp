@@ -90,10 +90,6 @@ function updHostM(){
 			
 			<div class="_s1t1w0" style="margin-bottom: 16px;">Info</div>
 			<textarea cols="30" rows="10" id="room_info" name="room_info">${updateform.room_info }</textarea>
-			
-				<div style="margin-bottom: 32px;">대표사진<input type="file" id="img1" name="img1"></div>
-				
-				<div style="margin-bottom: 32px;">사진<input type="file" id="img" name="img"></div>
 				
 			<div style="padding: 20px;" >
 				 <input type="submit" value="수정" class="btn btn-primary" onclick="updHostM()">

@@ -18,7 +18,7 @@ public class HostDAO extends DAO{
 								+ " INNER JOIN (select * from (select row_number() over (partition by room_num order by room_num , first_yn) as num,pic.* from pic)where num=1) B ON (A.ROOM_NUM = B.ROOM_NUM) ";
 						
 	private final String HOST_M = "SELECT A.*, B.* FROM HOST A"
-			                     + "  INNER JOIN PIC B ON (A.ROOM_NUM = B.ROOM_NUM) WHERE FIRST_YN = 'Y' AND A.ID = ?";
+			                    + " INNER JOIN (select * from (select row_number() over (partition by room_num order by room_num , first_yn) as num,pic.* from pic)where num=1) B ON (A.ROOM_NUM = B.ROOM_NUM) WHERE  A.ID = ?";
 	
 	private final String SELECT_DETAIL = "SELECT * FROM HOST WHERE ROOM_NUM = ?";
 	
