@@ -26,14 +26,15 @@ box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
 }
 </style>
 <script>
-
+var text = document.querySelector('info');
+var result = text.value.replace(/(\n|\r\n)/g, '<br>');
 </script>
 </head>
 <body>
 	<main class="images">
 		<div class="container" >
 			<div id="name" name="name">
-				<h1>${detail.room_name }</h1>평점 ${star}<input type="hidden" id="star" name="star" readonly>
+				<h1>${detail.room_name }</h1>평점 ❤ ${star}<input type="hidden" id="star" name="star" readonly>
 				<h5>${detail.room_address }</h5>
 			</div>
 			<div id="address" name="address">
@@ -98,6 +99,7 @@ box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
 					   </div>   
 					    <form id="frm4" name="frm4" action="reviewAction.do">
 					              내용<input  id="board_area" name="board_area" placeholder="내용을 작성하세요">
+					          <input type="hidden" name="room_num" value="${param.room_num}">   
 					              별점 <select id="review_star" name="review_star">
 					                     <option>1</option>
 					                     <option>2</option>
@@ -111,11 +113,11 @@ box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
 				</div>
 <!--예약박스 -->
 				<form id="frm" name="frm" action="reserv.do" method="post">
-				<div class="col-md-4" >
-					<div class="box" style="border: 1px solid; position: fixed; width: 30%; border-radius: 25px; bottom: 10px; ">
+				<div class="col-md-4">
+					<div class="box" style="border: 1px solid; position: fixed; width: 30%; border-radius: 25px; bottom: 10px; background-color: #ffffff">
 						<div style="padding: 20px;">
 							<span style="font-size: 20px;">${detail.room_price }</span> <span>/박</span> <span
-								style="float: right;">★4.84</span>
+								style="float: right;">❤${star }</span>
 						</div>
 						<div class='row' style="padding: 20px;">
 							<input class="search__input" type="date" value="${selectVO.room_checkin }" id="realCheckIn" name="realCheckIn"/>체크인 날짜

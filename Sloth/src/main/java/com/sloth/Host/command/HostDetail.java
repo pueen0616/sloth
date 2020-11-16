@@ -64,13 +64,16 @@ public class HostDetail implements Action {
 	      
 	     request.setAttribute("reviews", list2);      	
 //=-----------------------------------------------------------//
-	     //평점 보기
+	     //평점 보기	
 	     reviewVO vo5 = new reviewVO();
-	     vo5.setRoom_name(request.getParameter("room_name"));
-	     
 	     HostDAO dao4 = new HostDAO();
+	     vo5.setRoom_num(Integer.parseInt(request.getParameter("room_num")));
+	     System.out.println(Integer.parseInt(request.getParameter("room_num")));
 	     
-	     int star = dao4.reviewStar(vo5);
+	     double star = 0.0;
+	     star = dao4.reviewStar(vo5);
+	     System.out.println("star"+star);
+	     
 	     HttpSession session5 = request.getSession();
 	     session5.setAttribute("star", star);
 	     
