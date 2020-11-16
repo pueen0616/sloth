@@ -36,7 +36,7 @@ public class picuploadAction implements Action {
 					String uploadFile = appPath + File.separator + fileName;
 					File renameFile = FileRenamePolicy.rename(new File(uploadFile));
 					part.write(renameFile.getAbsolutePath());
-					
+					dao = new HostDAO();
 					pic.setRoom_num(Integer.parseInt(room_num));
 					pic.setPic(renameFile.getName());
 						dao.picupdate(pic);

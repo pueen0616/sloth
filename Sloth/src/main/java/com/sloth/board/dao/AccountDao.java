@@ -35,7 +35,11 @@ public class AccountDao extends DAO {
 	private final String PIC_INSERT = "INSERT INTO PIC VALUES(SQL_RESER_SEQ.nextval, ?, NULL, ?)";
 
 	String sql_seq = "select seq_num.nextval from dual";
-	private final String RESER_M = "SELECT A.RESER_NUM,B.ROOM_NAME,A.RESER_CHECKIN,A.RESER_CHECKOUT,A.RESER_PRICE,A.RESER_MAX,A.ID,A.ROOM_NUM,A.RESER_TODAY,A.RESER_ADDRESS FROM RESER A,HOST B WHERE b.room_num=a.room_num and a.id=?";
+	//예약건 조회
+	private final String RESER_M = "SELECT A.RESER_NUM,B.ROOM_NAME,A.RESER_CHECKIN,A.RESER_CHECKOUT,A.RESER_PRICE,A.RESER_MAX,A.ID,A.ROOM_NUM,a.room_num as 호스트room_num,A.RESER_TODAY,a.reser_address FROM RESER A,HOST B WHERE b.room_num=a.room_num and a.id=?";
+	//숙소관리자 예약건 조회
+	private final String HostMreserList = "SELECT A.RESER_NUM,A.ID, A.RESER_CHECKIN, A.RESER_CHECKOUT, A.RESER_TODAY FROM RESER A,HOST B WHERE b.room_num=a.room_num and b.room_num=?";
+	private final String delete_reser="DELETE FROM RESER WHERE RESER_NUM=?";
 
 	//숙소예약등록
 	private final String RESER_INSERT = "INSERT INTO RESER (RESER_NUM,"
@@ -52,6 +56,28 @@ public class AccountDao extends DAO {
 	private final String RESER_UPDATE = "UPDATE RESER SET RESER_CHECKIN=?,RESER_CHECKOUT=?,RESER_MAX=? WHERE RESER_NUM=?";
 	
 	// ------------ 메소드 ---------- //
+	public List<reserVO> hostM_reserList(reserVO vo) {
+	      List<reserVO> list = new ArrayList<reserVO>();
+	      try {
+	         psmt = conn.prepareStatement(HostMreserList);
+	         psmt.setInt(1,vo.getRoomNum());
+	         rs = psmt.executeQuery();
+
+	         while (rs.next()) {
+	            vo = new reserVO();
+	            vo.setReserNum(rs.getInt("RESER_NUM"));
+	            vo.setId(rs.getString("ID"));
+	            vo.setReserCheckIn(rs.getDate("RESER_CHECKIN"));
+	            vo.setReserCheckOut(rs.getDate("RESER_CHECKOUT"));
+	            vo.setReserToday(rs.getString("RESER_TODAY"));
+	            list.add(vo);
+	         }
+	      } catch (Exception e) {
+	         e.printStackTrace();
+	      }
+	      return list;
+	   }
+	
 	// 예약 삭제
 	   public reserVO reserDelete(int reserNum) {
 	      try {
@@ -148,7 +174,8 @@ public class AccountDao extends DAO {
 	            vo.setId(rs.getString("ID"));
 	            vo.setRoomNum(rs.getInt("ROOM_NUM"));
 	            vo.setReserToday(rs.getString("RESER_TODAY"));
-	            vo.setReserAddress(rs.getNString("RESER_ADDRESS"));
+	            vo.setReserAddress(rs.getString("RESER_ADDRESS"));
+	            
 	            list.add(vo);
 	         }
 	      } catch (Exception e) {

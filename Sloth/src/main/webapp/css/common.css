@@ -1,6 +1,8 @@
 @charset "UTF-8";
 @import url("http://fonts.googleapis.com/earlyaccess/nanumgothic.css");
 html,body{width:100%;height:100%}
+body,p,h1,h2,h3,h4,h5,h6,ul,ol,li,dl,dt,dd,table,th,td,form,fieldset,legend,input,textarea,button,select{margin:0;padding:0}
+body,input,textarea,select,button,table{font-family:'돋음',Dotum,AppleGothic,sens-serif;font-size:25   px;}
 img,fieldset{border:0;}
 em.address{font-style:normal;}
 a{text-decoration:none;}

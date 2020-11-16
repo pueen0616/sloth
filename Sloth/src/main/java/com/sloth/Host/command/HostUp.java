@@ -2,6 +2,7 @@ package com.sloth.Host.command;
 
 import java.io.File;
 import java.io.IOException;
+import java.io.PrintWriter;
 import java.sql.Date;
 
 import javax.servlet.ServletException;
@@ -41,7 +42,8 @@ public class HostUp implements Action {
 		avo.setId(request.getParameter("id")); //id값 받아와서
 		dao.admin_grant(avo); //update 해주기
 		
-		
+		HttpSession session = request.getSession();
+		session.setAttribute("user_type", dao);		
 		//-------------------------------------------------------------------------------//
 //		사진등록코드
 	
@@ -72,17 +74,25 @@ public class HostUp implements Action {
 			e.printStackTrace();
 		}
 	    
+//		AccountVO vo1 = new AccountVO();
+//		vo1.setUserType(request.get);
 		
 		String page;
-		
 		if(n !=0) {
-						
-			page = "login/insertSuccess.jsp";
+			  PrintWriter writer ;
+			  response.setContentType("text/html; charset=UTF-8");
+			try {
+				writer = response.getWriter();
+					writer.println("<script>alert('숙소가 등록되었습니다'); location.href='"+request.getContextPath() +"/main.do'; </script>");
+				writer.close();
+			} catch (IOException e) {
+				e.printStackTrace();
+			}
 		}else {
 			page = "login/insertFail.jsp";
 		}
 		
-		return page;
+		return null;
 	}
 
 }
