@@ -14,20 +14,20 @@
 		<thead>
 			<tr>
 				<th scope="col" style="padding: 5px; text-align: center;">예약 번호</th>
-				<th scope="col" style="padding: 10px; text-align: center;">아이디</th>
-				<th scope="col" style="padding: 10px; text-align: center;">체크인</th>
-				<th scope="col" style="padding: 10px; text-align: center;">체크아웃</th>
-				<th scope="col" style="padding: 10px; text-align: center;">예약한날</th>
+				<th scope="col" style="padding: 5px; text-align: center;">아이디</th>
+				<th scope="col" style="padding: 5px; text-align: center;">체크인</th>
+				<th scope="col" style="padding: 5px; text-align: center;">체크아웃</th>
+				<th scope="col" style="padding: 5px; text-align: center;">예약한날</th>
 			</tr>
 		</thead>
 		<tbody>
 			<c:forEach items="${hostMreserList}" var="reser">
 				<tr>
-					<td class='bbb' style="padding: 60px; text-align: center;">${reser.reserNum }</td>
-					<td class='bbb' style="padding: 60px; text-align: center;">${reser.id }</td>
-					<td class='bbb' style="padding: 60px; text-align: center;">${reser.reserCheckIn }</td>
-					<td class='bbb' style="padding: 60px; text-align: center;">${reser.reserCheckOut }</td>
-					<td class='bbb' style="padding: 60px; text-align: center;">${reser.reserToday }</td>
+					<td class='bbb' style="padding: 5px; text-align: center;">${reser.reserNum }</td>
+					<td class='bbb' style="padding: 5px; text-align: center;">${reser.id }</td>
+					<td class='bbb' style="padding: 5px; text-align: center;">${reser.reserCheckIn }</td>
+					<td class='bbb' style="padding: 5px; text-align: center;">${reser.reserCheckOut }</td>
+					<td class='bbb' style="padding: 5px; text-align: center;">${reser.reserToday }</td>
 				</tr>
 			</c:forEach>
 		</tbody>
