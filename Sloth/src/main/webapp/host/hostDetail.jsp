@@ -46,10 +46,15 @@ var result = text.value.replace(/(\n|\r\n)/g, '<br>');
 
 			<div id="carouselExampleControls" class="carousel slide" data-ride="carousel">
 				<div class="carousel-inner">
-					  <c:forEach items="${piclist }" var="pic" >
+				
 					    <div class="carousel-item active">
+					      <img src="img/${piclist.pic[0] }" class="d-block w-100" alt="ro">
+					    </div>
+					  <c:forEach items="${piclist }" var="pic" >
+					    <div class="carousel-item ">
 					      <img src="img/${pic.pic }" class="d-block w-100" alt="ro">
 					    </div>
+			 
 			  <a class="carousel-control-prev" href="#carouselExampleControls" role="button" data-slide="prev">
 			    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
 			    <span class="sr-only">Previous</span>
@@ -61,6 +66,8 @@ var result = text.value.replace(/(\n|\r\n)/g, '<br>');
   					</c:forEach> 
 				</div>
 		  </div>
+		  
+		  
 			<div style="display: flex; height: 1200px;">
 				<div class="col-md-8">
 					<div style="display: flex;">
