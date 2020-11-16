@@ -89,7 +89,7 @@
                         <input type="hidden" id="reserCheckIn" name="reserCheckIn" value="${reserInfo2.reserCheckIn}">
                         <input type="hidden" id="reserCheckOut" name="reserCheckOut" value="${reserInfo2.reserCheckOut}">
                         <button type="button" id="delete_btn" class="btn btn-light">
-                           삭제
+                          취소
                         </button>
                         </c:if>
                         <c:if test="${today >= checkIn && today <= checkOut}">
