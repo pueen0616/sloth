@@ -35,8 +35,7 @@ public class AccountDao extends DAO {
 	private final String PIC_INSERT = "INSERT INTO PIC VALUES(SQL_RESER_SEQ.nextval, ?, NULL, ?)";
 
 	String sql_seq = "select seq_num.nextval from dual";
-	private final String RESER_M = "SELECT A.RESER_NUM,B.ROOM_NAME,A.RESER_CHECKIN,A.RESER_CHECKOUT,A.RESER_PRICE,A.RESER_MAX,A.ID,A.ROOM_NUM,a.room_num as 호스트room_num,A.RESER_TODAY FROM RESER A,HOST B WHERE b.room_num=a.room_num and a.id=?";
-	private final String delete_reser="DELETE FROM RESER WHERE RESER_NUM=?";
+	private final String RESER_M = "SELECT A.RESER_NUM,B.ROOM_NAME,A.RESER_CHECKIN,A.RESER_CHECKOUT,A.RESER_PRICE,A.RESER_MAX,A.ID,A.ROOM_NUM,A.RESER_TODAY,A.RESER_ADDRESS FROM RESER A,HOST B WHERE b.room_num=a.room_num and a.id=?";
 
 	//숙소예약등록
 	private final String RESER_INSERT = "INSERT INTO RESER (RESER_NUM,"
@@ -149,7 +148,7 @@ public class AccountDao extends DAO {
 	            vo.setId(rs.getString("ID"));
 	            vo.setRoomNum(rs.getInt("ROOM_NUM"));
 	            vo.setReserToday(rs.getString("RESER_TODAY"));
-	            
+	            vo.setReserAddress(rs.getNString("RESER_ADDRESS"));
 	            list.add(vo);
 	         }
 	      } catch (Exception e) {

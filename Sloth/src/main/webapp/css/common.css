@@ -1,13 +1,19 @@
 @charset "UTF-8";
 @import url("http://fonts.googleapis.com/earlyaccess/nanumgothic.css");
 html,body{width:100%;height:100%}
-body,p,h1,h2,h3,h4,h5,h6,ul,ol,li,dl,dt,dd,table,th,td,form,fieldset,legend,input,textarea,button,select{margin:0;padding:0}
-body,input,textarea,select,button,table{font-family:'돋음',Dotum,AppleGothic,sens-serif;font-size:12px;}
 img,fieldset{border:0;}
-ul,ol{list-style:none;}
 em.address{font-style:normal;}
 a{text-decoration:none;}
 a:hover,a:active,a:focus{text-decoration:underline;}
+
+
+
+.container-fluid{
+	padding-right: 15px; padding-left: 15px; margin-right: auto; margin-left: auto;
+
+}
+.container { padding-right: 15px; padding-left: 15px; margin-right: auto; margin-left: auto; }
+.rowFont{  font-size: 18px;}
 .wrap{
 	width: 1000px;
 	margin: 0 auto;
@@ -19,22 +25,15 @@ a:hover,a:active,a:focus{text-decoration:underline;}
 	border-bottom: 1px solid #aaa;
 }
 .fixed_img_col ul {
-	border-bottom: 1px solid #aaa;
+
 	
 }
 
 
 .fixed_img_col li {
-	float: left;
-	width: 120px;
-	height: 180px;
-	padding: 50px 30px;
-	margin-bottom: -1px;
-	border-bottom: 1px solid #aaa;
-}
 
+}
 img {
-	width: 150px;
-	height: 150px;
+	
 	object-fit: cover;
 }
