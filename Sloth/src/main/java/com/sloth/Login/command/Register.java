@@ -1,5 +1,7 @@
 package com.sloth.Login.command;
 
+import java.sql.Date;
+
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
@@ -20,7 +22,7 @@ public class Register implements Action {
 		vo.setId(request.getParameter("id"));
 		vo.setPassword(request.getParameter("password"));
 		vo.setName(request.getParameter("name"));
-		vo.setBirth(request.getParameter("birth"));
+		vo.setBirth(Date.valueOf(request.getParameter("birth")));
 		vo.setTel(request.getParameter("tel"));
 		vo.setEmail(request.getParameter("email"));
 		

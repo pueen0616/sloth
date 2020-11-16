@@ -38,25 +38,24 @@ public class HostDAO extends DAO{
 	//리뷰추가
 	private final String REVIEWACTION = "INSERT INTO REVIEW VALUES(SQL_REVIEW.NEXTVAL,?,?,?,?,SYSDATE,?)";
 	//평점
-	private final String REVIEWSTAR = "select avg(review_star) from review where room_num in (\r\n" + 
+	private final String REVIEWSTAR = "select round(avg(review_star),2) as star from review where room_num in (\r\n" + 
 			"select room_num from host where (room_name, id) in (select room_name, id from host where room_num=? ))";
 	
 	//평점
-	public int reviewStar(reviewVO vo) {
+	public double reviewStar(reviewVO vo1) {
+		double a =0;
 		 try {
 	           psmt = conn.prepareStatement(REVIEWSTAR);
-	           psmt.setDouble(1, vo.getRoom_num());
+	           psmt.setInt(1, vo1.getRoom_num());
 	           rs = psmt.executeQuery();
 	           while(rs.next()) {
-	        	   vo = new reviewVO();
-	        	   vo.setReview_num(rs.getInt("avg(review_star)"));
+	        	   a = rs.getDouble("star");
 	           }
 	        }catch(SQLException e) {
 	           e.printStackTrace();
 	        }finally {
 	           close();// db 연결을 끊어준다.
 	        }
-		 int a=vo.getReview_num();
 	        return a;
 	     }
 

@@ -24,7 +24,7 @@
 			
 			<div class="_s1t1w0" style="margin-bottom: 16px;">생일</div>
 			<div style="margin-bottom: 32px;">
-			<input type="text" id="birth" name="birth" placeholder="2020/01/01"></div>
+			<input type="date" id="birth" name="birth"></div>
 			
 			<div class="_s1t1w0" style="margin-bottom: 16px;">전화번호</div>
 			<div style="margin-bottom: 32px;"><input type="text" id="tel" name="tel" placeholder="ex> 010-0000-0000"></div>

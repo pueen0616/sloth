@@ -24,18 +24,15 @@ public class reviewAction implements Action {
       String b = (String)session1.getAttribute("id");
       vo4.setRoom_name(a);
       vo4.setId(b);
-      System.out.println(b);
       vo4.setReview_area(request.getParameter("board_area"));
       vo4.setReview_star(Integer.parseInt(request.getParameter("review_star")));
       
       HostPicVO rrvo = (HostPicVO)session.getAttribute("detail");
-      System.out.println(rrvo.getRoom_num());
       vo4.setRoom_num(rrvo.getRoom_num());
-       
       
       dao3.reviewAction(vo4);
       
-//      return "redirect:hostDetail.do";
-      return "/host/hostDetail.jsp";
+      return "hostDetail.do";
+//      return "/host/hostDetail.jsp";
    }
 }

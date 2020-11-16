@@ -1,10 +1,12 @@
 package com.sloth.board.vo;
 
+import java.sql.Date;
+
 public class AccountVO {
 	private String id;
 	private String name;
 	private String password;
-	private String birth;
+	private Date birth;
 	private String email;
 	private String tel;
 	private String userType;
@@ -27,10 +29,10 @@ public class AccountVO {
 	public void setPassword(String password) {
 		this.password = password;
 	}
-	public String getBirth() {
+	public Date getBirth() {
 		return birth;
 	}
-	public void setBirth(String birth) {
+	public void setBirth(Date birth) {
 		this.birth = birth;
 	}
 	public String getEmail() {

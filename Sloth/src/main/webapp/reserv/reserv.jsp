@@ -35,7 +35,7 @@
 				</div>
 			</div>
 			<div class="col-6">
-				<div class="box" style="border: 1px solid; position: fixed; width: 30%; border-radius: 25px;">
+				<div class="box" style="border: 1px solid; position: fixed; width: 30%; border-radius: 25px; background-color: #ffffff" >
 					<img style="width:100px; height:100px; padding:10px;  border-radius: 20px;" src="${pageContext.request.contextPath}/img/room1.jpeg">
 					<a>${detail.room_name }</a>&nbsp;&nbsp;
 					<a>${detail.room_address }</a>&nbsp;&nbsp;
@@ -48,8 +48,7 @@
 						총 ${endDate - strDate }박
 						<input type="text" id="room_price1" name="room_price1" value="${detail.room_price*(endDate-strDate)}"> 
 						</span> 
-					</div>
-					<button type="submit" class="btn btn-danger btn-lg active">예약하기</button>
+					</div><button type="submit" class="btn btn-danger btn-lg active" >결제</button>
 				</div>
 			</div>
 		</div>

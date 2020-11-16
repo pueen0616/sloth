@@ -10,6 +10,10 @@
 <link rel="stylesheet" href="${pageContext.request.contextPath}/host/css/inputStyle.css">
 </head>
 <body>
+<script>
+var text = document.querySelector('room_info');
+var result = text.value.replace(/(\n|\r\n)/g, '<br>');
+</script>
 <div align="center">
 	<div class="_s1t1w0m">숙소를 등록 해보세요</div>
 	<hr style="margin-bottom: 32px;">
@@ -20,8 +24,16 @@
 			<div style="margin-bottom: 32px;"><input type="text" id="room_name" name="room_name"></div>
 			
 			<div class="_s1t1w0" style="margin-bottom: 16px;">숙소 위치는 어디일까요</div>
-			<div style="margin-bottom: 32px;"><input type="text" id="room_address" name="room_address"></div>
-			
+			<select class="search__input" id="room_address" name="room_address" style="margin-bottom: 32px;">
+                        <option>대구</option>
+                        <option>서울</option>
+                        <option>부산</option>
+                        <option>인천</option>
+                        <option>광주</option>
+                        <option>대전</option>
+                        <option>울산</option>
+                        <option>제주</option>
+                  </select>
 			<div class="_s1t1w0" style="margin-bottom: 16px;">최대 인원을 정해 주세요</div>
 			<select style="margin-bottom: 32px;" id="room_max" name="room_max">
 			    <option value="1">1</option>

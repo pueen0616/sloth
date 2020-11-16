@@ -21,6 +21,9 @@ public class HostUp implements Action {
 
 	@Override
 	public String exec(HttpServletRequest request, HttpServletResponse response) {
+		String content = request.getParameter("room_info");
+		content = content.replace("\r\n","<br>");
+		
 		// 숙소등록
 		AccountDao dao = new AccountDao();
 		HostPicVO vo = new HostPicVO();
