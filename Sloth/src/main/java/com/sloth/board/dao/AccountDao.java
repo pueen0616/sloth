@@ -142,7 +142,7 @@ public class AccountDao extends DAO {
 	            vo1.setId(rs.getString("id"));
 	            vo1.setPassword(rs.getString("password"));
 	            vo1.setName(rs.getString("name"));
-	            vo1.setBirth(rs.getString("birth"));
+	            vo1.setBirth(rs.getDate("birth"));
 	            vo1.setEmail(rs.getString("email"));
 	            vo1.setTel(rs.getString("tel"));
 	            vo1.setUserType(rs.getString("user_type"));
@@ -298,7 +298,7 @@ public class AccountDao extends DAO {
 
 			if (rs.next()) {
 				vo.setName(rs.getString("name"));
-				vo.setBirth(rs.getString("birth"));
+				vo.setBirth(rs.getDate("birth"));
 				vo.setEmail(rs.getString("email"));
 				vo.setTel(rs.getString("tel"));
 				vo.setUserType(rs.getString("user_type"));
@@ -319,7 +319,7 @@ public class AccountDao extends DAO {
 			psmt.setString(1, vo.getId());
 			psmt.setString(2, vo.getName());
 			psmt.setString(3, vo.getPassword());
-			psmt.setString(4, vo.getBirth());
+			psmt.setDate(4, vo.getBirth());
 			psmt.setString(5, vo.getEmail());
 			psmt.setString(6, vo.getTel());
 
