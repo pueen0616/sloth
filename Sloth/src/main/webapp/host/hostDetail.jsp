@@ -13,8 +13,10 @@
 <meta name="author" content="">
 
 <title></title>
-
-<script src="https://kit.fontawesome.com/a076d05399.js"></script>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/bxslider/4.2.12/jquery.bxslider.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/bxslider/4.2.12/jquery.bxslider.min.js"></script>
+ <script src="https://kit.fontawesome.com/a076d05399.js"></script>
 <style>
 img{
 	width: auto; height: auto;
@@ -25,10 +27,11 @@ img{
 box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
 }
 </style>
-<script>
-var text = document.querySelector('info');
-var result = text.value.replace(/(\n|\r\n)/g, '<br>');
-</script>
+  <script>
+    $(document).ready(function(){
+      $('.slider').bxSlider();
+    });
+  </script>
 </head>
 <body>
 	<main class="images">
@@ -43,30 +46,13 @@ var result = text.value.replace(/(\n|\r\n)/g, '<br>');
 				<h6>이 펜션은  체크인:${detail.room_checkin },  체크아웃:${detail.room_checkout } 사이에 예약이 가능합니다</h6>
 				<button type="button" class="btn btn-outline-secondary" style="float: right;">♡저장</button>
 			</div>
-
-			<div id="carouselExampleControls" class="carousel slide" data-ride="carousel">
-				<div class="carousel-inner">
-				
-					    <div class="carousel-item active">
-					      <img src="img/${piclist.pic[0] }" class="d-block w-100" alt="ro">
-					    </div>
+			
+			
+					    <div class="slider ">
 					  <c:forEach items="${piclist }" var="pic" >
-					    <div class="carousel-item ">
-					      <img src="img/${pic.pic }" class="d-block w-100" alt="ro">
-					    </div>
-			 
-			  <a class="carousel-control-prev" href="#carouselExampleControls" role="button" data-slide="prev">
-			    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-			    <span class="sr-only">Previous</span>
-			  </a>
-			  <a class="carousel-control-next" href="#carouselExampleControls" role="button" data-slide="next">
-			    <span class="carousel-control-next-icon" aria-hidden="true"></span>
-			    <span class="sr-only">Next</span>
-			  </a>
+					      <img src="img/${pic.pic }" class="img" alt="ro">
   					</c:forEach> 
-				</div>
-		  </div>
-		  
+					    </div>
 		  
 			<div style="display: flex; height: 1200px;">
 				<div class="col-md-8">
