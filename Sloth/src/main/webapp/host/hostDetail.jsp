@@ -80,9 +80,9 @@ var result = text.value.replace(/(\n|\r\n)/g, '<br>');
 <!-- 리뷰창 -->
 					<div>
 					   <div>
-					      <table border="1">
+					      <table class="table table-bordered table-hovers">
 					         <tr>
-					            <th width="200">작 성 날 짜</th>
+					            <th width="200">작 성 일</th>
 					            <th width="200">아 이 디</th>
 					            <th width="1200">내 용</th>
 					            <th width="100">평 점</th>
@@ -98,16 +98,17 @@ var result = text.value.replace(/(\n|\r\n)/g, '<br>');
 					      </table>
 					   </div>   
 					    <form id="frm4" name="frm4" action="reviewAction.do">
-					              내용<input  id="board_area" name="board_area" placeholder="내용을 작성하세요">
-					          <input type="hidden" name="room_num" value="${param.room_num}">   
-					              별점 <select id="review_star" name="review_star">
+					              내용&nbsp;&nbsp;<input  id="board_area" name="board_area" placeholder="내용을 작성하세요" >
+					          <input type="hidden" name="room_num" value="${param.room_num}"><br/>
+					    <button id="btn7" class="btn btn-primary" style="float:right" >등록 </button><br>
+					    
+					              평점&nbsp;&nbsp;<select id="review_star" name="review_star" >
 					                     <option>1</option>
 					                     <option>2</option>
 					                     <option>3</option>
 					                     <option>4</option>
 					                     <option>5</option>
 					            </select> 
-					    <button id="btn7">등록 </button>
 					   </form>
 					   </div>   
 				</div>

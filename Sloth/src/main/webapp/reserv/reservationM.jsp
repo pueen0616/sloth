@@ -78,13 +78,15 @@
                      <fmt:formatDate value="${reserInfo2.reserCheckOut }" pattern="yyyy-MM-dd" var="checkOut"/>
                         <c:if test="${today > checkOut}">
                            이용 완료<br/>
+                           <input type="hidden" id="reserCheckIn" name="reserCheckIn" value="${reserInfo2.reserCheckIn}">
+                            <input type="hidden" id="reserCheckOut" name="reserCheckOut" value="${reserInfo2.reserCheckOut}">
                            <button type="button" id="delete_btn2" class="btn btn-light">
-                           삭제
+                           삭제          
                         </button>
                         </c:if>
                         
                         <c:if test="${today < checkIn}">
-                        입실전<br/>
+                        입실 전<br/>
                         <button type="button" id="update_btn" class="btn btn-light">수정</button>
                         <input type="hidden" id="reserCheckIn" name="reserCheckIn" value="${reserInfo2.reserCheckIn}">
                         <input type="hidden" id="reserCheckOut" name="reserCheckOut" value="${reserInfo2.reserCheckOut}">
@@ -93,7 +95,7 @@
                         </button>
                         </c:if>
                         <c:if test="${today >= checkIn && today <= checkOut}">
-                           입실중
+                           입실 중
                         </c:if>
                      </td>
                      <!-- <td>
@@ -127,7 +129,8 @@
                url : "deleteReser.do",
                data : {
                   "reserNum" : $("[name='reserNum']").val(),
-                  "reserCheckIn" : $("[name='reserCheckIn']").val()
+                  "reserCheckOut" : $("[name='reserCheckIn']").val(),
+                  "reserCheckOut" : $("[name='reserCheckOut']").val(),
                },
                async : false,
                success : function(betweenDay) {
@@ -135,7 +138,7 @@
                      //$("td[class='bb']").remove();
                      location.reload();
                   } else {
-                     alert("예약 하루전엔 취소할 수 없습니다.")
+                     alert("입실 하루 전에는 취소가 불가능 합니다.")
                   }
                }
             });
@@ -174,8 +177,8 @@
                   },
                   async : false,
                   success : function(betweenDay) {
-                     if (betweenDay >= 2) {
-                        //$("td[class='bb']").remove();
+                     if (betweenDay > 1||betweenDay<0) {
+                        $("td[class='bb']").remove();
                         location.reload();
                      } else {
                         alert("예약 하루전엔 취소할 수 없습니다.")

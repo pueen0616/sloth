@@ -17,6 +17,7 @@ import com.sloth.board.command.HostmUpdateFormAction;
 import com.sloth.Host.command.HighPrice;
 import com.sloth.Host.command.HostDetail;
 import com.sloth.Host.command.HostMAction;
+import com.sloth.Host.command.HostMreserList;
 import com.sloth.Host.command.HostUp;
 import com.sloth.Host.command.HostUpFormAction;
 import com.sloth.Host.command.LowPrice;
@@ -96,7 +97,7 @@ public class FrontController extends HttpServlet {
 	    map.put("/mainpic.do", new mainpicAction());
 	    
 	    map.put("/reviewAction.do", new reviewAction());
-//	    map.put("/hostMreserList.do", new HostMreserList()); //숙소관리 예약 리스트 보기
+	    map.put("/hostMreserList.do", new HostMreserList()); //숙소관리 예약 리스트 보기
  
     	}
     
