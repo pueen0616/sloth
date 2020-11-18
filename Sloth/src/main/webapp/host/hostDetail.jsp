@@ -18,6 +18,12 @@
   <script src="https://cdn.jsdelivr.net/bxslider/4.2.12/jquery.bxslider.min.js"></script>
  <script src="https://kit.fontawesome.com/a076d05399.js"></script>
 <style>
+.pay{
+	padding:1px 17px;
+}
+
+.col-6 { border:0px; background:#ffffff; }
+
 img{
 	width: auto; height: auto;
     max-width: 1000px;
@@ -31,6 +37,14 @@ box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
     $(document).ready(function(){
       $('.slider').bxSlider();
     });
+    
+    function reviewUp(){
+    	if(${id == null}){
+    		alert("로그인 후 리뷰 남기기가 가능합니다");
+    		 return false;
+    	}	
+    	 return true;
+    }
   </script>
 </head>
 <body>
@@ -75,17 +89,17 @@ box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
 					   <div>
 					      <table class="table table-bordered table-hovers">
 					         <tr>
-					            <th width="200">작 성 일</th>
+					            <th width="250">작 성 일 자</th>
 					            <th width="200">아 이 디</th>
-					            <th width="1200">내 용</th>
+					            <th width="1200" align="center">내 용</th>
 					            <th width="100">평 점</th>
 					         </tr>
 					         <c:forEach var="review" items="${reviews }">
 					            <tr>
 					               <td>${review.today}</td>
-					               <td>${review.id}</td>
+					               <td align="center">${review.id}</td>
 					               <td>${review.review_area}</td>
-					               <td>${review.review_star}</td>               
+					               <td align="center">${review.review_star}</td>               
 					            </tr>
 					         </c:forEach>
 					      </table>
@@ -93,7 +107,7 @@ box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
 					    <form id="frm4" name="frm4" action="reviewAction.do">
 					              내용&nbsp;&nbsp;<input  id="board_area" name="board_area" placeholder="내용을 작성하세요" >
 					          <input type="hidden" name="room_num" value="${param.room_num}"><br/>
-					    <button id="btn7" class="btn btn-primary" style="float:right" >등록 </button><br>
+					    <button id="btn7" class="btn btn-primary" style="float:right" onclick="reviewUp()">리뷰 남기기 </button><br>
 					    
 					              평점&nbsp;&nbsp;<select id="review_star" name="review_star" >
 					                     <option>1</option>
@@ -114,12 +128,11 @@ box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
 								style="float: right;">❤${star }</span>
 						</div>
 						<div class='row' style="padding: 20px;">
-							<input class="search__input" type="date" value="${selectVO.room_checkin }" id="realCheckIn" name="realCheckIn"/>체크인 날짜
-							 <input class="search__input" type="date" value="${selectVO.room_checkout }" id="realCheckOut" name="realCheckOut"/>체크아웃 날짜
-							<div class="col-6" style="border: 1px solid;">
+							체크인 &nbsp;&nbsp;<input class="search__input" type="date" value="${selectVO.room_checkin }" id="realCheckIn" name="realCheckIn"/> &nbsp;&nbsp;&nbsp;&nbsp;
+							 체크아웃 &nbsp;&nbsp;<input class="search__input" type="date" value="${selectVO.room_checkout }" id="realCheckOut" name="realCheckOut"/>
+							<div class="col-6" ><br>
 								인원 
 								<select class="search__input" id="realRoomMax" name="realRoomMax">
-									<option>${selectVO.room_max }</option>
 			                        <option>1</option>
 			                        <option>2</option>
 			                        <option>3</option>
@@ -128,10 +141,11 @@ box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
 			                        <option>6</option>
 			                        <option>7</option>
 			                        <option>8</option>
+			                        <option>${selectVO.room_max }</option>
 				                  </select>
 							</div>
 						</div>
-						<div align="center">
+						<div align="center" class="pay">
 						<Button type="submit" class="btn btn-danger btn-lg active" >예약하기</Button>
 						</div>
 					</div>

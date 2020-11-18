@@ -17,7 +17,7 @@
          alert("사용자 비밀번호 입력하세요");
          f.password.focus();
          return false;
-      }
+      } 
       return true;
    }
    
@@ -63,17 +63,15 @@
     		        <a class="dropdown-item" href="hostUpForm.do">호스트가 되기</a>
          		</c:when>
 				<c:otherwise>
-					<a class="dropdown-item" href="hostUpForm.do">숙소추가하기</a>
+					<a class="dropdown-item" href="hostUpForm.do">숙소 추가하기</a>
 				</c:otherwise>         		
          	</c:choose>
          	
-            <a class="dropdown-item" href="Account.do">계정</a>
-            <a class="dropdown-item" href="#">게시판</a>
-            <a class="dropdown-item" href="reserM.do?id=${id }">예약관리</a>
+            <a class="dropdown-item" href="Account.do">나의 계정</a>
+            <a class="dropdown-item" href="reserM.do?id=${id }">예약 관리</a>
             <c:if test="${!empty user_type}">
-               <a class="dropdown-item" href="./hostM.do">숙소관리</a>
+               <a class="dropdown-item" href="./hostM.do">숙소 관리</a>
             </c:if>
-            <a class="dropdown-item" href="#">관심숙소</a>
             <a class="dropdown-item" href="logout.do">로그아웃</a>
          </c:if>
          

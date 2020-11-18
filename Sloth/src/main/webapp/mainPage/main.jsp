@@ -67,7 +67,6 @@
          </div>
          </form>
       </section>
-<hr/>
 	</header>
 <br><br><br>
 © 2020 Yirbnb, Inc. All rights reserved<br>

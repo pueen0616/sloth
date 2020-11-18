@@ -7,8 +7,26 @@
 <head>
 <meta charset="UTF-8">
 <title></title>
+<style>
+.pay{
+	padding:20px 17px;
+}
+
+.no-border { border:0px; background:#ffffff; }
+</style>
 </head>
 <body>
+<script>
+function reser(){
+	if(${id == null}){
+		alert('로그인 후 숙소 예약이 가능합니다');
+		 return false;
+	} else {
+	alert('예약이 완료되었습니다');
+	}
+	  return true;
+}
+</script>
 <form id="frm" name="frm" action="reser.do" method="post">
 <fmt:parseDate value="${realReser.room_checkin }" var="strPlanDate" pattern="yyyy-MM-dd"/>
 <fmt:parseNumber value="${strPlanDate.time / (1000*60*60*24)}" integerOnly="true" var="strDate"></fmt:parseNumber>
@@ -35,7 +53,7 @@
 				</div>
 			</div>
 			<div class="col-6">
-				<div class="box" style="border: 1px solid; position: fixed; width: 30%; border-radius: 25px; background-color: #ffffff" >
+				<div class="box" style="border: 1px solid; width: 90%; border-radius: 25px; background-color: #ffffff" >
 					<img style="width:100px; height:100px; padding:10px;  border-radius: 20px;" src="${pageContext.request.contextPath}/img/room1.jpeg">
 					<a>${detail.room_name }</a>&nbsp;&nbsp;
 					<a>${detail.room_address }</a>&nbsp;&nbsp;
@@ -46,9 +64,10 @@
 						<span style="font-size: 20px;">
 						₩&nbsp;${detail.room_price }&nbsp;/박 <br><br>
 						총 ${endDate - strDate }박
-						<input type="text" id="room_price1" name="room_price1" value="${detail.room_price*(endDate-strDate)}"> 
+						<input type="text" class="no-border" id="room_price1" name="room_price1" value="${detail.room_price*(endDate-strDate)}" readonly> 
 						</span> 
-					</div><button type="submit" class="btn btn-danger btn-lg active" >결제</button>
+					</div>
+					<div class="pay"><button type="submit" class="btn btn-danger btn-lg active" onclick="reser()">결제</button></div>
 				</div>
 			</div>
 		</div>

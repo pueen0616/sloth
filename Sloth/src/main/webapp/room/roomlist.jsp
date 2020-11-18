@@ -55,15 +55,12 @@ if(${a } == 0){
 </script>
 </head>
 <body>
-	
+	&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
     <input id="tab1" type="button" name="tab1" onclick="location.href='${pageContext.request.contextPath}/highPrice.do'">
     <label for="tab1">높은가격순</label>
 
     <input id="tab2" type="button" name="tab2" onclick="location.href='${pageContext.request.contextPath}/lowPrice.do'">
     <label for="tab2">낮은가격순</label>
-
-    <input id="tab3" type="button" name="tab3">
-    <label for="tab3">평점순</label>
     
 		<div class="fixed_img_col">
 				<ul id="roomlist">
@@ -73,9 +70,12 @@ if(${a } == 0){
 							<img id="img" name="img"  alt="왜아무것도안나오지" src="${pageContext.request.contextPath}/img/${host.pic }" style="border-radius : 2px; width:400px; height:300px;"  >
 						</div> 
 					 	</a>
-						<div style="padding: 20px" ><b>${host.room_name }</b>	
+						<div style="padding: 20px" ><h4>${host.room_name }</h4>	
 							<p>₩ ${host.room_price } /박</p>
-							<p>${host.room_checkin } ${host.room_checkout }</p>
+							<div>
+							<b>체크인</b> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <b>체크아웃</b> 
+							<br>${host.room_checkin }&nbsp;&nbsp;&nbsp;&nbsp; ${host.room_checkout }
+							</div>
 						</div>
 					</li>
 			</c:forEach>
