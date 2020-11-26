@@ -77,7 +77,7 @@
                      <fmt:formatDate value="${reserInfo2.reserCheckIn }" pattern="yyyy-MM-dd" var="checkIn"/>
                      <fmt:formatDate value="${reserInfo2.reserCheckOut }" pattern="yyyy-MM-dd" var="checkOut"/>
                         <c:if test="${today > checkOut}">
-                           이용 완료<br/>
+                           이용 완료<br/>   <input type="hidden" id="reserNum" name="reserNum" value="${reserInfo2.reserNum}">
                            <input type="hidden" id="reserCheckIn" name="reserCheckIn" value="${reserInfo2.reserCheckIn}">
                             <input type="hidden" id="reserCheckOut" name="reserCheckOut" value="${reserInfo2.reserCheckOut}">
                            <button type="button" id="delete_btn2" class="btn btn-light">
@@ -129,15 +129,14 @@
                url : "deleteReser.do",
                data : {
                   "reserNum" : $("[name='reserNum']").val(),
-                  "reserCheckOut" : $("[name='reserCheckIn']").val(),
+                  "reserCheckIn" : $("[name='reserCheckIn']").val(),
                   "reserCheckOut" : $("[name='reserCheckOut']").val(),
                },
                async : false,
                success : function(betweenDay) {
                   if (betweenDay >= 2) {
-                     //$("td[class='bb']").remove();
                      location.reload();
-                  } else {
+                  } else if(betweenDay == 1) {
                      alert("입실 하루 전에는 취소가 불가능 합니다.")
                   }
                }
@@ -177,12 +176,8 @@
                   },
                   async : false,
                   success : function(betweenDay) {
-                     if (betweenDay > 1||betweenDay<0) {
                         $("td[class='bb']").remove();
                         location.reload();
-                     } else {
-                        alert("예약 하루전엔 취소할 수 없습니다.")
-                     }
                   }
                });
             });

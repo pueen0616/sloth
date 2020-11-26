@@ -7,6 +7,11 @@
 <link rel="stylesheet" href="${pageContext.request.contextPath}/host/css/inputStyle.css">
 </head>
 <body>
+<script type="text/javascript">
+function register(){
+	alert("회원가입이 완료되었습니다");
+}
+</script>
 <div align="center">
 	<div><h1>회 원 가 입</h1></div>
 	<hr/>
@@ -34,7 +39,7 @@
 			
 			
 			
-			<input type="submit" value="가입하기" class="btn btn-primary"> &nbsp;&nbsp;
+			<input type="submit" value="가입하기" class="btn btn-primary" onclick="return register()"> &nbsp;&nbsp;
 			<input type="reset" value="취소" class="btn btn-primary">
 		</form>
 	</div>

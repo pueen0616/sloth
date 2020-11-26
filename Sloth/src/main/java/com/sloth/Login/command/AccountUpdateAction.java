@@ -17,6 +17,8 @@ public class AccountUpdateAction implements Action {
       user.setId(id);
       user = dao.userInfo(user);
       request.setAttribute("user",user);
+  
+      
       return "login/accountUpdate.jsp";   
    }
 }

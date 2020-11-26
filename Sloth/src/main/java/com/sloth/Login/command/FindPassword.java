@@ -14,14 +14,17 @@ public class FindPassword implements Action {
       // TODO Auto-generated method stub
       AccountDao dao = new AccountDao();
       AccountVO vo = new AccountVO();
+
       
-      vo.setName(request.getParameter("name"));
-      vo.setId(request.getParameter("id"));
+      vo.setName(request.getParameter("uNa"));
+      vo.setId(request.getParameter("userID"));
+    
+      AccountVO pw = dao.select_pw(vo);
+     
+         request.setAttribute("pw", pw.getPassword());         
       
-      vo = dao.select_pw(vo);
       
-      request.setAttribute("pw", vo);
-      
+         System.out.println(pw.getPassword());
       return "login/findPassword.jsp";
    }
 

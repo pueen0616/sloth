@@ -173,16 +173,17 @@ function setThumbnail(event) {
 				<th scope="col" style="padding: 10px; text-align: center;">이름</th>
 				<th scope="col" style="padding: 10px; text-align: center;">장소</th>
 				<th scope="col" style="padding: 10px; text-align: center;">가격</th>
+				<th scope="col" style="padding: 10px; text-align: center;">운영날짜</th>
 				<th scope="col" style="padding: 10px; text-align: center;">인원</th>
-				<th scope="col" style="padding: 10px; text-align: center;">수정/삭제</th>
-				<th scope="col" style="padding: 5px; text-align: center;">예약 현황</th>
+				<th scope="col" style="padding: 10px; text-align: center;">수정&nbsp;&nbsp;삭제</th>
+				<th scope="col" style="padding: 10px; text-align: center;">예약 현황</th>
 			</tr>
 		</thead>
 		<tbody>
 			<c:forEach items="${hostM}" var="host" varStatus="i">
 				<tr>
 					<td class='bbb' style="padding: 10px; text-align: center;"><img
-						style="width: 300px; height: 200px;" alt="null"
+						style="width: 250px; height: 150px;" alt="null"
 						src="${pageContext.request.contextPath}/img/${host.pic }">
 						<button type="button" class="btn btn-light btn-pic"
 							data-toggle="modal" data-num="${host.room_num }"
@@ -191,6 +192,7 @@ function setThumbnail(event) {
 					<td class='bbb' style="padding: 60px; text-align: center;">${host.room_name}</td>
 					<td class='bbb' style="padding: 60px; text-align: center;">${host.room_address}</td>
 					<td class='bbb' style="padding: 60px; text-align: center;">${host.room_price}</td>
+					<td class='bbb' style="padding: 60px; text-align: center;">${host.room_checkin}<br><br>${host.room_checkout }</td>
 					<td class='bbb' style="padding: 60px; text-align: center;">${host.room_max}</td>
 					<td class='bbb' style="padding: 60px; text-align: center;">
 						<button type="button" class="btn btn-light"
