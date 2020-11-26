@@ -184,9 +184,12 @@ function setThumbnail(event) {
 					<td class='bbb' style="padding: 10px; text-align: center;"><img
 						style="width: 300px; height: 200px;" alt="null"
 						src="${pageContext.request.contextPath}/img/${host.pic }">
+						
 						<button type="button" class="btn btn-light btn-pic"
 							data-toggle="modal" data-num="${host.room_num }"
 							data-target="#picupdate"><i class="fab fa-sistrix"></i></button></td>
+							
+							
 							
 					<td class='bbb' style="padding: 60px; text-align: center;">${host.room_name}</td>
 					<td class='bbb' style="padding: 60px; text-align: center;">${host.room_address}</td>
@@ -195,6 +198,7 @@ function setThumbnail(event) {
 					<td class='bbb' style="padding: 60px; text-align: center;">
 						<button type="button" class="btn btn-light"
 							onclick="location.href='hostmUpdateForm.do?room_num=${host.room_num }'">수정</button>
+							
 						<button type="button" class="btn btn-light roomdel">삭제</button>
 						<input type="hidden" name="roomnum1" id="roomnum1" value="${host.room_num }">
 						</td>
@@ -208,6 +212,7 @@ function setThumbnail(event) {
 			</c:forEach>
 		</tbody>
 	</table>
+	
 	<!-- 사진 수정 -->
 	<div class="modal fade" id="picupdate" tabindex="-1"
 		aria-labelledby="exampleModalLabel" aria-hidden="true">
@@ -233,6 +238,7 @@ function setThumbnail(event) {
 						</div>
 						<button type="button" class="btn btn-light"  onclick="fn_submit()">저장</button>
 					</form>
+					
 				<span><button type="button" class="btn btn-light" id="picdelete">삭제</button></span> 
 				<span><button type="button"	class="btn btn-light" id="mainpic">대표사진</button></span>
 				</div>
@@ -240,6 +246,8 @@ function setThumbnail(event) {
 		</div>
 	</div>
 	<hr>
+	
+	
 	<!-- 예약자 리스트 -->
 	<div class="modal fade" id="reserlist" tabindex="-1"
 		aria-labelledby="exampleModalLabel" aria-hidden="true">

@@ -114,6 +114,7 @@
                </form>
             </div>
             <div id="idDiv" style="display: none" align="center">
+            
                <form id="idFrm" name="idFrm" method="post"
                   action="findidresult.do">
                   <div>

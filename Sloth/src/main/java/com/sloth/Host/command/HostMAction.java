@@ -20,9 +20,11 @@ public class HostMAction implements Action {
 		vo.setId((String)request.getSession().getAttribute("id"));  //
 //		vo.setRoom_num(Integer.parseInt(request.getParameter("room_num")));
 		List<HostPicVO> list =null;
+		
 		HostDAO dao = new HostDAO();
-		List<HostPicVO> dvo = dao.Host_M(vo);
-		request.setAttribute("hostM", dvo);
+		
+		list = dao.Host_M(vo);
+		request.setAttribute("hostM", list);
 		
 //		HostPicVO dvo1 = new HostPicVO();
 //		List<HostPicVO> list1 = null;

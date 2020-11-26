@@ -48,7 +48,7 @@ input[type=text]:hover {
 function updHostM(){
 	if (confirm("숙소의 정보를 변경 하시겠어요??") == true){    //확인
 		alert("숙소 정보가 변경 되었습니다");
-		     document.removefrm.submit();
+		    
 		 }else{   //취소
 		     return false;
 		 }
@@ -58,7 +58,7 @@ function updHostM(){
 	<div class="_s1t1w0m">숙소 정보 변경</div>
 	<hr style="margin-bottom: 32px;">
 	<div>
-		<form id="frm" name="frm" action="hostmUpdate.do" method="post" enctype="multipart/form-data">
+		<form id="frm" name="frm" action="hostmUpdate.do" method="post" >
 			
 			<div class="_s1t1w0" style="margin-bottom: 16px;">숙소 이름</div>	
 			<div style="margin-bottom: 32px;"><input type="text" id="room_name" name="room_name" value="${updateform.room_name }"></div>
@@ -92,7 +92,7 @@ function updHostM(){
 			<textarea cols="30" rows="10" id="room_info" name="room_info">${updateform.room_info }</textarea>
 				
 			<div style="padding: 20px;" >
-				 <input type="submit" value="수정" class="btn btn-primary" onclick="updHostM()">
+				 <input type="submit" value="수정" class="btn btn-primary" onclick="return updHostM()">
  				 <input type="reset" value="취소" class="btn btn-primary"></div>
  				 <input type="hidden" id="id" name="id" value="${id}" readonly>
 			<input type="hidden" id="room_num" name="room_num" value="${updateform.room_num }" readonly>
