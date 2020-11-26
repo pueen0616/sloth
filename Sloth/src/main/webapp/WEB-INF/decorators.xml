@@ -13,5 +13,7 @@
     	<pattern>/picupdate.do*</pattern>
 		<pattern>/findId.do</pattern>
 		<pattern>/hostMreserList.do*</pattern>
+		<pattern>/findidresult.do*</pattern>
+		<pattern>/findPassword.do*</pattern>
     </excludes>
 </decorators>

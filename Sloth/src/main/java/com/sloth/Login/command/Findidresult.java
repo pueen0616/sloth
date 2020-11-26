@@ -16,11 +16,11 @@ public class Findidresult implements Action {
       AccountDao dao = new AccountDao();
       AccountVO vo = new AccountVO();
 
-      System.out.println(request.getParameter("name"));
+      System.out.println(request.getParameter("uname"));
       System.out.println(request.getParameter("email"));
       
-      vo.setName(request.getParameter("name"));
-      vo.setEmail(request.getParameter("email"));
+      vo.setName(request.getParameter("uname"));
+      vo.setEmail(request.getParameter("useremail"));
       
       
       AccountVO id = dao.select_id(vo);

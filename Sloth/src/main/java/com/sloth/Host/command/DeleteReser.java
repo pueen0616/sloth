@@ -23,6 +23,7 @@ public class DeleteReser implements Action {
       reserVO vo = new reserVO();
 
       int reserNum = Integer.parseInt(request.getParameter("reserNum"));
+      System.out.println("번호 " + reserNum);
       String reserCheckIn2 = request.getParameter("reserCheckIn");
       String reserCheckOut = request.getParameter("reserCheckOut");
 /////////////////////////////////////////////////////////////////////////////
@@ -31,8 +32,10 @@ public class DeleteReser implements Action {
       // 한국기준날짜
       Calendar calender = Calendar.getInstance();
       Date date = new Date(calender.getTimeInMillis());
-      todaySdf.setTimeZone(TimeZone.getTimeZone("Asiz/Seoul"));
+      todaySdf.setTimeZone(TimeZone.getTimeZone("Asia/Seoul"));
       String todayDate = todaySdf.format(date);
+      System.out.println("today" + todayDate);
+      System.out.println("checkin" + reserCheckIn2);
       // 오늘 타임스탬프(데이트포맷으로 저장했다고 치고 그걸 타임스탬프로 바꿔보는 작업)
       long todayTimestamp = 0;
       try {
@@ -51,20 +54,19 @@ public class DeleteReser implements Action {
          e1.printStackTrace();
       } // nextdayTimeStamp-> 이게 체크인 날짜임
       } catch (NullPointerException e) {
-    	  try {
-			response.getWriter().print("<script>alert('입실 하루 전은 취소가 불가능 합니다');</script>");
-		} catch (IOException e1) {
-			// TODO Auto-generated catch block
-			e1.printStackTrace();
-		}
+    	  
       }
       long differenceTimeStamp = (nextdayTimeStamp - todayTimestamp);
+      	System.out.println("넥스트" + nextdayTimeStamp);
+      	System.out.println("투데이" + todayTimestamp);
+      	System.out.println("뺀거 " + differenceTimeStamp);
       long betweenDay = (differenceTimeStamp / (24 * 60 * 60 * 1000));
+        System.out.println("일수차이" + betweenDay);
       try {
          response.getWriter().print(betweenDay);// 일수차이
-         if (betweenDay >= 2||betweenDay<0) {
+         
             vo = dao.reserDelete(reserNum);
-         }
+         
 
       } catch (Exception e) {
          e.printStackTrace();
