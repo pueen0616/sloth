@@ -39,7 +39,7 @@ box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
     });
     
     function reviewUp(){
-    	if(${id == null}){
+    	if( ${id = null} ){
     		alert("로그인 후 리뷰 남기기가 가능합니다");
     		 return false;
     	}	

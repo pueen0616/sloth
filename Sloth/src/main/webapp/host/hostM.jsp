@@ -126,6 +126,7 @@ function setThumbnail(event) {
 				}
 			});
 		});
+		
 		$(document).on("click",".roomdel",function(){
 	         var roomNum = $(this).closest('td').find('#roomnum1').val();
 	      if(confirm("정말 삭제 하시겠습니까?")){
@@ -145,6 +146,7 @@ function setThumbnail(event) {
 	      }else{return false;}
 	            });//click function end 
 	      });//end of function
+	      
 	function fn_submit() {
 		var form = new FormData(frmload);
 		
